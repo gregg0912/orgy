@@ -43,9 +43,7 @@
 			    font-family: 'Arca Majora 3 Bold', sans-serif;
 			    padding: 1%;
 			}
-			.btn{
-				margin-top: -5%;
-			}
+
 			#prof_pic{
 				border-radius: 50%;
 				height: 250px;
@@ -63,22 +61,10 @@
 				margin: auto;
 			}
 
-/*			#see_group > li > a{
-				text-align: center;
-				text-decoration: none;
-				padding: 2%;
-				margin-left: 0px;
-				margin-right: -5px;
-				border: none;
-				background: #e84a5f;
-			    color: black;
-
-			}*/
 			#see_group > li > label{
 				font-family: 'Arca Majora 3 Bold', sans-serif;
 				text-align:center;
 				text-shadow: none;
-				height: 50px;
 				width: 250px;
 				margin: 2%;
 				font-size: 25px;
@@ -87,19 +73,10 @@
 			#see_group {
 				list-style-type: none;
 				height: 100%;
-			}
-			#see_group > label {
-				text-shadow: none;
-				text-align: left;
-				color: #a10115;
-				margin-left: 0%;
-				font-size: 150%;
-				clear: right;
-				width: 100%;
+
 			}
 			#see_group > li{
 				height: 300px;
-				/*padding-bottom: 8%;*/
 				width: 31.5%;
 				margin-top: 3%;
 				margin-right: 0.5%;
@@ -110,6 +87,9 @@
 				float: left;
 				background-color: transparent;
 				border: 2px solid #ff847c;
+			}
+			#see_group > li > a{
+				margin: auto;
 			}
 
 			#searchbar{
@@ -221,17 +201,17 @@
 								while(list($orgid,$orgName, $photo,$memType)=mysqli_fetch_row($result)){
 						?>
 								<li>
-								<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgName)?></label>
+								<label><?=elipse($orgName)?></label>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$photo?>">
-								<label style="font-size: 100%;"><?=detMemType($memType)?></label>
+								<label style="font-size: 15px;"><?=detMemType($memType)?></label>
 								<?php
 									if ($memType!="pending") {
 									?>
-									<a href="bootgroup_page.php?orgID=<?=$orgid?>"><?=elipse($orgName)?></a>
+									<a href="bootgroup_page.php?orgID=<?=$orgid?>" class="btn btn-default btn-md" role="button"><?=elipse($orgName)?></a>
 									<?php
 									}else{
 									?>
-									<a href="cancel.php?orgID=<?=$orgid?>&id=<?=$id?>">Cancel Request</a>
+									<a class="btn btn-danger btn-md" role="button" href="cancel.php?orgID=<?=$orgid?>&id=<?=$id?>">Cancel Request</a>
 									<?php
 									}
 								?>
