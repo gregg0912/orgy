@@ -5,56 +5,25 @@
 	redirect();
     $dbconn = connection();
 	$filterQuery = "SELECT * from org_type";
-	/*$dbconn = mysqli_connect($host, $username, $password) or die ("Cannot connect to Database");*/
 	$filterlist = mysqli_query($dbconn, $filterQuery);
-	/*$org_type = $_GET['id'];*/
-
-	// echo  $_SESSION['user_id'];
-
-
+	
 	if(!empty($_GET['org_type'])){}
 	else
 		{$_GET['org_type'] = 14;}
 	
 	$org_type = $_GET['org_type'];
-	//$query = "select orgs.org_id, orgs.org_name, orgs.photo from orgs";
-	
-	if(isset($_GET['searched'])){
-		$search = $_GET['searched'];
-		$search_var = "%".$search."%";
-		//$org_type = "14";
-		$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id ='{$_SESSION['user_id']}' and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND o2.org_name like '$search_var' group by o2.org_id";
-		$result = mysqli_query($dbconn, $query);
-	}
 
-	else if($org_type == "14"&&!isset($_GET['searched'])){//9 is the id of "all in the filter"
+	if($org_type == "14"){//14 is the id of "all in the filter"
 		$query = "SELECT * FROM orgs WHERE orgs.org_id NOT IN (SELECT o1.org_id FROM joined AS j1, orgs AS o1 WHERE j1.user_id = $_SESSION[user_id] AND j1.org_id = o1.org_id)";
-		$result = mysqli_query($dbconn, $query);
-
 	}
 	
-	else if ($org_type != null&&!isset($_GET['searched'])){
+	else if ($org_type != null){
 		$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id =$_SESSION[user_id] and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND org_type.type_id = '$org_type';";
-			$result = mysqli_query($dbconn, $query);
-
 	}
-	if(isset($_POST["searchbtn"])){
-		$searched = $_POST["search"];
-		$org_type = "14";
-		$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id =$_SESSION[user_id] and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND o2.org_name like '%$searched%' group by o2.org_id";
-		$id = 1;
-		$result = mysqli_query($dbconn, $query);
-
-		header("Location: bootexplore.php?searched=$searched");		//agent proxy pwning
-
-	}
-
 	
-	
-
+	$result = mysqli_query($dbconn, $query);
 	$total_items = mysqli_num_rows($result);
 	$rows = mysqli_affected_rows($dbconn);
-	$countRows = $rows;
 
 	//------------------------------------------------------
 	$start=0;
@@ -70,33 +39,16 @@
       $total=ceil($rows/$lim);
       $result = mysqli_query($dbconn, "SELECT * FROM orgs LIMIT $start, $lim");
 
-      if(isset($_GET['searched'])){
-		$search = $_GET['searched'];
-		$search_var = "%".$search."%";
-		//$org_type = "14";
-		$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id ='{$_SESSION['user_id']}' and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND o2.org_name like '$search_var' group by o2.org_id LIMIT $start, $lim";
-
-		//$query = "SELECT * FROM orgs where org_name like '$search_var'";
-
-		$result = mysqli_query($dbconn, $query);	
-	}
-
-      if($org_type == "14" &&!isset($_GET['searched'])){//9 is the id of "all in the filter"
+      if($org_type == "14"){//14 is the id of "all in the filter"
 		//$query = "SELECT * FROM orgs";
 		$result = mysqli_query($dbconn, "SELECT * FROM orgs as o2 where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id =$_SESSION[user_id] and j1.org_id= o1.org_id) LIMIT $start, $lim");
 		}
 	
-	   else if ($org_type != null &&!isset($_GET['searched']))
+	   else if ($org_type != null)
 	   		{
 			$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id =$_SESSION[user_id] and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND org_type.type_id = '$org_type' LIMIT $start, $lim";
 			$result = mysqli_query($dbconn, $query);
 			}
-			if(isset($_POST["searchbtn"])){
-				$searched = $_POST["search"];
-				$org_type = "14";
-				$query = "SELECT * FROM orgs as o2, classification, org_type where o2.org_id not in (select o1.org_id from joined as j1, orgs as o1 where j1.user_id =$_SESSION[user_id] and j1.org_id= o1.org_id) AND o2.org_id=classification.org_id AND org_type.type_id=classification.type_id AND o2.org_name like '%$searched%' group by o2.org_id LIMIT $start, $lim";
-		$result = mysqli_query($dbconn, $query);
-	}
 
 
        //-----------------------------------------------
@@ -112,8 +64,8 @@
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
+ 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<style type="text/css">
 
 
@@ -274,7 +226,16 @@
 <body>
 
 <div class = "container">	
-	
+		<?php	$start=0;
+				$lim=3;
+
+				if(isset($_GET['id'])){
+					$id=$_GET['id'];
+					$start=($id-1)*$lim;
+				}
+				else{
+					$id=1;
+				} ?>
 		<div id="wrapper">
 		    <nav id="general" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 		        <ul class="nav nav-pills nav-stacked" id="navigation" >

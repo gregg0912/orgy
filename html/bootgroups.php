@@ -55,23 +55,24 @@
 			}
 
 			#image{
-				border-radius: 50%;
-				height: 100%;
-				width: 100%;
-				margin-left: -300%;
+				width: 170px; 
+				height: 170px; 
+				object-position: center; 
+				object-fit: cover; 
+				margin: auto;
 			}
 
-			#see_group > li > a{
-				/*text-align: center;
+/*			#see_group > li > a{
+				text-align: center;
 				text-decoration: none;
 				padding: 2%;
 				margin-left: 0px;
 				margin-right: -5px;
 				border: none;
 				background: #e84a5f;
-			    color: black;*/
+			    color: black;
 
-			}
+			}*/
 			#see_group > li > label{
 				font-family: 'Arca Majora 3 Bold', sans-serif;
 				text-align:center;
@@ -110,40 +111,11 @@
 				border: 2px solid #ff847c;
 			}
 
-			/*#navigation{
-				list-style-type: none;
-				position: fixed;
-				width: 20%;
-				background: #ad464c;
-				margin-left: -5%;
-				height: 90%;
-				
-			}*/
-
-			/*#navigation > li > a{
-				text-align: center;
-				/*margin: -1%;
-				background: #ad464c;
-				border: 2px solid #ad464c;
-				color: white;
-			}*/
-
-		/*	#navigation > li > a:hover{
-				border: 2px solid #b05258;
-				background: #c04c53;
-			}
-*/
 			#searchbar{
 				margin-left: 10%;
 				margin-right: 10%;
 				text-align: center;
 				width: 80%;
-			}
-			#image{
-				border-radius: 50%;
-				height: 100%;
-				width: 100%;
-				margin-left: -300%;
 			}
 
 			#pagination{
@@ -171,128 +143,10 @@
 				margin-bottom: -18%;
 		
 			}
-			/*.dropdown{
-				cursor: pointer;
-				display: inline-block;
-				width: 100%;
-			}
-			.dropdown-menu{
-				display: none;
-				position: absolute;
-				overflow: auto;
-				width: 15.28%;
-			}
-
-
-
-			.dropdown-menu > li > a{
-				display: block;
-				padding: 3px 20px;
-				clear: both;
-				font-weight: 400;
-				white-space: nowrap;;
-				color: #333; 
-			}
-
-			.dropdown-menu a:hover {
-			    background-color: #CCCBCA;
-			}
-*/
+			
 			
 
 		</style>
-
-		<!-- <style type="text/css">
-			#content{
-				height: 590px;
-			}
-			#group_list > h2{    
-				color: #740000;
-			    line-height: 100%;
-			    background-color: rgba(249, 243, 243, 0.5);
-			    font-size: 300%;
-			    margin: auto;
-			    text-align: center;
-			    font-family: 'Arca Majora 3 Bold', sans-serif;
-			    padding: 1%;
-
-			}
-
-			#image{
-				border-radius: 50%;
-				height: 50%;
-				width: 70%;
-				padding: 10%
-			}
-			#see_group > li > a{
-				text-align: center;
-				text-decoration: none;
-				padding: 2%;
-				margin-left: 0px;
-				margin-right: -5px;
-				border: none;
-				background: #e84a5f;
-			    color: black;
-			}
-			#see_group > li > label{
-				font-family: 'Arca Majora 3 Bold', sans-serif;
-				text-align:center;
-				text-shadow: none;
-				height: 50px;
-				width: 250px;
-				margin: 2%;
-				font-size: 25px;
-			}
-			#see_group {
-				list-style-type: none;
-				height: 100%;
-			}
-			#see_group > label {
-				text-shadow: none;
-				text-align: left;
-				color: #a10115;
-				margin-left: 0%;
-				font-size: 150%;
-			}
-			#see_group > li{
-				height: 300px;
-				/*padding-bottom: 8%;*/
-				width: 31.5%;
-				margin: 4px;
-				margin-bottom: 20px;
-				text-align: center;
-				display: inline-block;
-				float: left;
-				background-color: transparent;
-				border: 2px solid #ff847c;
-			}
-			#pagination{
-				display: inline-block;
-				padding: 0;
-				float: right;
-				clear: both;
-				margin-top: -7%;
-			}
-			#pagination > li{
-				display: inline;
-			}
-			#pagination > li > a{
-				color: black;
-				/*float: left;*/
-				padding: 8px 16px;
-				text-decoration: none;
-				transition: background-color .3s;
-			}
-			#pagination > li a.active{
-				background-color: #a10115;
-				color: white;
-			}
-			#pagination > li a:hover:not(.active){
-				background-color: white;
-			}			
-		</style> -->
-		
-        <!-- <link rel="stylesheet" type="text/css" href="../css/stylemarba.css"> -->
 	</head>
 	<body>
 
@@ -366,21 +220,21 @@
 								while(list($orgid,$orgName, $photo,$memType)=mysqli_fetch_row($result)){
 						?>
 								<li>
-									<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgName)?></label>
-										
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right">
-									<img id="image"  style="height: 148px; width: 170px;" src="<?=$photo?>" > </div> 
-									<!-- </div> -->						
-									
-									<label style="font-size: 100%;"><?=detMemType($memType)?></label>
-									<?php
-										if ($memType!="pending") {
-										?>
-										<a href="bootgroup_page.php?orgID=<?=$orgid?>"  class="btn btn-default btn-md" role="button" ><?=elipse($orgName)?></a>
-										<?php
-										}
+								<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgName)?></label>
+								<img id="image" src="<?=$photo?>">
+								<label style="font-size: 100%;"><?=detMemType($memType)?></label>
+								<?php
+									if ($memType!="pending") {
 									?>
-								</li>
+									<a href="bootgroup_page.php?orgID=<?=$orgid?>"><?=elipse($orgName)?></a>
+									<?php
+									}else{
+									?>
+									<a href="cancel.php?orgID=<?=$orgid?>&id=<?=$id?>">Cancel Request</a>
+									<?php
+									}
+								?>
+							</li>
 							<?php
 								}
 							?>
