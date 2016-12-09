@@ -1,0 +1,730 @@
+@import 'https://fonts.googleapis.com/css?family=Indie+Flower|Paytone+One|Pridi';
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@font-face{
+	font-family: "Arca Majora 3 Bold";
+	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
+}
+h1{
+	top: 0;
+	font-size: 75px;
+	text-align: center;
+	font-family: "Arca Majora 3 Bold", sans-serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: black;
+	/*text-shadow: 4px 4px 8px #000000;*/
+	/*text-shadow: 4px 4px 8px #000000;*/
+}
+
+body{
+	position: relative;
+	font-family: Arial;
+	height: 100%;
+ 	background: url("../images/polygonwhite.jpg") fixed;
+}
+
+#general > #navigation{
+	list-style-type: none;
+	margin-right: 20px;
+	margin-top: 0;
+	padding: 0;
+	width: 20%;
+	border-radius: 0px 0px 0px 0px;
+	-moz-border-radius: 0px 0px 0px 0px;
+	-webkit-border-radius: 0px 0px 0px 0px;
+	background-color: #c4352a;
+	height: 100%;
+	float: left;
+	overflow: auto;
+	color: white;
+}
+#general > #navigation > li{
+  font-family: 'Pridi', serif;
+  text-align:center;
+}
+#general > #navigation >li a{
+	-webkit-transition: .4s;
+	-o-transition: .4s;
+	-moz-transition: .4s;
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid #c4352a;
+  
+}
+#general > #navigation >li a:hover{
+  background-color: white;
+  color: #a10115;
+  border: 1px solid #a10115;
+}
+#general > #navigation > li img{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border-radius: 50%;
+	max-width: 50%;
+	max-height: 50%;
+}
+#general > #navigation > li > .active{
+  background-color: #a10115!important;
+  border: 1px solid #a10115!important;
+  color: white!important;
+}
+/***************************************GROUP PAGE*******************************************/
+#image{
+	border-radius: 50%;
+	height: 60%;
+	width: 70%;
+	padding: 8% 10% 8% 10%;
+}
+#content > 	#group_list > #see_group > li > a{
+	text-align: center;
+	text-decoration: none;
+	color: #a10115;
+	padding: 2%;
+	margin-left: 0px;
+	margin-right: -5px;
+	border: 1px solid #a10115;
+	background-color: transparent;
+}
+#content > 	#group_list > #see_group > li > label{
+	text-align:center;
+	text-shadow: none;
+	height: 50px;
+	width: 250px;
+	color: #a10115;
+	margin: 0px;
+	font-size: 25px;
+}
+#group_list > #see_group {
+	list-style-type: none;
+}
+#group_list > #see_group > label {
+	text-shadow: none;
+	text-align: left;
+	color: #a10115;
+	margin-left: 0%;
+	font-size: 150%;
+}
+#content > #group_list > #see_group > li{
+	height: 300px;
+	width: 31.5%;
+	margin: 4px;
+	margin-bottom: 20px;
+	text-align: center;
+	display: inline-block;
+	float: left;
+	background-color: transparent;
+	border: 1px solid #a10115;
+}
+#group_nav > ul > li a {
+  -webkit-transition: .4s;
+  -moz-transition:.4s;
+  -o-transition: .4s;
+	position: relative;
+	float: left;
+	display: block;
+	padding: .4em .4em .4em 2em;
+	margin: .5em 0;
+	background: #c4352a;
+	color: white;
+	text-decoration: none;
+	transition: all .2s ease-in-out;
+	padding-bottom: 30%;
+}
+#content > #group_list > #see_group > li > a:hover {
+	background-color: #a10115;
+	color: white;
+	font-size: 105%;
+}
+#content > #group_nav > #forbread > h2{
+	color: #740000;
+	font-weight: normal;
+	line-height: 1px;
+  	font-family: amazingInfographic;
+	font-size: 50px;
+	text-align: center;
+}
+#content > #group_nav > #forbread{
+	text-align: center;
+}
+#content > #group_nav > #forbread > ul{
+	list-style-type: none;
+	overflow: hidden;
+	margin: auto 0% 1% 0%;
+	padding: 0%;
+}
+#content > #group_nav > #forbread > ul > li{
+	display: inline;
+}
+#content > #group_nav > #forbread > ul > li > a{
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	padding: 1%;
+	background-color: #c4352a;
+	/*background-color: #eaeaea;*/
+	-webkit-transition: .4s;
+	-o-transition: .4s;
+	-moz-transition: .4s;
+	transform: skew(-10deg);
+}
+#content > #group_nav > #forbread > ul > li > a:hover{
+	background: #F1F0EE;
+	color: #c4352a;
+}
+#content > #group_nav > #forbread > ul > li > a.active{
+	font-weight: bold;
+  	background: #a10115;
+  	color: white;
+  	transform: skew(-10deg);
+}
+#pagination{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+#pagination > li{
+	display: inline;
+}
+#pagination > li > a{
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+#pagination > li a.active{
+	background-color: #a10115;
+	color: white;
+}
+#pagination > li a:hover:not(.active){
+	background-color: white;
+}
+/*************************************END OF GROUP PAGE*******************************************/
+/*************************************LOG-IN PAGE*******************************************/
+
+/******************************************************************************************/
+
+
+
+/* original line of code gin seperate ko sa duha -jp
+input, label{
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+  text-align: center;
+} */
+/*
+input[type="text"]{
+margin-left: auto;
+ margin-right: auto;
+ display: block; 
+  text-align: center;
+}*/
+
+
+
+/*input{
+  margin-left: auto;
+  margin-right: auto;
+  display: block; gin kakas ko danay para sa discussion amo ni sya ang gapa center sang mga buttons -jp 
+  text-align: center;
+}*/
+
+/*label{
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+  text-align: center;
+}
+
+
+
+
+
+
+label{
+  margin: 25px;
+  font-size: 20px;
+  font-family: 'Pridi', serif;
+  color: white;
+  text-shadow: 4px 4px 8px #000000;
+}*/
+
+button{
+
+	background-color: #baecf1;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    margin: 10px 5px 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 16px;
+}
+
+/*-------------------------home announcements------------------------*/
+#PostButton{
+	/*width:120%; dapat di ni pag butang kay gaka affect sini ang pag center sang post button sa discussion -jp*/
+}
+#PostButton2{
+	margin-left:0%;
+}
+/*This is the post button in the discussion thingy where it aligns the button in the center. weird*/
+
+
+
+#content{
+
+	
+	font-family: Arial;
+  /*background-color: #a1cee6;*/
+ 	float: left;
+  /* gin kakas ko danay kay ga overide ni kag gapaguba2x dapat centered ang margin -j	
+  	margin-right: 10%;
+  	margin-bottom: 200px;
+
+	*/
+	margin:auto;/*to center all the div with the class="content"*/
+
+
+  background-color: #eee2d2;
+	border-radius: 37px 37px 37px 37px;
+	-moz-border-radius: 37px 37px 37px 37px;
+	-webkit-border-radius: 37px 37px 37px 37px;
+	border: 8px groove #e8e5e8;
+	padding: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 60%;
+}
+#content > h2,
+#content > #group_nav > h2,
+#content > #announcements>  h2,#content > #group_nav > h2 > 
+#content > #discussions > h2{
+  
+	color: #740000;
+	/*font-family: 'Trocchi', serif; */
+	/*font-size: 45px; */
+	font-weight: normal;
+	line-height: 48px;
+	background-color: #eaeaea;
+	border: 1px solid #cfbea9;
+	border-radius: 34px 34px 34px 34px;
+  -moz-border-radius: 34px 34px 34px 34px;
+  -webkit-border-radius: 34px 34px 34px 34px;
+  font-family: amazingInfographic;
+	font-size: 50px;
+	margin: auto 0 20px 0;
+	text-align: center;
+}
+
+
+#content > #group_nav > #forbread{
+	color: #7c795d;
+	background-color: #eaeaea;;
+	border: 1px solid #cfbea9;
+	border-radius: 34px 34px 34px 34px;
+  -moz-border-radius: 34px 34px 34px 34px;
+  -webkit-border-radius: 34px 34px 34px 34px;
+	margin: auto 0 20px 0;
+}
+#content p{
+  text-align: center;
+}
+#content dl {
+	border: 1px solid #cfbea9;
+  background-color: #eaeaea;
+	margin-top: 30px;
+	padding: 0.5em;
+	border-radius:15px 15px 15px 15px;
+}
+#content dt{
+	color: #ae5c5c;  
+	font-family:Times New Roman, serif;
+	font-size: 19px; 
+	font-weight: bold;
+/*	line-height: 30px;*/
+	/*margin: 0 0 10px;*/
+	float: left;
+	clear:left;
+/*	width: 100px; ginkakas ko kay wla ga align ang dt sa dd Discussion pages- Check nyo na din ang sa group pages same problem din kasi. Affected pati group page nito and na fix na din namn -jp*/
+	margin-right: 25px;
+	text-align: right;
+}
+#content dt:after{
+	content: ":";
+}
+#content dd{
+	color: #4c4a37; 
+	font-family:Times New Roman, serif;
+	font-size: 19px;
+	margin: 0 0 0 110px;
+	padding: 0 0 0.5em 0;
+}
+#content li,#content ul{
+  list-style-type: none;
+  margin-top: 30px;
+	/*
+	list-style-position: inside;
+	margin: 0;
+	
+	padding: 0;	*/
+}
+#content > #announcements > a {
+  color: #ff9900;
+  background: #fff4a3;
+  text-decoration: none;
+}
+#content > #announcements > a:hover {
+  color: #ffcc66
+}
+/*-----------------------------------------------------------------------------------*/
+
+#content > fieldset{
+	margin: 50px 10px 0 10px;
+	padding: 20px;
+	border: none;
+}
+
+#content  > label{
+	margin: 10px 0 20px 20px;
+}
+
+
+#content > fieldset > label{
+	float: left;
+	clear: left;
+	margin: 10px 0 25px 20px;
+}
+
+#content > fieldset > input[type="text"]{
+	float: left;
+	margin: 10px 40px 0 10px;
+}
+
+#content > fieldset > input[type="date"]{
+	float: left;
+	margin: 10px 40px 0 10px;
+}
+
+#degree{
+	float: left;
+	margin: 10px 0px 0 10px;
+	max-width: 250px;
+}
+
+#content > fieldset > input[type="email"]{
+
+	float: left;
+
+	margin: 10px 40px 0 10px;
+}
+
+input[type="submit"]{
+
+	/*float: left; gin kakas ko lang para sa discussion page kay gina tapik siya sa left sang page dapat kasi sa middle-jp*/
+	clear: left;
+	margin-right: auto; /*dapat auto ang right and left margin para center ang button bisan mag inano-jp
+	*/margin-left: auto;
+	/*margin: 2% 0px 2% 40*/
+}
+
+
+
+#content > a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+    float: left;
+    clear: left;
+    padding: 3px 5px 3px 5px;
+    margin: 2% 0px 2% 40%;
+
+}
+
+
+
+
+
+/* ------------------START OF CSS CODE FOR EXPLORE PAGE------------------ */
+
+#group_selection > ul {
+	list-style-type: none;
+	}
+
+#group_selection > ul > label {
+	text-shadow: none;
+	text-align: center;
+	color: #a10115;
+	margin-left: 0%;
+	font-size: 150%;
+	font-family: "Segoe Script", cursive;
+}
+
+#group_selection > ul > li {
+	height: 300px;
+	width: 31.5%;
+	margin: 5px;
+	border: 1px solid #a10115;
+	text-align: center;
+	display: block;
+	float: left;
+	background-color: transparent;/*white;*/
+	}
+
+#group_selection > ul > li > label	{
+	display: block;
+	text-shadow: none;
+	/*height: 270px;*/
+	width: 250px;
+	color: #a10115;
+	margin: 0px;
+	font-size: 25px;
+}
+
+#group_selection > ul > li > img
+	{
+	padding: 3%;
+	height: 200px;
+	width: 200px;
+	display: block;
+	margin: 5px;
+	margin-top: 3%;
+	margin-bottom: 7%;
+	
+	}
+
+#group_selection > ul > li:hover{
+	background-color: white;
+}	
+
+#group_selection > ul > li > a {
+	text-decoration: none;
+	color: #a10115;
+	padding: 2%;
+	margin-left: 0px;
+	margin-right: -5px;
+	border: 1px solid #a10115;
+	background-color: transparent;
+}
+
+#group_selection > ul > li > a:hover {
+	background-color: #a10115;
+	color: white;
+	font-size: 105%;
+}
+.dropbtn {
+    background-color: #a10115;/*#4CAF50;*/
+    color: white;
+    width: 100%;
+    height: 30px;
+    font-size: 100%;
+    margin: 0px;
+	/*margin-bottom: 0px;*/    
+    padding: 0px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    display: block;
+	color: white;
+	width: 15%;
+	padding: 1%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: absolute;
+	width: 10%;
+}
+
+.dropdown-content
+	{
+	margin-top: -2.4%;
+	}
+	
+/* Links inside the dropdown */
+.dropdown-content ul > a{
+    color: #a10115;
+    padding-left: 20%;
+    padding: auto;
+    margin-left:7%;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    border: 1px solid #a10115;
+	  width: 150%;
+	  font-size: 110%;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content ul > a:hover {
+	color: white;
+	background: #a10115;
+	}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+	color: #a10115;
+    background-color: white;
+    border: 1px solid #a10115;
+    
+}
+
+/* ------------------END OF CSS CODE FOR EXPLORE PAGE------------------ */
+
+
+
+
+
+
+/* login.html - START OF CSS codeS -------JUSTLEH NI----Kwaa nyo lng kung di nyo feel hehe---------------------*/
+
+
+/* login.html - END OF CSS codeS -----------JUSTLEH NI-----------------------*/
+ 
+
+/* edit.html - START OF CSS codeS --------------------------------*/
+
+#wrapper > form {
+  /*margin-top: 20%;*/
+  display: inline-block;
+  padding-right: 30%;
+ /* background: black;*/
+
+}
+
+#wrapper > form > #edit_profile > ul > li > label{
+	margin-left: auto;
+	margin-right: 5%;
+	padding-right: 50px; 
+	width: 100px;
+
+	display: inline;
+	clear: right;
+}
+
+
+#wrapper > form > #edit_profile > ul > li > input[type="password"]{
+	/* border: 2px solid white; */
+	 padding-left: 10px;
+	 padding-right: 10px;
+
+    /*-webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    /*padding: 15px;*/*/
+    text-align: center;
+   /* background: rgba(255,255,255,0.5);*/
+    margin: 0 0 10px 0;
+
+}
+
+#wrapper > form > #edit_profile > ul > li > label, input{
+	/*display: inline; must remove this thing gina guba nya ang pag center sang textarea-jp DiscussionPages*/
+}
+
+/*.editor-label > label:after {
+    content: ": "
+}*/
+
+#wrapper > label {
+  text-shadow: none;
+  text-align: left;
+  margin-left: 0%;
+  font-size: 150%;
+  font-family: "Segoe Script", cursive;
+  color: #a10115;
+  
+}
+
+/*#edit_profile > ul{
+  display: block;
+} */
+
+/*#edit_profile > ul > li{
+  display: inline-block;
+  margin-right: 100px;	
+  margin: 20px;
+} */
+
+#edit_profile > ul > li > label{
+  text-shadow: none;
+  font-family: 'Pridi', serif;
+  color: #a10115;
+}
+
+#edit_profile > input {
+  float: right;
+}
+
+#submit{
+  font-size: 100%;
+  font-family: 'Pridi', serif;
+  color: white;
+  background-color: #a10115;
+  border: 1px solid #a10115;
+  padding: 4px 12px 4px 12px;
+}
+
+#submit:hover{
+  color: #a10115;
+  background-color: white;
+}
+
+/* edit.html - END OF CSS codeS ----------------------------------
+
+
+/*----------------------------------------------------------------*/
+
+
+
+/*----------------------------------------------------------------*/
+
+
+
+
+footer{
+	margin: 10px 20px 0 0;
+	text-align: center;
+	font-family: Arial;
+	padding: 10px 0 10px;
+	height: 20px;
+	background-color: #892b38;
+	color: white;
+	width: 100%;
+	float: left;
+  /* Amu ni ang ngpadikit sa footer sa bottom, where in kung iscroll mo ang page ara man xa dyapon sa bottom*/	
+/*	position: fixed;
+	bottom: 0;*/
+	/*Nami tani iapply sa #navigation nga part, huksa niyo lng kung d nyo gusto - Justleh*/
+}
+
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ORG SYSTEM A.Y. 2016-2017</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+<div id="wrapper">
+	<nav id="general">
+		<ul id="navigation">
+			<li>USERNAME</li>
+			<li><img src="../images/image.jpg"/></li>
+			<li><input type="search" name="search" placeholder="Search For Your Orgs Here..."></li>
+			<li><a href="home.html">Home</a></li>
+			<li><a href="explore.html">Explore</a></li>
+			<li><a href="groups.html" class="active">Groups</a></li>
+			<li><a href="edit.html">Edit Profile</a></li>
+			<li><a href="notif.html">Notifications</a></li>
+			<li><a href="login.html">Log Out</a></li>
+		</ul>
+	</nav>
+	<div id="content">
+		<nav id="group_nav">
+			<div id="forbread">
+				<h2>ORGS JOINED</h2>
+				<ul id="breadcrumbs">
+					<li><a href="group_page_e.html">Elektrons</a></li>
+					<li><a href="group_page_k.html" class="active">Komsai.Org</a></li>
+					<li><a href="group_page_a.html">UP Akeanon</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="discussions">
+        	<h2>Discussions</h2>
+
+        	<div id="discussions">
+
+        	<select name="Topics" onchange="location = this.value;">
+			<option value="">SELECT TOPIC</option>
+			<option value="discussion_k.html">September 29, Meeting</option>
+ 			<option value="discussion_k2.html">Akeanon GA</option>
+ 			</select>
+	       
+
+
+	       	<select name="Page" onchange="location = this.value;">
+        	<option value="">SELECT PAGE</option>
+			<option value="discussion_k.html">1</option>
+ 			<option value="discussion_k_page2.html">2</option>
+ 			<option value="discussion_k_page3.html">3</option>
+ 			</select>
+
+
+ 			<input type="button" name="b1" value="prev" onclick="location.href='discussion_k.html'">
+			<input type="button" name="b2" value="next" onclick="location.href='discussion_k_page2.html'">
+	        
+	        	<li>
+	        		<dl>
+	        			<dt>Topic</dt>
+	        			<dd>Posting for a friend</dd>
+	        			<dt>Comment By</dt>
+	        			<dd>Shebna Rose Fabilloren</dd>
+	        			<dt>Message</dt>
+	        			<dd><q>Aya bruh!! :)</q></dd>
+	        			<dt>Date</dt>
+	        			<dd>September 21, 2016</dd>
+	        			<dt>Comment By</dt>
+	        			<dd>Aya Somil</dd>
+	        			<dt>Message</dt>
+	        			<dd><q>Lol whut hahaha</q></dd>
+	        			<dt>Date</dt>
+	        			<dd>September 21, 2016</dd>
+	        			<form>
+				        	<fieldset style="border:0;">
+	        					<label for="discussion_text">Contribute to the discussion</label>
+		        				<textarea id="discussion_text" style="margin:0px; width:100%;"></textarea>
+		      					<div id="PostButton">
+		      					<input type="submit" name="submit" value="Post">
+		      				</div>
+		      				</fieldset>
+				        </form>
+
+	        		</dl>
+	        	</li>
+	        	<li>
+	        		<dl>
+	        			<dt>Topic</dt>
+	        			<dd>Blisk Browser</dd>
+	        			<dt>Comment By</dt>
+	        			<dd>Terre Brennan</dd>
+	        			<dt>Message</dt>
+	        			<dd><q>bakas2x! hahahahaha</q></dd>
+	        			<dt>Date</dt>
+	        			<dd>September 16, 2016</dd>
+	        			<dt>Comment By</dt>
+	        			<dd>Agustin Bustamante</dd>
+	        			<dt>Message</dt>
+	        			<dd><q>nami cya </q></dd>
+	        			<dt>Date</dt>
+	        			<dd>September 16, 2016</dd>
+	        			<form>
+				        	<fieldset style="border:0;">
+	        					<label for="discussion_text">Contribute to the discussion</label>
+		        				<textarea id="discussion_text" style="margin:0px; width:100%;"></textarea>
+		      					<div id="PostButton">
+		      					<input type="submit" name="submit" value="Post">
+		      				</div>
+		      				</fieldset>
+				        </form>
+	        		</dl>
+	        	</li>
+	        
+	        <form>
+	        	<fieldset>
+	        		<legend>Start A New Discussion:</legend>
+	        		<label for="topicname">Topic:</label>
+		        	<input type="text" name="topicname" id="topicname" style="margin-left:auto; margin-right: auto; "/>
+		      		<label>Contents:</label>
+		      		<textarea id="discussion_text" style="margin: 0px; height:100px; width:100%; "></textarea>
+		      		<div id="PostButton">
+		      		<input type="submit" name="submit" value="Post">
+		      		</div>
+		      	</fieldset>
+	        </form>
+	        <p>No other discussions yet.</p>
+        </div>
+	</div>
+	<footer>CMSC 128 Section 1 | 2016</footer>
+</div>
+</body>
+</html>

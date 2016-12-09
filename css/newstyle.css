@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Oswald');
+@font-face{
+	font-family: "Arca Majora 3 Bold";
+	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
+}
+
+body{
+	background: #eaeaea;
+}
+
+h2{
+	color: #740000;
+	line-height: 100%;
+	font-size: 100%;
+	margin: auto;
+	text-align: center;
+	font-family: 'Arca Majora 3 Bold', sans-serif;
+	padding: 1%;
+	text-transform: uppercase;
+}
+
+.jumbotron, #content >.container{
+	background-color: red;
+	width: 72%;
+	/*width: 80%;*/
+	margin-left: 24%;
+	/*margin-top: -0.5%;*/
+	padding: 5%;
+}
+
+.jumbotronwidth{
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+}
+.page-header{
+	color: #740000;
+    line-height: 100%;
+    background-color: rgba(249, 243, 243, 0.5);
+    font-size: 300%;
+    margin: auto;
+    text-align: center;
+    font-family: 'Arca Majora 3 Bold', sans-serif;
+    padding: 1%;
+}
+
+#image{
+	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+	margin-left: -300%;
+}
+
+/*-----GROUP SELECTION---/---EXPLORE.PHP*/
+
+#group_selection > ul {
+	list-style-type: none;
+	}
+
+#group_selection > ul > label {
+	text-shadow: none;
+	text-align: center;
+	color: #a10115;
+	margin-left: 0%;
+	font-size: 150%;
+	font-family: "Segoe Script", cursive;
+}
+
+#group_selection > ul > li {
+	height: 300px;
+	width: 31.5%;
+	margin: 5px;
+	border: 1px solid #a10115;
+	text-align: center;
+	display: block;
+	float: left;
+	background-color: transparent;/*white;*/
+	}
+
+#group_selection > ul > li > label	{
+	display: block;
+	text-shadow: none;
+	/*height: 270px;*/
+	width: 250px;
+	color: #a10115;
+	margin: 0px;
+	font-size: 25px;
+}
+
+#group_selection > ul > li > img
+	{
+	padding: 3%;
+	height: 200px;
+	width: 200px;
+	display: block;
+	margin: 5px;
+	margin-top: 3%;
+	margin-bottom: 7%;
+	
+	}
+
+#group_selection > ul > li:hover{
+	background-color: white;
+}	
+
+#group_selection > ul > li > a {
+	/*text-decoration: none;
+	color: #a10115;
+	padding: 2%;
+	margin-left: 0px;
+	margin-right: -5px;
+	border: 1px solid #a10115;
+	background-color: transparent;*/
+}
+
+#group_selection > ul > li > a:hover {
+	background-color: #a10115;
+	color: white;
+	/*font-size: 105%;*/
+}
+.dropbtn {
+    background-color: #a10115;
+    color: white;
+    width: 100%;
+    height: 30px;
+    font-size: 100%;
+    margin: 0px;
+	/*margin-bottom: 0px;*/    
+    padding: 0px;
+    border: none;
+    /*border-radius: 10px;*/
+    transition: 0.15s ease-in-out;
+    opacity: 0.8;
+    }
+
+/* The container <div> - needed to position the dropdown content */
+#dropFilter {
+    display: block;
+	color: white;
+	width: 100%;
+	padding: 1%;
+	transition: 0.2s ease-in-out;
+}
+
+/* Dropdown Content (Hidden by Default) */
+/*.dropdown-content {
+    display: none;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    position: absolute;
+	width: 10%;
+	transition: 0.15s ease-in-out;
+}
+*/
+.dropdown-menu
+	{
+	transition: 0.2s ease-in-out;
+	margin-left: 100%;
+	margin-top: -50%;
+	position: absolute;
+	}
+	
+/* Links inside the dropdown */
+.dropdown-menu ul > a{
+    color: #a10115;
+    padding-left: 20%;
+    padding: auto;
+    margin-left:20%;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    border: 1px solid #a10115;
+	 /* width: 150%;
+	  font-size: 110%;*/
+	  transition: 0.1s ease-in-out;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-menu ul > a:hover {
+	color: white;
+	background: #a10115;
+	}
+
+/* Show the dropdown menu on hover */
+#dropFilter:hover .dropdown-menu {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#dropFilter:hover .btn {
+	color: #a10115;
+    background-color: white;
+    border: 1px solid #a10115;
+    
+}
+
+
+
+/*----------------------------------*/
+
+/*-----SEE GROUP-/-GROUPS.PHP-------*/
+
+#see_group > li > a{
+	/*text-align: center;
+	text-decoration: none;
+	padding: 2%;
+	margin-left: 0px;
+	margin-right: -5px;
+	border: none;
+	background: #e84a5f;
+    color: black;*/
+
+}
+#see_group > li > label{
+	font-family: 'Arca Majora 3 Bold', sans-serif;
+	text-align:center;
+	text-shadow: none;
+	height: 50px;
+	width: 250px;
+	margin: 2%;
+	font-size: 25px;
+
+}
+#see_group{
+	list-style-type: none;
+	height: 100%;
+}
+#see_group > label {
+	text-shadow: none;
+	text-align: left;
+	color: #a10115;
+	margin-left: 0%;
+	font-size: 150%;
+	clear: right;
+	width: 100%;
+}
+#see_group > li{
+	height: 300px;
+	/*padding-bottom: 8%;*/
+	width: 31.5%;
+	margin-top: 3%;
+	margin-right: 0.5%;
+	margin-left: 0.5%;
+	margin-bottom: 20px;
+	text-align: center;
+	display: inline-block;
+	float: left;
+	background-color: transparent;
+	border: 2px solid #ff847c;
+}
+/*-------------------------------*/
+
+
+
+#searchbar{
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	width: 80%;
+}
+
+.caret-right{
+	margin-left: 2%;
+	border-left: 4px solid;
+	border-bottom: 4px solid transparent;
+	border-top: 4px solid transparent;
+
+
+}
+
+/*-------------------------------*/
+
+/*---------PAGINATION------------*/
+
+#pagination{
+	margin-left: 20%;
+	margin-top: 6.5%;
+	margin-bottom: -4%;
+
+}
+
+.pagination:active{
+	background-color: #a10115;
+	color: white;
+}
+.pagination > li a:hover:not(.active){
+	background-color: white;
+}	
+
+
+/*---------------------------------*/
+
+footer{
+	position: relative;
+	text-align: center;
+	margin-top: 20%;
+	background: #eaeaea;
+	width: 100%;
+	padding: 1%;
+	/*margin-left: -30%;*/
+}

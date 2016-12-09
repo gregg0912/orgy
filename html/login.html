@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #nuj{
+      background-image: url("../images/Oble.png");
+      background-repeat: no-repeat;
+      background-size: 60%;
+      background-position: 10% 100%;
+    }
+    #login-form{
+      margin: 0%;
+      text-align: center;
+      padding-bottom: 15%;
+    }
+    #edit_login{
+      background: #a12830;
+      -o-box-shadow:0 3px 4px rgba(0,0,0,.5);
+      -moz-box-shadow:0 3px 4px rgba(0,0,0,.5);
+      -webkit-box-shadow:0 3px 4px rgba(0,0,0,.5);
+      box-shadow: 0 3px 4px rgba(0,0,0,.5);
+      border-radius: 10%;
+      float: right;
+      margin-right: 5%;
+      width: 35%;
+      padding-top:1%;
+      padding-bottom: 1%;
+      margin-top: 4%;
+    }
+    #username, #password{
+      font-family: "Roboto", sans-serif;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      padding-left:10%;
+      padding-right:10%;
+      border: 0;
+      font-size: 100%;
+      text-align: center;
+    }
+    #log{
+      font-family: "Roboto", sans-serif;
+      background-color: #f2f2f2;
+      border: 0;
+      font-size: 100%;
+      padding-left: 16%;
+      padding-right: 16%;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      margin-left: 30.5%;
+    }
+    #signUp{
+      font-family: "Roboto", sans-serif;
+      background-color: #f2f2f2;
+      border: 0;
+      font-size: 100%;
+      padding-left: 15%;
+      padding-right: 15%;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      margin-left: 30.5%;
+    }
+
+  </style>
+  <title>ORG SYSTEM A.Y. 2016-2017</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body id="nuj">
+<div id="edit_login">
+  <h1>Log in</h1>
+  <form action="home.html" method="get" id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="" placeholder="Username" autofocus required/>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" value="" placeholder="Password" required/>
+    <input id="log" type="submit" name="Submit" value="Log In"/>
+  </form>
+  <button id="signUp"><a href="signup.html" style="text-decoration: none;"> Sign Up </a></button>
+</div>
+</body>
+</html>
+
+<!-- change sign up button to an image that when clicked, will redirect to signup page -->

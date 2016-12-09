@@ -1,0 +1,38 @@
+/*--------NAVIGATION---------*/
+
+#navigation{
+	list-style-type: none;
+	position: fixed;
+	left: 0;
+	width: 20%;
+	background: #ad464c;
+	height: 100%;
+	
+}
+#navigation > li > a{
+	text-align: center;
+	/*margin: -1%;*/
+	background: #ad464c;
+	/*border: 2px solid #ad464c;*/
+	border: 1.5px solid transparent;	
+	border-radius: 0;
+	/*font-size: 110%;*/
+	/*border-color: transparent;*/
+	color: white;
+	transition: 0.2s;
+}
+
+#navigation > li > a:hover{
+/*	border: 1.5px solid #b05258;*/
+	background: #c04c53;
+}
+
+#prof_pic{
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+}

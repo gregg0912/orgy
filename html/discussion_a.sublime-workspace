@@ -1,0 +1,870 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding-right"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"ali",
+				"align-content"
+			],
+			[
+				"font-size",
+				"font-size-adjust"
+			],
+			[
+				"col",
+				"column-span"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"fon",
+				"font-size-adjust"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"b",
+				"background-position"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"auto",
+				"autofocus\tAttr"
+			],
+			[
+				"au",
+				"autofocus\tAttr"
+			],
+			[
+				"re",
+				"required\tAttr"
+			],
+			[
+				"l",
+				"li\tTag"
+			],
+			[
+				"a",
+				"autocomplete\tAttr"
+			],
+			[
+				"head",
+				"header\tTag"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"get",
+				"getSize"
+			],
+			[
+				"palyer",
+				"players"
+			],
+			[
+				"player",
+				"playerAndHands"
+			],
+			[
+				"paly",
+				"playerAndHands"
+			],
+			[
+				"pla",
+				"playerAndHands"
+			],
+			[
+				"displa",
+				"display"
+			],
+			[
+				"s",
+				"sl"
+			],
+			[
+				"pal",
+				"players"
+			],
+			[
+				"plyers",
+				"players"
+			],
+			[
+				"hand",
+				"handCards"
+			],
+			[
+				"new",
+				"newDeck"
+			],
+			[
+				"pl",
+				"players"
+			],
+			[
+				"size",
+				"size"
+			],
+			[
+				"Pl",
+				"Player"
+			],
+			[
+				"monek",
+				"monkeyDeck"
+			],
+			[
+				"ca",
+				"cards"
+			],
+			[
+				"j",
+				"j"
+			],
+			[
+				"String",
+				"String"
+			],
+			[
+				"S",
+				"SinglyLinkedList"
+			],
+			[
+				"Mo",
+				"monkey"
+			],
+			[
+				"mon",
+				"monkeydeck"
+			],
+			[
+				"num",
+				"numPlayers"
+			],
+			[
+				"deck",
+				"Deck"
+			],
+			[
+				"nu",
+				"numEdge"
+			],
+			[
+				"set",
+				"setIndex"
+			],
+			[
+				"n",
+				"nLV"
+			],
+			[
+				"opp",
+				"oppOfV"
+			],
+			[
+				"op",
+				"oppOfV"
+			],
+			[
+				"v",
+				"vEdges"
+			],
+			[
+				"numVer",
+				"numVertex-1"
+			],
+			[
+				"end",
+				"endVertices"
+			],
+			[
+				"remove",
+				"removeVertex"
+			],
+			[
+				"am",
+				"am"
+			],
+			[
+				"u",
+				"uIndex"
+			],
+			[
+				"temp",
+				"tempVert"
+			],
+			[
+				"t",
+				"tVert"
+			],
+			[
+				"tem",
+				"tempVertex"
+			],
+			[
+				"ori",
+				"origVertex"
+			],
+			[
+				"numver",
+				"numVertex"
+			],
+			[
+				"ed",
+				"vEdges"
+			],
+			[
+				"Edge",
+				"EdgeA"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"Ed",
+				"EdgeA"
+			],
+			[
+				"i",
+				"iVertices"
+			],
+			[
+				"vert",
+				"vertices"
+			],
+			[
+				"in",
+				"insertVertex"
+			],
+			[
+				"e",
+				"eVertices"
+			],
+			[
+				"ad",
+				"addLast"
+			],
+			[
+				"add",
+				"addFirst"
+			],
+			[
+				"p",
+				"p\tprint"
+			],
+			[
+				"is",
+				"isFull"
+			],
+			[
+				"de",
+				"dequeue"
+			],
+			[
+				"LetterClickS",
+				"LetterClickSixth"
+			],
+			[
+				"letterS",
+				"letterSixth"
+			],
+			[
+				"boxS",
+				"boxSixth"
+			],
+			[
+				"picS",
+				"picSixth"
+			],
+			[
+				"setACF",
+				"setACFourth"
+			],
+			[
+				"LetterClickF",
+				"LetterClickFourth"
+			],
+			[
+				"box",
+				"boxFirst"
+			],
+			[
+				"sta",
+				"stage2"
+			],
+			[
+				"co",
+				"coins"
+			],
+			[
+				"J",
+				"JLabel"
+			],
+			[
+				"G",
+				"GridLayout"
+			],
+			[
+				"letterSe",
+				"letterSeventh"
+			],
+			[
+				"boxSe",
+				"boxSeventh"
+			],
+			[
+				"setACSe",
+				"setACSeventh"
+			],
+			[
+				"setACS",
+				"setACSixth"
+			],
+			[
+				"sixth",
+				"sixthStage"
+			],
+			[
+				"picF",
+				"picFourth"
+			],
+			[
+				"thi",
+				"third"
+			],
+			[
+				"sec",
+				"secondStage"
+			],
+			[
+				"NORTH",
+				"NORTH"
+			],
+			[
+				"B",
+				"BorderLayout"
+			],
+			[
+				"fir",
+				"firstStage"
+			],
+			[
+				"st",
+				"stage"
+			],
+			[
+				"ch",
+				"checkInput"
+			],
+			[
+				"chec",
+				"checkInput"
+			],
+			[
+				"che",
+				"checkP"
+			],
+			[
+				"setA",
+				"setActionCommand"
+			],
+			[
+				"fri",
+				"firstLetter"
+			],
+			[
+				"button",
+				"buttonCount"
+			],
+			[
+				"letter",
+				"letterFirst"
+			],
+			[
+				"firs",
+				"firstLetter"
+			],
+			[
+				"pic",
+				"pictureP"
+			],
+			[
+				"se",
+				"setPreferredSize"
+			],
+			[
+				"lin",
+				"lineup3"
+			],
+			[
+				"line",
+				"lineup2"
+			],
+			[
+				"lineup",
+				"lineup1"
+			],
+			[
+				"third",
+				"thirdStage"
+			],
+			[
+				"enemy",
+				"enemyright"
+			],
+			[
+				"th",
+				"thirdStagePanel"
+			],
+			[
+				"second",
+				"secondStagePanel"
+			],
+			[
+				"node",
+				"node3"
+			],
+			[
+				"gridy",
+				"gridy"
+			],
+			[
+				"gi",
+				"gridy"
+			],
+			[
+				"gri",
+				"gridx"
+			],
+			[
+				"grid",
+				"gridy"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"last_filter": "Floobits",
+		"selected_items":
+		[
+			[
+				"Floobits",
+				"Floobits - Join Workspace"
+			],
+			[
+				"Floo",
+				"Floobits - Settings (~/.floorc.json)"
+			],
+			[
+				"Pa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Add Repository"
+			],
+			[
+				"vmenu",
+				"View: Toggle Menu"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"java SpermGame",
+			"javac SpermGame.java"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Family/.floorc.json",
+		"/C/Users/Family/Desktop/NASM/ming/bin/mysubprogram.asm",
+		"/C/Users/Family/Desktop/backup_rp.txt",
+		"/C/Users/Family/Desktop/NASM/ming/bin/Lab2.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/myprime.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/subprogram_islessthan.asm",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 127 lab/ex8_2_arcillas.txt",
+		"/C/Users/Family/Desktop/CMSC 127 LAB EXERCISE 8.txt",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 127 lab/ex7_2_arcillas.txt",
+		"/E/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 5_LoveTriangle/TriApp.java",
+		"/E/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 3_Geometry/Solid.java",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 3/style.css",
+		"/C/Users/Family/Documents/HTML/main.css",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 3/about.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/docs.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/index.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 3/lab2.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/changepassword.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/quiz.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/quizpaper.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/quizzes.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/class.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/home.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 127 lab/ex6_2_arcillas.txt",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/css/style.css",
+		"/C/Users/Family/Desktop/style.css",
+		"/C/Users/Family/AppData/Local/Temp/7zOC1E9.tmp/style.css",
+		"/C/Users/Family/Desktop/NASM/ming/bin/mygame.asm",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/CSS3_Exercise/html/exercises.html",
+		"/C/Users/Family/Desktop/NASM/ming/bin/mtable.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/factorial.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/Lab5.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/findprimy.asm",
+		"/E/Animes/myprime.asm",
+		"/H/bin/t.asm",
+		"/C/Users/Family/Documents/HTML/output.htm",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 2/lab2.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 3/resume.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 3/contact.html",
+		"/C/Users/Family/Desktop/NASM/ming/bin/prime.asm",
+		"/C/Users/Family/Desktop/cmsc127_ex6.txt",
+		"/C/Users/Family/Desktop/NOTEs/mysql_ex6.txt",
+		"/C/Users/Family/Desktop/ex6_2_arcillas.txt",
+		"/C/Users/Family/Desktop/NASM/ming/bin/Lab61.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/Lab4.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/lab3.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/fprime.c",
+		"/H/Anime/TO DEFEND/mtable.asm",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 2/resume.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 2/contact.html",
+		"/C/Users/Family/Desktop/NOTEs/cmsc 128 lab/LAB 2/about.html",
+		"/C/Users/Family/Documents/HTML/about.html",
+		"/C/Users/Family/Documents/HTML/resume.html",
+		"/C/Users/Family/Documents/HTML/contact.html",
+		"/C/Users/Family/Documents/HTML/lab2.html",
+		"/G/factorial.asm",
+		"/H/Anime/factorial.asm",
+		"/C/Users/Family/Desktop/loop.asm",
+		"/C/Users/Family/Desktop/NASM/ming/bin/loop.asm",
+		"/C/Users/Family/Documents/HTML/firstpage.html",
+		"/E/Dropbox/Java Development/Electric Guitar/ElectricGuitar.java",
+		"/E/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 1_LoanCalculator/LoanCalculator.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 2/PieChart.java",
+		"/E/C/Addition.c",
+		"/E/Java Development/Rock Paper Scissors Game/RPSLauncher.java",
+		"/E/C/Teje.c",
+		"/C/Users/Family/Desktop/Teje.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Samples/Sample_Pictures/Sample.png",
+		"/C/Users/Family/Documents/ComSci/cmsc22/Projects/JTEditor/JTEditor.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_Main Problem/Jing's Monkey/Game/Monkey.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Games/FourPic/FourImages.java",
+		"/C/Users/Family/Downloads/LotOfCards.java",
+		"/C/Users/Family/Desktop/Deck.java",
+		"/C/Users/Family/Desktop/Game/MonkeyThree.java",
+		"/C/Users/Family/Desktop/Game/Monkey.java",
+		"/C/Users/Family/Desktop/Game/Deck.java",
+		"/C/Users/Family/Desktop/MonkeyBar/Main Problem Newer/Monkey2.java",
+		"/C/Users/Family/Desktop/Game/CircularLinkedList.java",
+		"/C/Users/Family/Desktop/Game/CircularQueue.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP2/New folder/Graphs/AdjMat.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP2/Sample_Codes MP2/Graphs/AdjList.java",
+		"/G/MonkeyThree.java",
+		"/C/Users/Family/Desktop/Game/SinglyLinkedList.java",
+		"/C/Users/Family/Desktop/Game/MonkeyTwo.java",
+		"/C/Users/Family/Desktop/Game/SNode.java",
+		"/C/Users/Family/Desktop/Game/Player.java",
+		"/C/Users/Family/Desktop/Game/ListTest.java",
+		"/G/CircularQueue.java",
+		"/G/CircularQueueThree.java",
+		"/G/CircularLinkedList.java",
+		"/C/Users/Family/Desktop/Game/Deque.java",
+		"/C/Users/Family/Desktop/New folder/Graphs/AdjMap.java",
+		"/C/Users/Family/Desktop/Game/MonkeyOne.java",
+		"/C/Users/Family/Desktop/Game/MonkeyMaybe.java",
+		"/C/Users/Family/Desktop/New folder/Graphs/AdjMat.java",
+		"/C/Users/Family/Downloads/Deck.java",
+		"/C/Users/Family/Desktop/Game/DoublyLinkedList.java",
+		"/C/Users/Family/Desktop/Game/DNode.java",
+		"/C/Users/Family/Downloads/Monkey.java",
+		"/C/Users/Family/Documents/ComSci/cmsc22/Exercises/Exercise 3_Geometry/Solid.java",
+		"/C/Users/Family/Documents/ComSci/cmsc22/Exercises/Exercise 5_LoveTriangle/TriApp.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 7_CurrencyConverter/Exercise 7/CurrencyConverter.java",
+		"/C/Users/Family/Desktop/Game/StackTest.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 1/Machine Problem 1/FruitGenerator.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Linked List/ListTest.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Linked List/DNode.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Queue/CircularQueue.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 1/Machine Problem 1/Fruit.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 1/Machine Problem 1/Banana.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 1/Machine Problem 1/Apple.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Machine Problems/Problem 1/Machine Problem 1/Penguin.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 5_LoveTriangle/TriApp.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 4_Work/CompanyApp.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 3_Geometry/Solid.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 2_Calendar/Calendar.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 1_LoanCalculator/LoanCalculator.java",
+		"/C/Users/Family/Desktop/Game/DequeTest.java",
+		"/C/Users/Family/Desktop/New folder/Graphs/GraphTest.java",
+		"/C/Users/Family/Desktop/New folder/Graphs/VertexMat.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 7_CurrencyConverter/Exercise 7/CurrencyConverter.java~",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 8_Regextration/DateException.java",
+		"/C/UPV(Notes)/2nd Year/cmsc22/Exercises/Exercise 6_Party/Exercise 6/Person.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Stack/StackTest.java",
+		"/C/Users/Family/Desktop/StackTest.java",
+		"/C/Users/Family/Desktop/Stack.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Stack/Stack.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Queue/Queue.java",
+		"/C/UPV(Notes)/2nd Year/cmsc123/CMSC 123_MP1/Final_Codes MP1/Velasco, Arcillas, Talabucon and Dela Cruz Machine Problem 1/Queue/Deque.java"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"esi",
+			"input_secondNum",
+			"input_firstNum",
+			"input",
+			"ecx",
+			"ebx",
+			"space",
+			"toString(",
+			"announcements",
+			"announceme",
+			"content p",
+			"footer",
+			"content h2",
+			"content",
+			";\n",
+			"jpg",
+			"20",
+			"#",
+			"title",
+			"50px",
+			"duplicate",
+			"null",
+			"pictureP",
+			"checkpair",
+			"delete",
+			".display()",
+			"delete",
+			"players",
+			"name",
+			"random",
+			"toString",
+			"get",
+			"getUV",
+			"setEdge",
+			"thir",
+			");\n",
+			"leftDirection",
+			"text",
+			"process",
+			"stomachLevel"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Makefile/Make.sublime-build",
+	"project": "discussion_a.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Family\\Desktop\\NASM\\ming\\bin\\Lab2.asm"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
