@@ -319,8 +319,8 @@
 				}
 				?>
 
-		</div>
-        </ul>
+		</div><!-- 
+        </ul> -->
 	</div> 
 
 	<footer>CMSC 128 Section 1 | 2016</footer>
