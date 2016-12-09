@@ -15,6 +15,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
+		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		
 		<style type="text/css">
 			
@@ -170,7 +171,7 @@
 		            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
 		            while($current_user= mysqli_fetch_array($query2)){ ?>
 		            <li id="liTo"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><?php echo $current_user['username'] ?></a></li>
-		            <li><img id = "prof_pic" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
+		            <li><img onerror="this.src = '../images/janina.PNG'" id = "prof_pic" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
 		            <!-- <li><input id="searchbar" type="search" name="search" placeholder="Search Orgs"></li> -->
 		            <li><a href="home.php">Home</a></li>
 		            <li><a href="bootexplore.php">Explore</a></li>
@@ -221,7 +222,7 @@
 						?>
 								<li>
 								<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgName)?></label>
-								<img id="image" src="<?=$photo?>">
+								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$photo?>">
 								<label style="font-size: 100%;"><?=detMemType($memType)?></label>
 								<?php
 									if ($memType!="pending") {
