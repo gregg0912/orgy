@@ -204,7 +204,7 @@
 					}
 				}else{
 				?>
-					<p>No match found!</p>
+					<p class="no-match">No match found!</p>
 				<?php
 				}
 				?>

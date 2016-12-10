@@ -90,7 +90,7 @@ div.dropdown{
 }
 
 .organizations{
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
@@ -136,4 +136,8 @@ div.dropdown{
 .organization div a{
 	text-decoration: none;
 	margin: 0 5px;
+}
+
+.no-match{
+	color: #555;
 }
