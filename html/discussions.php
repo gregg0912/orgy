@@ -8,6 +8,7 @@
 	redirect();
     $user_id = $_SESSION['user_id'];
     $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
+    $sort_id = $_SESSION['sort_id'];
 
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
@@ -149,7 +150,7 @@
 			<form method="post" action="">
 				<button type="submit" name="date" value="date"> Date </button>
             	<button type="submit" name="votes" value="votes"> Votes </button>
-
+            </form>
 
 			<?php
 			if(!empty($org_id)){				
@@ -185,25 +186,25 @@
 
 				 if(!isset($_POST['date']) && !isset($_POST['votes']))
 	            {
-	            	$_SESSION['sort_id']=1;
+	            	$sort_id=1;
 	            }
 
 				if(isset($_POST['date']))
 	            {
-	            	$_SESSION['sort_id']=1;
+	            	$sort_id=1;
 	            }
 	            if(isset($_POST['votes']))
 	            {
-	            	$_SESSION['sort_id']=2;
+	            	$sort_id=2;
 	            }
               
 				
 				
-				if($_SESSION['sort_id']==1)
+				if($sort_id==1)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY date_posted DESC $limit";
 				}
-				if($_SESSION['sort_id']==2)
+				if($sort_id==2)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY votes DESC $limit";
 				}
@@ -260,6 +261,16 @@
 							<legend  style="font-size: 200%; text-align: center;">
 								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 							</legend>
+							<?php
+								if($user_id==$disc_user_id){
+								?>
+									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button>Edit</button></a>
+									<form method="post" action="">
+									<button type="submit" name="delete" value="<?=$disc_id?>"> Delete </button>
+									</form>
+								<?php
+								}
+								?>
 							<dl>
 								<dt style="font-size: 100%; text-align: center;">
 									<a href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
@@ -283,15 +294,6 @@
 								<a href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-up" style="font-size: 150%;" aria-hidden="true"></i></a>
 								<label>Discussion Points:<?=$total_vote?></label>
 								<a href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-down" style="font-size: 150%;" aria-hidden="true"></i></a>
-								<?php
-								if($user_id==$disc_user_id){
-								?>
-									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button>Edit</button></a>
-									<form method="post" action="">
-									<button type="submit" name="delete" value="<?=$disc_id?>"> Delete </button>
-								<?php
-								}
-								?>
 								<dt style="font-size: 50%; text-align: right;"><?=$dateposted?></dt>
 							</dl>
 						</fieldset><br>
