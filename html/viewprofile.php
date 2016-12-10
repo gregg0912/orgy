@@ -26,6 +26,8 @@ w<?php
                 margin-left: 90%;
             }
         </style>
+        <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" type="text/css" href="../css/navigation.css">
 </head>
@@ -54,7 +56,7 @@ w<?php
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-list">
                     <?php
                     $pending = "%pending%";
                     $query2 = "SELECT orgs.org_id, orgs.org_name
@@ -113,8 +115,8 @@ w<?php
                 }
             ?>
             <button class="btn btn-1 btn-1a" id="back" onclick="history.go(-1);">Back</button>
-        </div>
         <footer>CMSC 128 Section 1 | 2016</footer>
+        </div>
     </div>
 </body>
 </html>

@@ -53,6 +53,8 @@
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
 </head>
@@ -107,7 +109,7 @@
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-list">
                     <?php
                     $pending = "%pending%";
                     $query2 = "SELECT orgs.org_id, orgs.org_name

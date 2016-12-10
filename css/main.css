@@ -30,7 +30,8 @@ body{
 
 button,
 input[type=submit],
-input[type=button]{
+input[type=button],
+.buttoncustom{
 	background-color: #e74c3c;
 	padding: 5px 20px;
 	font-family: Arial;
@@ -52,4 +53,29 @@ footer{
 	color: white;
 	font-family: Arial;
 	font-size: 0.9em;
+}
+
+ul.pagination{
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
+	border: none;
+	font-family: Arial;
+}
+
+ul.pagination a,
+ul.pagination b,
+ul.pagination span{
+	color: #e74c3c;
+}
+
+ul.pagination b,
+ul.pagination span{
+	cursor: default;
+}
+
+ul.pagination a:hover,
+ul.pagination b:hover,
+ul.pagination span:hover{
+	color: #e74c3c;
 }

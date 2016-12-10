@@ -140,7 +140,7 @@
 				<li><a href="home.php">Home</a></li>
 				<li><a href="explore.php">Explore</a></li>
 				<li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
-					<ul class="dropdown-content">
+					<ul class="dropdown-list">
 					<?php
 					$pending = "%pending%";
 					$query2 = "SELECT orgs.org_id, orgs.org_name
