@@ -10,64 +10,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
-    <!-- <style type="text/css">
-        #inner{
-            background-color: rgba(213, 213, 213, 0.4);
-            color: rgb(249, 243, 243);
-            list-style-type: none;
-            margin: 2%;
-            padding: 1%;
-        }
-        dl > dt{
-            font-size: 110%;
-            margin: 1%;
-            font-family: 'Arca Majora 3 Bold', sans-serif;
-            color: #CFCBCB;
-        }
-        dl > dd{
-            font-size: 100%;
-            font-family: 'PT Sans', sans-serif;
-        }
-        #pagination{
-            margin-left: 0;
-            padding: 5px;
-            float: left;
-            top: 55%;
-            left: 50%;
-            font-family: 'Arial', sans-serif;
-            font-size: 99%;
-        }
-        #pagination{
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-        }
-        #pagination > li{
-            display: inline;
-        }
-        #pagination > li > a,
-        #pagination > li > span,
-        #pagination > li > b{
-            color: black;
-            float: left;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
-        }
-        #pagination > li a.current{
-            background-color: #a10115;
-            color: white;
-        }
-        #pagination > li a:hover:not(.current){
-            background-color: #FF847C;
-        }
-        p{
-            clear: both;
-            margin: auto;
-        }
-    </style> -->
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
     <?php
@@ -116,7 +63,7 @@
                 <li><a href="home.php" class="active">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-list">
                     <?php
                     $pending = "%pending%";
                     $query2 = "SELECT orgs.org_id, orgs.org_name
@@ -143,9 +90,9 @@
             </ul>
         </nav>
         <div id="content">
-            <h2>Announcements</h2>
-            
-            <ul>  
+            <h1 class="title">Announcements</h1>
+            <p class="current-date" style="color: #740000; font-family: 'Arca Majora 3 Bold', sans-serif; text-align: center;"><?php echo "Today is ".date("m/d/Y")."<br>".date("l"); ?></p>
+            <ul class="announcements-container">  
             <?php
             if($total>=1){
                 while($announcement = mysqli_fetch_array($query)){
@@ -159,38 +106,35 @@
                     $name = mysqli_fetch_assoc($username);
                     ?>
                     
-                    <fieldset id="inner">              
-                    <legend><?php echo $org_name["org_name"];?></legend>
-                    <dl>
-                        <dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
-                        <dt><p>"<?=$message;?>"</p></dt>
-                        <dt style="font-size: 50%; text-align: right;"><?= $date ?></dt>
-                        
+                    <li class="announcement">          
+                        <h2 class="org-name"><?php echo $org_name["org_name"];?></h2>
+                        <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+                        <span class="date"><?= $date ?></span>
+                        <p class="notif-content">"<?=$message;?>"</p>
+                            
                         <?php
-                          $current_userid = $_SESSION['user_id'];
-                          $checker_query = "select * from joined where user_id = $current_userid and org_id = $org_id";
-                          $check_result = mysqli_query($connectdb, $checker_query);
+                            $current_userid = $_SESSION['user_id'];
+                            $checker_query = "select * from joined where user_id = $current_userid and org_id = $org_id";
+                            $check_result = mysqli_query($connectdb, $checker_query);
                           
-                              while($result = mysqli_fetch_assoc($check_result)){
-                                      $member = $result['membership_type'];
-                              }
+                            while($result = mysqli_fetch_assoc($check_result)){
+                                  $member = $result['membership_type'];
+                            }
                         ?>
-                        
+
                         <?php
-                        if($member =='admin'){ ?>
+                            if($member =='admin'){ ?>
       
-                        <form method="post" action="">
-                        <button type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"> Delete </button> 
-                        <?php $_SESSION['count']=$count; ?>
-                        </form>
-                        <?php } ?>  
-                        
-                    </dl>
-                </fieldset>
-            <?php
+                            <form method="post" action="">
+                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button> 
+                            <?php $_SESSION['count']=$count; ?>
+                            </form>
+                        <?php } 
+                        ?>
+                    </li>
+                <?php
                     $count++; 
                 }
-                pagination($id,$rows,$lim,1,"home.php?id=%d");
             }else{
             ?>
                 <fieldset id="inner">
@@ -203,7 +147,7 @@
             }
             ?>
             </ul>
-        <p style="color: #740000; font-family: 'Arca Majora 3 Bold', sans-serif; text-align: center;"><?php echo "Today is ".date("m/d/Y")."<br>".date("l"); ?></p>
+            <?php pagination($id,$rows,$lim,1,"home.php?id=%d"); ?>
         <footer>CMSC 128 Section 1 | 2016</footer>
         </div>
     </div>

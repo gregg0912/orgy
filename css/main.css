@@ -1,0 +1,55 @@
+@font-face{
+	font-family: Chaparral;
+	src: url("font/ChaparralPro-Regular.otf");
+}
+
+body{
+	margin: 0;
+}
+
+#content{
+	min-height: 80vh;
+	width: 78.75vw;
+	margin: 20px 1.25vw 20px 18.75vw;
+	background-color: white;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	padding: 2vh 2vw;
+	box-sizing: border-box;
+}
+
+#content > h1.title{
+	font-family: Chaparral;
+	text-align: center;
+	font-size: 3em;
+	letter-spacing: 0.05em;
+	padding: 10px;
+	text-transform: capitalize;
+	color: white;
+	background-color: #e74c3c;
+}
+
+button,
+input[type=submit],
+input[type=button]{
+	background-color: #e74c3c;
+	padding: 5px 20px;
+	font-family: Arial;
+	font-size: 0.9em;
+	border: none;
+	border-radius: 2px;
+	color: white;
+	cursor: pointer;
+}
+
+footer{
+	background-color: #c0392b;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0;
+	margin: 20px 0;
+	bottom: 0;
+	left: 0;
+	color: white;
+	font-family: Arial;
+	font-size: 0.9em;
+}

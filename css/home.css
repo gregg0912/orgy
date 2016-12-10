@@ -1,0 +1,91 @@
+p.current-date{
+	color: #c0392b!important;
+	font-size: 1.2em;
+}
+
+ul.announcements-container{
+	/*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
+	padding: 0 40px;
+	list-style: none;
+}
+
+li.announcement{
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	padding: 10px 20px;
+	margin: 30px;
+	position: relative;
+}
+
+li.announcement .org-name{
+	font-size: 1.5em;
+	margin: 2px;
+	font-family: Arial;
+	display: inline-block;
+}
+
+li.announcement .name{
+	font-size: 1.1em;
+	margin: 2px;
+	font-family: Arial;
+	display: inline-block;
+	color: 
+}
+
+li.announcement .notif-content{
+	font-size: 1em;
+	margin: 2px;
+	font-family: Arial;
+	display: block;
+}
+
+li.announcement .date{
+	font-size: 0.8em;
+	margin: 2px;
+	font-family: Arial;
+	display: inline-block;
+	color: #95a5a6;
+}
+
+li.announcement .remove{
+	border-radius: 50%;
+	padding: 5px 5px 1px 5px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	transition: 0.2s;
+	transform: scale(0.7, 0.7);
+}
+
+li.announcement .remove:hover{
+	transform: scale(0.9, 0.9);
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+li.announcement .remove:active,
+li.announcement .remove:focus{
+	outline: none;
+}
+
+ul.pagination{
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
+	border: none;
+}
+
+ul.pagination a,
+ul.pagination b,
+ul.pagination span{
+	color: #e74c3c;
+}
+
+ul.pagination b,
+ul.pagination span{
+	cursor: default;
+}
+
+ul.pagination a:hover,
+ul.pagination b:hover,
+ul.pagination span:hover{
+	color: #e74c3c;
+}
