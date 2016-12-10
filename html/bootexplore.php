@@ -398,4 +398,8 @@
 </div>
 <script src="../bootstrap/js/bootstrap.min.js"</script>	
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> d546def9ccf5b5a6be84137dd885fb9fdecc44e8

@@ -8,7 +8,7 @@
 	redirect();
     $user_id = $_SESSION['user_id'];
     $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
-  $sort_id = $_SESSION['sort_id'];
+    // $sort_id = $_SESSION['sort_id'];
 
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
@@ -186,25 +186,25 @@
 
 				 if(!isset($_POST['date']) && !isset($_POST['votes']))
 	            {
-	            	$sort_id=1;
+	            	$_SESSION['sort_id']=1;
 	            }
 
 				if(isset($_POST['date']))
 	            {
-	            	$sort_id=1;
+	            	$_SESSION['sort_id']=1;
 	            }
 	            if(isset($_POST['votes']))
 	            {
-	            	$sort_id=2;
+	            	$_SESSION['sort_id']=2;
 	            }
               
 				
 				
-				if($sort_id==1)
+				if($_SESSION['sort_id']==1)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY date_posted DESC $limit";
 				}
-				if($sort_id==2)
+				if($_SESSION['sort_id']==2)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY votes DESC $limit";
 				}
@@ -289,7 +289,7 @@
 								?>
 									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button>Edit</button></a>
 									<form method="post" action="">
-                  <button type="submit" name="delete" value="<?=$disc_id?>"> Delete </button>
+									<button type="submit" name="delete" value="<?=$disc_id?>"> Delete </button>
 								<?php
 								}
 								?>

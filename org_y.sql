@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2016 at 07:24 AM
+-- Generation Time: Dec 10, 2016 at 04:35 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -106,7 +106,18 @@ INSERT INTO `announcement` (`announcement_id`, `date_posted`, `topic`, `content`
 (69, '2016-12-09 06:34:05', 'Request', 'gregg09wishes to join this group.', 5, 3),
 (70, '2016-12-09 06:34:50', 'Request', 'gregg09wishes to join this group.', 5, 3),
 (71, '2016-12-09 06:45:31', 'Request', 'gregg09 wishes to join this group.', 5, 2),
-(72, '2016-12-09 06:46:55', 'Request', 'gregg09 wishes to join this group.', 5, 7);
+(72, '2016-12-09 06:46:55', 'Request', 'gregg09 wishes to join this group.', 5, 7),
+(73, '2016-12-09 07:57:42', 'Request', 'gregg09 wishes to join this group.', 5, 41),
+(74, '2016-12-09 08:06:25', 'Request', 'gregg09 wishes to join this group.', 5, 41),
+(75, '2016-12-09 08:06:55', 'Request', 'gregg09 cancelled their request to join UPV Sakdag', 5, 41),
+(76, '2016-12-09 08:08:48', 'Request', 'gregg09 wishes to join this group.', 5, 41),
+(77, '2016-12-09 08:08:52', 'Request', 'gregg09 cancelled their request to join this group.', 5, 41),
+(78, '2016-12-09 08:11:19', 'Request', 'gregg09 wishes to join this group.', 5, 41),
+(79, '2016-12-09 08:11:22', 'Request', 'gregg09 cancelled their request to join UPV Sakdag', 5, 41),
+(80, '2016-12-09 08:14:04', 'Request', 'gregg09 wishes to join UPV Sakdag.', 5, 41),
+(81, '2016-12-09 08:14:07', 'Request', 'gregg09 cancelled their request to join UPV Sakdag.', 5, 41),
+(82, '2016-12-09 08:59:40', 'Request', 'marbasaur cancelled their request to join Daebak.', 2, 9),
+(83, '2016-12-09 09:00:42', 'Request', 'marbasaur cancelled their request to join UP Tubong Mindanao.', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -261,41 +272,41 @@ CREATE TABLE `discuss` (
 --
 
 INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, `org_id`, `votes`) VALUES
-(1, 'yung amoy ng utot ni kulas', 'Dear kulas, di ko na talaga matiis yung utot mo. Konting air-freshener naman please.', '2016-11-14 00:00:00', 1, 1, 0),
+(1, 'yung amoy ng utot ni kulas', 'Dear kulas, di ko na talaga matiis yung utot mo. Konting air-freshener naman please.', '2016-11-14 00:00:00', 1, 1, 1),
 (2, 'hellosqwsqws', 'world123', '2016-11-24 00:00:00', 2, 1, 0),
 (3, 'Hello Winter', 'hahahah', '2016-11-24 00:00:00', 2, 1, 0),
 (4, 'hello', 'gusto ko magdiscuss oops wrong', '2016-11-24 00:00:00', 2, 1, 0),
-(5, 'discuss', 'discusss', '2016-11-24 00:00:00', 8, 1, 0),
-(6, 'hhh', 'kkkk', '2016-11-24 00:00:00', 5, 6, 0),
+(5, 'discuss', 'discusss', '2016-11-24 00:00:00', 8, 1, 1),
+(6, 'hhh', 'kkkk', '2016-11-24 00:00:00', 5, 6, -1),
 (7, 'Choy topic', 'Choy topic commentssss\r\n', '2016-11-24 00:00:00', 2, 1, 0),
-(8, 'GGEZ', 'haluuuhhh', '2016-11-24 00:00:00', 5, 6, 0),
-(9, 'title2', 'content2', '2016-11-28 01:24:30', 2, 41, 0),
+(8, 'GGEZ', 'haluuuhhh', '2016-11-24 00:00:00', 5, 6, 1),
+(9, 'title2', 'content2', '2016-11-28 01:24:30', 2, 41, -1),
 (10, 'title and content', 'title and content', '2016-11-28 00:00:00', 1, 41, 0),
 (11, 'title and content', 'title and content', '2016-11-28 00:00:00', 1, 41, 0),
-(12, 'title and content', 'title and content', '2016-11-28 00:00:00', 1, 41, 0),
+(12, 'title and content', 'title and content', '2016-11-28 00:00:00', 1, 41, 1),
 (13, 'title and content', 'title and content', '2016-11-28 00:00:00', 4, 41, 0),
 (14, 'title and content', 'title and content', '2016-11-28 00:00:00', 4, 41, 0),
 (15, 'title and content222', 'title and content22233', '2016-11-28 00:00:00', 4, 41, 0),
 (16, 'title and content22212', 'title and content22212', '2016-11-28 00:00:00', 4, 41, 0),
 (17, 'title and content22211', 'title and content22212', '2016-11-28 00:00:00', 4, 41, 0),
 (18, 'title and content222121', 'title and content222111', '2016-11-28 00:00:00', 1, 41, 0),
-(19, 'title and content222', 'title and content222', '2016-11-28 00:00:00', 4, 41, 0),
+(19, 'title and content222', 'title and content222', '2016-11-28 00:00:00', 4, 41, -1),
 (20, 'title and content222112', 'title and content222121', '2016-11-28 00:00:00', 3, 41, 0),
 (21, 'title and content25523', 'title and content2124', '2016-11-28 00:00:00', 7, 41, 0),
 (22, 'title and content209', 'title and content290', '2016-11-28 00:00:00', 6, 41, 0),
 (23, 'title and content2', '12432', '2016-11-28 00:00:00', 7, 41, 0),
-(24, 'title and content21256', 'title and content289032', '2016-11-28 00:00:00', 5, 41, 0),
-(25, 'censored', 'censored', '2016-11-28 02:11:50', 2, 41, 0),
-(26, 'hello', 'world', '2016-11-29 14:14:33', 5, 6, 0),
-(27, 'hello', 'cyra from isran', '2016-11-30 19:23:05', 5, 6, 0),
+(24, 'title and content21256', 'title and content289032', '2016-11-28 00:00:00', 5, 41, 1),
+(25, 'censored', 'censored', '2016-11-28 02:11:50', 2, 41, -2),
+(26, 'hello', 'world', '2016-11-29 14:14:33', 5, 6, -1),
+(27, 'hello', 'cyra from isran', '2016-11-30 19:23:05', 5, 6, -1),
 (28, 'something', 'something\r\n\r\nsomething', '2016-12-04 02:24:59', 2, 39, 0),
 (30, 'hello', 'cold world', '2016-12-04 03:39:05', 2, 39, 0),
 (31, 'hello', 'diyan', '2016-12-04 05:01:38', 2, 21, 0),
 (32, 'hello', 'kulas bebe loves', '2016-12-04 05:06:48', 5, 1, 0),
-(33, 'why', 'are you late?', '2016-12-04 05:07:34', 5, 1, 0),
+(33, 'why', 'are you late?', '2016-12-04 05:07:34', 5, 1, -1),
 (34, 'That&#039;s what you get', 'Paramore', '2016-12-04 05:12:47', 5, 1, 0),
-(35, 'si gregg0912', 'wag siya papapasukin sa group na&#039;to please', '2016-12-04 12:16:37', 11, 41, 0),
-(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, 0),
+(35, 'si gregg0912', 'wag siya papapasukin sa group na&#039;to please', '2016-12-04 12:16:37', 11, 41, 1),
+(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, -1),
 (37, 'FOB', 'yehey', '2016-12-08 21:50:33', 2, 22, 0);
 
 -- --------------------------------------------------------
@@ -381,8 +392,6 @@ INSERT INTO `joined` (`join_id`, `user_id`, `org_id`, `membership_type`, `date_j
 (24, 2, 5, 'pending', '2016-11-27'),
 (25, 2, 6, 'pending', '2016-11-27'),
 (26, 2, 7, 'pending', '2016-11-27'),
-(27, 2, 8, 'pending', '2016-11-27'),
-(28, 2, 9, 'pending', '2016-11-27'),
 (29, 2, 10, 'pending', '2016-11-27'),
 (30, 2, 12, 'pending', '2016-11-27'),
 (31, 2, 43, 'pending', '2016-11-27'),
@@ -398,8 +407,7 @@ INSERT INTO `joined` (`join_id`, `user_id`, `org_id`, `membership_type`, `date_j
 (61, 11, 3, 'pending', '2016-12-08'),
 (62, 2, 11, 'pending', '2016-12-08'),
 (64, 15, 1, 'member', '2016-12-09'),
-(65, 15, 49, 'pending', '2016-12-09'),
-(76, 5, 7, 'pending', '2016-12-09');
+(65, 15, 49, 'pending', '2016-12-09');
 
 -- --------------------------------------------------------
 
@@ -410,7 +418,7 @@ INSERT INTO `joined` (`join_id`, `user_id`, `org_id`, `membership_type`, `date_j
 CREATE TABLE `orgs` (
   `org_id` int(100) NOT NULL,
   `org_name` varchar(100) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `description` text NOT NULL,
   `photo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -583,7 +591,14 @@ INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`
 (39, 'seen', 11, 56),
 (40, 'seen', 11, 57),
 (41, 'seen', 15, 60),
-(42, 'seen', 11, 61);
+(42, 'seen', 11, 61),
+(43, 'seen', 2, 73),
+(44, 'seen', 2, 74),
+(45, 'seen', 2, 76),
+(46, 'seen', 2, 78),
+(47, 'seen', 2, 79),
+(48, 'seen', 2, 80),
+(49, 'seen', 2, 81);
 
 -- --------------------------------------------------------
 
@@ -713,7 +728,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `classification`
 --
@@ -738,7 +753,7 @@ ALTER TABLE `disc_upvote`
 -- AUTO_INCREMENT for table `joined`
 --
 ALTER TABLE `joined`
-  MODIFY `join_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `join_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT for table `orgs`
 --
@@ -753,7 +768,7 @@ ALTER TABLE `org_type`
 -- AUTO_INCREMENT for table `seen_announcement`
 --
 ALTER TABLE `seen_announcement`
-  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `user`
 --
