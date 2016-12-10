@@ -138,6 +138,7 @@ a.dropbtn + ul.dropdown-list li{
 
 a.dropbtn + ul.dropdown-list a:hover{
 	background-color: #EEE;
+	color: #555;
 }
 
 ul.dropdown-list:hover ~ a.dropbtn{
@@ -160,29 +161,3 @@ a.dropbtn:hover + ul.dropdown-list{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-/*footer{
-	background-color: #c0392b;
-	width: 100%;
-	text-align: center;
-	padding: 30px 0;
-	margin-top: auto;
-	bottom: 0;
-	left: 0;
-	color: white;
-	font-family: Arial;
-	font-size: 0.9em;
-}*/
->>>>>>> 6d0d3733b241f37ae49e9c4ab3834cd350a703bf

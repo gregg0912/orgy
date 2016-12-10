@@ -13,22 +13,23 @@ li.announcement{
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	padding: 10px 20px;
 	margin: 30px;
-	position: relative;
 }
 
 li.announcement .org-name{
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin: 2px;
 	font-family: Arial;
 	display: inline-block;
+	font-weight: normal;
 }
 
 li.announcement .name{
-	font-size: 1.1em;
+	font-size: 1em;
 	margin: 2px;
 	font-family: Arial;
 	display: inline-block;
-	color: 
+	color: #3498db;
+	font-weight: normal;
 }
 
 li.announcement .notif-content{
@@ -46,19 +47,31 @@ li.announcement .date{
 	color: #95a5a6;
 }
 
+li.announcement form{
+	display: inline-block;
+	float: right;
+}
+
 li.announcement .remove{
 	border-radius: 50%;
-	padding: 5px 5px 1px 5px;
-	position: absolute;
+	padding: 5px 5px 3px 5px;
+	display: inline-block;
 	top: 5px;
 	right: 5px;
 	transition: 0.2s;
 	transform: scale(0.7, 0.7);
+	opacity: 0.5;
+	margin-right: -10px;
+}
+
+li.announcement .remove span{
+	line-height: 1em;
 }
 
 li.announcement .remove:hover{
 	transform: scale(0.9, 0.9);
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	opacity: 1;
 }
 
 li.announcement .remove:active,

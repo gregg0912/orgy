@@ -10,7 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
@@ -110,6 +110,9 @@
                         <h2 class="org-name"><?php echo $org_name["org_name"];?></h2>
                         <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
                         <span class="date"><?= $date ?></span>
+                        <form method="post" action="">
+                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button> 
+                        </form>
                         <p class="notif-content">"<?=$message;?>"</p>
                             
                         <?php
@@ -124,11 +127,8 @@
 
                         <?php
                             if($member =='admin'){ ?>
-      
-                            <form method="post" action="">
-                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button> 
+
                             <?php $_SESSION['count']=$count; ?>
-                            </form>
                         <?php } 
                         ?>
                     </li>
