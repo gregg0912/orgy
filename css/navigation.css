@@ -1,6 +1,6 @@
 /*--------NAVIGATION---------*/
 
-#navigation{
+/*#navigation{
 	list-style-type: none;
 	position: fixed;
 	left: 0;
@@ -11,19 +11,14 @@
 }
 #navigation > li > a{
 	text-align: center;
-	/*margin: -1%;*/
 	background: #ad464c;
-	/*border: 2px solid #ad464c;*/
 	border: 1.5px solid transparent;	
 	border-radius: 0;
-	/*font-size: 110%;*/
-	/*border-color: transparent;*/
 	color: white;
 	transition: 0.2s;
 }
 
 #navigation > li > a:hover{
-/*	border: 1.5px solid #b05258;*/
 	background: #c04c53;
 }
 
@@ -35,4 +30,158 @@
 	height: 200px;
 	object-fit: cover;
 	object-position: center;
+}*/
+
+nav{
+	background-color: #e74c3c;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	width: 17.5vw;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+nav ul{
+	padding: 0;
+	list-style: none;
+}
+
+nav li{
+	margin: 5px 0;
+}
+
+nav li a{
+	color: white;
+	font-family: Arial;
+	text-decoration: none;
+	padding: 10px 20px;
+	display: block;
+	text-align: center;
+	transition: 0.2s;
+}
+
+nav .username{
+	font-size: 1.2em;
+}
+
+nav li a.active{
+	background-color: #c0392b!important;
+	color: white!important;
+	cursor: default;
+}
+
+nav li a:hover{
+	background-color: white;
+	color: #e74c3c;
+}
+
+nav li.image a{
+	padding: 0;
+}
+
+nav li.image a:hover{
+	background-color: #e74c3c;
+}
+
+nav img{
+	margin: 5px 5px;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	transition: 0.4s;
+	border: 3px solid rgba(0,0,0,0);
+}
+
+nav img:hover{
+	border-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	transform: scale(1.05,1.05);
+}
+
+/*<li><a class="dropbtn" href="groups.php">Groups</a>
+    <div class="dropdown-content">
+        <a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a>
+    </div>
+</li>*/
+
+li.dropbtn:hover > a.dropbtn{
+	background-color: white;
+	color: #e74c3c;
+}
+
+a.dropbtn + ul.dropdown-content{
+	display: none;
+	position: absolute;
+	background-color: white;
+	left: 17.5vw;
+	margin-top: -38px;
+	width: 200px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+a.dropbtn + ul.dropdown-content a{
+	color: #888;
+	padding: 10px 20px;
+	border-bottom: 1px solid #EEE;
+	font-size: 0.85em;
+}
+
+a.dropbtn + ul.dropdown-content li{
+	margin: 0;
+}
+
+a.dropbtn + ul.dropdown-content a:hover{
+	background-color: #EEE;
+}
+
+ul.dropdown-content:hover ~ a.dropbtn{
+	background-color: white;
+	color: #e74c3c;
+}
+
+a.dropbtn + ul.dropdown-content:hover,
+a.dropbtn:hover + ul.dropdown-content{
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+	margin: 0;
+}
+
+div.content{
+	min-height: 100vh;
+}
+
+footer{
+	background-color: #c0392b;
+	width: 100%;
+	text-align: center;
+	padding: 30px 0;
+	margin-top: auto;
+	bottom: 0;
+	left: 0;
+	color: white;
+	font-family: Arial;
+	font-size: 0.9em;
 }
