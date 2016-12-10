@@ -49,6 +49,7 @@
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css">
@@ -103,46 +104,43 @@
 </style>
 <body>
 	<div id="wrapper">
-	<nav id="general">
-		<ul id="navigation">
-			<?php 
-			date_default_timezone_set('Singapore');
-            $current_id = $_SESSION['user_id'];
+	<nav>
+    	<ul>
+    	<?php 
+    		$current_id = $_SESSION['user_id'];
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
-            while($current_user= mysqli_fetch_array($query2)){ ?>
-            <li id="liTo"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><?php echo $current_user['username'] ?></a></li>
-            <li><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></li> <?php } ?>
-			<li><a href="home.php">Home</a></li>
-			<li><a href="explore.php">Explore</a></li>
-				<div class="dropdownnuj">
-	                <li><a id="dropA" class="dropbtnnuj active" href="groups.php">Groups</a>
-	                    <div class="dropdown-contentnuj">
-	                    <?php
-	                    $pending = "%pending%";
-	                    $query2 = "SELECT orgs.org_id, orgs.org_name
-	                                FROM joined, orgs
-	                                WHERE joined.user_id = '".$_SESSION['user_id']."' AND joined.org_id = orgs.org_id AND joined.membership_type NOT LIKE '".$pending."'";
-	                    $result2 = mysqli_query($connectdb, $query2);
-	                    while(list($org_id2, $orgName2) = mysqli_fetch_row($result2)){
-	                    ?>
-	                        <a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a>
-	                    <?php
-	                    }
-	                    ?>
-	                    </div>
-	                </li>
-	            </div>
-			<li><a href="edit.php">Edit Profile</a></li>
-			<li><a href="notif.php">Notifications   |  
-				  <?php
-            $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-            $total2 = mysqli_num_rows($notifnum);
-            echo "$total2"
-            ?>
-          </a></li>
-			<li><a href="logout.php">Log Out</a></li>
-		</ul>
-	</nav>
+                while($current_user= mysqli_fetch_array($query2)){ ?>
+                <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="explore.php">Explore</a></li>
+                <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
+                    <ul class="dropdown-content">
+                    <?php
+                    $pending = "%pending%";
+                    $query2 = "SELECT orgs.org_id, orgs.org_name
+                                FROM joined, orgs
+                                WHERE joined.user_id = '".$_SESSION['user_id']."' AND joined.org_id = orgs.org_id AND joined.membership_type NOT LIKE '".$pending."'";
+                    $result2 = mysqli_query($connectdb, $query2);
+                    while(list($org_id2, $orgName2) = mysqli_fetch_row($result2)){
+                    ?>
+                        <li><a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a></li>
+                    <?php
+                    }
+                    ?>
+                    </ul>
+                </li>
+                <li><a href="edit.php">Edit Profile</a></li>
+                <li><a href="notif.php">Notifications   |  
+                  <?php
+                    $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
+                    $total2 = mysqli_num_rows($notifnum);
+                    echo "$total2"
+                    ?>
+                </a></li>
+                <li><a href="logout.php">Log Out</a></li>
+            </ul>
+        </nav>
 		<div id="content">
 		<div id="discussions">
 			<h2>Discussions</h2>
@@ -394,8 +392,7 @@
 				}
 			?>
 		</div>
-</div>
-	<footer>CMSC 128 Section 1 | 2016</footer>
-</div>
+		<footer>CMSC 128 Section 1 | 2016</footer>
+		</div>
 </body>
 </html>
