@@ -59,7 +59,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<style type="text/css">
-        #pagination{
+        /*#pagination{
         	margin-left: 0;
             padding: 5px;
             clear: both;
@@ -90,7 +90,6 @@
 			float: left;
 			padding: 8px 16px;
 			text-decoration: none;
-			/*transition: background-color .3s;*/
 		}
 		#pagination > li a.current{
 			background-color: #a10115;
@@ -109,7 +108,7 @@
         form{
         	float:left;
         	clear: both; 
-        }
+        }*/
      </style>
 </head>
 <body>
@@ -121,7 +120,7 @@
                 $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
@@ -184,15 +183,15 @@
 
 	            if(isset($_GET['edit']))?>
 					<fieldset id="inner">
-	            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
+	            		<legend><?php echo $GrpAnnouncement['topic'] ?></legend>
 	                	<dl>
-	                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
+	                    	<dt><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
 	                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id']){?>
 	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>'><button>Edit</button></a>
 	                    	<?php } ?>
-		                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
+		                	<dt><?= $datec ?></dt>
 		                	<?php
 		                	if($member =='admin'){ ?>
       
@@ -209,7 +208,7 @@
 	        else{
 	        ?>
 	        	<fieldset id="inner">
-	        		<legend style="font-size: 200%; text-align: center;">System</legend>
+	        		<legend>System</legend>
 	        		<dl>
 	        			<dt>No new announcements for this group.</dt>
 	        		</dl>
@@ -224,9 +223,9 @@
 			}
 			if($member =='admin'){ ?>
 				<div id="post_ann">
-					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get" style="border: none;">
+					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get">
 					<fieldset>
-						<legend><input style="font-size: 90%; text-align: center;" type = "text" name = "topic" placeholder = "Topic"></legend>
+						<legend><input type = "text" name = "topic" placeholder = "Topic"></legend>
 						<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
 						<input class="btn btn-1 btn-1a" type="submit" name="add_announcement" value="post">
 						<input type = 'text' name ='orgID' value = "<?php echo $orgid ?>" hidden>
@@ -234,19 +233,19 @@
 					</form>
 				</div>
 				<?php } ?>
-			<div id="bottoma" style="margin-left: 15%">
+			<div id="bottoma">
 
 				<button class="btn btn-1 btn-1a" id="members">
-				<a style="color: black; font-family: 'Montserrat', sans-serif;" href="org_members.php?orgID=<?= $orgid ?>"> 
+				<a href="org_members.php?orgID=<?= $orgid ?>"> 
 				 <?php echo "Members (".$members_count.")" ?> </a></button> 
 
 				<?php if($member =='admin'){ ?>
 				<button class="btn btn-1 btn-1a" id="pending">
-				<a style="color: black; font-family: 'Montserrat', sans-serif;" href="approve_members.php?orgID=<?= $orgid ?>"> 
+				<a href="approve_members.php?orgID=<?= $orgid ?>"> 
 				 <?php echo "Pending Members (".$pending_count.")" ?> </a></button> 
 				<?php } ?>
 
-				<a style="color: black; font-family: 'Montserrat', sans-serif;" href="discussions.php?orgID=<?=$orgid?>"><button class="btn btn-1 btn-1a"  id="discussion">View Discussions</button></a>
+				<a href="discussions.php?orgID=<?=$orgid?>"><button class="btn btn-1 btn-1a"  id="discussion">View Discussions</button></a>
 
 				<!--<p>No other announcements yet.</p>-->
 			</div>	

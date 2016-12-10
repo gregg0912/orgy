@@ -51,7 +51,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<style type="text/css">
 
-			#pagination{
+			/*#pagination{
 				margin-left: 0;
 				padding: 5px;
 				clear: both;
@@ -82,16 +82,11 @@
 			#pagination > li a:hover:not(.current){
 				background-color: #FF847C;
 			}
-			/*ul{
-				list-style: none;
-				float: left;
-				margin-left: 2%;
-			}*/
+		
 			#content
 			{
-				border: 1px transparent; /*#a10115;*/
+				border: 1px transparent;
 				border-radius: 0%;
-				/*background: transparent;*/
 				float: left;
 				margin-right: 7%;
 				padding: 3%;
@@ -105,7 +100,7 @@
 			}
 			#see_group > ul > li {
 				text-decoration: none;
-				color: #a10115;/*white; #a10115;*/
+				color: #a10115;/
 				padding: 2%;
 				transition: 0.2s ease-in-out;
 				margin-right: 1%;
@@ -127,7 +122,7 @@
 			}
 			#grppage{
 				float: left;
-			}
+			}*/
 
 		</style>
 
@@ -141,7 +136,7 @@
 			$query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id");
 				while($current_user= mysqli_fetch_array($query2)){ ?>
 				<li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
 				<li><a href="home.php">Home</a></li>
 				<li><a href="explore.php">Explore</a></li>
 				<li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
@@ -185,7 +180,7 @@
 			?>				
 		<!-- Agent Proxy -->
 			<h2>CURRENT MEMBERS</h2>
-			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a" style="color: black;">Group Page</a><br>			
+			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a">Group Page</a><br>			
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
@@ -194,9 +189,9 @@
 					<div id="group_list">
 						<ul id="see_group">
 							<li>
-								<label style="font-size: 130%; padding: 1%; text-align: center; margin-left: 20%"><?=elipse($pendering['username'])?></label>
-								<img id="image" src="<?=$pendering['prof_pic']?>" >
-								<label style="font-size: 130%; padding: 1%; text-align: center; margin-left: 30%"><?=elipse($pendering['membership_type'])?></label>
+								<label><?=elipse($pendering['username'])?></label>
+								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
+								<label><?=elipse($pendering['membership_type'])?></label>
 								<form method="post">
 								<button name="<?='View'."$count"?>" class="btn btn-1 btn-1a" value="<?=$pendering['user_id']?>"> View Profile </button>
 								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>

@@ -50,7 +50,7 @@ w<?php
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id");
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -90,7 +90,7 @@ w<?php
         ?>
         <div id="content">
             <h2><?= $view_info['username'] ?></h2>
-            <img id="profile" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
+            <img onerror="this.src = '../images/janina.PNG'" id="profile" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
             <hr>
             <h3>Personal Information</h3>
             <p><label>Name</label>: <?=$view_info['first_name'] ." ". $view_info['last_name']?></p>

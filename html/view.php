@@ -9,14 +9,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Group Description</title>
-		<style type="text/css">
-			#image{
-				margin-left: 33%;
-			}
-			#label{
-				margin-left: -2.5%;
-			}
-		</style>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	</head>
@@ -29,7 +21,7 @@
 			$query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id");
 				while($current_user= mysqli_fetch_array($query2)){ ?>
 				<li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
 				<li><a href="home.php">Home</a></li>
 				<li><a href="explore.php">Explore</a></li>
 				<li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -59,7 +51,7 @@
 				<li><a href="logout.php">Log Out</a></li>
 			</ul>
 		</nav>
-		<div id="content" style="height: 60%;">
+		<div id="content">
 			<div id="group_list">
 				<ul id="see_group">
 					<?php
@@ -70,14 +62,14 @@
 
 						while(list($orgName, $photo, $des)=mysqli_fetch_array($query3)){ ?>
 							<h2 id="label"><?=$orgName?></h2>
-							<img id="image" src="<?=$photo?>"><br>
+							<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$photo?>"><br>
 							<!-- <label id="label"><?=$orgName?></label> -->
 							<p><?=$des?></p>
 						<?php } 
 						?>
 						<!-- <a href="explore.php?org_type=<?php echo $org_type?>&id=<?=$pageid?>"><button  onclick="history.go(-1);">Go Back to Exploring</button></a> -->
 						<a href="add.php?org_id=<?=$id?>" class="btn btn-1 btn-1a" style="margin-left: 69%;">Add Org</a>
-						<button class="btn btn-1 btn-1a" style="margin-left: 69%;" onclick="history.go(-1);">Go Back to Exploring</button>
+						<button class="btn btn-1 btn-1a" onclick="history.go(-1);">Go Back to Exploring</button>
 				</ul>
 			</div>
 		</div>

@@ -177,7 +177,7 @@
 			$query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id");
 				while($current_user= mysqli_fetch_array($query2)){ ?>
 				<li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+				<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
 				<li><a href="home.php">Home</a></li>
 				<li><a href="explore.php">Explore</a></li>
 				<li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
@@ -223,7 +223,7 @@
 				
 		<!-- Agent Proxy -->
 			<h2>PENDING MEMBERS</h2>	
-			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a" style="color: black;">Group Page</a><br>
+			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a">Group Page</a><br>
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
@@ -232,8 +232,8 @@
 					<div id="group_list">
 						<ul id="see_group">
 							<li>
-								<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($pendering['username'])?></label>
-								<img id="image" src="<?=$pendering['prof_pic']?>" >
+								<label><?=elipse($pendering['username'])?></label>
+								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
 								<form method="post">
 								<button name="<?='Accept'."$count"?>" value="<?=$pendering['join_id']?>"> Accept </button>
 								<button name="<?='Reject'."$count"?>" value="<?=$pendering['join_id']?>"> Reject </button>

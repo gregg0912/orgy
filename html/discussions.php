@@ -111,7 +111,7 @@
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
@@ -256,7 +256,7 @@
 					$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
 					if(!isset($_GET['edit'])){?>
 						<fieldset id="inner">
-							<legend  style="font-size: 200%; text-align: center;">
+							<legend>
 								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 							</legend>
 							<?php
@@ -270,7 +270,7 @@
 								}
 								?>
 							<dl>
-								<dt style="font-size: 100%; text-align: center;">
+								<dt>
 									<a href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
 								</dt>
 								<dt><p><?=nl2br($content)?></p></dt>
@@ -289,10 +289,10 @@
 									else
 										$pn = $_GET['pn'];
 								?>
-								<a href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-up" style="font-size: 150%;" aria-hidden="true"></i></a>
+								<a href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
 								<label>Discussion Points:<?=$total_vote?></label>
-								<a href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-down" style="font-size: 150%;" aria-hidden="true"></i></a>
-								<dt style="font-size: 50%; text-align: right;"><?=$dateposted?></dt>
+								<a href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+								<dt><?=$dateposted?></dt>
 							</dl>
 						</fieldset><br>
 				<?php				
@@ -301,11 +301,11 @@
 						if($_GET['edit']==$disc_id){?>
 							<form method='post' id='<?=$disc_id?>'>
 								<fieldset id="inner">
-									<legend  style="font-size: 200%; text-align: center;">
+									<legend>
 										<input type='text' name='edit_title' value='<?=$title?>' />
 									</legend>
 									<dl>
-										<dt style="font-size: 100%; text-align: center;">
+										<dt>
 											<?=$username?>
 										</dt>
 										<dt>
@@ -313,7 +313,7 @@
 										</dt>
 										<input type='submit' name='submit_edit' value='Submit'/>
 										<input type='submit' name='cancel_edit' value='Cancel'/>
-										<dt style="font-size: 50%; text-align: right;"><?=$dateposted?></dt>
+										<dt><?=$dateposted?></dt>
 									</dl>
 								</fieldset><br>
 							</form>
@@ -322,15 +322,15 @@
 						else{
 							?>
 							<fieldset id="inner">
-								<legend  style="font-size: 200%; text-align: center;">
+								<legend>
 									<?=$title?>
 								</legend>
 								<dl>
-									<dt style="font-size: 100%; text-align: center;">
+									<dt>
 										<?=$username?>
 									</dt>
 									<dt><p><?=$content?></p></dt>
-									<dt style="font-size: 50%; text-align: right;"><?=$dateposted?></dt>
+									<dt><?=$dateposted?></dt>
 								</dl>
 							</fieldset><br>
 					<?php 
@@ -350,7 +350,7 @@
 
 			<form method="POST" >
 				<fieldset>
-					<legend><input style="font-size: 90%; text-align: center;" type="text" name="topicname" placeholder="Topic"/></legend>
+					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
 					<textarea id="discussion_text" name="discussion_text" placeholder="Write something to discuss..."></textarea>
 					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
 				</fieldset>
