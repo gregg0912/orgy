@@ -17,6 +17,20 @@
         else{
             $id=1;
         }
+      	if(isset($_POST['submit_edit'])){
+        	$date = date("Y-m-d h:i:sa");
+      		$edit_query="UPDATE announcement 
+      		      			SET date_posted='$date', topic='$_POST[edit_topic]', content='$_POST[edit_content]'
+      		      				WHERE announcement_id='$_GET[edit]'";
+      		// $edit_query="UPDATE discuss 
+    	   //  SET title='$_POST[edit_title]', content='$_POST[edit_content]', date_posted='$today'
+    	   //  	WHERE announcement_id=$disc_id";
+      		querySignUp($edit_query);
+      		header('Location: group_page.php?orgID='.$_GET['orgID']);
+      	}
+      	if(isset($_POST['cancel_edit'])){
+      		header('Location: group_page.php?orgID='.$_GET['orgID']);
+      	}
         $total=ceil($rows/$lim);
         $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid ORDER BY date_posted DESC LIMIT $start, $lim");
         if(isset($_GET['add_announcement'])){
@@ -48,18 +62,15 @@
 
 				$add_seen_result = mysqli_query($connectdb, $S_query);
 			}
-      	header("location: group_page.php?orgID=$orgid");
-	}
+      		header("location: group_page.php?orgID=$orgid");
+		}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<style type="text/css">
         #pagination{
         	margin-left: 0;
@@ -116,43 +127,45 @@
 </head>
 <body>
 <div id="wrapper">
-	<nav>
-            <ul>
-                <?php 
-                $current_id = $_SESSION['user_id'];
-                $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
-                while($current_user= mysqli_fetch_array($query2)){ ?>
-                <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="explore.php">Explore</a></li>
-                <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
-                    <ul class="dropdown-list">
-                    <?php
-                    $pending = "%pending%";
-                    $query2 = "SELECT orgs.org_id, orgs.org_name
-                                FROM joined, orgs
-                                WHERE joined.user_id = '".$_SESSION['user_id']."' AND joined.org_id = orgs.org_id AND joined.membership_type NOT LIKE '".$pending."'";
-                    $result2 = mysqli_query($connectdb, $query2);
-                    while(list($org_id2, $orgName2) = mysqli_fetch_row($result2)){
-                    ?>
-                        <li><a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a></li>
-                    <?php
-                    }
-                    ?>
-                    </ul>
-                </li>
-                <li><a href="edit.php">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
-                  <?php
-                    $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                    $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
-                </a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </nav>
+	<nav id="general">
+		<ul id="navigation">
+			<?php 
+            $current_id = $_SESSION['user_id'];
+            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
+            while($current_user= mysqli_fetch_array($query2)){ ?>
+            <li id="liTo"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><?php echo $current_user['username'] ?></a></li>
+            <li><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></li> <?php } ?>
+			<li><a href="home.php">Home</a></li>
+			<li><a href="explore.php">Explore</a></li>
+				<div class="dropdownnuj">
+	                <li><a id="dropA" class="dropbtnnuj" href="groups.php">Groups</a>
+	                    <div class="dropdown-contentnuj">
+	                    <?php
+	                    $pending = "%pending%";
+	                    $query2 = "SELECT orgs.org_id, orgs.org_name
+	                                FROM joined, orgs
+	                                WHERE joined.user_id = '".$_SESSION['user_id']."' AND joined.org_id = orgs.org_id AND joined.membership_type NOT LIKE '".$pending."'";
+	                    $result2 = mysqli_query($connectdb, $query2);
+	                    while(list($org_id2, $orgName2) = mysqli_fetch_row($result2)){
+	                    ?>
+	                        <a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a>
+	                    <?php
+	                    }
+	                    ?>
+	                    </div>
+	                </li>
+	            </div>
+			<li><a href="edit.php">Edit Profile</a></li>
+			<li><a href="notif.php">Notifications   |  
+				  <?php
+            $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
+            $total2 = mysqli_num_rows($notifnum);
+            echo "$total2"
+            ?>
+          </a></li>
+			<li><a href="logout.php">Log Out</a></li>
+		</ul>
+	</nav>
 	<div id="content">
 		<div id="announcements">
 		<!-- Agent Proxy -->	
@@ -165,25 +178,13 @@
 				$pending_count =mysqli_num_rows(mysqli_query($connectdb, $pending_query));
 				$members_query = "select * from joined where org_id = $orgid and (membership_type = 'admin' or membership_type='member') ";
 				$members_count = mysqli_num_rows(mysqli_query($connectdb, $members_query));
-				while($result = mysqli_fetch_assoc($check_result)){
-					$member = $result['membership_type'];
-				}
+				
+					while($result = mysqli_fetch_assoc($check_result)){
+							$member = $result['membership_type'];
+					}
 			?>
 		<!-- Agent Proxy -->
 			<h2>Announcements</h2>
-			<?php
-			if($member =='admin'){ ?>
-				<div id="post_ann">
-					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get" style="border: none;">
-					<fieldset>
-						<legend><input style="font-size: 90%; text-align: center;" type = "text" name = "topic" placeholder = "Topic"></legend>
-						<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
-						<input class="btn btn-1 btn-1a" type="submit" name="add_announcement" value="post">
-						<input type = 'text' name ='orgID' value = "<?php echo $orgid ?>" hidden>
-					</fieldset>
-					</form>
-				</div>
-			<?php } ?>
 			<ul>
 			<?php
 			if($total>=1){
@@ -196,30 +197,57 @@
 		            $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
 		            $name = mysqli_fetch_assoc($username);
 
-	            if(isset($_GET['edit']))?>
-					<fieldset id="inner">
-	            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
-	                	<dl>
-	                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
-	                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
-	                    	<?php
-	                    	if($user_id==$_SESSION['user_id']){?>
-	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>'><button>Edit</button></a>
-	                    	<?php } ?>
-		                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
-		                	<?php
-		                	if($member =='admin'){ ?>
-      
-	                        <form method="post" action="">
-	                        	<button type="submit" name=" " value=""> Delete </button> 
-	               
-	                        </form>
-                        <?php } ?> 
-	        			</dl>
-		        	</fieldset>
-		        <?php 
-	    		}
-	    		pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
+		            if(!isset($_GET['edit'])){?>
+						<fieldset id="inner">
+		            		<legend id="<?=$GrpAnnouncement['announcement_id']?>"style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
+		                	<dl>
+		                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
+		                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
+		                    	<?php
+		                    	if($user_id==$_SESSION['user_id']){?>
+		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>'><button>Edit</button></a>
+		                    	<?php } ?>
+			                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
+			                	<?php
+			                	if($member =='admin'){ ?>
+	      
+		                        <form method="post" action="">
+		                        	<button type="submit" name=" " value=""> Delete </button> 
+		               
+		                        </form>
+	                        <?php } ?> 
+		        			</dl>
+			        	</fieldset>
+			        <?php 
+		    		}
+		    		else{
+			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){?>
+			    			<form id='<?=$_GET['edit']?>' method='post'>
+								<fieldset id="inner">
+				            		<legend style="font-size: 200%; text-align: center;"><input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' /></legend>
+				                	<dl>
+				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
+				                    	<dt><textarea name='edit_content'>"<?= $GrpAnnouncement['content'] ?>"</textarea></dt>
+			                    		<input type='submit' name='submit_edit' value='Done' />
+			                    		<input type='submit' name='cancel_edit' value='Cancel' />
+					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt> 
+				        			</dl>
+					        	</fieldset>
+					        </form>
+					<?php }
+					     else{ ?>
+					     	<fieldset id="inner">
+				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
+				                	<dl>
+				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
+				                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
+					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
+				        			</dl>
+					        </fieldset>
+
+					   <?php  }	
+					 }
+		    	}
 	        }
 	        else{
 	        ?>
@@ -233,6 +261,20 @@
 	        }
 	        ?>
 			</ul>
+			<?php 
+			if($rows!=0){
+				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
+			}
+			if($member =='admin'){ ?>
+					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get" style="border: none;">
+					<fieldset>
+						<legend><input style="font-size: 90%; text-align: center;" type = "text" name = "topic" placeholder = "Topic"></legend>
+						<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
+						<input class="btn btn-1 btn-1a" type="submit" name="add_announcement" value="post">
+						<input type = 'text' name ='orgID' value = "<?php echo $orgid ?>" hidden>
+					</fieldset>
+					</form>
+				<?php } ?>
 			<div id="bottoma" style="margin-left: 15%">
 
 				<button class="btn btn-1 btn-1a" id="members">
@@ -249,9 +291,9 @@
 
 				<!--<p>No other announcements yet.</p>-->
 			</div>	
-		</div>
-		<footer>CMSC 128 Section 1 | 2016</footer>		
+		</div>		
 	</div>
+	<footer>CMSC 128 Section 1 | 2016</footer>
 </div>
 </body>
 </html>
