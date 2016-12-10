@@ -117,7 +117,6 @@
 				border-radius: 0%;
 				/*background: transparent;*/
 				float: right;
-				margin-top: -53%;	
 				margin-right: 7%;
 				padding: 3%;
 				background: linear-gradient(-55deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.0));
@@ -223,16 +222,16 @@
 <body>
 <div id="wrapper">
     <nav>
-            <ul>
-                <?php 
-                $current_id = $_SESSION['user_id'];
-                $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
+    	<ul>
+    	<?php 
+    		$current_id = $_SESSION['user_id'];
+            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
                 <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
-                <li><a href="explore.php">Explore</a></li>
-                <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
+                <li><a class="active" href="explore.php">Explore</a></li>
+                <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
                     <ul class="dropdown-content">
                     <?php
                     $pending = "%pending%";
@@ -316,11 +315,9 @@
 				}
 				?>
 
-		</div><!-- 
-        </ul> -->
+		</div> 
+        <footer>CMSC 128 Section 1 | 2016</footer>
 	</div> 
-
-	<footer>CMSC 128 Section 1 | 2016</footer>
 </div>
 </body>
 </html>
