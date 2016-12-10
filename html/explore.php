@@ -228,7 +228,7 @@
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a class="active" href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -297,7 +297,7 @@
 					while($orgs = mysqli_fetch_array($result)){//while($rows = mysqli_fetch_array($dbconn)){//while($rows = mysqli_fetch_array($result)){?>
 						<li>
 							<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgs['org_name'])?></label>
-							<img id="image" src="../images/<?php echo $orgs['photo'] ?>">
+							<img onerror="this.src = '../images/janina.PNG'" id="image" src="../images/<?php echo $orgs['photo'] ?>">
 							<a href="add.php?org_id=<?php echo $orgs['org_id']?>" class="add">Add Org</a>
 							<a href="view.php?org_id=<?php echo $orgs['org_id']?>&org_type=<?php echo $org_type?>&id=<?=$id?>" class="view">View Org</a>
 						</li>
