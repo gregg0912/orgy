@@ -8,7 +8,6 @@
 	redirect();
     $user_id = $_SESSION['user_id'];
     $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
-    // $sort_id = $_SESSION['sort_id'];
 
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){

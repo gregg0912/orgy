@@ -3,6 +3,7 @@
 	include("functions.php");
 	redirect();
 	$connectdb = connection();
+	$set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid order by date_posted DESC ");
     $rows = mysqli_affected_rows($connectdb);

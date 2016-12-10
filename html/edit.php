@@ -95,18 +95,7 @@
 
 			if(empty($_POST['currentpwd'])){
 				$passwordErr="You must input your current password to make changes to your account!";
-			}
-
-			
-
-			
-			else{
-
-				
-
-
-
-
+			}else{
 				$checkoldpassword = false; 
 				$getoldpassword = $_POST["currentpwd"]; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
@@ -234,13 +223,12 @@
 	            $query2 = mysqli_query($dbconn, "select * from user where user_id = $current_id"); 
 	            while($current_user= mysqli_fetch_array($query2)){ 
 	            	$image = $current_user['prof_pic'];
-					if ($image = '../images/'){
+					if ($image == '../images/'){
 						$image = "default.jpg";	
 					} 
 	            	?>
 	            <li id="liTo"><span><?php echo $current_user['username'] ?></span></li>
 	            <li><img src="../images/<?php echo $image ?>"/></li> <?php } ?>
-				<li><input type="search" name="search" placeholder="Search For Your Orgs Here..."></li>
 				<li><a href="home.php">Home</a></li>
 				<li><a href="explore.php">Explore</a></li>
 					<div class="dropdownnuj">

@@ -3,11 +3,7 @@
 	include ("functions.php");
 	redirect();
 
-	$host = 'localhost';
-	$username = 'root';
-	$password = '';
-	$db	= 'org_y';
-	$dbconn = mysqli_connect($host, $username, $password, $db) or die("Cannot connect to database!");
+	$dbconn = connection();
 	mysqli_select_db($dbconn, $db) or die( "Unable to select database"); 
 	
 	$user_id = $_SESSION["user_id"];

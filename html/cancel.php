@@ -3,6 +3,7 @@
 	include ("functions.php");
 	$connectdb = connection();
 	redirect();
+	
 	$org_id = $_GET['orgID'];
 	$query = "SELECT org_name FROM orgs WHERE org_id = '".$_GET['orgID']."'";
 	$result = mysqli_query($connectdb, $query);
