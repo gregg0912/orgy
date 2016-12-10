@@ -108,131 +108,27 @@
 <head>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-	<style type="text/css">
-			#content
-				{
-				border: 1px transparent; /*#a10115;*/
-				border-radius: 0%;
-				/*background: transparent;*/
-				float: right;
-				margin-right: 7%;
-				padding: 3%;
-				background: linear-gradient(-55deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.0));
-				/*background-color: rgba(255, 0, 0, 0.1);*/
-				}
-
-			#group_selection > ul > li > img
-				{
-				height: 50%;
-				width: 70%;
-				padding: 15%;
-				}
-
-			#group_selection > ul > li:hover
-				{
-				/*background-color: white;*/
-				background: radial-gradient(circle, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8));
-				border-color: white;
-				}
-
-			#group_selection > ul > li
-				{
-				background-color: rgba(100, 0, 0, 0.1);
-				transition: 0.1s ease-in-out;
-				/*border-color: #2A363B;*/
-				}
-
-			#group_selection > ul
-				{
-				/*margin-top: 0%;*/
-				}
-
-			#group_selection > ul > label
-				{
-				font-size: 150%;
-				color: white;
-				float: right;
-				width: 50%;
-				margin-left: 110%;
-				padding-bottom: 1%;
-				margin-right: -3%;
-				opacity: 0.8;
-				}
-			#group_selection > ul > li > a
-				{
-				text-decoration: none;
-				color: #a10115;/*white; #a10115;*/
-				padding: 2%;
-				margin-left: 0px;
-				margin-right: -5px;
-				border: 1px solid #a10115;
-				/*background-color: transparent;*/
-				transition: 0.2s ease-in-out;
-				}
-
-			#group_selection > ul > li > a:hover
-				{
-				/*background-color: #FECEAB;	
-				border-color: #2A363B;*/
-				}
-
-            #pagination{
-                margin-left: 0;
-                padding: 5px;
-                /*clear: both;*/
-                float: right;
-                top: 55%;
-                left: 50%;
-                /*font-family: "Arial";*/
-                font-family: 'Arial', sans-serif;
-                font-size: 99%;
-            }
-            #pagination{
-				display: inline-block;
-				padding: 0;
-				margin: 0;
-			}
-			#pagination > li{
-				display: inline;
-			}
-			#pagination > li > a,
-			#pagination > li > span,
-			#pagination > li > b{
-				color: black;
-				float: left;
-				padding: 8px 16px;
-				text-decoration: none;
-				transition: background-color .3s;
-			}
-			#pagination > li a.current{
-				background-color: #a10115;
-				color: white;
-			}
-			#pagination > li a:hover:not(.current){
-				background-color: #FF847C;
-			}
-    
-        </style>
-
-
-       <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/explore.css">
+	
 </head>
 <body>
-<div id="wrapper">
-    <nav>
-    	<ul>
-    	<?php 
-    		$current_id = $_SESSION['user_id'];
-            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
+	<div id="wrapper">
+	    <nav>
+	    	<ul>
+	    		<?php 
+	    		$current_id = $_SESSION['user_id'];
+	            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
                 <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a class="active" href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-list">
                     <?php
                     $pending = "%pending%";
                     $query2 = "SELECT orgs.org_id, orgs.org_name
@@ -259,54 +155,52 @@
             </ul>
         </nav>
 
-	<div id="content">
-		<div id="group_selection">
-			<ul>
-				<label>discover organizations</label>
-				<div class="dropdown">
-					<?php
-						$t_id = $_GET['org_type'];
-						$filter_query = "SELECT type_name FROM org_type WHERE type_id='$t_id'";
-						$f_result = mysqli_query($connectdb, $filter_query);
-						$f_row = mysqli_fetch_assoc($f_result);
-						$f_name = $f_row['type_name'];
-						?>
-						
-					<button class="dropbtn"> <?php if(!isset($_POST["searchbtn"])){
-						echo $f_name;
-					}else{
-					 echo "All";}?> <!-- Filter --></button>
-					 <div class="dropdown-content">
-						 <ul>
-						 <?php while($rows = mysqli_fetch_array($filterlist)){?>
-								<a href="explore.php?org_type=<?php echo $rows['type_id']?>"
-						<?php		if($rows['type_id'] === $org_type){ ?>
-									style="background-color:#a10115; color: white"
-						<?php		} ?>
-								><?=$rows['type_name']?></a>
+		<?php
+			$t_id = $_GET['org_type'];
+			$filter_query = "SELECT type_name FROM org_type WHERE type_id='$t_id'";
+			$f_result = mysqli_query($connectdb, $filter_query);
+			$f_row = mysqli_fetch_assoc($f_result);
+			$f_name = $f_row['type_name'];
+		?>
+		<div id="content">
+			<h1 class="title">discover organizations</h1>
+			<div class="dropdown">
+				<button class="dropbtn"> <?php if(!isset($_POST["searchbtn"])){ echo $f_name; }else{ echo "All"; }?> <span class="glyphicon glyphicon-chevron-down" style="transform: scale(0.8,0.8);"></span></button>
+				<div class="dropdown-list">
+					<ul>
+					<?php 
+					 	while($rows = mysqli_fetch_array($filterlist)){ ?>
+							<li><a href="explore.php?org_type=<?php echo $rows['type_id']?>"
+							<?php if($rows['type_id'] === $org_type){ ?>
+								class="active"
 							<?php } ?>
-						</ul>
-					 </div>
+							><?=$rows['type_name']?></a></li>
+						<?php } ?>
+					</ul>
 				</div>
-				<form method="post">
-		            <li><input id="searchbar" type="search" name="search" placeholder="Search Orgs"><button name="searchbtn">GO</button></li>
-		        </form>
-		        <label style="color: black;clear:both;"><?php echo "No of orgs: "; echo "$countRows";?></label>
+			</div>
+			<form method="post" class="search">
+	            <input type="search" name="search" placeholder="Search Orgs">
+	            <button name="searchbtn">GO</button>
+	        </form>
+		    <h2 class="org-count"><?php echo "Number of organizations: ".$countRows?></h2>
+			<ul class="organizations">
 				<?php 
 				if($total>=1){
 					while($orgs = mysqli_fetch_array($result)){//while($rows = mysqli_fetch_array($dbconn)){//while($rows = mysqli_fetch_array($result)){?>
-						<li>
-							<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgs['org_name'])?></label>
-							<img id="image" src="../images/<?php echo $orgs['photo'] ?>">
-							<a href="add.php?org_id=<?php echo $orgs['org_id']?>" class="add">Add Org</a>
-							<a href="view.php?org_id=<?php echo $orgs['org_id']?>&org_type=<?php echo $org_type?>&id=<?=$id?>" class="view">View Org</a>
+						<li class="organization">
+							<label class="org-name"><?=elipse($orgs['org_name'])?></label>
+							<img id="image" src="../images/<?php echo $orgs['photo'] ?>" onerror="this.src='../images/ellipsis_icon.png';">
+							<div>
+								<a href="add.php?org_id=<?php echo $orgs['org_id']?>" class="add buttoncustom">Add Org</a>
+								<a href="view.php?org_id=<?php echo $orgs['org_id']?>&org_type=<?php echo $org_type?>&id=<?=$id?>" class="view buttoncustom">View Org</a>
+							</div>
 						</li>
 					<?php }
 					if(isset($_GET['searched'])){
 						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
 					}
 					else{
-					pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d");   
 					}
 				}else{
 				?>
@@ -314,10 +208,10 @@
 				<?php
 				}
 				?>
-
+			</ul>
+			<?php pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d"); ?>
+	        <footer>CMSC 128 Section 1 | 2016</footer>
 		</div> 
-        <footer>CMSC 128 Section 1 | 2016</footer>
-	</div> 
-</div>
+	</div>
 </body>
 </html>

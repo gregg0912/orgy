@@ -159,14 +159,14 @@ footer{
 	display: inline-block;
 	width: 100%;
 }
-.dropdown-content {
+.dropdown-list {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     width: 15.28%;
     overflow: auto;
 }
-.dropdown-content a{
+.dropdown-list a{
     color: black;
     padding: 5%;
     display: block;
@@ -174,8 +174,8 @@ footer{
     list-style-type: none;
 }
 
-.dropdown-content a:hover {background-color: #CCCBCA;}
-.dropdown:hover .dropdown-content {
+.dropdown-list a:hover {background-color: #CCCBCA;}
+.dropdown:hover .dropdown-list {
     display: block;
 }
 

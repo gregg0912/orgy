@@ -130,7 +130,7 @@
 				<div class="dropdown">
 					<button class="dropbtn">Filter</button>
 					 
-					 <div class="dropdown-content">
+					 <div class="dropdown-list">
 						 <ul>
 						 <?php while($rows = mysqli_fetch_array($filterlist)){?>
 								<a href="explore.php?org_type=<?php echo $rows['type_id']?>"><?=$rows['type_name']?></a>
