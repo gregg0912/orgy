@@ -211,7 +211,7 @@ h2{
     color: black;*/
 
 }
-#see_group > li > label{
+/*#see_group > li > label{
 	font-family: 'Arca Majora 3 Bold', sans-serif;
 	text-align:center;
 	text-shadow: none;
@@ -220,7 +220,7 @@ h2{
 	margin: 2%;
 	font-size: 25px;
 
-}
+}*/
 #see_group{
 	list-style-type: none;
 	height: 100%;
@@ -278,14 +278,6 @@ h2{
 	margin-bottom: -4%;
 
 }
-
-.pagination:active{
-	background-color: #a10115;
-	color: white;
-}
-.pagination > li a:hover:not(.active){
-	background-color: white;
-}	
 
 
 /*---------------------------------*/
