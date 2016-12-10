@@ -291,11 +291,11 @@
 							<?php } ?>
 						</ul>
 					 </div>
-					 <label style="color: black;clear:both;"><?php echo "No of orgs: "; echo "$countRows";?></label>
 				</div>
 				<form method="post">
 		            <li><input id="searchbar" type="search" name="search" placeholder="Search Orgs"><button name="searchbtn">GO</button></li>
 		        </form>
+		        <label style="color: black;clear:both;"><?php echo "No of orgs: "; echo "$countRows";?></label>
 				<?php 
 				if($total>=1){
 					while($orgs = mysqli_fetch_array($result)){//while($rows = mysqli_fetch_array($dbconn)){//while($rows = mysqli_fetch_array($result)){?>

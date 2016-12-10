@@ -44,7 +44,7 @@
 		$id = 1;
 		$result = mysqli_query($dbconn, $query);
 
-		header("Location: explore.php?searched=$searched");		//agent proxy pwning
+		header("Location: bootexplore.php?searched=$searched");		//agent proxy pwning
 
 	}
 
@@ -257,6 +257,12 @@
 	#pagination li{
 		display: inline-block;
 	}
+	#noMatch, #numMatch{
+		margin: auto;
+		display: block;
+		font-size: 25px; 
+		text-align: center;
+	}
 
 	footer{
 		position: relative;
@@ -284,7 +290,7 @@
 	            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
 	            while($current_user= mysqli_fetch_array($query2)){ ?>
 	            <li id="liTo"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><?php echo $current_user['username'] ?></a></li>
-	            <li><img id="prof_pic" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
+	            <li><img onerror="this.src = '../images/janina.PNG'" id="prof_pic" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
 	            <li><a href="home.php">Home</a></li>
 	            <li><a href="bootexplore.php" class="active">Explore</a></li>
 	            <li class="dropdown"  id="dropFilter">
@@ -351,34 +357,33 @@
 							<?php } ?>
 						</ul>
 					 </div>
-					 <label style="color: black;clear:both;"><?php echo "No of orgs: "; echo "$countRows";?></label>
 				</div>
 				<form method="post" class="search form-group">
-		            <li><input lass="form-control" id="searchbar" type="search" name="search" placeholder="Search Orgs">
-		            <button name="searchbtn" class="btn btn-primary btn-md">GO</button></li>
+		            <input lass="form-control" id="searchbar" type="search" name="search" placeholder="Search Orgs">
+		            <button name="searchbtn" class="btn btn-primary btn-md">GO</button>
 		        </form>
 			</div>
-
 			<div id="allOrgs">
+				<label id="numMatch" style="color: black;clear:both;"><?php echo "No of orgs: "; echo "$countRows";?></label>
 				<?php 
 				if($total>=1){
-					while($orgs = mysqli_fetch_array($result)){//while($rows = mysqli_fetch_array($dbconn)){//while($rows = mysqli_fetch_array($result)){?>
+					while($orgs = mysqli_fetch_array($result)){?>
 						<li>
 							<label style="font-size: 130%; padding: 1%; text-align: center;"><?=elipse($orgs['org_name'])?></label>
-							<img style="height: 170px; width: 170px; object-position: center; object-fit: cover;" id="image" src="../images/<?php echo $orgs['photo'] ?>">
+							<img style="height: 170px; width: 170px; object-position: center; object-fit: cover;" id="image" src="../images/<?php echo $orgs['photo'] ?>" onerror="this.src = '../images/janina.PNG'" >
 							<a href="add.php?org_id=<?php echo $orgs['org_id']?>" class="add">Add Org</a>
 							<a href="view.php?org_id=<?php echo $orgs['org_id']?>&org_type=<?php echo $org_type?>&id=<?=$id?>" class="view">View Org</a>
 						</li>
 					<?php }
 					if(isset($_GET['searched'])){
-						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
+						pagination($id,$total_items,$lim,1,"bootexplore.php?searched=".$_GET['searched']."&id=%d");
 					}
 					else{
-					pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d");   
+					pagination($id,$total_items,$lim,1,"bootexplore.php?org_type=$org_type&id=%d");   
 					}
 				}else{
 				?>
-					<p>No match found!</p>
+					<p id="noMatch">No match found!</p>
 				<?php
 				}
 				?>
