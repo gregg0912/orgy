@@ -165,13 +165,25 @@
 				$pending_count =mysqli_num_rows(mysqli_query($connectdb, $pending_query));
 				$members_query = "select * from joined where org_id = $orgid and (membership_type = 'admin' or membership_type='member') ";
 				$members_count = mysqli_num_rows(mysqli_query($connectdb, $members_query));
-				
-					while($result = mysqli_fetch_assoc($check_result)){
-							$member = $result['membership_type'];
-					}
+				while($result = mysqli_fetch_assoc($check_result)){
+					$member = $result['membership_type'];
+				}
 			?>
 		<!-- Agent Proxy -->
 			<h2>Announcements</h2>
+			<?php
+			if($member =='admin'){ ?>
+				<div id="post_ann">
+					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get" style="border: none;">
+					<fieldset>
+						<legend><input style="font-size: 90%; text-align: center;" type = "text" name = "topic" placeholder = "Topic"></legend>
+						<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
+						<input class="btn btn-1 btn-1a" type="submit" name="add_announcement" value="post">
+						<input type = 'text' name ='orgID' value = "<?php echo $orgid ?>" hidden>
+					</fieldset>
+					</form>
+				</div>
+			<?php } ?>
 			<ul>
 			<?php
 			if($total>=1){
@@ -207,6 +219,7 @@
 		        	</fieldset>
 		        <?php 
 	    		}
+	    		pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
 	        }
 	        else{
 	        ?>
@@ -220,22 +233,6 @@
 	        }
 	        ?>
 			</ul>
-			<?php 
-			if($rows!=0){
-				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
-			}
-			if($member =='admin'){ ?>
-				<div id="post_ann">
-					<form action = "group_page.php?orgID=<?=$orgid?>" method = "get" style="border: none;">
-					<fieldset>
-						<legend><input style="font-size: 90%; text-align: center;" type = "text" name = "topic" placeholder = "Topic"></legend>
-						<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
-						<input class="btn btn-1 btn-1a" type="submit" name="add_announcement" value="post">
-						<input type = 'text' name ='orgID' value = "<?php echo $orgid ?>" hidden>
-					</fieldset>
-					</form>
-				</div>
-				<?php } ?>
 			<div id="bottoma" style="margin-left: 15%">
 
 				<button class="btn btn-1 btn-1a" id="members">
