@@ -71,8 +71,13 @@
 	
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 
 	<style type="text/css">
+
+	.jumbotron{
+		width: 50%;
+	}
 
 	.jumbotron.announcementContent{
 		margin-left: -10%;
@@ -80,12 +85,15 @@
 	}
 
 	.container.announForm{
-		position: absolute;
+		position: fixed;
 		background: yellow;
 		padding: 20px;
-		margin-top: -45%;
+		display: inline;
+		margin-top: -55%;
 		margin-left: 45%;
-		width: 25%;
+		width: 20%;
+		height: 35%;
+		
 	}
 	.btn-primary{
 		margin: 10px;
@@ -96,6 +104,8 @@
 	}
 	#post{
 		margin-bottom:10%;
+		margin-left: 70%;
+
 	}
 	#inner{
 		margin-bottom: 4%;
@@ -112,40 +122,6 @@
 		
 	}
 
-
-       /* #pagination{
-        	margin-left: 0;
-            padding: 5px;
-            clear: both;
-            top: 55%;
-            left: 50%;
-        }
-        #pagination > li{
-        	display: inline-block;
-       	}
-        #pagination > li > a{ }
-        #pagination > li a.current{
-            background-color: red;
-            color: white;
-        }
-        #pagination > li a:hover:not(.current){
-            background-color: red;
-        }*/
-/*        #inner{
-        	background-color: rgba(213, 213, 213, 0.4);
-          	color: rgb(249, 243, 243);
-            list-style-type: none;
-            margin: 2%;
-            padding: 1%;
-        }*/
-
-        /*#pending{
-        	margin-left: 45%;
-        }*/
-        /*#discussion{
-        	float: right;
-        }*/
-        
      </style>
 </head>
 <body>
@@ -169,8 +145,7 @@
 		            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
 		            while($current_user= mysqli_fetch_array($query2)){ ?>
 		            <li id="liTo"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><?php echo $current_user['username'] ?></a></li>
-		            <li><img id = "prof_pic" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
-		            <li><input id="searchbar" type="search" name="search" placeholder="Search Orgs"></li>
+		            <li><img id = "prof_pic" onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></li><?php } ?>
 		            <li><a href="home.php">Home</a></li>
 		            <li><a href="bootexplore.php">Explore</a></li>
 		            <li class="dropdown" id="dropFilter">
@@ -232,7 +207,6 @@
 					<a style="color: black; font-family: 'Montserrat', sans-serif;" href="bootapprove_members.php?orgID=<?= $orgid ?>"> <button class="btn btn-primary btn-md" id="pending"><?php echo "Pending Members (".$pending_count.")" ?></button> </a>
 					<?php } ?>
 				
-				</div>
 
 			<ul class="jumbotron announcementContent">
 			<?php while($GrpAnnouncement = mysqli_fetch_array($query)){
@@ -242,6 +216,7 @@
 	            $name = mysqli_fetch_assoc($username);
 
             ?>
+				</div>
 				<fieldset id="inner" >
             		<legend style="font-size: 200%; text-align: center; background: #c7a4a6;"><?php echo $GrpAnnouncement['topic'] ?></legend>
                 	<dl>

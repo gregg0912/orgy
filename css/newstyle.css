@@ -279,14 +279,6 @@ h2{
 
 }
 
-.pagination:active{
-	background-color: #a10115;
-	color: white;
-}
-.pagination > li a:hover:not(.active){
-	background-color: white;
-}	
-
 
 /*---------------------------------*/
 
