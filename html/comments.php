@@ -179,16 +179,16 @@
 					$date_c = $row["date_c"];
 					$phpdate = strtotime( $date_c );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );?>
-					<fieldset><hr>
-						<fieldset>
-						    <legend>Comment by:</legend>
-							<a href = 'viewprofile.php?user_id=<?=$row['user_id']?>'><h3 id='h3comm'> <?=$commenter?> </h3> </a>	
-						</fieldset>
-						<fieldset>
-							<legend>Message:</legend>
-							<h3><?=nl2br($body)?></h3>
-							<h6>Date: <?=$datec?></h6>
-						</fieldset>
+					<fieldset>
+						<legend>Comment by:</legend>
+						<a href = 'viewprofile.php?user_id=<?=$row['user_id']?>'><h3 id='h3comm'> <?=$commenter?> </h3> </a>
+						<label>Message:</label>
+						<div id="body">
+							<p><?=nl2br($body)?></p>
+						</div>
+						<div id="datec">
+							<p>Date: <?=$datec?></p>
+						</div>
 					</fieldset>
 					<hr><br>
 <?php

@@ -5,7 +5,7 @@
 
 	$dbconn = connection();
 	mysqli_select_db($dbconn, $db) or die( "Unable to select database"); 
-	$set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
+	
 	$user_id = $_SESSION["user_id"];
 	$date = date("Y-m-d");
 	echo "Today is $date<br>" ;
