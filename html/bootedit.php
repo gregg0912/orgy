@@ -12,7 +12,7 @@
 
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
  
 	<style>
@@ -383,7 +383,7 @@
 		</div>
 		<footer>CMSC 128 Section 1 | 2016</footer>
 	</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"</script>	
+		<script src="../bootstrap/js/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"</script>	
 </body>
 </html>
