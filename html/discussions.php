@@ -45,61 +45,13 @@
 <html lang="en">
 <head>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/discussions.css">
 </head>
-<style type="text/css">
-	body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
-	div#pagination_controls{font-size:21px;}
-	div#pagination_controls > a{ color:#06F; }
-	div#pagination_controls > a:visited{ color:#06F; }
-	
-    .btn {
-		border: none;
-		cursor: pointer;
-		padding: 2%;
-		display: inline-block;
-		margin: 2%;
-		text-transform: uppercase;
-		outline: none;
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		transition: all 0.3s;
-		float: right;
-	}
-	.btn:after {
-		position: absolute;
-		z-index: -1;
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		transition: all 0.3
-	}
-	.btn-1a:hover, .btn-1a:active {
-		color: black;
-		background: #fff;
-	}
-	legend > a{
-		color: #740000;
-		text-decoration: underline;
-	}
-	dt > a{
-		color: #251108;
-		text-decoration: underline;
-	}
-	i{
-		color: rgba(246,40,4,1);
-		color:  -moz-linear-gradient(top, rgba(246,40,4,1) 0%, rgba(216,28,3,0.83) 30%, rgba(215,33,9,0.69) 55%, rgba(240,67,40,0.56) 79%, rgba(210,35,20,0.44) 100%);
-		color:  -webkit-gradient(left top, left bottom, color-stop(0%, rgba(246,40,4,1)), color-stop(30%, rgba(216,28,3,0.83)), color-stop(55%, rgba(215,33,9,0.69)), color-stop(79%, rgba(240,67,40,0.56)), color-stop(100%, rgba(210,35,20,0.44)));
-		color:  -webkit-linear-gradient(top, rgba(246,40,4,1) 0%, rgba(216,28,3,0.83) 30%, rgba(215,33,9,0.69) 55%, rgba(240,67,40,0.56) 79%, rgba(210,35,20,0.44) 100%);
-		color:  -o-linear-gradient(top, rgba(246,40,4,1) 0%, rgba(216,28,3,0.83) 30%, rgba(215,33,9,0.69) 55%, rgba(240,67,40,0.56) 79%, rgba(210,35,20,0.44) 100%);
-		color:  -ms-linear-gradient(top, rgba(246,40,4,1) 0%, rgba(216,28,3,0.83) 30%, rgba(215,33,9,0.69) 55%, rgba(240,67,40,0.56) 79%, rgba(210,35,20,0.44) 100%);
-		color:  linear-gradient(to bottom, rgba(246,40,4,1) 0%, rgba(216,28,3,0.83) 30%, rgba(215,33,9,0.69) 55%, rgba(240,67,40,0.56) 79%, rgba(210,35,20,0.44) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f62804', endColorstr='#d22314', GradientType=0 );
-	}
-	
-</style>
+
 <body>
 	<div id="wrapper">
 	<nav>
@@ -109,7 +61,7 @@
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>" onerror="this.src = '../images/janina.PNG'"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn active" href="groups.php">Groups</a>
@@ -141,7 +93,7 @@
         </nav>
 		<div id="content">
 		<div id="discussions">
-			<h2>Discussions</h2>
+			<h1 class="title">Discussions</h1>
 			Sort by: 
 			<form method="post" action="">
 				<button type="submit" name="date" value="date"> Date </button>
@@ -252,16 +204,16 @@
 					$date_posted = $row["date_posted"];
 					$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
 					if(!isset($_GET['edit'])){?>
-						<fieldset id="inner">
+						<fieldset id="inner" class="discussion">
 							<legend>
 								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 							</legend>
 							<?php
 								if($user_id==$disc_user_id){
 								?>
-									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button>Edit</button></a>
+									<a class="edit" href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button><span class="glyphicon glyphicon-pencil"></span> </button></a>
 									<form method="post" action="">
-									<button type="submit" name="delete" value="<?=$disc_id?>"> Delete </button>
+									<button class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button>
 									</form>
 								<?php
 								}
@@ -297,7 +249,7 @@
 					else{
 						if($_GET['edit']==$disc_id){?>
 							<form method='post' id='<?=$disc_id?>'>
-								<fieldset id="inner">
+								<fieldset class="posting" id="inner">
 									<legend>
 										<input type='text' name='edit_title' value='<?=$title?>' />
 									</legend>
@@ -340,18 +292,22 @@
 			<?php 
 			} 
 			?>
+
+			<form class="newtopic" method="POST" >
+				<fieldset class="newdiscussion">
+					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
+					<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
+					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
+				</fieldset>
+			</form>
+
 			<div>
 				<p><?php echo $textline2; ?></p>
 				<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 			</div>
-
-			<form method="POST" >
-				<fieldset>
-					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
-					<textarea id="discussion_text" name="discussion_text" placeholder="Write something to discuss..."></textarea>
-					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
-				</fieldset>
-			</form>
+			
+			
+		
 			<?php
 				if(isset($_POST['submit']))
 				{
@@ -391,5 +347,6 @@
 		</div>
 		<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
+
 </body>
 </html>

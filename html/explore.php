@@ -163,7 +163,7 @@
 			$f_name = $f_row['type_name'];
 		?>
 		<div id="content">
-			<h1 class="title">discover organizations</h1>
+			<h1 class="title">Discover Organizations</h1>
 			<div class="dropdown">
 				<button class="dropbtn"> <?php if(!isset($_POST["searchbtn"])){ echo $f_name; }else{ echo "All"; }?> <span class="glyphicon glyphicon-chevron-down" style="transform: scale(0.8,0.8);"></span></button>
 				<div class="dropdown-list">

@@ -95,6 +95,7 @@
             <ul class="announcements-container">  
             <?php
             if($total>=1){
+                pagination($id,$rows,$lim,1,"home.php?id=%d");
                 while($announcement = mysqli_fetch_array($query)){
                     $org_id = $announcement['org_id'];
                     $date = $announcement['date_posted'];
@@ -123,7 +124,7 @@
                             <?php
                                 if($member =='admin'){
                                     if($current_userid == $user_id){ ?>
-                                        <a href="home.php?id=<?=$id?>" class="buttoncustom edit">Edit Post</a>
+                                        <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <?php } ?>
                                     <form method="post" action="">
                                         <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
@@ -134,6 +135,18 @@
                             <p class="notif-content">"<?=$message;?>"</p>
                         </li>
                     <?php
+                    }else{
+                        if($_GET['edit']==$announcement['announcement_id']){
+                        ?>
+                            <form class="posting">
+                                
+                            </form>
+                        <?php
+                        }else{
+                        ?>
+
+                        <?php
+                        }
                     }
                     $count++; 
                 }
