@@ -39,7 +39,7 @@ li.announcement .notif-content{
 	display: block;
 }
 
-li.announcement form{
+li.announcement form:not(.posting){
 	display: inline-block;
 	float: right;
 }
@@ -51,7 +51,8 @@ li.announcement form{
 	padding: 5px 5px 3px 5px;
 	border-radius: 50%;
 }*/
-li.announcement .remove, .edit{
+li.announcement .remove,
+li.announcement .edit{
 	border-radius: 50%;
 	padding: 5px 5px 3px 5px;
 	display: inline-block;
