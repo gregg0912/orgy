@@ -7,6 +7,7 @@ $upvote = $_GET['approval'];
 $disc_id = $_GET['disc_id'];
 $pn = $_GET['pn'];
 $orgID = $_GET['orgID'];
+$sort_id = $_GET['sort_id'];
 $query = "SELECT * FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
 $result = mysqli_query($dbconn, $query);
 if(mysqli_num_rows($result)>=1){
@@ -31,9 +32,12 @@ if(mysqli_num_rows($result)>=1){
 	$result = mysqli_query($dbconn, $query);
 	if($result){
 		$_SESSION['voted'] = "added";
+		//AGENT PROXY
+			// $query = "insert into"
+		//
 	}else{
 		$_SESSION['voted'] = "error";
 	}
 }
-header("Location:discussions.php?orgID=$orgID&pn=$pn");
+header("Location:discussions.php?orgID=$orgID&pn=$pn&sort_id=$sort_id");
 ?>
