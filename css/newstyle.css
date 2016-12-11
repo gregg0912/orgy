@@ -4,7 +4,7 @@
 	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
 }
 body{
-	background: #eaeaea;
+	background: white;
 }
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #F9F4F4 inset;

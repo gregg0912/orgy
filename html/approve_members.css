@@ -1,0 +1,86 @@
+#see_group{
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 20px;
+	justify-content: space-around;
+	width: 75%;
+	margin: auto;
+}
+
+#group_list > h1.title{
+	font-family: Chaparral;
+	text-align: center;
+	font-size: 3em;
+	letter-spacing: 0.05em;
+	padding: 10px;
+	text-transform: capitalize;
+	color: white;
+	background-color: #e74c3c;
+}
+
+.joinGroup{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.joinGroup .orgname{
+	text-decoration: none;
+	font-size: 1.2em;
+	text-align: center;
+	background-color: #e74c3c;
+	color: white;
+	padding: 5px 0;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.joinGroup .status{
+	font-size: 1.2em;
+	text-align: center;
+	padding: 5px 0;
+	margin: 5px 0;
+	width: 100%;
+}
+
+
+
+.joinGroup img{
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	object-position: center;
+	object-fit: cover;
+	margin: 15px 10px;
+}
+
+.joinGroup .orglink{
+	text-decoration: none;
+	background-color: #e74c3c;
+	font-size: 0.85em;
+	color: white;
+	font-family: Arial;
+	text-align: center;
+	margin: 10px auto 10px auto ;
+	padding: 5px 0;
+	width: 50%;
+
+
+}
+
+.orglink:hover{
+	/*color: #333;*/
+	background-color: #ff8a80;;
+	
+}
+
+.joinGroup .buttoncustom{
+	text-decoration: none;
+	width: 50%;
+	font-size: 0.9em;
+	margin: 10px auto 10px auto;
+	background-color: #ad464c;
+}

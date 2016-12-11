@@ -19,17 +19,16 @@
         }
       	if(isset($_POST['submit_edit'])){
         	$date = date("Y-m-d h:i:sa");
+        	$topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
+        	$content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
       		$edit_query="UPDATE announcement 
-      		      			SET date_posted='$date', topic='".$_POST['edit_topic']."', content='".$_POST['edit_content']."'
+      		      			SET date_posted='$date', topic='".$topic."', content='".$content."'
       		      				WHERE announcement_id='$_GET[edit]'";
-      		// $edit_query="UPDATE discuss 
-    	   //  SET title='$_POST[edit_title]', content='$_POST[edit_content]', date_posted='$today'
-    	   //  	WHERE announcement_id=$disc_id";
       		querySignUp($edit_query);
       		header('Location: group_page.php?orgID='.$_GET['orgID']);
       	}
       	if(isset($_POST['cancel_edit'])){
-      		header('Location: group_page.php?orgID='.$_GET['orgID']);
+      		header('Location: group_page.php?id='.$_GET['id'].'&orgID='.$_GET['orgID'].'#'.$_GET['edit']);
       	}
         $total=ceil($rows/$lim);
         $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid ORDER BY date_posted DESC LIMIT $start, $lim");
@@ -71,7 +70,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/group_page.css">
@@ -163,7 +162,7 @@
 		            $name = mysqli_fetch_assoc($username);
 		            if(!isset($_GET['edit'])){?>
 						<li class="posted-content">
-		            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
+		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
 		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
 		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
@@ -198,15 +197,6 @@
 				                <span class="date"><?= $datec ?></span>
 			                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
 			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
-		                    	<?php
-		                    	if($user_id==$_SESSION['user_id']){ ?>
-		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
-		                    	<?php } ?>
-				                <?php if($member =='admin'){ ?>
-		                        <form method="post" action="" class="delete">
-		                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
-		                        </form>
-		                        <?php } ?> 
 				        	</li>
 					   <?php  }	
 					}
