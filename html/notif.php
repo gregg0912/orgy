@@ -12,10 +12,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
-    <link rel="stylesheet" type="text/css" href="../css/newstyle.css" />
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -129,16 +131,16 @@
                       <?php $_SESSION['count']=$count; ?>
                       <?php } ?>
                   </li>
-              <?php $count++;
-              }
-              pagination($id,$rows,$lim,1,"notif.php?id=%d");
-              ?>
-              <?php }
-              else{
-              ?>
-              <p class="no-notif">No new notifications yet.</p>
-              <?php
-              }?>
+                  <?php $count++;
+                  }
+                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
+                  ?>
+                  <?php }
+                  else{
+                  ?>
+                  <p class="no-notif">No new notifications yet.</p>
+                  <?php
+                  }?>
         </ul>
         <footer>CMSC 128 Section 1 | 2016</footer>
     </div>

@@ -3,6 +3,7 @@
 	top: 0; 
 	margin: 0;
 }
+
 fieldset.discussion{
 	/*box-shadow: 0 0 10px rgba(0,0,0,0.15);
 	width: 100%;
@@ -13,37 +14,26 @@ fieldset.discussion{
 	background-color: white;
 	border: 1px solid #DDD;
 	box-sizing: border-box;*/
+	border-style: none;
 	margin-top: 10px;
 	width: 60%;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-fieldset.discussion .remove, 
-fieldset.discussion .edit{
-	border-radius: 50%;
-	padding: 5px 5px 3px 5px;
-	display: inline-block;
-	top: 5px;
-	right: 5px;
-	transition: 0.2s;
-	transform: scale(0.7, 0.7);
-	opacity: 0.5;
-	margin-right: -10px;
+.discussion .up, .down, .votes{
+	display: inline;
+	float: left;
 }
 
-fieldset.discussion .remove span,
-fieldset.discussion .edit span{
-	line-height: 1em;
+fieldset.newdiscussion{
+	height: 70%;
+	border-style: none;
+	float: right;
+	position: absolute;
+	top: 27vh;
+	right: 25px;
 }
-
-fieldset.discussion .remove:hover, 
-fieldset.discussion .edit:hover{
-	transform: scale(0.9, 0.9);
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
-	opacity: 1;
-}
-
-
+/*
 #discussions .newtopic{
 	float: right;
 	position: absolute;
@@ -51,19 +41,7 @@ fieldset.discussion .edit:hover{
 	top: 27vh;
 	height: 70%;
 	width: auto;
-}
-
-.discussion legend a{
-	font-size: 1.2em;
-	font-family: Arial;
-
-}
-
-fieldset.newdiscussion{
-	height: 70%;
-	border-style: none;
-}
-
+}*/
 
 fieldset textarea,
 fieldset input[type=text]{ 
@@ -87,6 +65,71 @@ fieldset textarea{
 	margin: 10px 5px 10px auto;
 	display: block;
 }
+
+
+fieldset.discussion a, a:hover{
+	text-decoration: none;
+}
+
+fieldset.discussion .edit{
+	
+}
+
+fieldset.discussion .remove, .edit{
+	border-radius: 50%;
+	padding: 5px 5px 3px 5px;
+	display: flex;
+	top: 5px;
+	right: 5px;
+	margin-right: 5px;
+	transition: 0.2s;
+	transform: scale(0.7, 0.7);
+	opacity: 0.5;	
+	float: right;
+	 
+}
+
+fieldset.discussion .remove span,
+.edit span{
+	line-height: 1em;
+}
+
+fieldset.discussion .remove:hover,
+.edit:hover{
+	transform: scale(0.9, 0.9);
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	opacity: 1;
+}
+
+fieldset.discussion .remove:active,
+fieldset.discussion .remove:focus,
+.edit:active, .edit:focus{
+	outline: none;
+}
+
+
+.discussion legend a{
+	font-size: 1.5em;
+	font-family: Arial;
+
+}
+
+
+.discussion form a.user{
+	top: 5px;
+}
+
+.fieldset .date{
+	float: flex;
+	clear: left;
+}
+
+p{
+	margin: 25px 5px;	
+}
+
+
+
 
 
 /*
