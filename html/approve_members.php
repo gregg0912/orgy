@@ -99,11 +99,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 	    <link rel="stylesheet" type="text/css" href="../css/main.css">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../css/newstyle.css"> -->
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-		<link rel="stylesheet" type="text/css" href="../css/explore.css">
+		<link rel="stylesheet" type="text/css" href="../css/approve_members.css">
 			<style type="text/css">
-				#pagination{
+/*				#pagination{
 		        	margin-left: 0;
 		            padding: 5px;
 		            clear: both;
@@ -126,16 +126,16 @@
 					float: left;
 					margin-left: 2%;
 				}*/
-				#content
+				/*#content
 				{
 					border: 1px transparent;
 					border-radius: 0%;
 					/*float: right;
 					margin-top: -50%;	
 					margin-right: 7%;*/
-					padding: 3%;
+					/*padding: 3%;
 					background: linear-gradient(-55deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.0));
-				}
+				*//*}
 
 				#see_group{
 					width: 25%;
@@ -167,7 +167,7 @@
 
 				#grppage{
 					float: left;
-				}
+				}*/
 
 		</style>
 
@@ -214,50 +214,54 @@
 			</nav>
 
 			<div id="content">
-				<h1 class="title">PENDING MEMBERS</h1>	
-				<!-- Agent Proxy -->	
-				<?php
-					$current_userid = $_SESSION['user_id'];
-					$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
-					$check_result = mysqli_query($connectdb, $checker_query);
-					
-					while($result = mysqli_fetch_assoc($check_result)){
-							$member = $result['membership_type'];
-					}
-				?>
-					
-			<!-- Agent Proxy -->
-				<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="group">Group Page</a><br>
-				<?php
-					$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
-					$penders = mysqli_query($connectdb,$query_penders);
-					$count=0;
-					?> <ul id="see_group"> <?php
-					while($pendering=mysqli_fetch_assoc($penders)){ ?>
-						<li>
-							<label><?=elipse($pendering['username'])?></label>
-							<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
-							<form method="post">
-								<button name="<?='Accept'."$count"?>" value="<?=$pendering['join_id']?>"> Accept </button>
-								<button name="<?='Reject'."$count"?>" value="<?=$pendering['join_id']?>"> Reject </button>
-							</form>
-							 <?php $_SESSION['count']=$count; ?>
-						</li>				
-					<?php $count++; 
-					} ?>
-					</ul>
-
-
-				<?php 
-		        if($rows <= 0){ ?>
-		            <p class="no-pending"> No pending members. </p> <?php
-		        }
-		        else { ?>
-
-		        	<?php
-						pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
-					}  
+				<div id="group_list">
+					<h1 class="title">PENDING MEMBERS</h1>	
+					<!-- Agent Proxy -->	
+					<?php
+						$current_userid = $_SESSION['user_id'];
+						$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
+						$check_result = mysqli_query($connectdb, $checker_query);
+						
+						while($result = mysqli_fetch_assoc($check_result)){
+								$member = $result['membership_type'];
+						}
 					?>
+						
+					<?php
+						$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
+						$penders = mysqli_query($connectdb,$query_penders);
+						$count=0;
+						?> 
+						<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="backgroup" >Back</a><br>
+						<ul id='see_group'>
+						<?php
+						while($pendering=mysqli_fetch_assoc($penders)){ ?>
+							<li class='joinGroup'>
+								<a href = 'viewprofile.php?user_id=<?=$current_id?>'  class='orgname'><?=elipse($pendering['username'])?></a>
+								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
+								<form method="post">
+									<div>
+										<button class="orglink" name="<?='Accept'."$count"?>" value="<?=$pendering['join_id']?>"> Accept </button>
+										<button class="orglink" name="<?='Reject'."$count"?>" value="<?=$pendering['join_id']?>"> Reject </button>
+									</div>
+								</form>
+								 <?php $_SESSION['count']=$count; ?>
+							</li>				
+						<?php $count++; 
+						} ?>
+							<?php 
+					        if($rows <= 0){ ?>
+					            <p class="no-pending"> No pending members. </p> <?php
+					        }
+					        else { ?>
+
+					        	<?php
+									pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
+							}  ?>
+						</ul>
+
+
+				</div>
 				<footer>CMSC 128 Section 1 | 2016</footer>
 			</div>
 	 	</div> 
