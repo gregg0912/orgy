@@ -23,6 +23,13 @@ li.announcement .org-name{
 	font-weight: normal;
 }
 
+a{
+	color: black;
+}
+.org-name:hover{
+	color: #5e5e5e;
+}
+
 li.announcement .name{
 	font-size: 1em;
 	margin: 2px;

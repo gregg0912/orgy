@@ -1,0 +1,36 @@
+
+form.posting{
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	width: 100%;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	padding: 20px 20px;
+	background-color: white;
+	border: 1px solid #DDD;
+	box-sizing: border-box;
+}
+
+form.posting > *{
+	margin: 5px 0;
+	font-family: Arial;
+}
+
+form.posting textarea,
+form.posting input[type=text]{
+	padding: 10px 20px;
+}
+
+form.posting textarea{
+	resize: none;
+	height: 40px;
+	transition: 0.2s;
+}
+
+form.posting textarea:focus{
+	height: 200px;
+}
+
+form.posting input[type=submit]{
+	margin-left: auto;	
+}

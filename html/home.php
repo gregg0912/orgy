@@ -108,7 +108,7 @@
                     if(!isset($_GET['edit'])){
                     ?>
                         <li class="announcement">          
-                            <a href="group_page.php?orgID=<?=$org_id?>" style='color: black;'><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
+                            <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
                             <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
                             <h3 class="topic"><?=$announcement['topic']?></h3>
                             <?php
