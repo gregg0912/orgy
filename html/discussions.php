@@ -45,12 +45,13 @@
 <html lang="en">
 <head>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/discussions.css">
 </head>
-<style type="text/css">
+<!-- <style type="text/css">
 	body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
 	div#pagination_controls{font-size:21px;}
 	div#pagination_controls > a{ color:#06F; }
@@ -99,7 +100,7 @@
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f62804', endColorstr='#d22314', GradientType=0 );
 	}
 	
-</style>
+</style> -->
 <body>
 	<div id="wrapper">
 	<nav>
