@@ -121,16 +121,12 @@
                             ?>
 
                             <?php
-                                if($member =='admin'){ ?>
+                                if($member =='admin'){
+                                    if($current_userid == $user_id){ ?>
+                                        <a href="home.php?id=<?=$id?>" class="buttoncustom edit">Edit Post</a>
+                                    <?php } ?>
                                     <form method="post" action="">
                                         <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
-                                        <?php
-                                        if($current_userid == $user_id){
-                                        ?>
-                                            <a href="home.php?id=<?=$id?>">Edit</a>
-                                        <?php
-                                        }
-                                        ?>
                                     </form>
                                 <?php $_SESSION['count']=$count; ?>
                             <?php } 
