@@ -91,3 +91,6 @@ li.announcement .edit:focus{
 	outline: none;
 }
 
+.edit{
+	background-color: #3070D3;
+}
