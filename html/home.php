@@ -32,7 +32,7 @@
                 $id=1;
             } 
       $total=ceil($rows/$lim);
-      $query = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') order by date_posted DESC limit $start, $lim");
+      $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
     ?>
     
     <?php
@@ -105,19 +105,19 @@
                     $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
                     $name = mysqli_fetch_assoc($username);
                     ?>
-                    
                     <li class="announcement">          
                         <h2 class="org-name"><?php echo $org_name["org_name"];?></h2>
                         <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
                         <span class="date"><?= $date ?></span>
                         <form method="post" action="">
-                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button> 
+                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
+                            <a href="home.php?id=<?=$id?>">Edit</a>
                         </form>
                         <p class="notif-content">"<?=$message;?>"</p>
                             
                         <?php
                             $current_userid = $_SESSION['user_id'];
-                            $checker_query = "select * from joined where user_id = $current_userid and org_id = $org_id";
+                            $checker_query = "SELECT * FROM joined WHERE user_id = $current_userid AND org_id = $org_id";
                             $check_result = mysqli_query($connectdb, $checker_query);
                           
                             while($result = mysqli_fetch_assoc($check_result)){
