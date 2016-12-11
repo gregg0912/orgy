@@ -141,7 +141,7 @@
 			</div>
 		<!-- Agent Proxy -->	
 			
-			<?php if($member =='admin' && !isset($_GET['edit'])){ ?>
+			<?php if($member =='admin'){ ?>
 				<form class="posting" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
 					<input type = "text" name = "topic" placeholder = "Topic">
 					<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
@@ -154,8 +154,8 @@
 			if($total>=1){
 				while($GrpAnnouncement = mysqli_fetch_array($query)){
 					$date_c = $GrpAnnouncement["date_posted"];
-						$phpdate = strtotime( $date_c );
-						$datec = date( 'F d, Y h:i:s a', $phpdate );
+					$phpdate = strtotime( $date_c );
+					$datec = date( 'F d, Y h:i:s a', $phpdate );
 		        
 		       	   	$user_id = $GrpAnnouncement['user_id'];
 		            $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
@@ -168,7 +168,7 @@
 		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id']){ ?>
-	                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+	                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
 	                    	<?php } ?>
 			                <?php if($member =='admin'){ ?>
 	                        <form method="post" action="" class="delete">
@@ -179,8 +179,8 @@
 			        <?php 
 		    		}
 		    		else{
-			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){?>
-			    			<form id='<?=$_GET['edit']?>' method='post'>
+			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){ ?>
+			    			<form class="posting" id='<?=$_GET['edit']?>' method='post'>
 				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' />
 				            	<span class="date"><?= $datec ?></span>
 				            	<h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
@@ -197,7 +197,7 @@
 			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
 		                    	<?php
 		                    	if($user_id==$_SESSION['user_id']){ ?>
-		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
 		                    	<?php } ?>
 				                <?php if($member =='admin'){ ?>
 		                        <form method="post" action="" class="delete">
@@ -205,14 +205,6 @@
 		                        </form>
 		                        <?php } ?> 
 				        	</li>
-					     	<!-- <fieldset id="inner">
-				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
-				                	<dl>
-				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
-				                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
-					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
-				        			</dl>
-					        </fieldset>-->
 					   <?php  }	
 					}
 		    	}
