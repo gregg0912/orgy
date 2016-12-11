@@ -47,84 +47,11 @@
 <html lang="en">
 	<head> 
 		<title>ORG SYSTEM A.Y. 2016-2017</title>
+    	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-		<style type="text/css">
-
-			/*#pagination{
-				margin-left: 0;
-				padding: 5px;
-				clear: both;
-				top: 55%;
-				left: 50%;
-			}
-			#pagination{
-				display: inline-block;
-				padding: 0;
-				margin: 0;
-			}
-			#pagination > li{
-				display: inline;
-			}
-			#pagination > li > a,
-			#pagination > li > span,
-			#pagination > li > b{
-				color: black;
-				float: left;
-				padding: 8px 16px;
-				text-decoration: none;
-				transition: background-color .3s;
-			}
-			#pagination > li a.current{
-				background-color: #a10115;
-				color: white;
-			}
-			#pagination > li a:hover:not(.current){
-				background-color: #FF847C;
-			}
-		
-			#content
-			{
-				border: 1px transparent;
-				border-radius: 0%;
-				float: left;
-				margin-right: 7%;
-				padding: 3%;
-				background: linear-gradient(-55deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.0));
-			}
-
-			#see_group{
-				width: 25%;
-				height: 50%;
-				
-			}
-			#see_group > ul > li {
-				text-decoration: none;
-				color: #a10115;/
-				padding: 2%;
-				transition: 0.2s ease-in-out;
-				margin-right: 1%;
-			}
-
-			#see_group > li > label {
-				text-align:center;
-				text-shadow: none;
-				color: #a10115;
-				margin:auto;
-				font-size: 25px;
-			}
-
-
-			#see_group > li > #image{
-				padding: 3% 3% 3% 3%;
-				height: 171.91px;
-				width: 171.91px;
-			}
-			#grppage{
-				float: left;
-			}*/
-
-		</style>
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/members.css">
 
 	</head>
 
@@ -167,7 +94,6 @@
 			</ul>
 		</nav>
 		<div id="content">
-			<div id="announcements">
 			<!-- Agent Proxy -->	
 			<?php
 				$current_userid = $_SESSION['user_id'];
@@ -179,50 +105,28 @@
 					}
 			?>				
 		<!-- Agent Proxy -->
-			<h2>CURRENT MEMBERS</h2>
-			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a">Group Page</a><br>			
+			<h1 class="title">Current Members</h1>
+			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>			
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
-				$count=0;
-				while($pendering=mysqli_fetch_assoc($penders)){ ?>
-					<div id="group_list">
-						<ul id="see_group">
-							<li>
-								<label><?=elipse($pendering['username'])?></label>
-								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
-								<label><?=elipse($pendering['membership_type'])?></label>
-								<form method="post">
-								<button name="<?='View'."$count"?>" class="btn btn-1 btn-1a" value="<?=$pendering['user_id']?>"> View Profile </button>
+				$count=0; ?>
+				<ul class="members">
+				<?php while($pendering=mysqli_fetch_assoc($penders)){ ?>
+							<li class="member">
+								<h2 class="name"><?=elipse($pendering['username'])?></h2>
+								<img onerror="this.src = '../images/janina.PNG'" src="<?=$pendering['prof_pic']?>">
+								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>
+								<button name="<?='View'."$count"?>" value="<?=$pendering['user_id']?>"> View Profile </button>
 								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
-								<!-- <button name="<?='Kick'."$count"?>" class="btn btn-1 btn-1a" value="<?=$pendering['join_id']?>">
-								</button> -->
-								<a class="btn btn-1 btn-1a" href="delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>" onClick= "uSure(); return false;"> Kick </a> 
-			
-								<script type="text/javascript">
-									function uSure() {
-									    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
-									    if (x == true){
-									    	
-									        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
-									    } 
-									    else{
-									    	// window.location.href = "home.php"
-									    }
-									}
-								</script>
-
-
-								<?php } ?>
-								</form>
-								 <?php $_SESSION['count']=$count; ?>
+									<a class="buttoncustom" href="delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>" onClick= "uSure(); return false;"> Kick </a> 
+								<?php } 
+									$_SESSION['count']=$count; ?>
 							</li>
-						</ul>
-					</div>	
 				<?php 	
 					$count++; 
-				}
-				?>
+				} ?>
+				</ul>
 				<?php 
 		        if($rows <= 0){ ?>
 		            <p> No pending members. </p> <?php
@@ -232,9 +136,17 @@
 						pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
 					}  
 					?>
-			</div>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
+		<script type="text/javascript">
+			function uSure() {
+			    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
+			    if (x == true){
+			    	
+			        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
+			    } 
+			}
+		</script>
 	</body>
 </html>
 

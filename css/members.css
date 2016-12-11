@@ -1,0 +1,49 @@
+.return{
+	font-size: 1.2em;
+	padding: 10px 30px;
+	display: block;
+	width: 18%;
+}
+
+.members{
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	list-style: none;
+	padding: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.member{
+	padding: 20px;
+	border: 1px solid #EEE;
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.member > *{
+	margin: 5px 0;
+}
+
+.member .name{
+	font-family: Arial;
+	font-weight: normal;
+	color: #555;
+	text-align: center;
+}
+
+.member .mem-type{
+	display: block;
+	text-align: center;
+	font-family: Arial;
+	color: #555;
+}
+
+.member img{
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	margin: auto;
+	display: block;
+}
