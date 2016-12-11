@@ -4,12 +4,12 @@ p.current-date{
 }
 
 ul.announcements-container{
-	/*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
 	padding: 0 40px;
 	list-style: none;
 }
 
-li.announcement{
+li.announcement,
+form.posting{
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	padding: 10px 20px;
 	margin: 30px;
@@ -22,7 +22,13 @@ li.announcement .org-name{
 	display: inline-block;
 	font-weight: normal;
 }
-
+li.announcement .topic{
+	font-size: 1.0em;
+	margin: 2px;
+	font-family: Arial;
+	clear: both;
+	font-weight:  normal;
+}
 a{
 	color: black;
 }
@@ -50,14 +56,6 @@ li.announcement form:not(.posting){
 	display: inline-block;
 	float: right;
 }
-/*.edit{
-	transform: translate(5px,-3px);
-	font-size: 0.7em;
-	padding: 3px 10px;
-	display: inline-block;
-	padding: 5px 5px 3px 5px;
-	border-radius: 50%;
-}*/
 li.announcement .remove,
 li.announcement .edit{
 	border-radius: 50%;
@@ -70,11 +68,13 @@ li.announcement .edit{
 	margin-right: -10px;
 }
 
-li.announcement .remove span, .edit span{
+li.announcement .remove span, 
+li.announcement .edit span{
 	line-height: 1em;
 }
 
-li.announcement .remove:hover, .edit:hover{
+li.announcement .remove:hover,
+li.announcement .edit:hover{
 	transform: scale(0.9, 0.9);
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	opacity: 1;
@@ -82,7 +82,8 @@ li.announcement .remove:hover, .edit:hover{
 
 li.announcement .remove:active,
 li.announcement .remove:focus,
-.edit:active, .edit:focus{
+li.announcement .edit:active,
+li.announcement .edit:focus{
 	outline: none;
 }
 
