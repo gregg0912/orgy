@@ -6,51 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
-		input[type=text], input[type=password], input[type=date], input[type=email]{
-			font-family: 'Pridi', serif;
-			font-size: 100%;
-		    background-color: #eee;
-		    color: black;
-		    border: none;
-		    padding: 10px  10px;
-		    border-radius: 4px;
-		    width: 50%;
-
-		    margin-bottom: 20px;
-
-		}
-		input:focus{
-			outline: none;
-		}
-		label{
-			font-family: 'Pridi', serif;
-			color: #740000;
-		}
-		select{
-			font-family: 'Pridi', serif;
-			font-size: 100%;
-		    background-color: white;
-		    color: blackzz;
-		    border: none;
-		    padding: 10px  10px;
-		    border-radius: 4px;
-		    width: 70%;
-		    margin-bottom: 20px;
-
-		}
-		#year{
-			font-family: 'Pridi', serif;
-			width: 20%;
-		}
-
-
-	</style>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" >
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="../css/edit.css">
 </head>
 <body>
 	<?php
@@ -60,7 +21,7 @@
 		$db = 'org_y';
 		$dbconn = mysqli_connect($host,$uname,$password,$db) or die("Could not connect to database!");
 
-		$line = "<br>";
+		$line = "";
 		$usernameErr = $passwordErr = $oldpasswordErr = $newpasswordErr = $retypenewpasswordErr = $submitErr = $duplicateErr = "";
 			
 		$prompt = "";
@@ -220,13 +181,13 @@
 	?>
 	<div id="wrapper">
 		<nav>
-    	<ul>
-    	<?php 
-    		$current_id = $_SESSION['user_id'];
-            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
+	    	<ul>
+	    	<?php 
+	    		$current_id = $_SESSION['user_id'];
+	            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -254,105 +215,85 @@
                     ?>
                 </a></li>
                 <li><a href="logout.php">Log Out</a></li>
-            </ul>
+	        </ul>
         </nav>
 		<div id="content">
-			<div id="wrapper">
-				<h2>edit your profile</h2>
-				<p>
-					<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
-					<span class="success"><?php echo $prompt;?></span>
-				</p>
-				<form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-				   <div id="edit_profile">
-					  <ul>					  	
-					  	
-					      	<label id="currentuname_label" for="username">Username:</label><br>
-	          	  			<input id="currentuname_input" type="text" name="username" value="<?= $getusername ?>"/><br>
-					    
-					    
-					    	<label for="fname">First Name:</label><br>
-							<input type="text" name="fname" value="<?= $getfname ?>"/><br>
-						
-						
-					    	<label for="lname">Last Name:</label><br>
-							<input type="text" name="lname" value="<?= $getlname ?>"/><br>
-						
-	
-					    	<label for="student_no">Student No:</label><br>
-							<input type="text" name="student_no" placeholder="20xx-xxxxx" value="<?= $getstudentno ?>" disabled/><br>
-						
-						
-					    	<label for="bdate">Date of Birth:</label><br>
-							<input type="date" name="bdate" value="<?= $getbirthdate ?>" /><br>
-						
-						
-						    <label id="profilepic_label" for="img">Select New Profile Picture:</label><br>
-		  					<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>" /><br><br>			
-					    
-					    	<label for="degree">Degree Program:</label><br>
-						
-							<select name="degree">
-								<option><?= $getdegree ?></option>
-								<optgroup label="College of Fisheries and Ocean Sciences">
-									<option>Bachelor of Science in Fisheries</option>
-								</optgroup>
-								<optgroup label="College of Arts and Science">
-									<option>Bachelor of Arts in Communication and Media Studies</option>
-									<option>Bachelor of Arts in Community Development</option>
-									<option>Bachelor of Arts in History</option>
-									<option>Bachelor of Arts in Literature</option>
-									<option>Bachelor of Arts in Political Science</option>
-									<option>Bachelor of Arts in Psychology</option>
-									<option>Bachelor of Arts in Sociology</option>
-									<option>Bachelor of Science in Applied Mathematics</option>
-									<option>Bachelor of Science in Biology</option>
-									<option>Bachelor of Science in Chemistry</option>
-									<option>Bachelor of Science in Computer Science</option>
-									<option>Bachelor of Science in Economics</option>
-									<option>Bachelor of Science in Public Health</option>
-									<option>Bachelor of Science in Statistics</option>
-								</optgroup>
-								<optgroup label="School of Technology">
-									<option>Bachelor of Science in Chemical Engineering</option>
-									<option>Bachelor of Science in Food Technology</option>
-								</optgroup>
-							</select>
+			<h1 class="title">edit your profile</h1>
+			<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
+			<span class="success"><?php echo $prompt;?></span>
+			<form class="edit" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			    <label for="fileToUpload" class="buttoncustom change-picture">Change Profile Picture</label>
+				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
 
-							<select name="year" id="year">
-								<option><?= $getyear?></option>
-								<optgroup label="Year Level">
+		      	<label for="username">Username</label>
+  	  			<input type="text" name="username" value="<?= $getusername ?>" class="block">
+		    
+		    
+		    	<label for="fname">Name</label>
+				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
+				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
+			
 
-									<option <?= ($getyear == '1')? "selected = 'selected'":"" ;?>>1</option>
-									<option <?= ($getyear == '2')? "selected = 'selected'":"" ;?>>2</option>
-									<option <?= ($getyear == '3')? "selected = 'selected'":"" ;?>>3</option>
-									<option <?= ($getyear == '4')? "selected = 'selected'":"" ;?>>4</option>
-									<option <?= ($getyear == '5 and above')? "selected = 'selected'":"" ;?>>5 and above</option>
-								</optgroup>
-							</select><br>
-					    
-					    
-					    	<label for="email">E-mail Address:</label><br>
-							<input type="email" name="email" value="<?= $getemail ?>"/><br>
-					    
-					      	<label id="newpwd_label" for="newpwd">New Password:</label><br>
-	          	  			<input id="newpwd_input" type="password" name="newpwd" value=""/><br>
-					    
-					    
-	            			<label id="renewpwd_label" for="renewpwd">Retype New Password:</label><br>
-	          	 			<input id="renewpwd_input" type="password" name="renewpwd"  value=""/><br>
+		    	<!-- <label for="student_no">Student No:</label>
+				<input type="text" name="student_no" placeholder="20xx-xxxxx" value="<?= $getstudentno ?>" disabled> -->
+			
+			
+		    	<!-- <label for="bdate">Date of Birth:</label>
+				<input type="date" name="bdate" value="<?= $getbirthdate ?>" > -->
+		    
+		    	<label for="degree">Degree Program</label>
+			
+				<select name="degree">
+					<option><?= $getdegree ?></option>
+						<optgroup label="College of Fisheries and Ocean Sciences">
+							<option>Bachelor of Science in Fisheries</option>
+						</optgroup>
+						<optgroup label="College of Arts and Science">
+							<option>Bachelor of Arts in Communication and Media Studies</option>
+							<option>Bachelor of Arts in Community Development</option>
+							<option>Bachelor of Arts in History</option>
+							<option>Bachelor of Arts in Literature</option>
+							<option>Bachelor of Arts in Political Science</option>
+							<option>Bachelor of Arts in Psychology</option>
+							<option>Bachelor of Arts in Sociology</option>
+							<option>Bachelor of Science in Applied Mathematics</option>
+							<option>Bachelor of Science in Biology</option>
+							<option>Bachelor of Science in Chemistry</option>
+							<option>Bachelor of Science in Computer Science</option>
+							<option>Bachelor of Science in Economics</option>
+							<option>Bachelor of Science in Public Health</option>
+							<option>Bachelor of Science in Statistics</option>
+						</optgroup>
+						<optgroup label="School of Technology">
+							<option>Bachelor of Science in Chemical Engineering</option>
+							<option>Bachelor of Science in Food Technology</option>
+						</optgroup>
+				</select>
 
-	          	 			<p>To apply changes, please enter current password</p>
+				<select name="year" id="year">
+					<option><?= $getyear?></option>
+					<optgroup label="Year Level">
+						<option <?=($getyear == '1')? "selected = 'selected'":"" ;?>>1</option>
+						<option <?=($getyear == '2')? "selected = 'selected'":"" ;?>>2</option>
+						<option <?=($getyear == '3')? "selected = 'selected'":"" ;?>>3</option>
+						<option <?=($getyear == '4')? "selected = 'selected'":"" ;?>>4</option>
+						<option <?=($getyear == '5 and above')? "selected = 'selected'":"" ;?>>5 and above</option>
+					</optgroup>
+				</select>
+		    
+		    	<label for="email">E-mail Address</label>
+				<input type="email" name="email" value="<?= $getemail ?>" class="block">
+		    
+		      	<label for="newpwd">Password</label>
+  	  			<input type="password" name="newpwd" placeholder="New Password" class="fifty">
+  	 			<input type="password" name="renewpwd"  placeholder="Retype Password" class="fifty">
 
-	          	 			<label id="currentpwd_label" for="currentpwd">Current Password:</label><br>
-	          	  			<input id="currentpwd_input" type="password" name="currentpwd" value=""/><br>
-					    
-					    
-					 		<input id="submit" type="submit" name="changepwd" value="Save Changes" />
-					  </ul>
-					</div>
-				</form>
-			</div>
+  	 			<span class="validation">To apply changes, please enter current password</span>
+  	  			<input type="password" name="currentpwd" placeholder="Current Password" class="block">
+		    
+		    
+		 		<input type="submit" name="changepwd" value="Save Changes" class="change-btn">
+			</form>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 	</div>

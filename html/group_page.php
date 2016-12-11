@@ -192,7 +192,7 @@
 				        			</dl>
 					        	</fieldset>
 					        </form>
-					<?php }
+						<?php }
 					     else{ ?>
 					     	<fieldset id="inner">
 				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
@@ -204,21 +204,12 @@
 					        </fieldset>
 
 					   <?php  }	
-					 }
+					}
 		    	}
-	        }
-	        else{
-	        ?>
-	        	<fieldset id="inner">
-	        		<legend>System</legend>
-	        		<dl>
-	        			<dt>No new announcements for this group.</dt>
-	        		</dl>
-	        	</fieldset>
-	        <?php
-	        }
-	        ?>
-			</ul>
+	        } else{ ?>
+	        	<p class="none">No new announcements for this group.</p>
+	        <?php } ?>
+		    </ul> 
 			<?php 
 			if($rows!=0){
 				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");

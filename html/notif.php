@@ -136,7 +136,7 @@
             </ul>
         </nav>
     <div id="content">
-        <h2>Notifications</h2>
+        <h1 class="title">Notifications</h1>
         
         <form method="post" action="">
         <button type="submit" name="allread" class="btn btn-1 btn-1a" id="allread"> Mark All as Read </button>
