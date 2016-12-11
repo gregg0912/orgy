@@ -47,7 +47,6 @@
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/discussions.css">
 </head>
@@ -94,12 +93,18 @@
 		<div id="content">
 		<div id="discussions">
 			<h1 class="title">Discussions</h1>
-			Sort by: 
-			<form method="post" action="">
-				<button type="submit" name="date" value="date"> Date </button>
-            	<button type="submit" name="votes" value="votes"> Votes </button>
+			<form method="post" action="" class="sort">
+				<p>Sort by:</p> 
+				<button type="submit" name="date" value="date" id="sortdate"> Date </button>
+            	<button type="submit" name="votes" value="votes" id="sortvote"> Votes </button>
             </form>
-
+            <form class="newtopic" method="POST" >
+				<div class="newdiscussion">
+					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
+					<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
+					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
+				</div>
+			</form>
 			<?php
 			if(!empty($org_id)){				
 				$sql = "SELECT COUNT(disc_id) FROM discuss WHERE org_id = $org_id";
@@ -216,9 +221,10 @@
 					$date_posted = $row["date_posted"];
 					$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
 					if(!isset($_GET['edit'])){?>
-						<fieldset class="discussion">
+						<div class="discussion">
 							<legend>
 								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+								<span class="date"><?=$dateposted?></span>
 							</legend>
 							<?php
 								if($user_id==$disc_user_id){
@@ -235,7 +241,7 @@
 								<dt>
 									<a href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
 								</dt>
-								<dt><p><?=nl2br($content)?></p></dt>
+								<dt><p>"<?=nl2br($content)?>"</p></dt>
 								<?php
 									$up_query = "SELECT * FROM disc_upvote WHERE disc_id = '".$disc_id."' AND approval = 'upvote'";
 									$up_result = querySignUp($up_query);
@@ -254,20 +260,20 @@
 								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
 								<label class="votes">Discussion Points:<?=$total_vote?></label>
 								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-								<dt class="date"><?=$dateposted?></dt>
 							</dl>
-						</fieldset><br>
+						</div><br>
 				<?php				
 					}
 					else{
 						if($_GET['edit']==$disc_id){?>
 							<form method='post' id='<?=$disc_id?>'>
-								<fieldset class="posting" id="inner">
+								<div class="newdiscussion" id="inner">
 									<legend>
 										<input type='text' name='edit_title' value='<?=$title?>' />
+										<span class="date"><?=$dateposted?></span>
 									</legend>
 									<dl>
-										<dt>
+										<dt class="user">
 											<?=$username?>
 										</dt>
 										<dt>
@@ -275,26 +281,25 @@
 										</dt>
 										<input type='submit' name='submit_edit' value='Submit'/>
 										<input type='submit' name='cancel_edit' value='Cancel'/>
-										<dt><?=$dateposted?></dt>
 									</dl>
-								</fieldset><br>
+								</div><br>
 							</form>
 			<?php
 						}
 						else{
 							?>
-							<fieldset id="inner">
+							<div class="newdiscussion" id="inner">
 								<legend>
-									<?=$title?>
+									<h2 class="disctitle"><?=$title?></h2>
+									<span class="date"><?=$dateposted?></span>
 								</legend>
 								<dl>
-									<dt>
+									<dt class="user">
 										<?=$username?>
 									</dt>
-									<dt><p><?=$content?></p></dt>
-									<dt><?=$dateposted?></dt>
+									<dt><p>"<?=$content?>"</p></dt>
 								</dl>
-							</fieldset><br>
+							</div><br>
 					<?php 
 						}
 					}
@@ -306,13 +311,6 @@
 			} 
 			?>
 
-			<form class="newtopic" method="POST" >
-				<fieldset class="newdiscussion">
-					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
-					<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
-					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
-				</fieldset>
-			</form>
 
 			<div>
 				<p><?php echo $textline2; ?></p>
