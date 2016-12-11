@@ -3,6 +3,10 @@
 	src: url("font/ChaparralPro-Regular.otf");
 }
 
+*{
+	font-family: Arial;
+}
+
 body{
 	margin: 0;
 }
