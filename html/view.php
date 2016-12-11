@@ -9,12 +9,10 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Group Description</title>
+    	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style type="text/css">
 			#imagev{
 				margin: auto;
@@ -25,6 +23,10 @@
 			}
 			p{
 				text-align: center;
+			}
+			.group-btn{
+				display: flex;
+				justify-content: center;
 			}
 		</style>
 	</head>
@@ -84,8 +86,10 @@
 						<?php } 
 						?>
 						<!-- <a href="explore.php?org_type=<?php echo $org_type?>&id=<?=$pageid?>"><button  onclick="history.go(-1);">Go Back to Exploring</button></a> -->
-						<a class="btn btn-1 btn-1a" href="add.php?org_id=<?=$id?>" style="margin-left: 69%; color: #333;"><span class="glyphicon glyphicon-plus-sign"></span> Add Org</a>
-						<button class="btn btn-1 btn-1a" onclick="history.go(-1);" style="color: white;"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to Exploring</button>
+						<div class="group-btn">
+							<a class="buttoncustom" href="add.php?org_id=<?=$id?>" style="margin-right: 10px;color: white;"><span class="glyphicon glyphicon-plus-sign"></span> Add Org</a>
+							<button onclick="history.go(-1);" style="color: white;"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to Exploring</button>
+						</div>
 				</ul>
 			</div>
 			<footer>CMSC 128 Section 1 | 2016</footer>

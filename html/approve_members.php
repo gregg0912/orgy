@@ -211,48 +211,43 @@
 		</nav>
 
 		<div id="content">
-			<div id="announcements">
+			<h1 class="title">PENDING MEMBERS</h1>	
 			<!-- Agent Proxy -->	
 			<?php
 				$current_userid = $_SESSION['user_id'];
 				$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
 				$check_result = mysqli_query($connectdb, $checker_query);
 				
-					while($result = mysqli_fetch_assoc($check_result)){
-							$member = $result['membership_type'];
-					}
+				while($result = mysqli_fetch_assoc($check_result)){
+						$member = $result['membership_type'];
+				}
 			?>
 				
 		<!-- Agent Proxy -->
-			<h2>PENDING MEMBERS</h2>	
 			<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="btn btn-1 btn-1a">Group Page</a><br>
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
 				$count=0;
+				?> <ul id="see_group"> <?php
 				while($pendering=mysqli_fetch_assoc($penders)){ ?>
-					<div id="group_list">
-						<ul id="see_group">
-							<li>
-								<label><?=elipse($pendering['username'])?></label>
-								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
-								<form method="post">
-								<button name="<?='Accept'."$count"?>" value="<?=$pendering['join_id']?>"> Accept </button>
-								<button name="<?='Reject'."$count"?>" value="<?=$pendering['join_id']?>"> Reject </button>
-								</form>
-								 <?php $_SESSION['count']=$count; ?>
-							</li>
-						</ul>
-					</div>
-				
-		<?php 	$count++; 
-				}
-			?>
+					<li>
+						<label><?=elipse($pendering['username'])?></label>
+						<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
+						<form method="post">
+							<button name="<?='Accept'."$count"?>" value="<?=$pendering['join_id']?>"> Accept </button>
+							<button name="<?='Reject'."$count"?>" value="<?=$pendering['join_id']?>"> Reject </button>
+						</form>
+						 <?php $_SESSION['count']=$count; ?>
+					</li>				
+				<?php $count++; 
+				} ?>
+				</ul>
 
 
 			<?php 
 	        if($rows <= 0){ ?>
-	            <p> No pending members. </p> <?php
+	            <p class="no-pending"> No pending members. </p> <?php
 	        }
 	        else { ?>
 
@@ -260,8 +255,6 @@
 					pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
 				}  
 				?>
-	          
-			</div>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 	 <!-- </div>  -->

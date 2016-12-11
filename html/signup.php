@@ -413,7 +413,7 @@
 				<button type="submit" class="btn btn-primary btn-lg" id="submit-btn" value="submit" name="Submit"> Submit </button>
 				</span>
 			</form>
-			<a href="login.php" id="login-btn" role="button" class="btn btn-danger btn-md">Back</a>
+			<a href="login.php" id="login-btn" role="button" class="btn btn-danger btn-md">Back </a>
 		</div>
 	</div>	
 	<script src="../bootstrap/js/jquery.min.js"></script>

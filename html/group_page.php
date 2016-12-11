@@ -165,7 +165,7 @@
 						<li class="posted-content">
 		            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
-		                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
 		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id']){ ?>

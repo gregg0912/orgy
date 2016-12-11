@@ -94,10 +94,19 @@ form.posting.true input[type=submit]{
 	margin-left: 10px;
 }
 
+.posted-content a{
+	text-decoration: none;
+}
+
 .posted-content .name{
 	font-weight: normal;
 	font-size: 1em;
 	color: #3498db;
+	margin: 5px 0;
+}
+
+.posted-content .name:hover{
+	text-decoration: underline;
 }
 
 .posted-content .caption{

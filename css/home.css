@@ -52,7 +52,6 @@ li.announcement .remove{
 	right: 5px;
 	transition: 0.2s;
 	transform: scale(0.7, 0.7);
-	opacity: 0.5;
 	margin-right: -10px;
 }
 
@@ -69,5 +68,12 @@ li.announcement .remove:hover{
 li.announcement .remove:active,
 li.announcement .remove:focus{
 	outline: none;
+}
+
+.edit{
+	transform: translate(5px,-3px);
+	font-size: 0.7em;
+	padding: 3px 10px;
+	display: inline-block;
 }
 
