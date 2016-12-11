@@ -95,6 +95,7 @@
             <ul class="announcements-container">  
             <?php
             if($total>=1){
+                pagination($id,$rows,$lim,1,"home.php?id=%d");
                 while($announcement = mysqli_fetch_array($query)){
                     $org_id = $announcement['org_id'];
                     $date = $announcement['date_posted'];
@@ -138,6 +139,8 @@
                             <p class="notif-content">"<?=$message;?>"</p>
                         </li>
                     <?php
+                    }else{
+                        
                     }
                     $count++; 
                 }
