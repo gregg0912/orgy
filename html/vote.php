@@ -9,6 +9,10 @@ $pn = $_GET['pn'];
 $orgID = $_GET['orgID'];
 $sort_id = $_GET['sort_id'];
 $query = "SELECT * FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
+//AgentProxy
+$title = $GET['title'];
+$dateposted = $GET['dateposted'];
+//
 $result = mysqli_query($dbconn, $query);
 if(mysqli_num_rows($result)>=1){
 	$query = "SELECT approval FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
@@ -33,7 +37,9 @@ if(mysqli_num_rows($result)>=1){
 	if($result){
 		$_SESSION['voted'] = "added";
 		//AGENT PROXY
-			// $query = "insert into"
+			$date = date('Y-m-d H:i:s');
+
+			 $query = "INSERT INTO announcement (date_posted,topic,content,user_id,org_id) VALUES ('$date','Upvote',' upvoted your post titled ',$user_id,$org_id)"
 		//
 	}else{
 		$_SESSION['voted'] = "error";

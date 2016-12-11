@@ -21,18 +21,24 @@
     	unset($_SESSION['voted']);
     }
     if(isset($_POST['cancel_edit'])){
-    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
+    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'&sort_id='.$_GET['sort_id'].'#'.$_GET['edit']);
     }
     if(isset($_POST['submit_edit'])){
-		$today = date('Y-m-d H:i:s');
+		// $today = date('Y-m-d H:i:s');
     	$disc_id=$_GET['edit'];
 		$today = date('Y-m-d H:i:s');
+		$title = htmlspecialchars($_POST['edit_title'],ENT_QUOTES);
+		$content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
     	$edit_query="UPDATE discuss 
-    	    SET title='$_POST[edit_title]', content='$_POST[edit_content]', date_posted='$today'
-    	    	WHERE disc_id=$disc_id";
+    	    SET title='".$title."', content='".$content."', date_posted='".$today."'
+    	    	WHERE disc_id='".$disc_id."'";
     	mysqli_query(connection(), $edit_query);
     	if(mysqli_affected_rows($dbconn)>0){
-	    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
+	    	if($_GET['sort_id']==1){
+	    		header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn=1&sort_id=1');
+	    	}else{
+	    		header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'&sort_id=2#'.$_GET['edit']);
+	    	}
     	}
     	else{
     		echo $disc_id;
@@ -47,7 +53,6 @@
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/discussions.css">
 </head>
@@ -99,7 +104,19 @@
 				<button type="submit" name="date" value="date"> Date </button>
             	<button type="submit" name="votes" value="votes"> Votes </button>
             </form>
-
+            <?php
+            if(!isset($_GET['edit'])){
+			?>
+				<form class="newtopic" method="POST" >
+					<div class="newdiscussion">
+						<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
+						<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
+						<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
+					</div>
+				</form>
+			<?php
+			} 
+			?>
 			<?php
 			if(!empty($org_id)){				
 				$sql = "SELECT COUNT(disc_id) FROM discuss WHERE org_id = $org_id";
@@ -216,9 +233,10 @@
 					$date_posted = $row["date_posted"];
 					$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
 					if(!isset($_GET['edit'])){?>
-						<fieldset class="discussion">
+						<div class="discussion" id="<?=$row['disc_id']?>">
 							<legend>
 								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+								<span class="date"><?=$dateposted?></span>
 							</legend>
 							<?php
 								if(!isset($_GET['pn']))
@@ -254,24 +272,23 @@
 									
 								?>
 
-								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
+								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
 								<label class="votes">Discussion Points:<?=$total_vote?></label>
-								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-								<dt class="date"><?=$dateposted?></dt>
-
+								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
 							</dl>
-						</fieldset><br>
+						</div><br>
 				<?php				
 					}
 					else{
 						if($_GET['edit']==$disc_id){?>
 							<form method='post' id='<?=$disc_id?>'>
-								<fieldset class="posting" id="inner">
+								<div class="newdiscussion" id="inner">
 									<legend>
 										<input type='text' name='edit_title' value='<?=$title?>' />
+										<span class="date"><?=$dateposted?></span>
 									</legend>
 									<dl>
-										<dt>
+										<dt class="user">
 											<?=$username?>
 										</dt>
 										<dt>
@@ -279,26 +296,25 @@
 										</dt>
 										<input type='submit' name='submit_edit' value='Submit'/>
 										<input type='submit' name='cancel_edit' value='Cancel'/>
-										<dt><?=$dateposted?></dt>
 									</dl>
-								</fieldset><br>
+								</div><br>
 							</form>
 			<?php
 						}
 						else{
 							?>
-							<fieldset id="inner">
+							<div class="newdiscussion" id="inner">
 								<legend>
-									<?=$title?>
+									<h2 class="disctitle"><?=$title?></h2>
+									<span class="date"><?=$dateposted?></span>
 								</legend>
 								<dl>
-									<dt>
+									<dt class="user">
 										<?=$username?>
 									</dt>
 									<dt><p><?=$content?></p></dt>
-									<dt><?=$dateposted?></dt>
 								</dl>
-							</fieldset><br>
+							</div><br>
 					<?php 
 						}
 					}
@@ -307,17 +323,8 @@
 			else{?>
 				<p>No other discussions yet.<a href="group_page.php?orgID=<?=$_GET['orgID']?>"><button class="btn btn-1 btn-1a">Back</button></a></p>
 			<?php 
-			} 
+			}
 			?>
-
-			<form class="newtopic" method="POST" >
-				<fieldset class="newdiscussion">
-					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
-					<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
-					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
-				</fieldset>
-			</form>
-
 			<div>
 				<p><?php echo $textline2; ?></p>
 				<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
