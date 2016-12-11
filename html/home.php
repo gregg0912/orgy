@@ -111,7 +111,7 @@
                         <span class="date"><?= $date ?></span>
                         <form method="post" action="">
                             <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
-                            <a href="home.php?id=<?=$id?>">Edit</a>
+                            <a class="remove" href="home.php?id=<?=$id?>"><span class="glyphicon glyphicon-pencil"></span></a>
                         </form>
                         <p class="notif-content">"<?=$message;?>"</p>
                             
