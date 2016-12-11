@@ -3,6 +3,7 @@ session_start();
 include("functions.php");
 $dbconn = connection();
 $user_id = $_SESSION['user_id'];
+$disc_user_id = $_GET['disc_user_id']; // para sa nag post sang discussion
 $upvote = $_GET['approval'];
 $disc_id = $_GET['disc_id'];
 $pn = $_GET['pn'];
@@ -10,8 +11,8 @@ $orgID = $_GET['orgID'];
 $sort_id = $_GET['sort_id'];
 $query = "SELECT * FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
 //AgentProxy
-$title = $GET['title'];
-$dateposted = $GET['dateposted'];
+$title = $_GET['title'];
+$dateposted = $_GET['dateposted'];
 //
 $result = mysqli_query($dbconn, $query);
 if(mysqli_num_rows($result)>=1){
@@ -21,13 +22,38 @@ if(mysqli_num_rows($result)>=1){
 	if($retval['approval']==$upvote){
 		// echo "<script type='text/javascript'>alert('You already voted for that comment!')</script>";
 		$_SESSION['voted'] = "voted";
+
 	}
 	else{
 		$query = "UPDATE disc_upvote SET approval = '".$upvote."' WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
 		$result = mysqli_query($dbconn, $query);
 		if($result){
 			$_SESSION['voted'] = "updated";
-		}else{
+			$date = date('Y-m-d H:i:s');
+			if($upvote=="upvote"){
+				$content = "$_SESSION[username]"." upvoted your post on "."$dateposted"." entitled "."$title";
+				$topic = "Upvote";
+				$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES ('$date','$topic','$content','$disc_user_id','$orgID')";
+				$result = mysqli_query($dbconn, $query);
+			}
+			else if($upvote=="downvote"){
+				$content = $_SESSION['username']." downvoted your post on ".$dateposted." entitled ".$title;
+				$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$date','Downvote','$content','$disc_user_id','$orgID')";
+				$result = mysqli_query($dbconn, $query);
+			}
+				else{
+			
+			}
+				if($result){
+					$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
+		        	$ann_id= mysqli_fetch_assoc($ann);
+		        	$announcement_id=$ann_id['announcement_id'];
+					$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
+					$result = mysqli_query($dbconn, $query);
+				}
+			
+		}
+		else{
 			$_SESSION['voted'] = "error";
 		}
 	}
@@ -35,15 +61,35 @@ if(mysqli_num_rows($result)>=1){
 	$query = "INSERT INTO disc_upvote (dvID,disc_id,user_id,approval) VALUES(NULL, '".$disc_id."', '".$user_id."', '".$upvote."')";
 	$result = mysqli_query($dbconn, $query);
 	if($result){
-		$_SESSION['voted'] = "added";
+		 $_SESSION['voted'] = "added";
 		//AGENT PROXY
-			$date = date('Y-m-d H:i:s');
+		$date = date('Y-m-d H:i:s');
+		if($upvote=="upvote" && ($disc_user_id!=$_SESSION['user_id'])){
 
-			 $query = "INSERT INTO announcement (date_posted,topic,content,user_id,org_id) VALUES ('$date','Upvote',' upvoted your post titled ',$user_id,$org_id)"
-		//
-	}else{
+			$content = $_SESSION['username']."' upvoted your post on '".$dateposted."' entitled '".$title."'";
+			$query = "INSERT INTO announcement (announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$date','Upvote','$content',$disc_user_id,$orgID)";
+			$result = mysqli_query($dbconn, $query);
+		}
+		else if($upvote=="downvote" && ($disc_user_id!=$_SESSION['user_id'])){
+			$content = $_SESSION['username']."' downvoted your post on '".$dateposted."' entitled '".$title."'";
+			$query = "INSERT INTO announcement (announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$date','Downvote','$content',$disc_user_id,$orgID)";
+			$result = mysqli_query($dbconn, $query);
+		}
+
+		else{
+			
+		}
+			if($result && ($disc_user_id!=$_SESSION['user_id'])){
+				$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
+	        	$ann_id= mysqli_fetch_assoc($ann);
+	        	$announcement_id=$ann_id['announcement_id'];
+				$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
+				$result = mysqli_query($dbconn, $query);	
+			}
+	}
+	else{
 		$_SESSION['voted'] = "error";
 	}
 }
-header("Location:discussions.php?orgID=$orgID&pn=$pn&sort_id=$sort_id");
+header("Location:discussions.php?orgID=$orgID&pn=$pn&sort_id=$sort_id#$disc_id");
 ?>
