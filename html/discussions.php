@@ -21,24 +21,18 @@
     	unset($_SESSION['voted']);
     }
     if(isset($_POST['cancel_edit'])){
-    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'&sort_id='.$_GET['sort_id'].'#'.$_GET['edit']);
+    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
     }
     if(isset($_POST['submit_edit'])){
-		// $today = date('Y-m-d H:i:s');
+		$today = date('Y-m-d H:i:s');
     	$disc_id=$_GET['edit'];
 		$today = date('Y-m-d H:i:s');
-		$title = htmlspecialchars($_POST['edit_title'],ENT_QUOTES);
-		$content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
     	$edit_query="UPDATE discuss 
-    	    SET title='".$title."', content='".$content."', date_posted='".$today."'
-    	    	WHERE disc_id='".$disc_id."'";
+    	    SET title='$_POST[edit_title]', content='$_POST[edit_content]', date_posted='$today'
+    	    	WHERE disc_id=$disc_id";
     	mysqli_query(connection(), $edit_query);
     	if(mysqli_affected_rows($dbconn)>0){
-	    	if($_GET['sort_id']==1){
-	    		header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn=1&sort_id=1');
-	    	}else{
-	    		header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'&sort_id=2#'.$_GET['edit']);
-	    	}
+	    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
     	}
     	else{
     		echo $disc_id;
@@ -227,21 +221,17 @@
 					$date_posted = $row["date_posted"];
 					$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
 					if(!isset($_GET['edit'])){?>
-						<div class="discussion" id="<?=$row['disc_id']?>">
+						<div class="discussion">
 							<legend>
-								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+								<span class="date"><?=$dateposted?></span>
 							</legend>
 							<?php
-								if(!isset($_GET['pn']))
-										$pn = 1;
-									else
-										$pn = $_GET['pn'];
-
 								if($user_id==$disc_user_id){
 								?>
 									<button class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button>
 									</form>
-									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&sort_id=<?=$sort_id?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 									<form method="post" action="">
 									
 								<?php
@@ -262,15 +252,14 @@
 									$total_vote = $upvote - $downvote;
 									$update_vote="UPDATE discuss SET votes='".$total_vote."' WHERE disc_id='".$disc_id."'";
 									querySignUp($update_vote);
-									
+									if(!isset($_GET['pn']))
+										$pn = 1;
+									else
+										$pn = $_GET['pn'];
 								?>
-
-								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
+								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
 								<label class="votes">Discussion Points:<?=$total_vote?></label>
-
-								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-								<dt class="date"><?=$dateposted?></dt>
-
+								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
 							</dl>
 						</div><br>
 				<?php				
@@ -319,19 +308,9 @@
 			else{?>
 				<p>No other discussions yet.<a href="group_page.php?orgID=<?=$_GET['orgID']?>"><button class="btn btn-1 btn-1a">Back</button></a></p>
 			<?php 
-			}
-			if(!isset($_GET['edit'])){
-			?>
-				<form class="newtopic" method="POST" >
-					<fieldset class="newdiscussion">
-						<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
-						<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
-						<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
-					</fieldset>
-				</form>
-			<?php
 			} 
 			?>
+
 
 			<div>
 				<p><?php echo $textline2; ?></p>
