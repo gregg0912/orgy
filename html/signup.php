@@ -204,14 +204,14 @@
 						birthday, prof_pic, email) 
 						VALUES('$_POST[student_no]','$_POST[fname]','$_POST[lname]','$_POST[username]', '$pwordNuj','$_POST[degree]',
 							CURDATE(),'$_POST[year]','$_POST[bdate]','$target_file','$_POST[email]')";
-			// querySignUp($query);
-			$uname=$_POST['username'];
-			$pword=md5($_POST['password']);
-	 		$user_id=mysqli_fetch_assoc(select($uname, $pword));
 
 	 		if(querySignUp($query)){
+				$uname=$_POST['username'];
+				$pword=md5($_POST['password']);
+		 		$user_id=mysqli_fetch_assoc(select($uname, $pword));
 	      		$_SESSION['user_id']=$user_id['user_id'];
 	      		$_SESSION['username']=$user_id['username'];
+
 				header("Location: home.php"); //test
 				echo $_SESSION['user_id'];
 			}
@@ -403,6 +403,7 @@
 				<span style="width: 140%" class="input input--isao">
 				<select name="year" class="form-control" id="year" value="<?= isset($_POST['year'])? $_POST['year']:null?>">
 					<optgroup label="Year Level">
+						<option>---</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
