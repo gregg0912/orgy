@@ -9,7 +9,7 @@ ul.announcements-container{
 }
 
 li.announcement,
-form.posting{
+li form.posting{
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	padding: 10px 20px;
 	margin: 30px;
