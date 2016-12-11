@@ -8,8 +8,6 @@
 	redirect();
     $user_id = $_SESSION['user_id'];
     $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
-    $sort_id = $_SESSION['sort_id'];
-
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
     		echo "<script type='text/javascript'>alert('You already voted for that comment!')</script>";
@@ -195,6 +193,9 @@
 	            {
 	            	$sort_id=2;
 	            }
+	            if(isset($_GET['sort_id'])){
+	            	$sort_id = $_GET['sort_id'];
+	            }
               
 				
 				
@@ -217,13 +218,13 @@
 					if ($pagenum > 1) 
 					{
 						$previous = $pagenum - 1;
-						$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+						$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'">Previous</a> &nbsp; &nbsp; ';
 					
 						for($i = $pagenum-4; $i < $pagenum; $i++)
 						{
 							if($i > 0)
 							{
-								$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+								$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
 							}
 						}
 					}
@@ -232,7 +233,7 @@
 					
 					for($i = $pagenum+1; $i <= $last; $i++)
 					{
-						$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+						$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
 						if($i >= $pagenum+4)
 						{
 							break;
@@ -242,7 +243,7 @@
 					if ($pagenum != $last) 
 					{
 						$next = $pagenum + 1;
-						$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'">Next</a> ';
+						$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'">Next</a> ';
 					}
 				}	
 				while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
