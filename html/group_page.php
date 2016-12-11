@@ -20,7 +20,7 @@
       	if(isset($_POST['submit_edit'])){
         	$date = date("Y-m-d h:i:sa");
       		$edit_query="UPDATE announcement 
-      		      			SET date_posted='$date', topic='$_POST[edit_topic]', content='$_POST[edit_content]'
+      		      			SET date_posted='$date', topic='".$_POST['edit_topic']."', content='".$_POST['edit_content']."'
       		      				WHERE announcement_id='$_GET[edit]'";
       		// $edit_query="UPDATE discuss 
     	   //  SET title='$_POST[edit_title]', content='$_POST[edit_content]', date_posted='$today'
@@ -141,7 +141,7 @@
 			</div>
 		<!-- Agent Proxy -->	
 			
-			<?php if($member =='admin'){ ?>
+			<?php if($member =='admin' && !isset($_GET['edit'])){ ?>
 				<form class="posting" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
 					<input type = "text" name = "topic" placeholder = "Topic">
 					<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
@@ -181,28 +181,38 @@
 		    		else{
 			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){?>
 			    			<form id='<?=$_GET['edit']?>' method='post'>
-								<fieldset id="inner">
-				            		<legend style="font-size: 200%; text-align: center;"><input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' /></legend>
-				                	<dl>
-				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
-				                    	<dt><textarea name='edit_content'>"<?= $GrpAnnouncement['content'] ?>"</textarea></dt>
-			                    		<input type='submit' name='submit_edit' value='Done' />
-			                    		<input type='submit' name='cancel_edit' value='Cancel' />
-					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt> 
-				        			</dl>
-					        	</fieldset>
+				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' />
+				            	<span class="date"><?= $datec ?></span>
+				            	<h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+				            	<textarea name='edit_content'><?= $GrpAnnouncement['content'] ?></textarea>
+				            	<input type='submit' name='submit_edit' value='Done' />
+				            	<input type='submit' name='cancel_edit' value='Cancel' />
 					        </form>
 					<?php }
 					     else{ ?>
-					     	<fieldset id="inner">
+					     	<li class="posted-content">
+			            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
+				                <span class="date"><?= $datec ?></span>
+			                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
+		                    	<?php
+		                    	if($user_id==$_SESSION['user_id']){ ?>
+		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+		                    	<?php } ?>
+				                <?php if($member =='admin'){ ?>
+		                        <form method="post" action="" class="delete">
+		                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
+		                        </form>
+		                        <?php } ?> 
+				        	</li>
+					     	<!-- <fieldset id="inner">
 				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
 				                	<dl>
 				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
 				                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
 					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
 				        			</dl>
-					        </fieldset>
-
+					        </fieldset>-->
 					   <?php  }	
 					 }
 		    	}

@@ -13,7 +13,11 @@ w<?php
             h3, p{
                 color: black;}   
             #profile{
-                margin-left: 36%;
+                margin: auto;
+                height: 300px;
+                width: 300px;
+                border-radius: 50%;
+                display: block;
               }
             a{
                 text-decoration: none;
@@ -26,9 +30,13 @@ w<?php
                 margin-left: 90%;
             }
         </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../css/main.css">
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+        <link rel="stylesheet" type="text/css" href="../css/newstyle.css">
         <link rel="stylesheet" type="text/css" href="../css/navigation.css">
 </head>
 <body> 
@@ -91,8 +99,8 @@ w<?php
             $view_orgs=mysqli_query($connectdb,$select_orgs);
         ?>
         <div id="content">
-            <h2><?= $view_info['username'] ?></h2>
-            <img onerror="this.src = '../images/janina.PNG'" id="profile" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
+            <h2><?= $view_info['username'] ?></h2><br>
+            <img onerror="this.src = '../images/janina.PNG'" id="profile" alt="User Profile Picture" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
             <hr>
             <h3>Personal Information</h3>
             <p><label>Name</label>: <?=$view_info['first_name'] ." ". $view_info['last_name']?></p>
