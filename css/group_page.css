@@ -105,3 +105,8 @@ form.posting input[type=submit]{
 .posted-content form.delete{
 	display: inline-block;
 }
+
+.none{
+	margin-top: -100px; 
+	margin-bottom: 200px;
+}
