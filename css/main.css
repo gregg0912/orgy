@@ -3,6 +3,10 @@
 	src: url("font/ChaparralPro-Regular.otf");
 }
 
+*{
+	font-family: Arial;
+}
+
 body{
 	margin: 0;
 }
@@ -54,6 +58,9 @@ input[type=button]:hover,
 input[type=text],
 input[type=password],
 input[type=search],
+input[type=email],
+input[type=date],
+select,
 textarea{
 	padding: 5px 20px;
 	box-sizing: border-box;
@@ -67,6 +74,12 @@ input[type=password]:active,
 input[type=password]:focus,
 input[type=search]:active,
 input[type=search]:focus,
+input[type=email]:active,
+input[type=email]:focus,
+input[type=date]:active,
+input[type=date]:focus,
+select:active,
+select:focus,
 textarea:focus,
 textarea:active{
 	outline: none;
@@ -118,4 +131,9 @@ ul.pagination span:hover{
 	font-family: Arial;
 	display: inline-block;
 	color: #95a5a6;
+}
+
+.none{
+	color: #888;
+	text-align: center;
 }

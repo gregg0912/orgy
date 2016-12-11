@@ -25,12 +25,19 @@ form.posting{
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 	width: 100%;
 	display: flex;
-	position: absolute;
 	flex-direction: column;
 	padding: 20px 20px;
 	background-color: white;
 	border: 1px solid #DDD;
 	box-sizing: border-box;
+}
+
+form.posting.true{
+	position: absolute;
+}
+
+form.posting h3.name{
+	font-weight: normal;
 }
 
 form.posting > *{
@@ -53,7 +60,7 @@ form.posting textarea:focus{
 	height: 200px;
 }
 
-form.posting input[type=submit]{
+form.posting.true input[type=submit]{
 	margin-left: auto;	
 }
 
@@ -87,10 +94,19 @@ form.posting input[type=submit]{
 	margin-left: 10px;
 }
 
+.posted-content a{
+	text-decoration: none;
+}
+
 .posted-content .name{
 	font-weight: normal;
 	font-size: 1em;
 	color: #3498db;
+	margin: 5px 0;
+}
+
+.posted-content .name:hover{
+	text-decoration: underline;
 }
 
 .posted-content .caption{
@@ -104,4 +120,18 @@ form.posting input[type=submit]{
 
 .posted-content form.delete{
 	display: inline-block;
+}
+
+.none{
+	margin-top: -100px; 
+	margin-bottom: 200px;
+}
+
+.group-btn{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.group-btn > *{
+	margin: 0 5px;
 }

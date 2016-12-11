@@ -10,47 +10,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        #pagination{
-          margin-left: 0;
-          padding: 5px;
-          float: left;
-          top: 55%;
-          left: 50%;
-          font-family: 'Arial', sans-serif;
-          font-size: 99%;
-        }
-        #pagination{
-          display: inline-block;
-          padding: 0;
-          margin: 0;
-        }
-        #pagination > li{
-          display: inline;
-        }
-        #pagination > li > a,
-        #pagination > li > span,
-        #pagination > li > b{
-          color: black;
-          float: left;
-          padding: 8px 16px;
-          text-decoration: none;
-          transition: background-color .3s;
-        }
-        #pagination > li a.current{
-          background-color: #a10115;
-          color: white;
-        }
-        #pagination > li a:hover:not(.current){
-          background-color: #FF847C;
-        }
-        #read{
-          float: right;
-        }
-        p{
-          clear:both;
-        }
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
@@ -105,7 +64,7 @@
             $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -136,13 +95,13 @@
             </ul>
         </nav>
     <div id="content">
-        <h2>Notifications</h2>
-        
+        <h1 class="title">Notifications</h1>
+        <p style="color: #740000; font-family: 'Arca Majora 3 Bold', sans-serif; text-align: center;"><?php echo "Today is ".date("m/d/Y")."<br>".date("l"); ?></p>
         <form method="post" action="">
         <button type="submit" name="allread" class="btn btn-1 btn-1a" id="allread"> Mark All as Read </button>
         </form>
             
-        <ul>  
+        <ul class="notifications">  
          <?php
             $query = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.user_id='".$current_id."' ORDER BY date_posted DESC LIMIT $start, $lim" );
             if($total>=1){
@@ -158,22 +117,18 @@
                   $topic = $announcement['topic'];
                   $seenstatus = $announcement['seen']
               ?>
-                  <fieldset id="inner">              
-                      <legend><?php echo $org_name["org_name"];?></legend>
-                      <dl>  
-                          <dt style="font-size: 130%; text-align: center;"><?php echo $topic;?></dt>
-                          <dt>"<?php echo $message;?>"</dt>
-                          
-                          <?php
-                          if($seenstatus == 'not_seen'){ ?>
-                          <form method="post" action="">
-                          <button type="submit" name="<?='Button'."$count" ?>" value="<?=$announcement['announcement_id']?>" class="btn btn-1 btn-1a" id="read"> Mark as Read </button>
-                          <?php $_SESSION['count']=$count; ?>
-                          </form>
-                          <?php } ?>
-                          
-                      </dl>
-                  </fieldset>
+                  <li class="notification">              
+                      <h2 class="org-name"><?php echo $org_name["org_name"];?></h2> 
+                      <h3 class="topic"><?php echo $topic;?></h3>
+                      <p class="message">"<?php echo $message;?>"</p>
+                      <?php
+                      if($seenstatus == 'not_seen'){ ?>
+                      <form method="post" action="">
+                        <button type="submit" name="<?='Button'."$count" ?>" value="<?=$announcement['announcement_id']?>" class="btn btn-1 btn-1a" id="read"> Mark as Read </button>
+                      </form>
+                      <?php $_SESSION['count']=$count; ?>
+                      <?php } ?>
+                  </li>
               <?php $count++;
               }
               pagination($id,$rows,$lim,1,"notif.php?id=%d");
@@ -181,16 +136,10 @@
               <?php }
               else{
               ?>
-                <fieldset id="inner">
-                  <legend style="font-size: 200%; text-align: center;">System</legend>
-                  <dl>
-                    <dt>No new notifications yet.</dt>
-                  </dl>
-                </fieldset>
+              <p class="no-notif">No new notifications yet.</p>
               <?php
               }?>
         </ul>
-             <p style="color: #740000; font-family: 'Arca Majora 3 Bold', sans-serif; text-align: center;"><?php echo "Today is ".date("m/d/Y")."<br>".date("l"); ?></p>
         <footer>CMSC 128 Section 1 | 2016</footer>
     </div>
 </div>

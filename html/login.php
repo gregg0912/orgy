@@ -10,7 +10,7 @@
   <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/newstyle.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/demo.css" />
@@ -27,26 +27,21 @@
   <style type="text/css">
    body
         {
-        background-image: url(../images/sample_background.jpg);
-        background-attachment: fixed;
+        /*background-image: url(../images/sample_background.jpg);*/
+        /*background-attachment: fixed;*/
+        background-color: #eaeaea;
         }
 
     .form-login{
-      background-color: #F9F4F4;
-      /*border: 1px solid rgba(0, 0, 0, 0.5);*/
-      border: 1px solid #333;
-      padding: 1%;
-      /*padding-bottom: 3%;*/
-
-      /*border-radius: 6%;*/
-      
+      padding: 3%;
       width: 28%;
       float: right;
       margin: 0%;
       margin-top: 5%;
-      
+      margin-bottom: 5%;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
-
     #login-form > input
       {
       margin-bottom: 5%;
@@ -54,13 +49,12 @@
 
     #orgy{
       font-size: 1200%;
-      font-family: 'Lobster', cursive !important;
-      /*font-family: 'Arca Majora 3 Bold', sans-serif !important;*/
+      font-family: 'Oswald', sans-serif !important;
       /*text-align: center;*/
       /*margin-top: 50%;*/
       margin-top: 5%;
       margin-right: -5%;
-      color: rgba(255, 255, 255, 0.5);
+      /*color: rgba(255, 255, 255, 0.5);*/
       font-weight: normal;
       /*width: 25%;*/
     }
@@ -86,10 +80,6 @@
       margin-right: 12%;
       display: block;
       float: right;
-    }
-    #loginh2{
-      color: #F8A241;
-      margin-top: 1%;
     }
     #submit
       {
@@ -139,19 +129,19 @@ else{
       <!-- <div class="row"> -->
         <!-- <div class="col-md-offset-5 col-md-3"> -->
           <div class="form-login">
-            <h2 id="loginh2">Log in</h2>
+            <h2>Log in</h2>
             <form method="post" id="login-form">
               <p style="margin-top: 5%; text-align: center; color: black; width: 100%;"><?php echo $message; echo "<br>"; ?></p>
               <span class="input input--hideo">
-                <input class="input__field input__field--hideo" type="text" id="input-41" name="username" placeholder="Username" value="" />
-                <label class="input__label input__label--hideo" for="input-41">
+                <input class="input__field input__field--hideo" type="text" id="username" name="username" placeholder="Username" autocomplete="off" value="" />
+                <label class="input__label input__label--hideo" for="username">
                 <i class="fa fa-fw fa-user icon icon--hideo"></i>
                 <span class="input__label-content input__label-content--hideo">Username</span>
               </label>
             </span>
             <span style="margin-top: -1%" class="input input--hideo">
-              <input class="input__field input__field--hideo" type="password" id="input-43" name="password" placeholder="Password" value="" />
-              <label class="input__label input__label--hideo" for="input-43">
+              <input class="input__field input__field--hideo" type="password" id="password" name="password" placeholder="Password" value="" />
+              <label class="input__label input__label--hideo" for="password">
                 <i class="fa fa-fw fa-lock icon icon--hideo"></i>
                 <span class="input__label-content input__label-content--hideo">Password</span>
               </label>

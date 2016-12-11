@@ -70,6 +70,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
@@ -141,8 +142,8 @@
 			</div>
 		<!-- Agent Proxy -->	
 			
-			<?php if($member =='admin' && !isset($_GET['edit'])){ ?>
-				<form class="posting" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
+			<?php if($member =='admin'){ ?>
+				<form class="posting true" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
 					<input type = "text" name = "topic" placeholder = "Topic">
 					<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
 					<input type="submit" name="add_announcement" value="Post">
@@ -154,8 +155,8 @@
 			if($total>=1){
 				while($GrpAnnouncement = mysqli_fetch_array($query)){
 					$date_c = $GrpAnnouncement["date_posted"];
-						$phpdate = strtotime( $date_c );
-						$datec = date( 'F d, Y h:i:s a', $phpdate );
+					$phpdate = strtotime( $date_c );
+					$datec = date( 'F d, Y h:i:s a', $phpdate );
 		        
 		       	   	$user_id = $GrpAnnouncement['user_id'];
 		            $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
@@ -164,11 +165,11 @@
 						<li class="posted-content">
 		            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
-		                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
 		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id']){ ?>
-	                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+	                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
 	                    	<?php } ?>
 			                <?php if($member =='admin'){ ?>
 	                        <form method="post" action="" class="delete">
@@ -179,16 +180,18 @@
 			        <?php 
 		    		}
 		    		else{
-			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){?>
-			    			<form id='<?=$_GET['edit']?>' method='post'>
-				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' />
-				            	<span class="date"><?= $datec ?></span>
+			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){ ?>
+			    			<form class="posting" id='<?=$_GET['edit']?>' method='post'>
 				            	<h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
-				            	<textarea name='edit_content'><?= $GrpAnnouncement['content'] ?></textarea>
-				            	<input type='submit' name='submit_edit' value='Done' />
-				            	<input type='submit' name='cancel_edit' value='Cancel' />
+				            	<span class="date"><?= $datec ?></span>
+				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' placeholder="Topic">
+				            	<textarea name='edit_content' placeholder="What's happening?"><?= $GrpAnnouncement['content'] ?></textarea>
+				            	<div class="group-btn">
+				            	<input type='submit' name='submit_edit' value='Done' class="done">
+				            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
+				            	</div>
 					        </form>
-					<?php }
+						<?php }
 					     else{ ?>
 					     	<li class="posted-content">
 			            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
@@ -197,7 +200,7 @@
 			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
 		                    	<?php
 		                    	if($user_id==$_SESSION['user_id']){ ?>
-		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
 		                    	<?php } ?>
 				                <?php if($member =='admin'){ ?>
 		                        <form method="post" action="" class="delete">
@@ -205,31 +208,17 @@
 		                        </form>
 		                        <?php } ?> 
 				        	</li>
-					     	<!-- <fieldset id="inner">
-				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
-				                	<dl>
-				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
-				                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
-					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
-				        			</dl>
-					        </fieldset>-->
 					   <?php  }	
-					 }
+					}
 		    	}
-		    	pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
-	        }
-	        else{
-	        ?>
-	        	<fieldset id="inner">
-	        		<legend>System</legend>
-	        		<dl>
-	        			<dt>No new announcements for this group.</dt>
-	        		</dl>
-	        	</fieldset>
-	        <?php
-	        }
-	        ?>
-			</ul>	
+	        } else{ ?>
+	        	<p class="none">No new announcements for this group.</p>
+	        <?php } ?>
+		    </ul> 
+			<?php 
+			if($rows!=0){
+				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
+			} ?>	
 		</div>		
 		<footer>CMSC 128 Section 1 | 2016</footer>
 	</div>

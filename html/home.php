@@ -32,7 +32,7 @@
                 $id=1;
             } 
       $total=ceil($rows/$lim);
-      $query = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') order by date_posted DESC limit $start, $lim");
+      $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
     ?>
     
     <?php
@@ -95,59 +95,74 @@
             <ul class="announcements-container">  
             <?php
             if($total>=1){
+                pagination($id,$rows,$lim,1,"home.php?id=%d");
                 while($announcement = mysqli_fetch_array($query)){
                     $org_id = $announcement['org_id'];
                     $date = $announcement['date_posted'];
                     $message = $announcement['content'];
                     $user_id = $announcement['user_id'];
-                    $orgsy = mysqli_query($connectdb, "select org_name from orgs where org_id = $org_id");
+                    $orgsy = mysqli_query($connectdb, "SELECT org_name FROM orgs WHERE org_id = $org_id");
                     $org_name = mysqli_fetch_assoc($orgsy);
-                    $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
+                    $username = mysqli_query($connectdb, "SELECT first_name, last_name FROM user WHERE user_id = $user_id");
                     $name = mysqli_fetch_assoc($username);
+                    if(!isset($_GET['edit'])){
                     ?>
-                    
-                    <li class="announcement">          
-                        <h2 class="org-name"><?php echo $org_name["org_name"];?></h2>
-                        <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
-                        <span class="date"><?= $date ?></span>
-                        <form method="post" action="">
-                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button> 
-                        </form>
-                        <p class="notif-content">"<?=$message;?>"</p>
-                            
+                        <li class="announcement">          
+                            <a href="group_page.php?orgID=<?=$org_id?>" style='color: black;'><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
+                            <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
+                            <span class="date"><?= $date ?></span>
+                            <?php
+                                $current_userid = $_SESSION['user_id'];
+                                $checker_query = "SELECT * FROM joined WHERE user_id = $current_userid AND org_id = $org_id";
+                                $check_result = mysqli_query($connectdb, $checker_query);
+                              
+                                while($result = mysqli_fetch_assoc($check_result)){
+                                      $member = $result['membership_type'];
+                                }
+                            ?>
+
+                            <?php
+                                if($member =='admin'){
+                                    if($current_userid == $user_id){ ?>
+                                        <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <?php } ?>
+                                    <form method="post" action="">
+                                        <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </form>
+                                <?php $_SESSION['count']=$count; ?>
+                            <?php } 
+                            ?>
+                            <p class="notif-content">"<?=$message;?>"</p>
+                        </li>
+                    <?php
+                    }else{
+                        if($_GET['edit']==$announcement['announcement_id']){
+                        ?>
+                            <form class="posting">
+                                
+                            </form>
                         <?php
-                            $current_userid = $_SESSION['user_id'];
-                            $checker_query = "select * from joined where user_id = $current_userid and org_id = $org_id";
-                            $check_result = mysqli_query($connectdb, $checker_query);
-                          
-                            while($result = mysqli_fetch_assoc($check_result)){
-                                  $member = $result['membership_type'];
-                            }
+                        }else{
                         ?>
 
                         <?php
-                            if($member =='admin'){ ?>
-
-                            <?php $_SESSION['count']=$count; ?>
-                        <?php } 
-                        ?>
-                    </li>
-                <?php
+                        }
+                    }
                     $count++; 
                 }
+                pagination($id,$rows,$lim,1,"home.php?id=%d");
             }else{
             ?>
-                <fieldset id="inner">
-                <legend>System</legend>
-                <dl>
-                    <dt><p>You don't have any new announcements yet.</p></dt>
-                </dl>
-                </fieldset>
+                <li class="announcement">
+                <h2 class="org-name">System</h2>
+                <h3 class="name">Admin</h3>
+                <span class="date"><?php date("m/d/Y")?></span>
+                <p class="notif-content">You don't have any announcements yet.</p>
+                </li>
             <?php
             }
             ?>
             </ul>
-            <?php pagination($id,$rows,$lim,1,"home.php?id=%d"); ?>
         <footer>CMSC 128 Section 1 | 2016</footer>
         </div>
     </div>
