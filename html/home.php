@@ -52,7 +52,8 @@
         $date = date("Y-m-d h:i:sa");
         $edit_query = "UPDATE announcement
                         SET date_posted='$date', topic='".$_POST['edit_topic']."', content = '".$_POST['edit_content']."'
-                        WHERE announcement_id='$_GET[edit]'";
+                        WHERE announcement_id='".$_GET['edit']."'";
+        echo "$edit_query";
         querySignUp($edit_query);
         header('Location:home.php');
     }elseif(isset($_POST['cancel_edit'])){
