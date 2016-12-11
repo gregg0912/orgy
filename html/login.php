@@ -27,9 +27,14 @@
   <style type="text/css">
    body
         {
-        /*background-image: url(../images/sample_background.jpg);*/
-        /*background-attachment: fixed;*/
+        /*background-image: url(../images/sample_background.jpg);
+        background-attachment: fixed;*/
+        background-image: url(../images/Oble.png);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 65% 100%;
         background-color: #eaeaea;
+        background-position: 20% 50%;
         }
 
     .form-login{
@@ -48,8 +53,9 @@
       }
 
     #orgy{
-      font-size: 1200%;
-      font-family: 'Oswald', sans-serif !important;
+      font-size: 1000%;
+      font-family:'Josefin Slab', serif; !important;
+      color: #753131;
       /*text-align: center;*/
       /*margin-top: 50%;*/
       margin-top: 5%;

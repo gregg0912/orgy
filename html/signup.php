@@ -31,13 +31,21 @@
 
 		body
 	      {
-	      background-image: url(../images/sample_background.jpg);
+	     /* background-image: url(../images/sample_background.jpg);
+	      background-attachment: fixed;*/
+	      background-image: url(../images/Oble.png);
 	      background-attachment: fixed;
+	      background-repeat: no-repeat;
+	      /*background-position: center;*/
+	      background-size: 65% 100%;
+	       background-color: #eaeaea;
+	       background-position: 20% 50%;
 	      }
 		.jumbotron, #content >.container{
 			/*background: rgba(44, 62, 80, 0.2);*/
 			background-color: #F9F4F4;
-      		border: 1px solid #333;
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      		/*border: 1px solid #333;*/
 			/*height: auto;
 			margin-left: 60%;
 			width: 28%;
