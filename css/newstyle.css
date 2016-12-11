@@ -6,7 +6,9 @@
 body{
 	background: #eaeaea;
 }
-
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #F9F4F4 inset;
+}
 h2{
 	color: #740000;
 	line-height: 100%;

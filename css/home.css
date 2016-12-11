@@ -43,8 +43,15 @@ li.announcement form{
 	display: inline-block;
 	float: right;
 }
-
-li.announcement .remove{
+/*.edit{
+	transform: translate(5px,-3px);
+	font-size: 0.7em;
+	padding: 3px 10px;
+	display: inline-block;
+	padding: 5px 5px 3px 5px;
+	border-radius: 50%;
+}*/
+li.announcement .remove, .edit{
 	border-radius: 50%;
 	padding: 5px 5px 3px 5px;
 	display: inline-block;
@@ -55,25 +62,19 @@ li.announcement .remove{
 	margin-right: -10px;
 }
 
-li.announcement .remove span{
+li.announcement .remove span, .edit span{
 	line-height: 1em;
 }
 
-li.announcement .remove:hover{
+li.announcement .remove:hover, .edit:hover{
 	transform: scale(0.9, 0.9);
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	opacity: 1;
 }
 
 li.announcement .remove:active,
-li.announcement .remove:focus{
+li.announcement .remove:focus,
+.edit:active, .edit:focus{
 	outline: none;
-}
-
-.edit{
-	transform: translate(5px,-3px);
-	font-size: 0.7em;
-	padding: 3px 10px;
-	display: inline-block;
 }
 
