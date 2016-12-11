@@ -137,9 +137,15 @@
 	            }
 				if(isset($_POST['date'])){
 	            	$sort_id=1;
+	    	       	//AGENTPROXY[069]
+					header("Location: discussions.php?orgID=$org_id&pn=1&sort_id=$sort_id");
+					// //
 	            }
 	            if(isset($_POST['votes'])){
 	            	$sort_id=2;
+	            	//AGENTPROXY[069]
+					header("Location: discussions.php?orgID=$org_id&sort_id=$sort_id&pn=1");
+					// //
 	            }
 	            if(isset($_GET['sort_id'])){
 	            	$sort_id = $_GET['sort_id'];
@@ -150,10 +156,16 @@
 				if($sort_id==1)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY date_posted DESC $limit";
+					//AGENTPROXY[069]
+					//header("Location: discussions.php?orgID=$orgID&sort_id=$sort_id&pn=1");
+					//
 				}
 				if($sort_id==2)
 				{
 					$sql = "SELECT * FROM discuss natural join user natural join orgs WHERE org_id = $org_id ORDER BY votes DESC $limit";
+					//AGENTPROXY[069]
+					//header("Location: discussions.php?orgID=$orgID&sort_id=$sort_id&pn=1");
+					
 				}
 				$query = mysqli_query($dbconn, $sql);
 
