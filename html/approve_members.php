@@ -227,13 +227,14 @@
 						}
 					?>
 						
-				<!-- Agent Proxy -->
-					<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="groupback">Group Page</a><br>
 					<?php
 						$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
 						$penders = mysqli_query($connectdb,$query_penders);
 						$count=0;
-						?> <ul id='see_group'> <?php
+						?> 
+						<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="backgroup" >Group Page</a><br>
+						<ul id='see_group'>
+						<?php
 						while($pendering=mysqli_fetch_assoc($penders)){ ?>
 							<li class='joinGroup'>
 								<label class='orgname'><?=elipse($pendering['username'])?></label>

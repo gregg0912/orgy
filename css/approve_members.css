@@ -72,8 +72,22 @@
 }
 
 .orglink:hover{
-	background-color: #ff8a80;;
+	background-color: #ff8a80;
 	
+}
+
+.backgroup:hover{
+	background-color: #ff8a80;
+}
+.backgroup{
+	text-decoration: none;
+	background-color: #e74c3c;
+	font-size: 120%;
+	color: white;
+	font-family: Arial;
+	text-align: center;
+	margin: 10px auto 10px auto ;
+	padding: 0.5%;
 }
 
 .joinGroup .buttoncustom{
