@@ -206,6 +206,7 @@
 					   <?php  }	
 					 }
 		    	}
+		    	pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
 	        }
 	        else{
 	        ?>
@@ -218,11 +219,7 @@
 	        <?php
 	        }
 	        ?>
-			</ul>
-			<?php 
-			if($rows!=0){
-				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
-			} ?>	
+			</ul>	
 		</div>		
 		<footer>CMSC 128 Section 1 | 2016</footer>
 	</div>
