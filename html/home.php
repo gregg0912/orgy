@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
@@ -50,13 +50,16 @@
     }
     if(isset($_POST['submit_edit'])){
         $date = date("Y-m-d h:i:sa");
+        $topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
+        $content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
         $edit_query = "UPDATE announcement
-                        SET date_posted='$date', topic='".$_POST['edit_topic']."', content = '".$_POST['edit_content']."'
-                        WHERE announcement_id='$_GET[edit]'";
+                        SET date_posted='$date', topic='".$topic."', content = '".$content."'
+                        WHERE announcement_id='".$_GET['edit']."'";
+        echo "$edit_query";
         querySignUp($edit_query);
         header('Location:home.php');
     }elseif(isset($_POST['cancel_edit'])){
-        header('Location:home.php');
+        header('Location:home.php?id='.$_GET['id'].'#'.$_GET['edit']);
     }
     
     ?>
@@ -118,7 +121,7 @@
                     if(!isset($_GET['edit'])){
                     ?>
                         <li class="announcement">          
-                            <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
+                            <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name" id="<?=$announcement['announcement_id']?>"><?php echo $org_name["org_name"];?></h2></a>
                             <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
                             <?php
                                 $current_userid = $_SESSION['user_id'];
@@ -128,15 +131,14 @@
                                 while($result = mysqli_fetch_assoc($check_result)){
                                       $member = $result['membership_type'];
                                 }
-                                if($member =='admin'){
+                                if(($member =='admin') && ($announcement['topic']!="Request"||$announcement['topic']!="Accepted"||$announcement['topic']!="Rejected")){
                                     ?>
                                     <form method="post" action="">
-                                        <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
                                         <?php
                                         if($current_userid == $user_id && !(($announcement['topic']=="Rejected")||($announcement['topic']=="Accepted")||($announcement['topic']=="Kicked"))){ ?>
-                                       
-                                    <?php } ?>
+                                            <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <?php } ?>
+                                        <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
                                     </form>
                                 <?php $_SESSION['count']=$count;
                                 } 
@@ -149,6 +151,7 @@
                     }else{
                         if($_GET['edit']==$announcement['announcement_id']){
                         ?>
+                        <li>
                             <form class="posting" id="<?=$_GET['edit']?>" method="post">
                                 <h2 class="org-name"><?php echo $org_name['org_name']?></h2>
                                 <h3 class="name"><?php echo $name['first_name']." ".$name['last_name']?></h3>
@@ -159,6 +162,7 @@
                                     <input type="submit" name="cancel_edit" value="Cancel" class="cancel">
                                 </div>
                             </form>
+                        </li>
                         <?php
                         }else{
                         ?>
