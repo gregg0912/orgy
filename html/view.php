@@ -9,8 +9,24 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Group Description</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			#imagev{
+				margin: auto;
+                height: 300px;
+                width: 300px;
+                border-radius: 50%;
+                display: block;
+			}
+			p{
+				text-align: center;
+			}
+		</style>
 	</head>
 	<body>
 	<div id="wrapper">
@@ -61,19 +77,19 @@
 						$query3 = mysqli_query($connectdb, "SELECT org_name, photo, description from orgs WHERE org_id = $id");
 
 						while(list($orgName, $photo, $des)=mysqli_fetch_array($query3)){ ?>
-							<h2 id="label"><?=$orgName?></h2>
-							<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$photo?>"><br>
+							<h2><?=$orgName?></h2>
+							<img onerror="this.src = '../images/janina.PNG'" id="imagev" src="<?=$photo?>"><br>
 							<!-- <label id="label"><?=$orgName?></label> -->
 							<p><?=$des?></p>
 						<?php } 
 						?>
 						<!-- <a href="explore.php?org_type=<?php echo $org_type?>&id=<?=$pageid?>"><button  onclick="history.go(-1);">Go Back to Exploring</button></a> -->
-						<a href="add.php?org_id=<?=$id?>" class="btn btn-1 btn-1a" style="margin-left: 69%;">Add Org</a>
-						<button class="btn btn-1 btn-1a" onclick="history.go(-1);">Go Back to Exploring</button>
+						<a class="btn btn-1 btn-1a" href="add.php?org_id=<?=$id?>" style="margin-left: 69%; color: #333;"><span class="glyphicon glyphicon-plus-sign"></span> Add Org</a>
+						<button class="btn btn-1 btn-1a" onclick="history.go(-1);" style="color: white;"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to Exploring</button>
 				</ul>
 			</div>
+			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
-		<footer>CMSC 128 Section 1 | 2016</footer>
 	</div>
 	</body>
 </html>
