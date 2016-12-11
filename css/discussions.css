@@ -1,0 +1,115 @@
+
+#discussions{
+	top: 0; 
+	margin: 0;
+}
+fieldset.discussion{
+	/*box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	width: 100%;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	padding: 20px 20px;
+	background-color: white;
+	border: 1px solid #DDD;
+	box-sizing: border-box;*/
+	margin-top: 10px;
+	width: 60%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+fieldset.discussion .remove, 
+fieldset.discussion .edit{
+	border-radius: 50%;
+	padding: 5px 5px 3px 5px;
+	display: inline-block;
+	top: 5px;
+	right: 5px;
+	transition: 0.2s;
+	transform: scale(0.7, 0.7);
+	opacity: 0.5;
+	margin-right: -10px;
+}
+
+fieldset.discussion .remove span,
+fieldset.discussion .edit span{
+	line-height: 1em;
+}
+
+fieldset.discussion .remove:hover, 
+fieldset.discussion .edit:hover{
+	transform: scale(0.9, 0.9);
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	opacity: 1;
+}
+
+
+#discussions .newtopic{
+	float: right;
+	position: absolute;
+	right: 25px;
+	top: 27vh;
+	height: 70%;
+	width: auto;
+}
+
+.discussion legend a{
+	font-size: 1.2em;
+	font-family: Arial;
+
+}
+
+fieldset.newdiscussion{
+	height: 70%;
+	border-style: none;
+}
+
+
+fieldset textarea,
+fieldset input[type=text]{ 
+	padding: 10px 20px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+fieldset input[type=text]{
+	width: 300px;
+	margin-left: auto;
+
+}
+
+fieldset textarea{
+	resize: none;
+	height: 200px;
+	width: 300px;
+	transition: 0.2s;
+}
+.btn{
+	margin: 10px 5px 10px auto;
+	display: block;
+}
+
+
+/*
+fieldset > *{
+	margin: 5px 0;
+	font-family: Arial;
+}
+
+fieldset textarea,
+fieldset input[type=text]{
+	padding: 10px 20px;
+}
+
+fieldset textarea{
+	resize: none;
+	height: 40px;
+	transition: 0.2s;
+}
+
+fieldset textarea:focus{
+	height: 200px;
+}
+
+fieldset input[type=submit]{
+	margin-left: auto;	
+}*/
