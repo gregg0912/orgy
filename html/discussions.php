@@ -266,8 +266,7 @@
 											$pn = $_GET['pn'];
 									?>
 									<div class="app">
-										
-										<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
+										<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
 										<label class="votes">Discussion Points:<?=$total_vote?></label>
 										<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
 									</div>
@@ -301,44 +300,7 @@
 							}
 							else{
 								?>
-<!-- =======
-									$up_query = "SELECT * FROM disc_upvote WHERE disc_id = '".$disc_id."' AND approval = 'upvote'";
-									$up_result = querySignUp($up_query);
-									$upvote = mysqli_num_rows($up_result);
-									$down_query = "SELECT * FROM disc_upvote WHERE disc_id = '".$disc_id."'AND approval = 'downvote'";
-									$down_result = mysqli_query($connectdb, $down_query);
-									$downvote = mysqli_num_rows($down_result);
-									$total_vote = $upvote - $downvote;
-									$update_vote="UPDATE discuss SET votes='".$total_vote."' WHERE disc_id='".$disc_id."'";
-									querySignUp($update_vote);
-									if(!isset($_GET['pn']))
-										$pn = 1;
-									else
-										$pn = $_GET['pn'];
-								?>
 
-								<div class="app">
-		
-								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
-								<label class="votes">Discussion Points:<?=$total_vote?></label>
-								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-								<dt class="date"><?=$dateposted?></dt>
-
-								</div>
-
-
-								<div class="app">
-								
-								</form>
-
-							</dl>
-						</div>
-				<?php				
-					}
-					else{
-						if($_GET['edit']==$disc_id){?>
-							<form method='post' id='<?=$disc_id?>'>
->>>>>>> be2b90f9de4f3fbfd0f7c768c1139ced5c9e13fe -->
 								<div class="newdiscussion" id="inner">
 									<legend>
 										<h2 class="disctitle"><?=$title?></h2>
