@@ -110,7 +110,6 @@
                         <li class="announcement">          
                             <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
                             <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
-                            <h3 class="topic"><?=$announcement['topic']?></h3>
                             <?php
                                 $current_userid = $_SESSION['user_id'];
                                 $checker_query = "SELECT * FROM joined WHERE user_id = $current_userid AND org_id = $org_id";
@@ -131,6 +130,7 @@
                                 <?php $_SESSION['count']=$count;
                                 } 
                             ?>
+                            <h3 class="topic"><?=$announcement['topic']?></h3>
                             <span class="date"><?= $date ?></span>
                             <p class="notif-content">"<?=$message;?>"</p>
                         </li>

@@ -71,6 +71,12 @@
 
 }
 
+.orglink:hover{
+	/*color: #333;*/
+	background-color: #ff8a80;;
+	
+}
+
 .joinGroup .buttoncustom{
 	text-decoration: none;
 	width: 50%;
