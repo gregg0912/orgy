@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
 		<link rel="stylesheet" type="text/css" href="../css/groups.css">
 		
 	</head>
@@ -90,21 +90,22 @@
 							while(list($orgid,$orgName, $photo,$memType)=mysqli_fetch_row($result)){
 					?>
 							<li class="joinGroup">
-								<label class="orgname"><?=elipse($orgName)?></label>
-								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$photo?>">
-								<label class="status"><?=detMemType($memType)?></label>
-								<?php
-									if ($memType!="pending") {
-									?>
-									<a class="orglink" href="group_page.php?orgID=<?=$orgid?>"><?=elipse($orgName)?></a>
+									<label class="orgname"><?=elipse($orgName)?></label>
+									<img id="image" src="<?=$photo?>" onerror="this.src = '../images/janina.PNG'" >
+									<label class="status"><?=detMemType($memType)?></label>
 									<?php
-									}else{
+										if ($memType!="pending") {
+										?>
+										<a class="orglink" href="group_page.php?orgID=<?=$orgid?>"><?=elipse($orgName)?></a>
+										<?php
+										}else{
+										?>
+										<a class="buttoncustom" href="cancel.php?orgID=<?=$orgid?>&id=<?=$id?>">Cancel Request</a>
+										<?php
+										}
 									?>
-									<a class="buttoncustom" href="cancel.php?orgID=<?=$orgid?>&id=<?=$id?>">Cancel Request</a>
-									<?php
-									}
-								?>
 							</li>
+								
 						<?php
 							}
 							pagination($id,$rows,$lim,1,"groups.php?id=%d");
@@ -113,7 +114,8 @@
 						else{
 							echo "<p>You still haven't joined an org yet! Try <a href='explore.php'>Exploring</a> a bit.</p>";
 						}
-					?>
+					?>							
+				
 				</ul>
 				<?php
 					if(isset($_SESSION['deleted'])&&isset($_SESSION['orgName'])){
