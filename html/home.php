@@ -43,7 +43,7 @@
                 $query_delete2= "delete from announcement where announcement_id='$value'";
                 $result=mysqli_query($connectdb,$query_delete);
                 $result=mysqli_query($connectdb,$query_delete2);
-                header("Location:home.php");
+                header("Location:home.php?id=".$_GET['id']);
             }
                    
         }
@@ -137,8 +137,8 @@
                                         <?php
                                         if($current_userid == $user_id && !(($announcement['topic']=="Rejected")||($announcement['topic']=="Accepted")||($announcement['topic']=="Kicked"))){ ?>
                                             <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <?php } ?>
                                         <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
+                                        <?php } ?>
                                     </form>
                                 <?php $_SESSION['count']=$count;
                                 } 

@@ -169,8 +169,6 @@
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
 	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
-	                    	<?php } ?>
-			                <?php if($member =='admin'){ ?>
 	                        <form method="post" action="" class="delete">
 	                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
 	                        </form>
