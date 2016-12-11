@@ -15,14 +15,16 @@ li form.posting{
 	margin: 30px;
 }
 
-li.announcement .org-name{
+li.announcement .org-name,
+li form.posting .org-name{
 	font-size: 1.3em;
 	margin: 2px;
 	font-family: Arial;
 	display: inline-block;
 	font-weight: normal;
 }
-li.announcement .topic{
+li.announcement .topic,
+li form.posting input[type=text]{
 	font-size: 1.0em;
 	margin: 2px;
 	font-family: Arial;
@@ -40,7 +42,8 @@ a{
 	text-decoration: underline;
 }
 
-li.announcement .name{
+li.announcement .name,
+li form.posting .name{
 	font-size: 1em;
 	margin: 2px;
 	font-family: Arial;
@@ -49,13 +52,25 @@ li.announcement .name{
 	font-weight: normal;
 }
 
-li.announcement .notif-content{
+li.announcement .notif-content,
+li form.posting textarea{
 	font-size: 1em;
 	margin: 2px;
 	font-family: Arial;
 	display: block;
 }
-
+li form.posting textarea{
+	resize: none;
+	height: 40px;
+	transition: 0.2s;
+}
+li form.posting textarea:focus{
+	height: 200px;
+}
+li form.posting textarea,
+li form.posting input[type=text]{
+	width: 100%;
+}
 li.announcement form:not(.posting){
 	display: inline-block;
 	float: right;

@@ -19,8 +19,10 @@
         }
       	if(isset($_POST['submit_edit'])){
         	$date = date("Y-m-d h:i:sa");
+        	$topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
+        	$content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
       		$edit_query="UPDATE announcement 
-      		      			SET date_posted='$date', topic='".$_POST['edit_topic']."', content='".$_POST['edit_content']."'
+      		      			SET date_posted='$date', topic='".$topic."', content='".$content."'
       		      				WHERE announcement_id='$_GET[edit]'";
       		querySignUp($edit_query);
       		header('Location: group_page.php?orgID='.$_GET['orgID']);
