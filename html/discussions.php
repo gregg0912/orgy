@@ -94,17 +94,23 @@
 		<div id="discussions">
 			<h1 class="title">Discussions</h1>
 			<form method="post" action="" class="sort">
-				<p>Sort by:</p> 
-				<button type="submit" name="date" value="date" id="sortdate"> Date </button>
-            	<button type="submit" name="votes" value="votes" id="sortvote"> Votes </button>
+				<span>Sort by:</span> 
+				<button type="submit" name="date" value="date"> Date </button>
+            	<button type="submit" name="votes" value="votes"> Votes </button>
             </form>
-            <form class="newtopic" method="POST" >
-				<div class="newdiscussion">
-					<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
-					<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
-					<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
-				</div>
-			</form>
+            <?php
+            if(!isset($_GET['edit'])){
+			?>
+				<form class="newtopic" method="POST" >
+					<div class="newdiscussion">
+						<legend><input type="text" name="topicname" placeholder="Topic"/></legend>
+						<textarea name="discussion_text" placeholder="Write something to discuss..."></textarea>
+						<input class="btn btn-1 btn-1a" type="submit" name="submit" value="Post">
+					</div>
+				</form>
+			<?php
+			} 
+			?>
 			<?php
 			if(!empty($org_id)){				
 				$sql = "SELECT COUNT(disc_id) FROM discuss WHERE org_id = $org_id";
@@ -223,14 +229,15 @@
 					if(!isset($_GET['edit'])){?>
 						<div class="discussion">
 							<legend>
-								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+
+								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+
 								<span class="date"><?=$dateposted?></span>
 							</legend>
 							<?php
 								if($user_id==$disc_user_id){
 								?>
 									<button class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button>
-									</form>
 									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 									<form method="post" action="">
 									
@@ -257,11 +264,16 @@
 									else
 										$pn = $_GET['pn'];
 								?>
-								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
+								<div class="app">
+									
+								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
 								<label class="votes">Discussion Points:<?=$total_vote?></label>
-								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
+								</div>
+								
+								</form>
 							</dl>
-						</div><br>
+						</div>
 				<?php				
 					}
 					else{
@@ -308,12 +320,12 @@
 			else{?>
 				<p>No other discussions yet.<a href="group_page.php?orgID=<?=$_GET['orgID']?>"><button class="btn btn-1 btn-1a">Back</button></a></p>
 			<?php 
-			} 
+
+			}
 			?>
 
-
 			<div>
-				<p><?php echo $textline2; ?></p>
+				<p>"<?php echo $textline2; ?>"</p>
 				<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 			</div>
 			

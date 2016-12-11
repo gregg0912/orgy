@@ -17,22 +17,36 @@
 
 
 .discussion{
-	height: 200px;
+	min-height: 220px;
 	padding: 10px 10px;
 	border-style: none;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-.discussion .up, .down, .votes{
-	display: inline;
-	float: left;
-	margin: 10px 7px;
+.down{
+	margin-bottom: -2px;	
 }
 
-.discussion .up:hover, .down:hover{
+.app{
+	display: inline-block;
+	float: left;
+
+}
+
+.discussion .app .up, .down, .votes{
+	padding: 10px 3px;
+	
+}
+
+.up:hover, .down:hover{
 	transform: scale(0.9, 0.9);
 	border-radius: 50%;
 
+}
+
+form.sort{
+	text-align: center;
+	padding: 10px;
 }
 
 
@@ -46,12 +60,13 @@
     background-color: white;
     border: 1px solid #DDD;
     box-sizing: border-box;
+    height: auto;
 
 }
 
 .discussion, 
 .newdiscussion{
-	margin: 10px auto 10px auto;
+	margin: 15px auto 15px auto;
 	box-sizing: border-box;
 	width: 50%;
 
