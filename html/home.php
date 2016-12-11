@@ -123,7 +123,7 @@
                                     <form method="post" action="">
                                         <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
                                         <?php
-                                        if($current_userid == $user_id){ ?>
+                                        if($current_userid == $user_id && !(($announcement['topic']=="Rejected")||($announcement['topic']=="Accepted")||($announcement['topic']=="Kicked"))){ ?>
                                         <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <?php } ?>
                                     </form>
