@@ -180,17 +180,13 @@
 
 				$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 
-				 if(!isset($_POST['date']) && !isset($_POST['votes']))
-	            {
+				if(!isset($_POST['date']) && !isset($_POST['votes'])){
 	            	$sort_id=1;
 	            }
-
-				if(isset($_POST['date']))
-	            {
+				if(isset($_POST['date'])){
 	            	$sort_id=1;
 	            }
-	            if(isset($_POST['votes']))
-	            {
+	            if(isset($_POST['votes'])){
 	            	$sort_id=2;
 	            }
 	            if(isset($_GET['sort_id'])){
