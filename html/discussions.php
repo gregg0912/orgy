@@ -250,9 +250,9 @@
 									else
 										$pn = $_GET['pn'];
 								?>
-								<a href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+								<a href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-up"></i></a>
 								<label>Discussion Points:<?=$total_vote?></label>
-								<a href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+								<a href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><i class="fa fa-thumbs-down"></i></a>
 								<dt><?=$dateposted?></dt>
 							</dl>
 						</fieldset><br>
