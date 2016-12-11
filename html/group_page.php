@@ -143,7 +143,7 @@
 		<!-- Agent Proxy -->	
 			
 			<?php if($member =='admin'){ ?>
-				<form class="posting" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
+				<form class="posting true" action = "group_page.php?orgID=<?=$orgid?>" method = "get">
 					<input type = "text" name = "topic" placeholder = "Topic">
 					<textarea rows="4" cols="30" name = "new_announcement" placeholder = "What's happening?"></textarea>
 					<input type="submit" name="add_announcement" value="Post">
@@ -182,12 +182,14 @@
 		    		else{
 			    		if($_GET['edit']==$GrpAnnouncement['announcement_id']){ ?>
 			    			<form class="posting" id='<?=$_GET['edit']?>' method='post'>
-				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' />
-				            	<span class="date"><?= $datec ?></span>
 				            	<h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
-				            	<textarea name='edit_content'><?= $GrpAnnouncement['content'] ?></textarea>
-				            	<input type='submit' name='submit_edit' value='Done' />
-				            	<input type='submit' name='cancel_edit' value='Cancel' />
+				            	<span class="date"><?= $datec ?></span>
+				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' placeholder="Topic">
+				            	<textarea name='edit_content' placeholder="What's happening?"><?= $GrpAnnouncement['content'] ?></textarea>
+				            	<div class="group-btn">
+				            	<input type='submit' name='submit_edit' value='Done' class="done">
+				            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
+				            	</div>
 					        </form>
 						<?php }
 					     else{ ?>
