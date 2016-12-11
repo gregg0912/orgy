@@ -72,8 +72,11 @@
 }
 
 .orglink:hover{
+	background-color: #ff8a80;	
+}
+
+.orgname:hover{
 	background-color: #ff8a80;
-	
 }
 
 .backgroup:hover{

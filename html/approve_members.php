@@ -232,12 +232,12 @@
 						$penders = mysqli_query($connectdb,$query_penders);
 						$count=0;
 						?> 
-						<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="backgroup" >Group Page</a><br>
+						<a href="group_page.php?orgID=<?= $orgid ?>" id="grppage" class="backgroup" >Back</a><br>
 						<ul id='see_group'>
 						<?php
 						while($pendering=mysqli_fetch_assoc($penders)){ ?>
 							<li class='joinGroup'>
-								<label class='orgname'><?=elipse($pendering['username'])?></label>
+								<a href = 'viewprofile.php?user_id=<?=$current_id?>'  class='orgname'><?=elipse($pendering['username'])?></a>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
 								<form method="post">
 									<div>
@@ -249,19 +249,18 @@
 							</li>				
 						<?php $count++; 
 						} ?>
+							<?php 
+					        if($rows <= 0){ ?>
+					            <p class="no-pending"> No pending members. </p> <?php
+					        }
+					        else { ?>
+
+					        	<?php
+									pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
+							}  ?>
 						</ul>
 
 
-					<?php 
-			        if($rows <= 0){ ?>
-			            <p class="no-pending"> No pending members. </p> <?php
-			        }
-			        else { ?>
-
-			        	<?php
-							pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
-						}  
-						?>
 				</div>
 				<footer>CMSC 128 Section 1 | 2016</footer>
 			</div>
