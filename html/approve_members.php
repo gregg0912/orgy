@@ -237,7 +237,7 @@
 						<?php
 						while($pendering=mysqli_fetch_assoc($penders)){ ?>
 							<li class='joinGroup'>
-								<a href = 'viewprofile.php?user_id=<?=$current_id?>'  class='orgname'><?=elipse($pendering['username'])?></a>
+								<a href = 'viewprofile.php?user_id=<?=$pendering['user_id']?>'  class='orgname'><?=elipse($pendering['username'])?></a>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>" >
 								<form method="post">
 									<div>
