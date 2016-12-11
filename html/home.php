@@ -3,6 +3,7 @@
     include ("functions.php");
     $connectdb = connection();
     redirect();
+    $set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
     $count=0; 
 ?>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-    <?php
+<?php
         $curnt_id = $_SESSION['user_id'];
         $query1 = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') order by date_posted DESC ");
         $rows = mysqli_num_rows($query1);
@@ -31,25 +32,34 @@
             else{
                 $id=1;
             } 
-      $total=ceil($rows/$lim);
-      $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
-    ?>
+    $total=ceil($rows/$lim);
+    $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
     
-    <?php
-             if($_POST){       
-                for($x=0;$x<=$_SESSION['count'];$x++){
-                    if(isset($_POST['Button'.$x])){
-                        $value = $_POST['Button'.$x];
-                        $query_delete= "delete from seen_announcement where announcement_id='$value'";
-                        $query_delete2= "delete from announcement where announcement_id='$value'";
-                        $result=mysqli_query($connectdb,$query_delete);
-                        $result=mysqli_query($connectdb,$query_delete2);
-                        header("Location:home.php");
-                    }
-                   
-                }
+    if($_POST){       
+        for($x=0;$x<=$_SESSION['count'];$x++){
+            if(isset($_POST['Button'.$x])){
+                $value = $_POST['Button'.$x];
+                $query_delete= "delete from seen_announcement where announcement_id='$value'";
+                $query_delete2= "delete from announcement where announcement_id='$value'";
+                $result=mysqli_query($connectdb,$query_delete);
+                $result=mysqli_query($connectdb,$query_delete2);
+                header("Location:home.php");
             }
-        ?>
+                   
+        }
+    }
+    if(isset($_POST['submit_edit'])){
+        $date = date("Y-m-d h:i:sa");
+        $edit_query = "UPDATE announcement
+                        SET date_posted='$date', topic='".$_POST['edit_topic']."', content = '".$_POST['edit_content']."'
+                        WHERE announcement_id='$_GET[edit]'";
+        querySignUp($edit_query);
+        header('Location:home.php');
+    }elseif(isset($_POST['cancel_edit'])){
+        header('Location:home.php');
+    }
+    
+    ?>
 
     <div id="wrapper">
         <nav>
@@ -131,20 +141,33 @@
                                 } 
                             ?>
                             <h3 class="topic"><?=$announcement['topic']?></h3>
-                            <span class="date"><?= $date ?></span>
                             <p class="notif-content">"<?=$message;?>"</p>
+                            <span class="date"><?= $date ?></span>
                         </li>
                     <?php
                     }else{
                         if($_GET['edit']==$announcement['announcement_id']){
                         ?>
-                            <form class="posting">
-                                
+                            <form class="posting" id="<?=$_GET['edit']?>" method="post">
+                                <h2 class="org-name"><?php echo $org_name['org_name']?></h2>
+                                <h3 class="name"><?php echo $name['first_name']." ".$name['last_name']?></h3>
+                                <input type="text" name="edit_topic" value="<?=$announcement['topic']?>" placeholder="Topic">
+                                <textarea name="edit_content" placeholder="What's happening?"><?=$message?></textarea>
+                                <div class="group-btn">
+                                    <input type="submit" name="submit_edit" value="Done" class="done">
+                                    <input type="submit" name="cancel_edit" value="Cancel" class="cancel">
+                                </div>
                             </form>
                         <?php
                         }else{
                         ?>
-
+                            <li class="announcement">
+                                <h2 class="org-name"><?php echo $org_name['org_name']?></h2>
+                                <h3 class="name"><?php echo $name['first_name']." ".$name['last_name']?></h3>
+                                <h3 class="topic"><?=$announcement['topic']?></h3>
+                                <p class="notif-content"><?=$message;?></p>
+                                <span class="date"><?=$date?></span>
+                            </li>
                         <?php
                         }
                     }
