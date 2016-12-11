@@ -166,7 +166,7 @@ else{
             </form>
             <div id="signup_link">
                 <p id="signUp_label">Don't have an account?</p>
-                <a style="" href="bootsignup.php" id = "signUp"> Sign Up </a>
+                <a style="" href="signup.php" id = "signUp"> Sign Up </a>
             </div>
 
           </div>
