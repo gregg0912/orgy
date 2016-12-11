@@ -108,8 +108,8 @@
                     if(!isset($_GET['edit'])){
                     ?>
                         <li class="announcement">          
-                            <h2 class="org-name"><?php echo $org_name["org_name"];?></h2>
-                            <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+                            <a href="group_page.php?orgID=<?=$org_id?>" style='color: black;'><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
+                            <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
                             <span class="date"><?= $date ?></span>
                             <?php
                                 $current_userid = $_SESSION['user_id'];
@@ -122,16 +122,12 @@
                             ?>
 
                             <?php
-                                if($member =='admin'){ ?>
+                                if($member =='admin'){
+                                    if($current_userid == $user_id){ ?>
+                                        <a href="home.php?id=<?=$id?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <?php } ?>
                                     <form method="post" action="">
                                         <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
-                                        <?php
-                                        if($current_userid == $user_id){
-                                        ?>
-                                            <a href="home.php?id=<?=$id?>">Edit</a>
-                                        <?php
-                                        }
-                                        ?>
                                     </form>
                                 <?php $_SESSION['count']=$count; ?>
                             <?php } 
