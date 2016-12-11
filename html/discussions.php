@@ -218,14 +218,19 @@
 					if(!isset($_GET['edit'])){?>
 						<fieldset class="discussion">
 							<legend>
-								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+								<a href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 							</legend>
 							<?php
+								if(!isset($_GET['pn']))
+										$pn = 1;
+									else
+										$pn = $_GET['pn'];
+
 								if($user_id==$disc_user_id){
 								?>
 									<button class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button>
 									</form>
-									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+									<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&sort_id=<?=$sort_id?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 									<form method="post" action="">
 									
 								<?php
@@ -246,15 +251,14 @@
 									$total_vote = $upvote - $downvote;
 									$update_vote="UPDATE discuss SET votes='".$total_vote."' WHERE disc_id='".$disc_id."'";
 									querySignUp($update_vote);
-									if(!isset($_GET['pn']))
-										$pn = 1;
-									else
-										$pn = $_GET['pn'];
+									
 								?>
-								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
+
+								<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>"><span class="glyphicon glyphicon-thumbs-up"> </span></a>
 								<label class="votes">Discussion Points:<?=$total_vote?></label>
-								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+								<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>"><span class="glyphicon glyphicon-thumbs-down"></span></a>
 								<dt class="date"><?=$dateposted?></dt>
+
 							</dl>
 						</fieldset><br>
 				<?php				
