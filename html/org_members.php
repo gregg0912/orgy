@@ -48,7 +48,7 @@
 	<head> 
 		<title>ORG SYSTEM A.Y. 2016-2017</title>
     	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/members.css">
