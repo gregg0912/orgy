@@ -1,0 +1,107 @@
+#announcements{
+	width: 50%;
+	margin: auto;
+	position: relative;
+}
+
+.page-navigation{
+	text-align: center;
+	overflow: auto;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+.page-navigation a{
+	margin: 0 5px;
+	text-decoration: none;
+}
+
+h1.title{
+	margin-bottom: 20px;
+}
+
+form.posting{
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	width: 100%;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	padding: 20px 20px;
+	background-color: white;
+	border: 1px solid #DDD;
+	box-sizing: border-box;
+}
+
+form.posting > *{
+	margin: 5px 0;
+	font-family: Arial;
+}
+
+form.posting textarea,
+form.posting input[type=text]{
+	padding: 10px 20px;
+}
+
+form.posting textarea{
+	resize: none;
+	height: 40px;
+	transition: 0.2s;
+}
+
+form.posting textarea:focus{
+	height: 200px;
+}
+
+form.posting input[type=submit]{
+	margin-left: auto;	
+}
+
+.posted{
+	list-style: none;
+	padding: 0;
+	width: 100%;
+	margin: auto;
+	margin-top: 220px;
+}
+
+.posted-content{
+	margin: 20px auto 20px auto;
+	padding: 20px 20px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	border: 1px solid #DDD;
+	font-family: Arial;
+}
+
+.posted-content > *{
+	margin: 5px 0;
+}
+
+.posted-content .type{
+	font-weight: normal;
+	font-size: 1.5em;
+	display: inline-block;
+}
+
+.posted-content .date{
+	margin-left: 10px;
+}
+
+.posted-content .name{
+	font-weight: normal;
+	font-size: 1em;
+	color: #3498db;
+}
+
+.posted-content .caption{
+	padding: 10px;
+	color: #555;
+}
+
+.posted-content .edit{
+	display: inline-block;
+}
+
+.posted-content form.delete{
+	display: inline-block;
+}

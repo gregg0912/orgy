@@ -60,18 +60,7 @@ div.dropdown{
 }
 
 .search input[type=search]{
-	padding: 5px 20px;
-	box-sizing: border-box;
-	border: 1px solid #DDD;
 	width: 84.2%;
-	transition: 0.2s;
-}
-
-.search input[type=search]:active,
-.search input[type=search]:focus{
-	outline: none;
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	border-color: #e74c3c;
 }
 
 .search button{

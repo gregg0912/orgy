@@ -39,14 +39,6 @@ li.announcement .notif-content{
 	display: block;
 }
 
-li.announcement .date{
-	font-size: 0.8em;
-	margin: 2px;
-	font-family: Arial;
-	display: inline-block;
-	color: #95a5a6;
-}
-
 li.announcement form{
 	display: inline-block;
 	float: right;
