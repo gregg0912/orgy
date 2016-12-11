@@ -13,11 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../css/notif.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -103,7 +101,7 @@
         <button type="submit" name="allread" class="btn btn-1 btn-1a" id="allread"> Mark All as Read </button>
         </form>
             
-        <ul class="notifications">  
+        <ul class="notification-container">  
          <?php
             $query = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.user_id='".$current_id."' ORDER BY date_posted DESC LIMIT $start, $lim" );
             if($total>=1){
@@ -119,13 +117,13 @@
                   $topic = $announcement['topic'];
                   $seenstatus = $announcement['seen']
               ?>
-                  <li class="notification">              
-                      <h2 class="org-name"><?php echo $org_name["org_name"];?></h2> 
+                  <li class="notification">
+                      <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
                       <h3 class="topic"><?php echo $topic;?></h3>
                       <p class="message">"<?php echo $message;?>"</p>
                       <?php
                       if($seenstatus == 'not_seen'){ ?>
-                      <form method="post" action="">
+                        <form method="post" action="">
                         <button type="submit" name="<?='Button'."$count" ?>" value="<?=$announcement['announcement_id']?>" class="btn btn-1 btn-1a" id="read"> Mark as Read </button>
                       </form>
                       <?php $_SESSION['count']=$count; ?>

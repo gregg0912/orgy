@@ -1,0 +1,32 @@
+ul.notification-container{
+	padding: 0 40px;
+	list-style: none;
+}
+li.notification{
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	padding: 10px 20px;
+	margin: 30px;
+}
+li.notification .org-name{
+	font-size: 1.3em;
+	margin: 2px;
+	font-family: Arial;
+	display: inline-block;
+	font-weight: normal;
+}
+li.notification .topic{
+	font-size: 1.0em;
+	margin: 2px;
+	font-family: Arial;
+	clear: both;
+	font-weight:  normal;
+}
+a{
+	color: black;
+}
+.org-name:hover{
+	color: #5e5e5e;
+}
+#allread{
+	margin-left: 7%;
+}

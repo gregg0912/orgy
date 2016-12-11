@@ -16,7 +16,8 @@
 <html>
 <head>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 </head>
 <style type="text/css">
@@ -64,7 +65,7 @@
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </nav>
-		<div id="content">
+		<!-- <div id="content"> -->
 		<div id="discussions">
 			<h1>Comments</h1>
 			<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
