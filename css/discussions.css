@@ -4,84 +4,131 @@
 	margin: 0;
 }
 
-fieldset.discussion{
-	/*box-shadow: 0 0 10px rgba(0,0,0,0.15);
-	width: 100%;
-	display: flex;
-	position: absolute;
-	flex-direction: column;
-	padding: 20px 20px;
-	background-color: white;
-	border: 1px solid #DDD;
-	box-sizing: border-box;*/
+#discussions > h1.title{
+	font-family: Chaparral;
+	text-align: center;
+	font-size: 3em;
+	letter-spacing: 0.05em;
+	padding: 10px;
+	text-transform: capitalize;
+	color: white;
+	background-color: #e74c3c;
+}
+
+
+.discussion{
+	min-height: 220px;
+	padding: 10px 10px;
 	border-style: none;
-	margin-top: 10px;
-	width: 60%;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-.discussion .up, .down, .votes{
-	display: inline;
+.down{
+	margin-bottom: -2px;	
+}
+
+.app{
+	display: inline-block;
 	float: left;
+
 }
 
-fieldset.newdiscussion{
-	height: 70%;
-	border-style: none;
-	float: right;
-	position: absolute;
-	top: 27vh;
-	right: 25px;
+.discussion .app .up, .down, .votes{
+	padding: 10px 3px;
+	
 }
-/*
-#discussions .newtopic{
-	float: right;
-	position: absolute;
-	right: 25px;
-	top: 27vh;
-	height: 70%;
-	width: auto;
-}*/
 
-fieldset textarea,
-fieldset input[type=text]{ 
+.up:hover, .down:hover{
+	transform: scale(0.9, 0.9);
+	border-radius: 50%;
+
+}
+
+form.sort{
+	text-align: center;
+	padding: 10px;
+}
+
+
+.newdiscussion{
+	
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    background-color: white;
+    border: 1px solid #DDD;
+    box-sizing: border-box;
+    height: auto;
+
+}
+
+.discussion, 
+.newdiscussion{
+	margin: 15px auto 15px auto;
+	box-sizing: border-box;
+	width: 50%;
+
+}
+
+.discussion.legend{
+	display: inline;
+}
+
+ textarea,
+ input[type=text]{ 
 	padding: 10px 20px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	margin: 10px 5px;
 }
 
-fieldset input[type=text]{
-	width: 300px;
+
+ input[type=text]{
+	width: 100%;
 	margin-left: auto;
 
 }
 
-fieldset textarea{
+ textarea{
 	resize: none;
-	height: 200px;
-	width: 300px;
+	height: 40px;
+	width: 100%;
 	transition: 0.2s;
+	resize: none;
 }
+
+ textarea:focus{
+	height: 200px;
+}
+
 .btn{
 	margin: 10px 5px 10px auto;
 	display: block;
 }
 
-
-fieldset.discussion a, a:hover{
+.discussion a, a:hover{
 	text-decoration: none;
+	font-weight: normal;
+    font-size: 1em;
+    color: #3498db;
+    margin: 5px 0;
 }
 
-fieldset.discussion .edit{
-	
+.user{
+	font-weight: normal;
+    font-size: 1em;
+    color: #3498db;
+    
 }
 
-fieldset.discussion .remove, .edit{
+
+.discussion .remove, .edit{
 	border-radius: 50%;
 	padding: 5px 5px 3px 5px;
 	display: flex;
-	top: 5px;
-	right: 5px;
-	margin-right: 5px;
+	margin-top: -20px; 
+	right: 0;
+	/*margin-right: 5px;*/
 	transition: 0.2s;
 	transform: scale(0.7, 0.7);
 	opacity: 0.5;	
@@ -89,20 +136,20 @@ fieldset.discussion .remove, .edit{
 	 
 }
 
-fieldset.discussion .remove span,
+.discussion .remove span,
 .edit span{
 	line-height: 1em;
 }
 
-fieldset.discussion .remove:hover,
+.discussion .remove:hover,
 .edit:hover{
 	transform: scale(0.9, 0.9);
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 	opacity: 1;
 }
 
-fieldset.discussion .remove:active,
-fieldset.discussion .remove:focus,
+.discussion .remove:active,
+.discussion .remove:focus,
 .edit:active, .edit:focus{
 	outline: none;
 }
@@ -111,7 +158,14 @@ fieldset.discussion .remove:focus,
 .discussion legend a{
 	font-size: 1.5em;
 	font-family: Arial;
+	margin-right: 10px;
 
+}
+
+.disctitle{
+    font-weight: normal;
+    font-size: 1.5em;
+    display: inline;
 }
 
 
@@ -119,40 +173,19 @@ fieldset.discussion .remove:focus,
 	top: 5px;
 }
 
-.fieldset .date{
-	float: flex;
-	clear: left;
-}
-
 p{
 	margin: 25px 5px;	
 }
 
-
-
-
-
-/*
-fieldset > *{
-	margin: 5px 0;
-	font-family: Arial;
+.edit{
+	background-color: #3070D3;
 }
 
-fieldset textarea,
-fieldset input[type=text]{
-	padding: 10px 20px;
+.edit:hover{
+
+	background-color: #3070D3;
+}
+.sort p, #sortdate, #sortvote{
+	margin: auto;
 }
 
-fieldset textarea{
-	resize: none;
-	height: 40px;
-	transition: 0.2s;
-}
-
-fieldset textarea:focus{
-	height: 200px;
-}
-
-fieldset input[type=submit]{
-	margin-left: auto;	
-}*/

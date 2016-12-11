@@ -12,8 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-		<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
 		<link rel="stylesheet" type="text/css" href="../css/groups.css">
+		
 	</head>
 	<body>
 	<?php	$start=0;
@@ -107,16 +107,17 @@
 								
 						<?php
 							}
-							pagination($id,$rows,$lim,1,"groups.php?id=%d");
 						?>
 				<?php	}
 						else{
 							echo "<p>You still haven't joined an org yet! Try <a href='explore.php'>Exploring</a> a bit.</p>";
 						}
 					?>							
-				
 				</ul>
+
+				
 				<?php
+					pagination($id,$rows,$lim,1,"groups.php?id=%d");
 					if(isset($_SESSION['deleted'])&&isset($_SESSION['orgName'])){
 						if($_SESSION['deleted']){
 						?>
