@@ -194,15 +194,29 @@
 					        </form>
 					<?php }
 					     else{ ?>
-					     	<fieldset id="inner">
+					     	<li class="posted-content">
+			            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
+				                <span class="date"><?= $datec ?></span>
+			                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
+			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
+		                    	<?php
+		                    	if($user_id==$_SESSION['user_id']){ ?>
+		                    	<a href='group_page.php?orgID=<?=$_GET['orgID']?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
+		                    	<?php } ?>
+				                <?php if($member =='admin'){ ?>
+		                        <form method="post" action="" class="delete">
+		                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
+		                        </form>
+		                        <?php } ?> 
+				        	</li>
+					     	<!-- <fieldset id="inner">
 				            		<legend style="font-size: 200%; text-align: center;"><?php echo $GrpAnnouncement['topic'] ?></legend>
 				                	<dl>
 				                    	<dt style="font-size: 100%; text-align: center;"><?php echo $name["first_name"]." ".$name["last_name"];?></dt>
 				                    	<dt><p>"<?php echo $GrpAnnouncement['content'] ?>"</p></dt>
 					                	<dt style="font-size: 50%; text-align: right;"><?= $datec ?></dt>
 				        			</dl>
-					        </fieldset>
-
+					        </fieldset>-->
 					   <?php  }	
 					 }
 		    	}
