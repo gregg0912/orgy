@@ -204,7 +204,7 @@
 						birthday, prof_pic, email) 
 						VALUES('$_POST[student_no]','$_POST[fname]','$_POST[lname]','$_POST[username]', '$pwordNuj','$_POST[degree]',
 							CURDATE(),'$_POST[year]','$_POST[bdate]','$target_file','$_POST[email]')";
-			querySignUp($query);
+			// querySignUp($query);
 			$uname=$_POST['username'];
 			$pword=md5($_POST['password']);
 	 		$user_id=mysqli_fetch_assoc(select($uname, $pword));
