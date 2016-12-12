@@ -244,7 +244,7 @@
 							$pn = 1;
 						else
 							$pn = $_GET['pn'];
-						if(!isset($_GET['edit'])){?>
+						if(!isset($_GET['edit'])){ ?>
 							<div class="discussion">
 								<legend id="<?=$disc_id?>">
 
@@ -340,9 +340,8 @@
 				?>
 
 				<div>
-					
-
-
+					<p class="pagination-text"><?php echo $textline2; ?></p>
+					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 				</div>
 				
 				
