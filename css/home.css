@@ -115,3 +115,10 @@ li.announcement .edit:focus{
 .edit{
 	background-color: #3070D3;
 }
+
+.notif-count{
+	background-color: white;
+	color: #e74c3c;
+	padding: 3px 7px;
+	border-radius: 50%;
+}
