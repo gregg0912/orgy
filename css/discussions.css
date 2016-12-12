@@ -277,8 +277,7 @@ a.current
 
 
 .dateactive:focus, .voteactive:focus {
-    /*background-color: #c0392b!important;*/
-	background-color: red;
+    background-color: #c0392b!important;
 	color: white!important;
 	 fill:#1a82b8;
 	cursor: default;
