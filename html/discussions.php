@@ -6,6 +6,7 @@
 	$dbconn = connection();
 	$connectdb = connection();
 	redirect();
+	$orgid = intval($_GET['orgID']);
     $user_id = $_SESSION['user_id'];
     // $set_timezone = mysqli_query(connection(), "set time_zone = '+08:00'");
     date_default_timezone_set("Asia/Singapore");
@@ -94,11 +95,13 @@
 		<div id="content">
 			<div id="discussions">
 				<h1 class="title">Discussions</h1>
-				<!-- <a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br> -->
+
+				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
+
 				<form method="post" action="" class="sort">
 					<span>Sort by:</span> 
-					<button type="submit" name="date" value="date"> Date </button>
-	            	<button type="submit" name="votes" value="votes"> Votes </button>
+					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
+	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
 	            </form>
 	            <?php
 	            if(!isset($_GET['edit'])){
@@ -116,11 +119,11 @@
 				<?php
 				if(!empty($org_id)){				
 					$sql = "SELECT COUNT(disc_id) FROM discuss WHERE org_id = $org_id";
+					
 					$query = mysqli_query($dbconn, $sql);
 					$row = mysqli_fetch_row($query);
 
 					$rows = $row[0];
-
 					$page_rows = 10;
 					
 
@@ -328,8 +331,9 @@
 				?>
 
 				<div>
-					<p class="pagination-text">"<?php echo $textline2; ?>"</p>
-					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+					
+
+
 				</div>
 				
 				
