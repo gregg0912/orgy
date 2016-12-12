@@ -280,8 +280,12 @@
 				
 				<div>
 					<p class="pagination-text"><?php echo $textline2; ?></p>
+					<div id="pagination_controls">
+						
 					<ul class=	"pagination">
-						<li><?php echo $paginationCtrls; ?></li></ul>
+						<li><?php echo $paginationCtrls; ?></li>
+						</ul>
+					</div>
 							
 				</div>
 
