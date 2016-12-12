@@ -256,7 +256,7 @@
 							else{?>
 								<div class='discussion' id='<?=$comment_id?>'>
 									<legend>
-										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<a class='user'><?=$commenter?></a>
 										<span class="date"><?=$datec?></span>
 									</legend>
 									<dl>
