@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2016 at 04:35 AM
+-- Generation Time: Dec 12, 2016 at 05:41 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -43,8 +43,8 @@ INSERT INTO `announcement` (`announcement_id`, `date_posted`, `topic`, `content`
 (1, '2016-11-14 00:00:00', 'General Assembly', 'Meron tayong general assembly kahapon! Bakit wala umattend? @!)#(*!@)#', 1, 1),
 (2, '2016-11-24 00:00:00', 'hoy!', 'hi :)', 2, 41),
 (3, '2016-11-24 00:00:00', 'Hello', 'hello', 2, 41),
-(4, '2016-11-27 00:00:00', 'Bieber', 'Bieber or DIE.', 2, 41),
-(5, '2016-11-27 07:51:03', 'Hello', 'How Are You?', 2, 41),
+(4, '2016-12-11 04:45:12', 'Bieber', 'Gonna choose die here haha', 2, 41),
+(5, '2016-12-11 03:54:00', 'Hello', 'How Are You? Can you tell me your name?', 2, 41),
 (6, '2016-11-27 08:05:03', 'we don&#039;t talk anymore', 'like we used to....', 2, 41),
 (7, '2016-11-27 08:05:28', 'hello', 'worllllld', 2, 41),
 (8, '2016-11-29 07:27:27', 'hello', 'biatches', 2, 41),
@@ -79,23 +79,21 @@ INSERT INTO `announcement` (`announcement_id`, `date_posted`, `topic`, `content`
 (42, '2016-12-04 08:51:23', 'hello', 'hello', 2, 41),
 (43, '2016-12-04 09:04:03', 'this is a', 'testis', 2, 41),
 (44, '2016-12-04 09:04:10', 'this', 'is another testies', 2, 41),
-(45, '2016-12-04 09:04:17', 'te-te-testicle', 'testicle', 2, 41),
 (46, '2016-12-06 02:32:30', 'Kicked', 'Admin marbasaur kicked Hayley Williamssss from the org.', 2, 41),
 (47, '2016-12-06 02:33:16', 'Request', 'Hayley Williamswishes to join this group.', 11, 41),
 (48, '2016-12-06 02:34:27', 'Accepted', 'Admin marbasaur accepted the request of Hayley Williamssss to join the org.', 2, 41),
 (49, '2016-12-06 02:34:41', 'Rejected', 'Admin marbasaur rejected the request of Gregg Marionn Icay to join the org.', 2, 41),
-(50, '2016-12-08 01:03:27', 'Hayley!', 'You should be reading this.', 2, 41),
+(50, '2016-12-12 04:08:22', 'Hayley!', 'You should be reading this. Start&#039;s\r\n\r\n\r\nlol', 2, 41),
 (51, '2016-12-08 01:23:21', 'Request', 'Hayley Williamswishes to join this group.', 11, 2),
 (52, '2016-12-08 02:10:17', 'Request', 'Hayley Williamswishes to join this group.', 11, 3),
 (53, '2016-12-08 02:38:13', 'Request', 'marbasaurwishes to join this group.', 2, 11),
 (54, '2016-12-08 02:38:52', 'Request', 'gregg0912 wishes to join this group.', 5, 41),
-(55, '2016-12-09 04:24:22', 'helloooo', 'hellloool test lang wag magalit', 2, 41),
-(56, '2016-12-09 04:24:22', 'helloooo', 'hellloool test lang wag magalit', 2, 41),
-(57, '2016-12-09 04:26:35', 'announcement', 'annnnnn', 2, 41),
+(55, '2016-12-11 03:52:13', 'helloooo', 'hellloool test lang wag omona', 2, 41),
+(56, '2016-12-11 03:51:32', 'helloooo', 'kakahiya talaga maygad', 2, 41),
 (58, '2016-12-09 04:50:32', 'Request', 'nujVallaquoiwishes to join this group.', 15, 1),
 (59, '2016-12-09 04:52:14', 'Request', 'nujVallaquoiwishes to join this group.', 15, 49),
 (60, '2016-12-09 04:54:02', 'Accepted', 'Admin marbasaur accepted the request of Emmanue Valauqio to join the org.', 2, 1),
-(61, '2016-12-09 04:54:08', 'Rejected', 'Admin marbasaur rejected the request of Hayley Williamssss to join the org.', 2, 1),
+(61, '2016-12-11 11:03:19', 'Rejected', 'Admin marbasaur rejected the request of Hayley Williamssss to join the org because she can and she is such a rebel :).', 2, 1),
 (62, '2016-12-09 05:27:41', 'Request', 'gregg09wishes to join this group.', 5, 11),
 (63, '2016-12-09 05:57:49', 'Request', 'gregg09wishes to join this group.', 5, 3),
 (64, '2016-12-09 06:14:35', 'Request', 'gregg09wishes to join this group.', 5, 2),
@@ -117,7 +115,65 @@ INSERT INTO `announcement` (`announcement_id`, `date_posted`, `topic`, `content`
 (80, '2016-12-09 08:14:04', 'Request', 'gregg09 wishes to join UPV Sakdag.', 5, 41),
 (81, '2016-12-09 08:14:07', 'Request', 'gregg09 cancelled their request to join UPV Sakdag.', 5, 41),
 (82, '2016-12-09 08:59:40', 'Request', 'marbasaur cancelled their request to join Daebak.', 2, 9),
-(83, '2016-12-09 09:00:42', 'Request', 'marbasaur cancelled their request to join UP Tubong Mindanao.', 2, 8);
+(83, '2016-12-09 09:00:42', 'Request', 'marbasaur cancelled their request to join UP Tubong Mindanao.', 2, 8),
+(84, '2016-12-10 05:54:08', 'Request', 'gregg09 wishes to join UPV Sakdag.', 5, 41),
+(85, '2016-12-10 05:54:13', 'Request', 'gregg09 cancelled their request to join UPV Sakdag.', 5, 41),
+(86, '2016-12-10 05:57:53', 'Request', 'gregg0912 wishes to join UPV Sakdag.', 5, 41),
+(87, '2016-12-10 05:57:56', 'Request', 'gregg0912 cancelled their request to join UPV Sakdag.', 5, 41),
+(88, '2016-12-12 04:10:10', 'Stop it', 'tuwang-tuwa ako\r\npero tama na to', 2, 1),
+(90, '2016-12-11 01:11:43', 'Request', 'kladmin does not need permission to join UPV KaLuzon. kladmin does what he wants.', 17, 39),
+(91, '2016-12-11 04:06:30', 'Hello', 'Marbasaur i can see you', 17, 39),
+(92, '2016-12-11 04:38:02', 'huwat&#039;', 'lalala\r\n\r\nlalala', 2, 1),
+(93, '2016-12-12 04:04:21', 'Upvote', 'marbasaur upvoted your post on December 05, 2016 01:31:03 am entitled hello', 5, 1),
+(94, '2016-12-12 04:09:59', 'allow', 'allow\r\nallow\r\nallow', 2, 1),
+(95, '2016-12-12 10:10:55', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39),
+(96, '2016-12-12 06:18:24', 'Request', 'kladmin wishes to join Elektrons.', 17, 1),
+(97, '2016-12-12 06:18:35', 'Request', 'kladmin wishes to join UPV Sakdag.', 17, 41),
+(98, '2016-12-12 06:20:13', 'testing', 'testing', 2, 41),
+(99, '2016-12-12 06:24:48', 'Accepted', 'Admin marbasaur accepted the request of Ka Luzon to join the org.', 2, 1),
+(100, '2016-12-12 06:24:58', 'Rejected', 'Admin marbasaur rejected the request of Ka Luzon to join the org.', 2, 41),
+(101, '2016-12-12 06:26:50', 'Kicked', 'Admin marbasaur kicked Ka Luzon from the org.', 2, 1),
+(102, '2016-12-12 06:27:50', 'Request', 'kladmin wishes to join Elektrons.', 17, 1),
+(103, '2016-12-12 06:28:26', 'Accepted', 'Admin marbasaur accepted the request of Ka Luzon to join the org.', 2, 1),
+(104, '2016-12-12 06:33:25', 'announcement!', 'gusto ko lang mag-announce haha tapusa niyo na thesis niyo.', 2, 1),
+(105, '2016-12-12 18:36:54', 'the only exception', 'oh and i&#039;m on my way to believing', 2, 1),
+(106, '2016-12-12 18:38:30', 'Request', 'kladmin wishes to join UPV Sakdag.', 17, 41),
+(107, '2016-12-12 18:44:50', 'ain&#039;t it fun', '&#039;cause you&#039;re on your own in the real world', 2, 1),
+(108, '2016-12-12 18:48:39', 'PM/AM', 'PM na plssss', 2, 1),
+(109, '2016-12-12 22:18:33', 'Request', 'adminacc wishes to join Elektrons.', 19, 1),
+(110, '2016-12-12 22:18:47', 'Request', 'adminacc wishes to join UPV Sakdag.', 19, 41),
+(111, '2016-12-12 22:19:04', 'Request', 'adminacc wishes to join UPV KaLuzon.', 19, 39),
+(112, '2016-12-12 22:19:35', 'Accepted', 'Admin marbasaur accepted the request of Adminer Accounter to join the org.', 2, 1),
+(113, '2016-12-12 22:19:35', 'Accepted', 'Admin marbasaur accepted the request of Adminer Accounter to join the org.', 2, 1),
+(114, '2016-12-12 22:19:46', 'Rejected', 'Admin marbasaur rejected the request of Ka Luzon to join the org.', 2, 41),
+(115, '2016-12-12 22:19:48', 'Accepted', 'Admin marbasaur accepted the request of Adminer Accounter to join the org.', 2, 41),
+(116, '2016-12-12 22:21:20', 'Accepted', 'Admin kladmin accepted the request of Adminer Accounter to join the org.', 17, 39),
+(117, '2016-12-12 22:24:24', 'Kicked', 'Admin marbasaur kicked Adminer Accounter from the org.', 2, 41),
+(118, '2016-12-12 22:24:39', 'Kicked', 'Admin marbasaur kicked Adminer Accounter from the org.', 2, 1),
+(119, '2016-12-12 22:25:07', 'Request', 'adminacc wishes to join Elektrons.', 19, 1),
+(120, '2016-12-12 22:25:13', 'Request', 'adminacc wishes to join Redbolts.', 19, 2),
+(121, '2016-12-12 22:25:21', 'Request', 'adminacc wishes to join UPV Sakdag.', 19, 41),
+(122, '2016-12-12 22:29:38', 'Commented', 'adminacc commented on your post on 2016-12-04 03:39:05 entitled hello', 2, 39),
+(123, '2016-12-12 22:30:22', 'Accepted', 'Admin marbasaur accepted the request of Adminer Accounter to join the org.', 2, 1),
+(124, '2016-12-12 22:30:30', 'Accepted', 'Admin marbasaur accepted the request of Adminer Accounter to join the org.', 2, 41),
+(125, '2016-12-12 22:32:42', 'Commented', 'adminacc commented on your post on 2016-12-12 03:52:03 entitled topic', 2, 1),
+(126, '2016-12-12 23:35:38', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(127, '2016-12-12 23:35:51', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(128, '2016-12-12 23:36:51', 'Commented', 'kladmin commented on your post on 2016-12-12 23:36:17 entitled topic', 2, 39),
+(129, '2016-12-12 23:37:03', 'Commented', 'kladmin commented on your post on 2016-12-12 23:36:17 entitled topic', 2, 39),
+(130, '2016-12-12 23:39:35', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(131, '2016-12-12 23:39:46', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(132, '2016-12-12 23:41:09', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(133, '2016-12-12 23:41:29', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(134, '2016-12-12 23:43:12', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(135, '2016-12-12 23:43:27', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(136, '2016-12-12 23:46:42', 'Kicked', 'Admin kladmin kicked   from the org.', 17, 39),
+(137, '2016-12-12 23:47:31', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(138, '2016-12-12 23:47:47', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(139, '2016-12-12 23:48:03', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39),
+(140, '2016-12-12 23:52:34', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
+(141, '2016-12-12 23:52:57', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
+(142, '2016-12-12 23:55:56', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39);
 
 -- --------------------------------------------------------
 
@@ -244,12 +300,13 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES
 (8, 'hello', '2016-11-24 00:00:00', 3, 4),
 (9, 'hello', '2016-11-24 00:00:00', 3, 6),
-(10, 'hallu besh nu problem?', '2016-12-04 10:45:03', 28, 2),
-(11, 'gani! ano problem? talks to self', '2016-12-04 10:45:16', 28, 2),
 (12, 'pwede pa-try? :)', '2016-12-04 12:08:34', 4, 5),
 (13, 'comments', '2016-12-05 01:40:06', 1, 5),
 (14, 'nami ni siya na discussion page i like it', '2016-12-08 21:51:11', 37, 2),
-(15, 'dddqw', '2016-12-09 11:59:40', 34, 15);
+(15, 'dddqw', '2016-12-09 11:59:40', 34, 15),
+(16, 'comment\r\ncomment\r\ncomment', '2016-12-12 03:52:18', 39, 2),
+(17, 'comment lololol', '2016-12-12 18:17:57', 39, 2),
+(19, 'comment rin ako. labyu sempai', '2016-12-12 22:32:42', 39, 19);
 
 -- --------------------------------------------------------
 
@@ -278,7 +335,7 @@ INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, 
 (4, 'hello', 'gusto ko magdiscuss oops wrong', '2016-11-24 00:00:00', 2, 1, 0),
 (5, 'discuss', 'discusss', '2016-11-24 00:00:00', 8, 1, 1),
 (6, 'hhh', 'kkkk', '2016-11-24 00:00:00', 5, 6, -1),
-(7, 'Choy topic', 'Choy topic commentssss\r\n', '2016-11-24 00:00:00', 2, 1, 0),
+(7, 'Choy topic happy', 'Choy topic commentssss yes happy\r\n', '2016-12-11 19:33:17', 2, 1, 1),
 (8, 'GGEZ', 'haluuuhhh', '2016-11-24 00:00:00', 5, 6, 1),
 (9, 'title2', 'content2', '2016-11-28 01:24:30', 2, 41, -1),
 (10, 'title and content', 'title and content', '2016-11-28 00:00:00', 1, 41, 0),
@@ -290,7 +347,7 @@ INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, 
 (16, 'title and content22212', 'title and content22212', '2016-11-28 00:00:00', 4, 41, 0),
 (17, 'title and content22211', 'title and content22212', '2016-11-28 00:00:00', 4, 41, 0),
 (18, 'title and content222121', 'title and content222111', '2016-11-28 00:00:00', 1, 41, 0),
-(19, 'title and content222', 'title and content222', '2016-11-28 00:00:00', 4, 41, -1),
+(19, 'title and content222', 'title and content222', '2016-11-28 00:00:00', 4, 41, 1),
 (20, 'title and content222112', 'title and content222121', '2016-11-28 00:00:00', 3, 41, 0),
 (21, 'title and content25523', 'title and content2124', '2016-11-28 00:00:00', 7, 41, 0),
 (22, 'title and content209', 'title and content290', '2016-11-28 00:00:00', 6, 41, 0),
@@ -299,15 +356,18 @@ INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, 
 (25, 'censored', 'censored', '2016-11-28 02:11:50', 2, 41, -2),
 (26, 'hello', 'world', '2016-11-29 14:14:33', 5, 6, -1),
 (27, 'hello', 'cyra from isran', '2016-11-30 19:23:05', 5, 6, -1),
-(28, 'something', 'something\r\n\r\nsomething', '2016-12-04 02:24:59', 2, 39, 0),
-(30, 'hello', 'cold world', '2016-12-04 03:39:05', 2, 39, 0),
 (31, 'hello', 'diyan', '2016-12-04 05:01:38', 2, 21, 0),
 (32, 'hello', 'kulas bebe loves', '2016-12-04 05:06:48', 5, 1, 0),
 (33, 'why', 'are you late?', '2016-12-04 05:07:34', 5, 1, -1),
 (34, 'That&#039;s what you get', 'Paramore', '2016-12-04 05:12:47', 5, 1, 0),
 (35, 'si gregg0912', 'wag siya papapasukin sa group na&#039;to please', '2016-12-04 12:16:37', 11, 41, 1),
-(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, -1),
-(37, 'FOB', 'yehey', '2016-12-08 21:50:33', 2, 22, 0);
+(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, 1),
+(37, 'FOB', 'yehey yooo', '2016-12-11 16:48:57', 2, 22, 0),
+(38, 'post', 'postttt', '2016-12-11 19:33:26', 2, 1, 0),
+(39, 'topic', 'comment\r\ncomment\r\ncomment', '2016-12-12 03:52:03', 2, 1, 1),
+(40, 'discussion', 'discussion', '2016-12-12 18:23:13', 2, 41, 0),
+(41, 'pagination', 'lumabas ka', '2016-12-12 19:00:25', 2, 41, 0),
+(42, 'pagination', 'pagination where?\r\n\r\nwhere', '2016-12-12 19:00:45', 2, 41, 0);
 
 -- --------------------------------------------------------
 
@@ -333,7 +393,7 @@ INSERT INTO `disc_upvote` (`dvID`, `disc_id`, `user_id`, `approval`) VALUES
 (4, 5, 5, 'downvote'),
 (5, 5, 4, 'upvote'),
 (17, 25, 2, 'downvote'),
-(18, 19, 2, 'downvote'),
+(18, 19, 2, 'upvote'),
 (19, 20, 2, 'upvote'),
 (20, 9, 2, 'downvote'),
 (21, 1, 5, 'upvote'),
@@ -346,8 +406,10 @@ INSERT INTO `disc_upvote` (`dvID`, `disc_id`, `user_id`, `approval`) VALUES
 (28, 20, 11, 'downvote'),
 (29, 25, 11, 'downvote'),
 (30, 12, 2, 'upvote'),
-(31, 36, 2, 'downvote'),
-(32, 33, 15, 'downvote');
+(31, 36, 2, 'upvote'),
+(32, 33, 15, 'downvote'),
+(33, 39, 2, 'upvote'),
+(34, 7, 2, 'upvote');
 
 -- --------------------------------------------------------
 
@@ -372,7 +434,6 @@ INSERT INTO `joined` (`join_id`, `user_id`, `org_id`, `membership_type`, `date_j
 (2, 2, 1, 'admin', '2016-10-10'),
 (3, 2, 22, 'member', '2016-06-13'),
 (4, 2, 41, 'admin', '2016-11-01'),
-(5, 2, 39, 'member', '2016-10-27'),
 (6, 2, 21, 'member', '2016-11-03'),
 (7, 3, 5, 'member', '2016-04-11'),
 (8, 3, 1, 'member', '2016-08-18'),
@@ -407,7 +468,13 @@ INSERT INTO `joined` (`join_id`, `user_id`, `org_id`, `membership_type`, `date_j
 (61, 11, 3, 'pending', '2016-12-08'),
 (62, 2, 11, 'pending', '2016-12-08'),
 (64, 15, 1, 'member', '2016-12-09'),
-(65, 15, 49, 'pending', '2016-12-09');
+(65, 15, 49, 'pending', '2016-12-09'),
+(84, 17, 39, 'admin', '2016-12-11'),
+(87, 17, 1, 'member', '2016-12-12'),
+(91, 19, 39, 'member', '2016-12-12'),
+(92, 19, 1, 'member', '2016-12-12'),
+(93, 19, 2, 'pending', '2016-12-12'),
+(94, 19, 41, 'member', '2016-12-12');
 
 -- --------------------------------------------------------
 
@@ -580,7 +647,6 @@ INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`
 (28, 'seen', 11, 42),
 (29, 'seen', 11, 43),
 (30, 'seen', 11, 44),
-(31, 'seen', 11, 45),
 (32, 'seen', 11, 46),
 (33, 'seen', 2, 47),
 (34, 'seen', 11, 48),
@@ -589,7 +655,6 @@ INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`
 (37, 'seen', 2, 54),
 (38, 'seen', 11, 55),
 (39, 'seen', 11, 56),
-(40, 'seen', 11, 57),
 (41, 'seen', 15, 60),
 (42, 'seen', 11, 61),
 (43, 'seen', 2, 73),
@@ -598,7 +663,94 @@ INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`
 (46, 'seen', 2, 78),
 (47, 'seen', 2, 79),
 (48, 'seen', 2, 80),
-(49, 'seen', 2, 81);
+(49, 'seen', 2, 81),
+(50, 'seen', 2, 84),
+(51, 'seen', 2, 85),
+(52, 'seen', 2, 86),
+(53, 'seen', 2, 87),
+(54, 'seen', 1, 88),
+(55, 'seen', 3, 88),
+(56, 'seen', 5, 88),
+(57, 'seen', 8, 88),
+(58, 'seen', 15, 88),
+(64, 'seen', 2, 91),
+(65, 'seen', 1, 88),
+(66, 'seen', 3, 88),
+(67, 'seen', 5, 88),
+(68, 'seen', 8, 88),
+(69, 'seen', 15, 88),
+(70, 'seen', 5, 93),
+(71, 'seen', 1, 94),
+(72, 'seen', 3, 94),
+(73, 'seen', 5, 94),
+(74, 'seen', 8, 94),
+(75, 'seen', 15, 94),
+(76, 'seen', 2, 95),
+(77, 'seen', 2, 96),
+(78, 'seen', 2, 97),
+(79, 'seen', 11, 98),
+(80, 'seen', 17, 99),
+(81, 'seen', 17, 100),
+(82, 'seen', 17, 101),
+(83, 'seen', 2, 102),
+(84, 'seen', 17, 103),
+(85, 'seen', 1, 104),
+(86, 'seen', 3, 104),
+(87, 'seen', 5, 104),
+(88, 'seen', 8, 104),
+(89, 'seen', 15, 104),
+(90, 'seen', 17, 104),
+(91, 'seen', 1, 105),
+(92, 'seen', 3, 105),
+(93, 'seen', 5, 105),
+(94, 'seen', 8, 105),
+(95, 'seen', 15, 105),
+(96, 'seen', 17, 105),
+(97, 'seen', 2, 106),
+(98, 'seen', 1, 107),
+(99, 'seen', 3, 107),
+(100, 'seen', 5, 107),
+(101, 'seen', 8, 107),
+(102, 'seen', 15, 107),
+(103, 'seen', 17, 107),
+(104, 'seen', 1, 108),
+(105, 'seen', 3, 108),
+(106, 'seen', 5, 108),
+(107, 'seen', 8, 108),
+(108, 'seen', 15, 108),
+(109, 'seen', 17, 108),
+(110, 'seen', 2, 109),
+(111, 'seen', 2, 110),
+(112, 'seen', 17, 111),
+(113, 'seen', 19, 112),
+(114, 'seen', 19, 113),
+(115, 'seen', 17, 114),
+(116, 'seen', 19, 115),
+(117, 'seen', 19, 116),
+(118, 'seen', 19, 117),
+(119, 'seen', 19, 118),
+(120, 'seen', 2, 119),
+(121, 'seen', 2, 121),
+(122, 'seen', 2, 122),
+(123, 'seen', 19, 123),
+(124, 'seen', 19, 124),
+(125, 'seen', 2, 125),
+(126, 'seen', 17, 126),
+(127, 'seen', 2, 127),
+(128, 'seen', 2, 128),
+(129, 'seen', 2, 129),
+(130, 'seen', 17, 130),
+(131, 'seen', 2, 131),
+(132, 'seen', 17, 132),
+(133, 'seen', 2, 133),
+(134, 'seen', 17, 134),
+(135, 'seen', 2, 135),
+(137, 'seen', 17, 137),
+(138, 'seen', 2, 138),
+(139, 'seen', 2, 139),
+(140, 'seen', 17, 140),
+(141, 'seen', 2, 141),
+(142, 'seen', 2, 142);
 
 -- --------------------------------------------------------
 
@@ -627,10 +779,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `student_no`, `first_name`, `last_name`, `username`, `password`, `course`, `date_joined`, `year_level`, `prof_pic`, `birthday`, `email`) VALUES
 (1, '2014-64892', 'Buddy Lane', 'Shimuta', 'BuLShit', 'fc5e038d38a57032085441e7fe7010b0', '---', '1970-01-01', 1, '../images/98tGf8w.png', '1970-01-01', ''),
-(2, '2014-15823', 'Hannah Chloie', 'Marba', 'marbasaur', 'eb09d5e396183f4b71c3c798158f7c07', 'BS Computer Science', '2016-11-17', 3, '../images/image.jpg', '1970-01-06', 'hannahmarba@gmail.com'),
+(2, '2014-15823', 'Hannah Chloie', 'Marba', 'marbasaur', 'eb09d5e396183f4b71c3c798158f7c07', 'BS Computer Science', '2016-11-17', 4, '../images/image.jpg', '1970-01-01', 'hannahmarba@gmail.com'),
 (3, '2014-35613', 'Lincy', 'Legada', 'lllegada', '00c798afd4bed3dac3d01ed75fce899d', 'Bachelor of Science in Computer Science', '2016-11-17', 3, '../images/mikoto.jpg', '1970-01-01', ''),
 (4, '2014-6969', 'Mocha', 'Uson', 'MarcosPaRin#', 'ce022f27c1f7517d002d6618117efd01', 'BS Walang Pinag-aralan', '2016-11-01', 1, '../images/janina.PNG', '0000-00-00', ''),
-(5, '2014-37755', 'Gregg Marionn', 'Icay', 'gregg09', '38337b658d36179f4db94738c28ec614', 'Bachelor of Science in Computer Science', '2016-11-23', 3, '../images/c0b39b383ad4d0d9e7562e716344c272.png', '1997-09-12', 'gmicay123@gmail.com'),
+(5, '2014-37755', 'Gregg Marionn', 'Icay', 'gregg0912', '1e47eac4cea67ca5a85cbd812a8c1a36', 'Bachelor of Science in Computer Science', '2016-11-23', 4, '../images/12346352_1149311071748300_3070081871993010060_n.png', '1970-01-01', 'gmicay123@gmail.com'),
 (6, '2014-67832', 'Emmanuel', 'Valaquio', 'NujValaquio101 ', 'ab1952d1ec26669f80d9c01518918388', 'Bachelor of Science in Chemistry', '2016-11-23', 1, 'zeke.jpg', '2016-11-07', 'nuj101nuj@gmail.com'),
 (7, '2014-37756', 'Hello', 'World', 'gregg ', 'ea468a1024705bdb3a4dc1999af08212', 'Bachelor of Science in Computer Science', '2016-11-24', 3, '../images/12346352_1149311071748300_3070081871993010060_n.png', '1997-09-12', 'gmicay123@gmail.com'),
 (8, '2014-37757', 'Gregg Marionn', 'Icay', 'pokemon ', 'ea468a1024705bdb3a4dc1999af08212', 'Bachelor of Science in Computer Science', '2016-11-24', 3, '../images/TransVC.png', '1997-09-12', 'gmicay123@gmail.com'),
@@ -641,7 +793,10 @@ INSERT INTO `user` (`user_id`, `student_no`, `first_name`, `last_name`, `usernam
 (13, '2014-37566', 'Hayley', 'Williams', 'hallelujah', '4e25e510bb73f379d9059e5c69d958be', '---', '2016-12-07', 1, '../images/5.jpg', '1989-01-27', 'yelyahwilliams@gmail.com'),
 (14, '2014-37566', 'Hayley', 'Williams', 'hallelujah', '4e25e510bb73f379d9059e5c69d958be', '---', '2016-12-07', 1, '../images/5.jpg', '1989-01-27', 'yelyahwilliams@gmail.com'),
 (15, '2014-64890', 'Emmanue', 'Valauqio', 'nujVallaquoi', 'ab1952d1ec26669f80d9c01518918388', 'Bachelor of Science in Fisheries', '2016-12-09', 4, '../images/', '2016-12-12', 'nuj101nuj@gmail.com'),
-(16, '2014-64890', 'Emmanue', 'Valauqio', 'nujVallaquoi', 'ab1952d1ec26669f80d9c01518918388', '---', '2016-12-09', 1, '../images/', '2016-12-12', 'nuj101nuj@gmail.com');
+(16, '2014-64890', 'Emmanue', 'Valauqio', 'nujVallaquoi', 'ab1952d1ec26669f80d9c01518918388', '---', '2016-12-09', 1, '../images/', '2016-12-12', 'nuj101nuj@gmail.com'),
+(17, '2014-37557', 'Ka', 'Luzon', 'kladmin', 'f5494623430e0a68e11e87950aaed329', '---', '2016-12-11', 1, '../images/', '1997-09-12', 'kladmin@gmail.com'),
+(18, '2014-37557', 'Ka', 'Luzon', 'kladmin', 'f5494623430e0a68e11e87950aaed329', '---', '2016-12-11', 1, '../images/', '1997-09-12', 'kladmin@gmail.com'),
+(19, '2014-37759', 'Adminer', 'Accounter', 'adminacc', '0192023a7bbd73250516f069df18b500', 'Bachelor of Science in Fisheries', '2016-12-12', 1, '../images/tumblr_o462ojaOSF1uya0j9o1_400.png', '0000-00-00', 'gmicay123@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -728,7 +883,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 --
 -- AUTO_INCREMENT for table `classification`
 --
@@ -738,22 +893,22 @@ ALTER TABLE `classification`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `discuss`
 --
 ALTER TABLE `discuss`
-  MODIFY `disc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `disc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `disc_upvote`
 --
 ALTER TABLE `disc_upvote`
-  MODIFY `dvID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `dvID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `joined`
 --
 ALTER TABLE `joined`
-  MODIFY `join_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `join_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT for table `orgs`
 --
@@ -768,12 +923,12 @@ ALTER TABLE `org_type`
 -- AUTO_INCREMENT for table `seen_announcement`
 --
 ALTER TABLE `seen_announcement`
-  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --
