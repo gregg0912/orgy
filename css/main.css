@@ -73,8 +73,7 @@ input[type=button],
 button:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
-.buttoncustom.delete:hover,
-.buttoncustom.edit:hover{
+.buttoncustom:hover{
 	filter: brightness(120%);
 }
 
@@ -163,17 +162,18 @@ ul.pagination span:hover{
 }
 
 .return{
-	font-size: 1.2em;
+	font-size: 0.9em;
 	padding: 10px 30px;
 	display: block;
-	width: 18%;
+	width: 5%;
 }
 
-.return:hover{
-	filter: brightness(110%);
-}
+.return:hover, .buttoncustom:hover{
+	opacity: 0.7;
+}	
 
 .pagination-text{
 	text-align: center;
 	color: #555;
+
 }

@@ -1,0 +1,151 @@
+/*<div class="container">
+	<h1 class="title">Org-y</h1>
+	<div class="form-login">
+		<h2>Log in</h2>
+		<form method="post" id="login-form">
+			<p><?php echo $message; echo "<br>"; ?></p>
+			<label for="username"><span class="glyphicon glyphicon-user"></span>Username</label>
+			<input type="text" name="username" placeholder="Username" autocomplete="off"/>
+			<label for="password"><span class="glyphicon glyphicon-lock"></span>Password</label>
+			<input type="password" name="password" placeholder="Password" placeholder="Password"/>
+			<input type="submit" name="submit" value="Log In">
+		</form>
+		<p id="signUp_label">Don't have an account?</p>
+		<a href="signup.php"> Sign Up </a>
+	</div>
+</div>*/
+
+@font-face{
+	font-family: Chaparral;
+	src: url("font/ChaparralPro-Regular.otf");
+}
+
+body{
+	margin: 0;
+	background-color: rgba(149,165,166 ,0.2);
+}
+
+.container{
+	min-height: 100vh;
+	
+}
+
+.flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.title{
+	width: 25vw;
+	box-sizing: border-box;
+	text-align: center;
+	color: white;
+	background-color: #e74c3c;
+	padding: 10px 40px;
+	font-family: Chaparral;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-top: 0;
+}
+
+.form-box{
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	background-color: white;
+	padding: 30px 20px;
+	width: 25vw;
+	box-sizing: border-box;
+}
+
+.form-box h2{
+	color: white;
+	background-color: #e74c3c;
+	padding: 10px 40px;
+	font-family: Chaparral;
+	letter-spacing: 0.1em;
+	margin: 0 0 10px 0;
+}
+
+.form{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.form div{
+	margin: 10px 0;
+	display: flex;
+	width: 100%;
+}
+
+.form label{
+	background-color: #e74c3c;
+	color: white;
+	padding: 10px;
+}
+
+.form input[type=password],
+.form input[type=text]{
+	width: 100%;
+}
+
+.form input{
+	margin: 0;
+	border: 1px solid #DDD;
+	border-width: 1px 1px 1px 0;
+	padding: 10px;
+	transition: 0.2s;
+}
+
+.form input[type=password]:hover,
+.form input[type=text]:hover{
+	border-color: #e74c3c;
+}
+
+.form input[type=password]:active,
+.form input[type=password]:focus,
+.form input[type=text]:active,
+.form input[type=text]:focus{
+	border-color: #e74c3c;
+	outline: none;
+}
+
+.form input[type=submit]{
+	background-color: #e74c3c;
+	color: white;
+	padding: 10px 30px;
+	border: none;
+	font-size: 0.9em;
+	margin-top: 20px;
+}
+
+.form input[type=submit]:hover{
+	filter: brightness(110%);
+	cursor: pointer;
+}
+
+.signup-text{
+	font-family: Arial;
+	font-size: 0.9em;
+	color: #555;
+}
+
+.signup-link{
+	padding: 10px 20px;
+	background-color: #e74c3c;
+	color: white;
+	text-decoration: none;
+	font-family: Arial;
+	font-size: 0.9em;
+}
+
+.message{
+	padding: 5px 10px;
+	background-color: #E91E63;
+	color: white;
+	font-family: Arial;
+	font-size: 0.8em;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+}
