@@ -23,8 +23,10 @@
     	else{
     		echo $disc_id;
     	}
-    }
-
+    }    
+    $org_id=$_GET['org_id'];
+    $org_query="SELECT * FROM orgs WHERE org_id='$org_id'";
+    $org_info=mysqli_fetch_assoc(querySignUp($org_query));
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +84,13 @@
             </ul>
    		</nav>
 		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$org_info['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$org_info['org_name']?></h1>
+				<h2 class="currpage">Comments</h2>
+			</div>
 			<div id="discussions">
 				<?php
 					$get_topic="SELECT * FROM discuss, user WHERE discuss.disc_id='$_GET[disc_id]' AND discuss.user_id=user.user_id";
@@ -89,7 +98,8 @@
 					$phpdate = strtotime( $disc['date_posted'] );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
-				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
+				
+				<a href="discussions.php?orgID=<?=$_GET['org_id']?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span>Back</a><br>
 				<div class='discussion'>
 					<legend>
 						<a class='title' href="discussions.php?orgID=<?=$_GET['org_id']?>"><?=$disc['title']?></a>
@@ -300,15 +310,8 @@
 								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
 								$result = mysqli_query($dbconn, $query);
 							}
-// <<<<<<< HEAD
-							    //
 
-// 	         				echo "<meta http-equiv='refresh' content='0'>";
-							
-// 							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
-// =======
 	         				echo "<meta http-equiv='refresh' content='0'>";							
-//>>>>>>> b9d8145396af4ecea4eaf069b46fa507549a4fda
 							
 						}
 						else

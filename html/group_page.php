@@ -19,7 +19,7 @@
             $id=1;
         }
       	if(isset($_POST['submit_edit'])){
-        	$date = date("Y-m-d h:i:sa");
+        	$date = date("Y-m-d H:i:s");
         	$topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
         	$content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
       		$edit_query="UPDATE announcement 
@@ -34,7 +34,7 @@
         $total=ceil($rows/$lim);
         $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' ORDER BY date_posted DESC LIMIT $start, $lim");
         if(isset($_GET['add_announcement'])){
-        	$date = date("Y-m-d h:i:sa");
+        	$date = date("Y-m-d H:i:s");
         	$admin_id = $_SESSION["user_id"];
 			$topic1 = $_GET['topic'];
 			$content1 = $_GET['new_announcement'];
@@ -127,7 +127,6 @@
 			$result = mysqli_fetch_assoc($check_result);
 			$member = $result['membership_type'];
 		?>
-		<!-- Agent Proxy -->
 	<div id="content">
 		<div class="header">
 			<center>

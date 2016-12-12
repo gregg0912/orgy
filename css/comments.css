@@ -108,9 +108,9 @@ form.sort{
 
 .discussion a, a:hover{
 	text-decoration: none;
-    font-size: 1em;
+   /* font-size: 1em;*/
     /*color: #3498db;*/
-    margin: 5px 0;
+    /*margin: 5px 0;*/
 }
 
 .title{

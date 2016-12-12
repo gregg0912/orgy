@@ -177,3 +177,7 @@ ul.pagination span:hover{
 	color: #555;
 
 }
+
+p{
+	word-wrap: break-word;
+}

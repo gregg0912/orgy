@@ -32,7 +32,7 @@
 
     if($_POST){
     	echo "$_SESSION[kick]";
-    	$date = date("Y-m-d h:i:sa");
+    	$date = date("Y-m-d H:i:s");
     	$admin_id = $_SESSION["user_id"];
     	for($x=0;$x<=$_SESSION['count'];$x++){
     		if(isset($_POST['View'.$x])){
@@ -106,44 +106,46 @@
 				<h1 class="title"><?=$result['org_name']?></h1>
 				<h2 class="currpage">Current Members</h2>
 			</div>
-			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back</a><br>	
-			<?php
-				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
-				$penders = mysqli_query($connectdb,$query_penders);
-				$count=0; ?>
-				<ul id="see_group">
-				<?php while($pendering=mysqli_fetch_assoc($penders)){ 
-					//$ID=$pendering['join_id'];
-					
-					?>
-					<li class="joinGroup">
-						<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
-						<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
-						<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
-						<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
+			<div id="group_list">
+				<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back</a><br>
+				<?php
+					$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
+					$penders = mysqli_query($connectdb,$query_penders);
+					$count=0; ?>
+					<ul id="see_group">
+					<?php while($pendering=mysqli_fetch_assoc($penders)){ 
+						//$ID=$pendering['join_id'];
 						
-							<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
+						?>
+						<li class="joinGroup">
+							<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
+							<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
+							<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
+							<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
+							
+								<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
 
-						<?php 
-							if(isset($_POST['Kick_Button'])){
-								header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
-							}
-						} 
-							$_SESSION['count']=$count; ?>
-					</li>
-				<?php 	
-					$count++; 
-				} ?>
-				</ul>
-				<?php 
-		        if($rows <= 0){ ?>
-		            <p> No pending members. </p> <?php
-		        }
-		        else { ?>
-			        <?php
-						pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
-					}  
-					?>
+							<?php 
+								if(isset($_POST['Kick_Button'])){
+									header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
+								}
+							} 
+								$_SESSION['count']=$count; ?>
+						</li>
+					<?php 	
+						$count++; 
+					} ?>
+					</ul>
+					<?php 
+			        if($rows <= 0){ ?>
+			            <p> No pending members. </p> <?php
+			        }
+			        else { ?>
+				        <?php
+							pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
+						}  
+						?>
+			</div>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 	</body>
