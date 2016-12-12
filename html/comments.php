@@ -12,7 +12,7 @@
     	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
     }
     if(isset($_POST['submit_edit'])){
-    	$body=htmlspecialchars($_POST['content_edit'],ENT_QUOTES);
+    	$body=$_POST['content_edit'];
 		$today = date('Y-m-d H:i:s');
     	$edit_query="UPDATE comments 
     	    SET body='$body', date_c='$today'
@@ -177,7 +177,7 @@
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'"><span class="glyphicon glyphicon-triangle-left" style="font-size: 90%;"></span></a>&nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a>&nbsp; &nbsp; ';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
@@ -202,7 +202,7 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp;&nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'"><span class="glyphicon glyphicon-triangle-right" style="font-size: 90%;"></span></a> ';
+							$paginationCtrls .= ' &nbsp;&nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
 						}
 					}
 
@@ -278,9 +278,11 @@
 
 				?>
 				
-				<div class="page">
+				<div>
 					<p class="pagination-text"><?php echo $textline2; ?></p>
-					<center><div class=	"pagination"><?php echo $paginationCtrls; ?></div></center>
+					<ul class=	"pagination">
+						<li><?php echo $paginationCtrls; ?></li></ul>
+							
 				</div>
 
 
@@ -290,7 +292,8 @@
 					{
 						if($_POST['discussion_text'] != "")
 						{
-							$body = htmlspecialchars($_POST['discussion_text'],ENT_QUOTES);
+							$body = $_POST['discussion_text'];
+
 							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
 
@@ -299,7 +302,7 @@
 
 							    //AGENT PROXY
 							if($disc['user_id']!=$_SESSION['user_id']){
-								$content = $_SESSION['username']." commented on your post entitled ".$disc['title'];
+								$content = $_SESSION['username']." commented on your post on ".$disc['date_posted']." entitled ".$disc['title'];
 								$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$today','Commented','$content','$disc[user_id]',$org_id)";
 								$result = mysqli_query($dbconn, $query);
 
