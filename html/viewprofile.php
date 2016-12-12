@@ -10,10 +10,10 @@ w<?php
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
         <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../css/newstyle.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../css/newstyle.css"> -->
         <link rel="stylesheet" type="text/css" href="../css/main.css">
-        <link rel="stylesheet" type="text/css" href="../css/viewprofile.css">
         <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+        <link rel="stylesheet" type="text/css" href="../css/viewprofile.css">
 </head>
 <body> 
     <?php   
@@ -76,33 +76,33 @@ w<?php
         ?>
         <div id="contentv">
             <h1 class="title"><?= $view_info['username'] ?></h1><br>
-             <div id="one">
-            <img onerror="this.src = '../images/janina.PNG'" id="profile" alt="User Profile Picture" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
+            <div id="one">
+                <img onerror="this.src = '../images/janina.PNG'" id="profile" alt="User Profile Picture" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
             </div>
             <div id="two">
-            <!-- <h3>Personal Information</h3> -->
-            <p><?=$view_info['first_name'] ." ". $view_info['last_name']?></p>
-            <p><?=$view_info['student_no']?></p>
+                <!-- <h3>Personal Information</h3> -->
+                <p><?=$view_info['first_name'] ." ". $view_info['last_name']?></p>
+                <p><?=$view_info['student_no']?></p>
             </div>
             <div id="three">
-            <p><label>Degree Program</label>: <?=$view_info['course']?></p>
-            <p><label>Year Level</label>: <?=$view_info['year_level']?></p>
-            <p><label>Date Joined</label>: <?=$view_info['date_joined']?></p>
+                <p><label>Degree Program</label>: <?=$view_info['course']?></p>
+                <p><label>Year Level</label>: <?=$view_info['year_level']?></p>
+                <p><label>Date Joined</label>: <?=$view_info['date_joined']?></p>
             </div>
             <div id="four">
-            <h3>Orgs Joined</h3>
-            <?php
-                while($org =mysqli_fetch_assoc($view_orgs)){
-            ?>
-                <?php 
-                    $select_type="SELECT * FROM classification WHERE org_id='$org[org_id]'";
-                    $type=mysqli_fetch_assoc(querySignUp($select_type));
-                    $_SESSION['back']=true;
+                <h3>Orgs Joined</h3>
+                <?php
+                    while($org =mysqli_fetch_assoc($view_orgs)){
                 ?>
-                <li><a class="namev" href="view.php?org_id=<?=$org['org_id']?>&org_type=<?= $type['type_id']?>&id=1&user_id=<?=$_GET['user_id']?>"><?=$org['org_name']?></a></li>
-            <?php
-                }
-            ?>
+                    <?php 
+                        $select_type="SELECT * FROM classification WHERE org_id='$org[org_id]'";
+                        $type=mysqli_fetch_assoc(querySignUp($select_type));
+                        $_SESSION['back']=true;
+                    ?>
+                    <li><a class="namev" href="view.php?org_id=<?=$org['org_id']?>&org_type=<?= $type['type_id']?>&id=1&user_id=<?=$_GET['user_id']?>"><?=$org['org_name']?></a></li>
+                <?php
+                    }
+                ?>
             </div>
             <button class="btn btn-1 btn-1a" id="back" onclick="history.go(-1);">Back</button>
         <footer>CMSC 128 Section 1 | 2016</footer>
