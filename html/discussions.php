@@ -359,6 +359,7 @@
 					<!-- <div id="pagination_controls"><?php echo $paginationCtrls; ?></div> -->
 					<div id="pagination_controls">
 						<ul class="pagination">
+				
 							<li><?php echo $paginationCtrls; ?></li>
 						</ul>
 					</div>

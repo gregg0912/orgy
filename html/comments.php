@@ -177,7 +177,7 @@
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a>&nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'"><span class="glyphicon glyphicon-triangle-left"></span></a>&nbsp; &nbsp; ';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
@@ -188,7 +188,7 @@
 							}
 						}
 						
-						$paginationCtrls .= '<span> '.$pagenum.'</span>&nbsp; ';
+						$paginationCtrls .= '<a class="active"><b> '.$pagenum.'</b></a>';
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
@@ -202,7 +202,7 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp;&nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
+							$paginationCtrls .= ' &nbsp;&nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'"><span class="glyphicon glyphicon-triangle-right"></span></a> &nbsp;';
 						}
 					}
 
@@ -279,14 +279,12 @@
 				?>
 				
 				<div>
-					<p class="pagination-text"><?php echo $textline2; ?></p>
-					<div id="pagination_controls">
-						
-					<ul class=	"pagination">
+					<p><?php echo $textline2; ?></p>
+					<div class="pagination">
+					<ul>
 						<li><?php echo $paginationCtrls; ?></li>
 						</ul>
-					</div>
-							
+					</div>						
 				</div>
 
 
