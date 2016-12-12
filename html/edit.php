@@ -103,6 +103,10 @@
 
 
 									$prompt="You have successfully updated your account!";
+
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd'])){
+										$prompt="";
+									}
 									/*header('Location: edit.php');
 						*/
 
