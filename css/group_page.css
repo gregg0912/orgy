@@ -78,6 +78,7 @@ form.posting.true input[type=submit]{
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 	border: 1px solid #DDD;
 	font-family: Arial;
+	position: relative;
 }
 
 .posted-content > *{
@@ -114,6 +115,45 @@ form.posting.true input[type=submit]{
 	color: #555;
 }
 
+.absolute{
+	position: absolute; /*anything under the absolute class*/
+	color: white;
+	padding: 3px 3px; 
+	border-radius: 50%;
+}
+
+.delete{
+	top: 10px; /*10px from top*/
+	right: 10px; /*10px from right*/
+	background-color: #E91E63;
+	transition: 0.2s; /*aesthetics*/
+}
+.edit{
+	top: 10px; /*10px from top*/
+	right: 40px; /*40px from right*/
+	background-color: #03A9F4;
+	transition: 0.2s; /*aesthetics*/
+}
+.delete span,
+.edit span{ /*selecting the span below the elements with edit and delete class*/
+	font-size: 0.9em; /*made smaller icons*/
+	width: 19px; /*created equal width and height*/
+	height: 19px;
+	transform: translate(3px, 1px); /*positioning the element inside without using margins and paddings.
+									  may act like absolute positioning but a bit buggy.*/
+}
+
+/*for aesthetic purposes*/
+.edit:hover{
+	background-color: #40C4FF;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.delete:hover{
+	background-color: #FF4081;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
 .posted-content .edit{
 	display: inline-block;
 }
