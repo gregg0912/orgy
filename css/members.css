@@ -1,3 +1,4 @@
+
 /*.return{
 	font-size: 1.2em;
 	display: block;
@@ -153,5 +154,8 @@
 	display: block;
 	text-align: center;
 	font-family: Arial;
-	color: #333;
+	color: #740000;
+	text-transform: uppercase;
+	font-weight: bold;
+
 }

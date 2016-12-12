@@ -128,8 +128,13 @@
 		?>
 		<!-- Agent Proxy -->
 	<div id="content">
+		<div class="header">
+			<center>
+				<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			</center>
 			<h1 class="title"><?=$result['org_name']?></h1>
-			<img onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			<h2 class="currpage">Announcements</h2>
+		</div>
 		<div id="announcements">
 			<div class="page-navigation">
 					<a href="org_members.php?orgID=<?= $orgid ?>" id="members" class="buttoncustom"><?php echo "Members ".$members_count;?></a>
