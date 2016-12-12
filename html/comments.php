@@ -307,8 +307,9 @@
 								$result = mysqli_query($dbconn, $query);
 							}
 							    //
-
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+	         				echo "<meta http-equiv='refresh' content='0'>";
+							
+							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
 						else
