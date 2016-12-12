@@ -18,15 +18,15 @@
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
-   body
-        {
+    @font-face{
+      font-family: "College Block";
+      src: url("../css/font/College Block.otf") format("opentype");
+    }
+    body{
         /*background-image: url(../images/sample_background.jpg);
         background-attachment: fixed;*/
         background-image: url(../images/Oble.png);
@@ -54,7 +54,7 @@
 
     #orgy{
       font-size: 1000%;
-      font-family:'Josefin Slab', serif; !important;
+      font-family: 'College Block', helvetica !important;
       color: #753131;
       /*text-align: center;*/
       /*margin-top: 50%;*/
@@ -130,7 +130,7 @@ else{
 ?>
   <body>
     <div class="container">
-        <label id="orgy">Org_y</label><!-- 
+        <label id="orgy">Org-y</label><!-- 
         <label id='tag'>Sama-sama tayo!</label> -->
       <!-- <div class="row"> -->
         <!-- <div class="col-md-offset-5 col-md-3"> -->

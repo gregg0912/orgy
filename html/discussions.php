@@ -21,7 +21,7 @@
     	unset($_SESSION['voted']);
     }
     if(isset($_POST['cancel_edit'])){
-    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
+    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'#'.$_GET['edit']);
     }
     if(isset($_POST['submit_edit'])){
 		$today = date('Y-m-d H:i:s');
@@ -32,7 +32,7 @@
     	    	WHERE disc_id=$disc_id";
     	mysqli_query(connection(), $edit_query);
     	if(mysqli_affected_rows($dbconn)>0){
-	    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn']);
+	    	header('Location: discussions.php?orgID='.$_GET['orgID'].'&pn='.$_GET['pn'].'#'.$_GET['edit']);
     	}
     	else{
     		echo $disc_id;
@@ -227,9 +227,13 @@
 						$disc_user_id = $row["user_id"];
 						$date_posted = $row["date_posted"];
 						$dateposted = date('F d, Y h:i:s a', strtotime($date_posted));
+						if(!isset($_GET['pn']))
+							$pn = 1;
+						else
+							$pn = $_GET['pn'];
 						if(!isset($_GET['edit'])){?>
 							<div class="discussion">
-								<legend>
+								<legend id="<?=$disc_id?>">
 
 									<a class='title' href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 
@@ -238,9 +242,8 @@
 								<?php
 									if($user_id==$disc_user_id){
 									?>
-										<button class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button>
+										<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
 										<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
-										<form method="post" action="">
 										
 									<?php
 									}
@@ -260,17 +263,13 @@
 										$total_vote = $upvote - $downvote;
 										$update_vote="UPDATE discuss SET votes='".$total_vote."' WHERE disc_id='".$disc_id."'";
 										querySignUp($update_vote);
-										if(!isset($_GET['pn']))
-											$pn = 1;
-										else
-											$pn = $_GET['pn'];
 									?>
-									<div class="app">
-										<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
-										<label class="votes">Discussion Points:<?=$total_vote?></label>
-										<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
-									</div>
-									
+									<form method='post'>
+										<div class="app">
+											<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
+											<label class="votes">Discussion Points:<?=$total_vote?></label>
+											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
+										</div>
 									</form>
 								</dl>
 							</div>
@@ -353,17 +352,13 @@
 							echo "Error!";
 						}
 					}
-				
-				?>
-				
-				<?php
 					if(isset($_POST['delete']))
 					{
 							$delete_id = $_POST['delete'];
 							$result1 = mysqli_query($dbconn, "DELETE FROM disc_upvote WHERE disc_id=$delete_id");
 							$result2 = mysqli_query($dbconn, "DELETE FROM comments WHERE disc_id=$delete_id");
 							$result3 = mysqli_query($dbconn, "DELETE FROM discuss WHERE disc_id=$delete_id");
-							echo "<script type='text/javascript'>alert('Thread deleted')</script>";
+							// echo "<script type='text/javascript'>alert('Thread deleted')</script>";
 	         				echo "<meta http-equiv='refresh' content='0'>";
 						
 					}

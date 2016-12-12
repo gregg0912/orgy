@@ -138,7 +138,7 @@
                                         <?php
                                         if($current_userid == $user_id && !(($announcement['topic']=="Rejected")||($announcement['topic']=="Accepted")||($announcement['topic']=="Kicked"))){ ?>
                                             <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
                                         <?php } ?>
                                     </form>
                                 <?php $_SESSION['count']=$count;

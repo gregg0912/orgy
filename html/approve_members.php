@@ -255,9 +255,9 @@
 					        else { ?>
 
 					        	<?php
-									pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); 
 							}  ?>
 						</ul>
+							<?php		pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); ?>
 
 
 				</div>
