@@ -1,0 +1,24 @@
+#imagev{
+	margin: auto;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    display: block;
+}
+p{
+	text-align: center;
+}
+.group-btn{
+	display: flex;
+	justify-content: center;
+}
+h1.title{
+	font-family: Chaparral;
+	text-align: center;
+	font-size: 3em;
+	letter-spacing: 0.05em;
+	padding: 10px;
+	text-transform: capitalize;
+	color: white;
+	background-color: #e74c3c;
+}

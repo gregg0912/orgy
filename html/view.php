@@ -10,25 +10,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Group Description</title>
     	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
-		<link rel="stylesheet" type="text/css" href="../css/main.css">
-		<style type="text/css">
-			#imagev{
-				margin: auto;
-                height: 300px;
-                width: 300px;
-                border-radius: 50%;
-                display: block;
-			}
-			p{
-				text-align: center;
-			}
-			.group-btn{
-				display: flex;
-				justify-content: center;
-			}
-		</style>
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/view.css">
 	</head>
 	<body>
 	<div id="wrapper">
@@ -79,7 +63,7 @@
 						$query3 = mysqli_query($connectdb, "SELECT org_name, photo, description from orgs WHERE org_id = $id");
 
 						while(list($orgName, $photo, $des)=mysqli_fetch_array($query3)){ ?>
-							<h2><?=$orgName?></h2>
+							<h1 class="title"><?=$orgName?></h1>
 							<img onerror="this.src = '../images/janina.PNG'" id="imagev" src="<?=$photo?>"><br>
 							<!-- <label id="label"><?=$orgName?></label> -->
 							<p><?=$des?></p>
