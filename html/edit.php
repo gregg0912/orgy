@@ -78,18 +78,15 @@
 				        if(mysqli_query($dbconn, $sql)){
 					        	if(mysqli_affected_rows($dbconn)>0 && !($getusername == $getnewusername) ){
 									$duplicateErr = "Sorry Username " . $getnewusername  ." has already been taken!";
-									/*$getusername = $getnewusername;  */      		
+									// $getusername = $getnewusername;
 					        	}
 					        	else{
-
-					        		/*$getbirthdate = date('Y,m,d', strtotime($_POST["bdate"]));*/
 
 									$file=$_FILES['fileToUpload'];
 									
 									
 									$target_dir = "../images/";
 									$target_file = $target_dir . basename($file["name"]);
-									//$target_file=$info['prof_pic'];
 									if($_FILES["fileToUpload"]["error"] != 0){
 										$target_file=$info['prof_pic'];
 									}
@@ -227,14 +224,6 @@
 		    	<label for="fname">Name</label>
 				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
 				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
-			
-
-		    	<!-- <label for="student_no">Student No:</label>
-				<input type="text" name="student_no" placeholder="20xx-xxxxx" value="<?= $getstudentno ?>" disabled> -->
-			
-			
-		    	<!-- <label for="bdate">Date of Birth:</label>
-				<input type="date" name="bdate" value="<?= $getbirthdate ?>" > -->
 		    
 		    	<label for="degree">Degree Program</label>
 			

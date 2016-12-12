@@ -42,14 +42,14 @@
                 for($x=0;$x<=$_SESSION['count'];$x++){
                     if(isset($_POST['Button'.$x])){
                         $value = $_POST['Button'.$x];
-                        $query_seen= "update seen_announcement set seen='seen' where announcement_id='$value' and user_id='$_SESSION[user_id]'";
+                        $query_seen= "UPDATE seen_announcement SET seen='seen' WHERE announcement_id='$value' AND user_id='$_SESSION[user_id]'";
                         $result=mysqli_query($connectdb,$query_seen);
                         header("Location:notif.php");
                       }
                     }
                         
                     if(isset($_POST["allread"])){
-                        $read_update= "update seen_announcement set seen='seen'";
+                        $read_update= "UPDATE seen_announcement SET seen='seen' WHERE user_id='$_SESSION[user_id]'";
                         $result=mysqli_query($connectdb,$read_update);
                         header("Location:notif.php");
                     }
@@ -131,7 +131,6 @@
                   </li>
                   <?php $count++;
                   }
-                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
                   ?>
                   <?php }
                   else{
@@ -140,6 +139,10 @@
                   <?php
                   }?>
         </ul>
+
+        <?php
+                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
+                  ?>
         <footer>CMSC 128 Section 1 | 2016</footer>
     </div>
 </div>
