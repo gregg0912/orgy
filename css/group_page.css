@@ -86,10 +86,14 @@ form.posting.true input[type=submit]{
 	margin: 5px 0;
 }
 
-.posted-content .type{
-	font-weight: normal;
-	font-size: 1.5em;
+.posted-content h2.type{
+/*	font-weight: bold;
+	font-size: 1.5em;*/
 	display: inline-block;
+	font-size: 1.2em;
+    text-transform: capitalize;
+    transition: 0.2s;
+    color: #740000;
 }
 
 .posted-content .date{

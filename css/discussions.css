@@ -113,9 +113,6 @@ form.sort{
 .discussion a.user,
 .discussion a.title{
 	text-decoration: none;
-/*<<<<<<< HEAD
-    font-size: 1em;
-=======*/
     margin: 10px 0;
 }
 
@@ -127,7 +124,6 @@ form.sort{
 
 .discussion a.title:hover{
 	color: #e74c3c;
-/*>>>>>>> e3eb3e5d375787b938c27a154eb9b3c3bc51902e*/
 }
 
 .title{
@@ -139,7 +135,7 @@ form.sort{
 	color: #ff8a80;;
 }
 
-.user:hover{
+a.user:hover{
 	text-decoration: underline;
 }
 
