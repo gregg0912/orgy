@@ -166,7 +166,7 @@
 		            if(!isset($_GET['edit'])){?>
 						<li class="posted-content">
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
-			                <span class="date"><?= $datec ?></span>
+			                <span class="date"><span class="glyphicon glyphicon-time"></span> <?= $datec ?></span>
 			                <div class="relative-box">
 				                <?php
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
