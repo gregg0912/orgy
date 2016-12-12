@@ -214,12 +214,8 @@ p{
 	margin: auto;
 }
 
-#sortdate:active, #sortvote:active{
+.btnsort:active{
 	background-color: #c0392b!important;
 	color: white!important;
 	cursor: default;
-}
-
-.btnsort:active{
-	background-color: red;
 }
