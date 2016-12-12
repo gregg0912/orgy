@@ -7,7 +7,7 @@
 	$connectdb = connection();
 	redirect();
     $user_id = $_SESSION['user_id'];
-    $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
+    $set_timezone = mysqli_query(connection(), "set time_zone = '+08:00'");
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
     		echo "<script type='text/javascript'>alert('You already voted for that comment!')</script>";

@@ -256,7 +256,7 @@
 							else{?>
 								<div class='discussion' id='<?=$comment_id?>'>
 									<legend>
-										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<a class='user'><?=$commenter?></a>
 										<span class="date"><?=$datec?></span>
 									</legend>
 									<dl>
@@ -307,8 +307,14 @@
 								$result = mysqli_query($dbconn, $query);
 							}
 							    //
+<<<<<<< HEAD
 
 							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']."&pn=1");
+=======
+	         				echo "<meta http-equiv='refresh' content='0'>";
+							
+							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+>>>>>>> d13ac41619df57180c922c3d4dedb69df9a90581
 							
 						}
 						else
