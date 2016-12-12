@@ -23,10 +23,6 @@
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-.down{
-	margin-bottom: -2px;
-}
-
 .app{
 	display: inline-block;
 	float: left;
@@ -42,6 +38,11 @@
 	transform: scale(0.9, 0.9);
 	border-radius: 50%;
 
+}
+
+.down{
+	margin-bottom: -2px;
+	color: #c10000;
 }
 
 form.sort{
@@ -95,6 +96,8 @@ form.sort{
 	width: 100%;
 	transition: 0.2s;
 	resize: none;
+	word-wrap: break-word;
+
 }
 
  textarea:focus{
@@ -109,6 +112,9 @@ form.sort{
 .discussion a.user,
 .discussion a.title{
 	text-decoration: none;
+/*<<<<<<< HEAD
+    font-size: 1em;
+=======*/
     margin: 10px 0;
 }
 
@@ -120,6 +126,7 @@ form.sort{
 
 .discussion a.title:hover{
 	color: #e74c3c;
+/*>>>>>>> e3eb3e5d375787b938c27a154eb9b3c3bc51902e*/
 }
 
 .title{
@@ -135,7 +142,7 @@ form.sort{
 	text-decoration: underline;
 }
 
-.user, .up, .down{
+.user, .up{
 	font-weight: normal;
     font-size: 1em;
     color: #3498db;
@@ -221,3 +228,8 @@ p{
 	margin: auto;
 }
 
+.btnsort:active{
+	background-color: #c0392b!important;
+	color: white!important;
+	cursor: default;
+}

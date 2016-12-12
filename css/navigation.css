@@ -106,8 +106,16 @@ nav img:hover{
         <a href="group_page.php?orgID=<?=$org_id2?>"><?=$orgName2?></a>
     </div>
 </li>*/
-
-
+.notif-count{
+	padding: 1% 2% 1% 2%;
+	background: #cc0000;
+	color: #ffffff;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	position: absolute;
+	font-size: 67%;
+}
 li.dropbtn:hover > a.dropbtn{
 	background-color: white;
 	color: #e74c3c;
@@ -137,7 +145,7 @@ a.dropbtn + ul.dropdown-list li{
 	margin: 0;
 }
 
-a.dropbtn + ul.dropdown-list a:hover{
+a.dropbtn + ul.dropdown-list a:hover,{
 	background-color: #EEE;
 	color: #555;
 }
@@ -151,14 +159,3 @@ a.dropbtn + ul.dropdown-list:hover,
 a.dropbtn:hover + ul.dropdown-list{
 	display: block;
 }
-
-
-
-
-
-
-
-
-
-
-

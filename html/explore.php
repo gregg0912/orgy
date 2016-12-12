@@ -144,12 +144,11 @@
                     </ul>
                 </li>
                 <li><a href="edit.php">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
+                <li><a href="notif.php">Notifications
                   <?php
                     $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                    $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
+                    $total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
                 </a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
@@ -197,19 +196,26 @@
 							</div>
 						</li>
 					<?php }
-					if(isset($_GET['searched'])){
-						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
-					}
-					else{
-					}
+
+
 				}else{
 				?>
 					<p class="no-match">No match found!</p>
 				<?php
 				}
+
 				?>
 			</ul>
-			<?php pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d"); ?>
+
+			<?php 
+					if(isset($_GET['searched'])){
+						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
+					}
+					else{
+						pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d");
+					}
+			 ?>
+
 	        <footer>CMSC 128 Section 1 | 2016</footer>
 		</div> 
 	</div>

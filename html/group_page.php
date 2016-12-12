@@ -104,12 +104,11 @@
                 </ul>
             </li>
             <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="notif.php">Notifications   |  
+            <li><a href="notif.php">Notifications
               <?php
                 $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                $total2 = mysqli_num_rows($notifnum);
-                echo "$total2"
-                ?>
+                $total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
             </a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
@@ -129,8 +128,13 @@
 		?>
 		<!-- Agent Proxy -->
 	<div id="content">
+		<div class="header">
+			<center>
+				<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			</center>
 			<h1 class="title"><?=$result['org_name']?></h1>
-			<img onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			<h2 class="currpage">Announcements</h2>
+		</div>
 		<div id="announcements">
 			<div class="page-navigation">
 					<a href="org_members.php?orgID=<?= $orgid ?>" id="members" class="buttoncustom"><?php echo "Members ".$members_count;?></a>
@@ -162,7 +166,7 @@
 		            if(!isset($_GET['edit'])){?>
 						<li class="posted-content">
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
-			                <span class="date"><?= $datec ?></span>
+			                <span class="date"><span class="glyphicon glyphicon-time"></span> <?= $datec ?></span>
 			                <div class="relative-box">
 				                <?php
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
