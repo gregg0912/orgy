@@ -276,7 +276,7 @@
 				?>
 				
 				<div>
-					<p><?php echo $textline2; ?></p>
+					<p class="pagination-text"><?php echo $textline2; ?></p>
 					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 				</div>
 

@@ -51,13 +51,11 @@ input[type=button],
 button:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
-.buttoncustom.delete:hover{
-	background-color: #ff8a80;
+.buttoncustom.delete:hover,
+.buttoncustom.edit:hover{
+	filter: brightness(120%);
 }
 
-.buttoncustom.edit:hover{
-	background-color: #00B0FF;
-}
 
 input[type=text],
 input[type=password],
@@ -140,4 +138,20 @@ ul.pagination span:hover{
 .none{
 	color: #888;
 	text-align: center;
+}
+
+.return{
+	font-size: 1.2em;
+	padding: 10px 30px;
+	display: block;
+	width: 18%;
+}
+
+.return:hover{
+	filter: brightness(110%);
+}
+
+.pagination-text{
+	text-align: center;
+	color: #555;
 }
