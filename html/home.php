@@ -92,13 +92,11 @@
                     </ul>
                 </li>
                 <li><a href="edit.php">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
-                  <?php
+                <?php
                     $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
                     $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
-                </a></li>
+                ?>
+                <li><a href="notif.php">Notifications <span class="notif-count"><?=$total2?></span></a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </nav>
