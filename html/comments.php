@@ -93,8 +93,8 @@
 					$phpdate = strtotime( $disc['date_posted'] );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
-				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<h1 class='title'><?=$disc['title']?></h1>
+				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<div class='discussion'>
 					<legend>
 						<a class='user' href="viewprofile.php?user_id=<?=$disc['user_id']?>"><?=$disc['username']?></a>
