@@ -53,7 +53,6 @@
 			$getfname = $_POST["fname"];
 			$getlname = $_POST["lname"];
 			$getemail = $_POST["email"];
-			/*$getbirthdate = $_POST["bdate"];*/
 			$getdegree = $_POST["degree"];
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
@@ -103,10 +102,10 @@
 
 
 									$prompt="You have successfully updated your account!";
-									/*header('Location: edit.php');
-						*/
 
-					        		
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd'])){
+										$prompt="";
+									}
 
 					        		$sql_1 = "UPDATE user SET username = '$getnewusername' WHERE username = '$getusername' ";
 
@@ -116,10 +115,6 @@
 					        	}
 					        }    
 						}
-
-		        		
-						
-						
 		        	}
 				}
 			}
@@ -129,7 +124,6 @@
 				$getoldpassword = $_POST["currentpwd"]; 
 				$getnewpassword = $_POST["newpwd"]; 
 				$getretypenewpassword = $_POST["renewpwd"];
-
 				$checkoldpassword = $checknewpassword = $checkretypenewpassword = false; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
 		        if(mysqli_query($dbconn, $sql_password)){
@@ -140,21 +134,18 @@
 		        		$checkoldpassword = true;
 		        	}
 				}
-
 		        if($getnewpassword != $getretypenewpassword){
         			$newpasswordErr = " Oops, new password and confirmation don’t match!";
         		}
         		else{
         			$checknewpassword = true;
         		}
-
 	        	if(!preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getnewpassword) && !preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getretypenewpassword)){
 	        		$retypenewpasswordErr = " New password must at least be 8 characters long and should contain at least 1 integer";		        	
 	        	}
 	        	else{
 	        		$checkretypenewpassword = true;
 	        	}
-
 				if($checkoldpassword && $checknewpassword && $checkretypenewpassword){
 					$sql = "UPDATE user 
 								SET password='".md5($getnewpassword)."'
@@ -167,9 +158,7 @@
 			}
 			else if((empty($_POST["newpwd"]) && !empty($_POST["renewpwd"])) || (!empty($_POST["newpwd"]) && empty($_POST["renewpwd"]))) {
 				$passwordErr = "Current password, new password, and password retype confirmation must be filled out to make changes to your current password";
-			}
-
-			 
+			}			 
 		}
 		else{
 			echo $line;
