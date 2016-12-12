@@ -26,8 +26,10 @@
     	else{
     		echo $disc_id;
     	}
-    }
-
+    }    
+    $org_id=$_GET['org_id'];
+    $org_query="SELECT * FROM orgs WHERE org_id='$org_id'";
+    $org_info=mysqli_fetch_assoc(querySignUp($org_query));
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +87,13 @@
             </ul>
    		</nav>
 		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$org_info['org_name']?></h1>
+				<h2 class="currpage">Comments</h2>
+			</div>
 			<div id="discussions">
 				<?php
 					$get_topic="SELECT * FROM discuss, user WHERE discuss.disc_id='$_GET[disc_id]' AND discuss.user_id=user.user_id";
