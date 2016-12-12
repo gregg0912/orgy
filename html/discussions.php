@@ -235,24 +235,21 @@
 							<div class="discussion">
 								<legend id="<?=$disc_id?>">
 
-									<a class='title' href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+									<a class='title' href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 
 									<span class="date"><?=$dateposted?></span>
 								</legend>
 								<?php
 									if($user_id==$disc_user_id){
 									?>
-										<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
-										<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+										<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span></button></form>
+										<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span></button></a>
 										
 									<?php
 									}
 									?>
-								<dl>
-									<dt>
-										<a class='user' href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
-									</dt>
-									<dt><p>"<?=nl2br($content)?>"</p></dt>
+									<a class='user' href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
+									<p>"<?=nl2br($content)?>"</p></dt>
 									<?php
 										$up_query = "SELECT * FROM disc_upvote WHERE disc_id = '".$disc_id."' AND approval = 'upvote'";
 										$up_result = querySignUp($up_query);
@@ -271,7 +268,6 @@
 											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
 										</div>
 									</form>
-								</dl>
 							</div>
 					<?php				
 						}
@@ -293,7 +289,7 @@
 											<input type='submit' name='submit_edit' value='Submit'/>
 											<input type='submit' name='cancel_edit' value='Cancel'/>
 										</dl>
-									</div><br>
+									</div>
 								</form>
 				<?php
 							}

@@ -9,7 +9,25 @@
     	header("Location:signup.php");
     }*/
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];    
+
+    if(isset($_POST['cancel_edit'])){
+    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
+    }
+    if(isset($_POST['submit_edit'])){
+    	$body=$_POST['content_edit'];
+		$today = date('Y-m-d H:i:s');
+    	$edit_query="UPDATE comments 
+    	    SET body='$body', date_c='$today'
+    	    	WHERE comment_id='$_GET[edit]'";
+    	if(querySignUp($edit_query)){
+	    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
+    	}
+    	else{
+    		echo $disc_id;
+    	}
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -75,8 +93,8 @@
 					$phpdate = strtotime( $disc['date_posted'] );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
-				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<h1 class='title'><?=$disc['title']?></h1>
+				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<div class='discussion'>
 					<legend>
 						<a class='user' href="viewprofile.php?user_id=<?=$disc['user_id']?>"><?=$disc['username']?></a>
@@ -137,19 +155,11 @@
 
 					$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 					
-					/*$sql = "SELECT *
-							FROM comments, discuss, user
-							WHERE comments.disc_id = $disc_id
-							AND comments.user_id = user.user_id $limit";*/
-
 					$sql = "SELECT u.username, c.body, c.date_c, c.comment_id, u.user_id 
 								FROM comments c 
 								INNER JOIN user u on c.user_id = u.user_id 
 								INNER JOIN discuss d on c.disc_id = d.disc_id 
 									WHERE c.disc_id=$disc_id ORDER BY comment_id ASC $limit";
-									
-	//wait lang ha ga edit ako -jp 6:50pm
-							   
 							    $query = mysqli_query($dbconn, $sql);
 
 					$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -201,18 +211,60 @@
 						// $commenter_id=$row["user_id"];
 						$date_c = $row["date_c"];
 						$phpdate = strtotime( $date_c );
-						$datec = date( 'F d, Y h:i:s a', $phpdate );?>
-						<div class='discussion'>
-							<legend>
-								<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
-								<span class="date"><?=$datec?></span>
-							</legend>
-							<dl>
-								<dt><label>Message:</label></dt>
-								<dt><p><?=nl2br($body)?></p></dt>
-							</dl>
-						</div>
+						$datec = date( 'F d, Y h:i:s a', $phpdate );
+						if(!isset($_GET['edit'])){?>
+							<div class='discussion' id='<?=$comment_id?>'>
+								<legend>
+									<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+									<span class="date"><?=$datec?></span>
+								</legend>
+								<?php 
+								if($_SESSION['user_id'] ==$row['user_id']){?>
+									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
+									<a href="comments.php?org_id=<?=$_GET['org_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+								<?php }?>
+								<dl>
+									<dt><p><?=nl2br($body)?></p></dt>
+								</dl>
+								<?php
+								    if(isset($_POST['delete'])){
+								    	$delete_query="DELETE FROM comments WHERE comment_id='$comment_id' ";
+								    	querySignUp($delete_query);
+								    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id']);
+
+								    }
+								?>
+							</div>
 				<?php
+						}
+						else{ 
+							if($comment_id==$_GET['edit']) {?>							
+								<div class='newdiscussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
+									<form method="post" action="">
+										<dl>
+											<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+										</dl>
+										<input name='submit_edit' type='submit' value='Submit'/>
+										<input name='cancel_edit' type='submit' value='Cancel' />
+									</form>
+								</div>
+				<?php 		}
+							else{?>
+								<div class='discussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
+									<dl>
+										<dt><p><?=nl2br($body)?></p></dt>
+									</dl>
+								</div>
+						<?php }
+						}
 					}
 				}
 
@@ -236,21 +288,26 @@
 						if($_POST['discussion_text'] != "")
 						{
 							$body = $_POST['discussion_text'];
-							
-
-
-
-							//HEY! GAGANA ANG PAG ADD SA PHPMYADMID NA SQL TA NAGA INSERT NA BUT HINDI KO ALAM KUNG PAANO SILA I OUTPUT LAHAT SO YE ATLEAST NAG AADD NA SA DATABASE -jp
-							
-
-
-								$today = date('Y-m-d H:i:s');
-							//$today=date("Y-m-d");
-
+							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
 
 							   
 							    $query = mysqli_query($dbconn, $sql);
+
+							    //AGENT PROXY
+							if($disc['user_id']!=$_SESSION['user_id']){
+								$content = $_SESSION['username']." commented on your post on ".$disc['date_posted']." entitled ".$disc['title'];
+								$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$today','Commented','$content','$disc[user_id]',$org_id)";
+								$result = mysqli_query($dbconn, $query);
+
+								$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$org_id order by announcement_id desc limit 1");
+					        	$ann_id= mysqli_fetch_assoc($ann);
+					        	$announcement_id=$ann_id['announcement_id'];
+								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
+								$result = mysqli_query($dbconn, $query);
+							}
+							    //
+
 							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
@@ -258,7 +315,7 @@
 						{
 							echo "<script type='text/javascript'>alert('Please input field')</script>";
 						}
-					}
+					} 
 				?>
 		
 			</div>

@@ -5,7 +5,7 @@
 	$connectdb = connection();
 	$set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
 	$orgid = intval($_GET['orgID']);
-	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' order by date_posted DESC ");
+	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
     $rows = mysqli_affected_rows($connectdb);
     $start=0;
     $lim=5;
@@ -31,7 +31,7 @@
       		header('Location: group_page.php?id='.$_GET['id'].'&orgID='.$_GET['orgID'].'#'.$_GET['edit']);
       	}
         $total=ceil($rows/$lim);
-        $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid and topic !='Upvote' and topic!='Downvote' ORDER BY date_posted DESC LIMIT $start, $lim");
+        $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' ORDER BY date_posted DESC LIMIT $start, $lim");
         if(isset($_GET['add_announcement'])){
         	$date = date("Y-m-d h:i:sa");
         	$admin_id = $_SESSION["user_id"];
@@ -44,7 +44,7 @@
   			
   			
 			//adding to seen_announcements
-			$announcement_query = " select announcement_id from announcement where org_id = $orgid and user_id = $admin_id and topic !='Upvote' and topic!='Downvote' order by date_posted DESC limit 1";
+			$announcement_query = " select announcement_id from announcement where org_id = $orgid and user_id = $admin_id and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC limit 1";
 			$A_result = mysqli_query($connectdb, $announcement_query);
 
 			while($announcement_result = mysqli_fetch_assoc($A_result)){
@@ -116,21 +116,21 @@
     </nav>
     	<?php
 			$current_userid = $_SESSION['user_id'];
-			$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
+			$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id = $orgid";
 			$check_result = mysqli_query($connectdb, $checker_query);
 
-			$pending_query = "select * from joined where org_id = $orgid and membership_type = 'pending' ";
+			$pending_query = "SELECT * FROM joined WHERE org_id = $orgid AND membership_type = 'pending' ";
 			$pending_count =mysqli_num_rows(mysqli_query($connectdb, $pending_query));
-			$members_query = "select * from joined where org_id = $orgid and (membership_type = 'admin' or membership_type='member') ";
+			$members_query = "SELECT * FROM joined WHERE org_id = $orgid AND (membership_type = 'admin' OR membership_type='member') ";
 			$members_count = mysqli_num_rows(mysqli_query($connectdb, $members_query));
 			
-				while($result = mysqli_fetch_assoc($check_result)){
-						$member = $result['membership_type'];
-				}
+			$result = mysqli_fetch_assoc($check_result);
+			$member = $result['membership_type'];
 		?>
 		<!-- Agent Proxy -->
 	<div id="content">
-		<h1 class="title">Announcements</h1>
+			<h1 class="title"><?=$result['org_name']?></h1>
+			<img onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
 		<div id="announcements">
 			<div class="page-navigation">
 					<a href="org_members.php?orgID=<?= $orgid ?>" id="members" class="buttoncustom"><?php echo "Members ".$members_count;?></a>
@@ -156,7 +156,6 @@
 					$date_c = $GrpAnnouncement["date_posted"];
 					$phpdate = strtotime( $date_c );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
-		        
 		       	   	$user_id = $GrpAnnouncement['user_id'];
 		            $username = mysqli_query($connectdb, "select first_name, last_name from user where user_id = $user_id");
 		            $name = mysqli_fetch_assoc($username);
@@ -168,8 +167,8 @@
 				                <?php
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
 		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit absolute"><span class="glyphicon glyphicon-pencil"></span></a>
-		                        <form method="post" action="" class="delete">
-		                        	<button type="submit" name=" " value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
+		                        <form method="post" action="">
+		                        	<button type="submit" name="" value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
 		                        </form>
 		                        <?php } ?>
 	                        </div>

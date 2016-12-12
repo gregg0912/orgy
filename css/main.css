@@ -51,8 +51,12 @@ input[type=button],
 button:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
-.buttoncustom:hover{
+.buttoncustom.delete:hover{
 	background-color: #ff8a80;
+}
+
+.buttoncustom.edit:hover{
+	background-color: #00B0FF;
 }
 
 input[type=text],

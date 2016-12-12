@@ -17,14 +17,14 @@
 
 
 .discussion{
-	min-height: 220px;
-	padding: 10px 10px;
+	overflow: auto;
+	padding: 20px 20px;
 	border-style: none;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
 .down{
-	margin-bottom: -2px;	
+	margin-bottom: -2px;
 }
 
 .app{
@@ -69,7 +69,7 @@ form.sort{
 	margin: 15px auto 15px auto;
 	box-sizing: border-box;
 	width: 50%;
-
+	position: relative;
 }
 
 .discussion.legend{
@@ -134,18 +134,29 @@ form.sort{
 }
 
 
-.discussion .remove, .edit{
+.discussion .remove, .discussion .edit{
 	border-radius: 50%;
-	padding: 5px 5px 3px 5px;
-	display: flex;
-	margin-top: -20px; 
-	right: 0;
-	/*margin-right: 5px;*/
+	padding: 5px 5px 5px 5px;
 	transition: 0.2s;
 	transform: scale(0.7, 0.7);
-	opacity: 0.5;	
-	float: right;
-	 
+	position: absolute;	 
+}
+
+.discussion .remove span,
+.discussion .edit span{
+	width: 20px;
+	height: 20px;
+	transform: translate(0, 2px);
+}
+
+.discussion .remove{
+	top: 10px;
+	right: 10px;
+}
+
+.discussion .edit{
+	top: 10px;
+	right: 40px;
 }
 
 .discussion .remove span,

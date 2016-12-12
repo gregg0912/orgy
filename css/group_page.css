@@ -34,6 +34,7 @@ form.posting{
 
 form.posting.true{
 	position: absolute;
+	z-index: 5;
 }
 
 form.posting h3.name{
@@ -122,6 +123,11 @@ form.posting.true input[type=submit]{
 	border-radius: 50%;
 }
 
+.delete,
+.edit{
+	transform: scale(0.8, 0.8);
+}
+
 .delete{
 	top: 10px; /*10px from top*/
 	right: 10px; /*10px from right*/
@@ -130,7 +136,7 @@ form.posting.true input[type=submit]{
 }
 .edit{
 	top: 10px; /*10px from top*/
-	right: 40px; /*40px from right*/
+	right: 35px; /*40px from right*/
 	background-color: #03A9F4;
 	transition: 0.2s; /*aesthetics*/
 }
@@ -138,21 +144,26 @@ form.posting.true input[type=submit]{
 .edit span{ /*selecting the span below the elements with edit and delete class*/
 	font-size: 0.9em; /*made smaller icons*/
 	width: 19px; /*created equal width and height*/
-	height: 19px;
-	transform: translate(3px, 1px); /*positioning the element inside without using margins and paddings.
-									  may act like absolute positioning but a bit buggy.*/
+	height: 17px;
+}
+
+.delete span{
+	transform: translate(0, 1px);	
+}
+.edit span{
+	transform: translate(3px, 1px);	
 }
 
 /*for aesthetic purposes*/
 .edit:hover{
 	background-color: #40C4FF;
 	cursor: pointer;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	transform: scale(1, 1);
 }
 .delete:hover{
 	background-color: #FF4081;
 	cursor: pointer;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	transform: scale(1, 1);
 }
 .posted-content .edit{
 	display: inline-block;

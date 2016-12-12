@@ -10,9 +10,9 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #F9F4F4 inset;
 }
 h2{
-	color: #740000;
+	color: #333;
 	line-height: 100%;
-	font-size: 100%;
+	font-size: 80%;
 	margin: auto;
 	text-align: center;
 	font-family: 'Arca Majora 3 Bold', sans-serif;

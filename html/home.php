@@ -20,7 +20,7 @@
 <body>
 <?php
         $curnt_id = $_SESSION['user_id'];
-        $query1 = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') order by date_posted DESC ");
+        $query1 = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
         $rows = mysqli_num_rows($query1);
         $start=0;
         $lim=5;
@@ -33,7 +33,7 @@
                 $id=1;
             } 
     $total=ceil($rows/$lim);
-    $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
+    $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') and topic !='Upvote' and topic!='Downvote' and topic!='Commented' ORDER BY date_posted DESC LIMIT $start, $lim");
     
     if($_POST){       
         for($x=0;$x<=$_SESSION['count'];$x++){
@@ -92,13 +92,11 @@
                     </ul>
                 </li>
                 <li><a href="edit.php">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
-                  <?php
+                <?php
                     $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
                     $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
-                </a></li>
+                ?>
+                <li><a href="notif.php">Notifications <span class="notif-count"><?=$total2?></span></a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </nav>
@@ -138,7 +136,7 @@
                                         <?php
                                         if($current_userid == $user_id && !(($announcement['topic']=="Rejected")||($announcement['topic']=="Accepted")||($announcement['topic']=="Kicked"))){ ?>
                                             <a href="home.php?id=<?=$id?>&edit=<?=$announcement['announcement_id']?>#<?=$announcement['announcement_id']?>" class="buttoncustom edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <button class="remove" type="submit" name="<?='Button'."$count" ?>" value="<?="$announcement[announcement_id]"?>"><span class="glyphicon glyphicon-remove"></span></button>
                                         <?php } ?>
                                     </form>
                                 <?php $_SESSION['count']=$count;
