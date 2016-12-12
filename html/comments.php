@@ -158,7 +158,7 @@
 								FROM comments c 
 								INNER JOIN user u on c.user_id = u.user_id 
 								INNER JOIN discuss d on c.disc_id = d.disc_id 
-									WHERE c.disc_id=$disc_id ORDER BY comment_id ASC $limit";
+									WHERE c.disc_id=$disc_id ORDER BY comment_id DESC $limit";
 							    $query = mysqli_query($dbconn, $sql);
 
 					$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -170,13 +170,13 @@
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
 								if($i > 0)
 								{
-									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 								}
 							}
 						}
@@ -185,7 +185,7 @@
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 							if($i >= $pagenum+4)
 							{
 								break;
@@ -195,7 +195,7 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
+							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
 						}
 					}
 
@@ -217,7 +217,7 @@
 								<?php 
 								if($_SESSION['user_id'] ==$row['user_id']){?>
 									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
-									<a href="comments.php?org_id=<?=$_GET['org_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+									<a href="comments.php?org_id=<?=$_GET['org_id']?>&sort_id=<?=$_GET['sort_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 								<?php }?>
 								<dl>
 									<dt><p><?=nl2br($body)?></p></dt>
@@ -302,7 +302,15 @@
 								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
 								$result = mysqli_query($dbconn, $query);
 							}
+// <<<<<<< HEAD
+							    //
+
+// 	         				echo "<meta http-equiv='refresh' content='0'>";
+							
+// 							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+// =======
 	         				echo "<meta http-equiv='refresh' content='0'>";							
+//>>>>>>> b9d8145396af4ecea4eaf069b46fa507549a4fda
 							
 						}
 						else

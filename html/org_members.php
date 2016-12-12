@@ -13,7 +13,6 @@
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from joined where org_id = $orgid and (membership_type ='member' or membership_type='admin') ");
 	$total_items = mysqli_num_rows($query1);
-	// echo "$result";
     $rows = mysqli_num_rows($query1);
     $start=0;
     $lim=3; 
@@ -89,33 +88,46 @@
 				<li><a href="logout.php">Log Out</a></li>
 			</ul>
 		</nav>
-		<div id="content">
 			<!-- Agent Proxy -->	
 			<?php
 				$current_userid = $_SESSION['user_id'];
-				$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
+				$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id = $orgid";
 				$check_result = mysqli_query($connectdb, $checker_query);
-				
-					while($result = mysqli_fetch_assoc($check_result)){
-							$member = $result['membership_type'];
-					}
+				$result = mysqli_fetch_assoc($check_result);
+				$member = $result['membership_type'];
 			?>				
 		<!-- Agent Proxy -->
-			<h1 class="title">Current Members</h1>
+		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$result['org_name']?></h1>
+				<h2 class="currpage">Current Members</h2>
+			</div>
 			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>			
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
 				$count=0; ?>
 				<ul id="see_group">
-				<?php while($pendering=mysqli_fetch_assoc($penders)){ ?>
+				<?php while($pendering=mysqli_fetch_assoc($penders)){ 
+					//$ID=$pendering['join_id'];
+					
+					?>
 							<li class="joinGroup">
 								<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
 								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
 								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
-									<a class="orglink" href="delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>" onClick= "uSure(); return false;"> Kick </a> 
-								<?php } 
+								
+									<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
+
+								<?php 
+									if(isset($_POST['Kick_Button'])){
+										header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
+									}
+								} 
 									$_SESSION['count']=$count; ?>
 							</li>
 				<?php 	
@@ -133,17 +145,5 @@
 					?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
-		<script type="text/javascript">
-			function uSure() {
-			    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
-			    if (x == true){
-			    	
-			        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
-			    } 
-			}
-			function addmsg(type, msg){
-				$('#notification_count').html(msg);
-			}
-		</script>
 	</body>
 </html>
