@@ -41,20 +41,21 @@ if(mysqli_num_rows($result)>=1){
 			if($upvote=="upvote"){
 				$content = "$username upvoted your post entitled $title";
 				$topic = "Upvote";
-				$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES ('$date','$topic','$content','$disc_user_id','$orgID')";
+				$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (NULL,'$date','$topic','$content','$disc_user_id','$orgID')";
 				$result = mysqli_query($dbconn, $query);
 			}
 			elseif($upvote=="downvote"){
 				$content = "$username downvoted your post entitled $title";
 				$topic = "Downvote";
-				$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES ('$date','$topic','$content','$disc_user_id','$orgID')";
+				$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (NULL,'$date','$topic','$content','$disc_user_id','$orgID')";
 				$result = mysqli_query($dbconn, $query);
 			}
 			if($result){
-				$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
-		       	$ann_id= mysqli_fetch_assoc($ann);
-		       	$announcement_id=$ann_id['announcement_id'];
-				$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
+				// $ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID ORDER BY announcement_id desc limit 1");
+		  //      	$ann_id= mysqli_fetch_assoc($ann);
+		  //      	$announcement_id=$ann_id['announcement_id'];
+				$announcement_id = $dbconn->insert_id;
+				$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (NULL,'not_seen','$disc_user_id','$announcement_id')";
 				$result = mysqli_query($dbconn, $query);
 			}
 			
@@ -78,20 +79,21 @@ if(mysqli_num_rows($result)>=1){
 		if($upvote=="upvote"){
 			$content = "$username upvoted your post entitled $title";
 			$topic = "Upvote";
-			$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES('$date','$topic','$content','$disc_user_id','$orgID')";
+			$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES(NULL,'$date','$topic','$content','$disc_user_id','$orgID')";
 			$result = mysqli_query($dbconn, $query);
 		}
 		elseif($upvote=="downvote"){
 			$content = "$username downvoted your post entitled $title";
 			$topic = "Downvote";
-			$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES('$date','$topic','$content','$disc_user_id','$orgID')";
+			$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES(NULL,'$date','$topic','$content','$disc_user_id','$orgID')";
 			$result = mysqli_query($dbconn, $query);
 		}
 		if($result && !($disc_user_id==$_SESSION['user_id'])){
-			$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
-        	$ann_id= mysqli_fetch_assoc($ann);
-        	$announcement_id=$ann_id['announcement_id'];
-			$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
+			// $ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID ORDER BY announcement_id DESC limit 1");
+   //      	$ann_id= mysqli_fetch_assoc($ann);
+   //      	$announcement_id=$ann_id['announcement_id'];
+			$announcement_id = $dbconn->insert_id;
+			$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (NULL,'not_seen','$disc_user_id','$announcement_id')";
 			$result = mysqli_query($dbconn, $query);	
 		}
 	}

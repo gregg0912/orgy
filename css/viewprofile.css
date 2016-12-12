@@ -12,6 +12,8 @@
     border-radius: 50%;
     object-position: center;
     object-fit: cover;
+    border:2px solid #E1DFD6;
+    box-shadow:  0 0 15px rgba(0,0,0,0.2);
 }
 p, h3{
 	color: #333;
