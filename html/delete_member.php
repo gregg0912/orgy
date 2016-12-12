@@ -19,7 +19,7 @@
 	$name=mysqli_fetch_assoc($user);	
 	$query_rejected= "delete from joined where join_id='$value'";
 	$result=mysqli_query($connectdb,$query_rejected);
-	$date = date("Y-m-d h:i:sa");
+	$date = date("Y-m-d H:i:s");
 	$admin_id = $_SESSION["user_id"];
 
 	echo "$value";

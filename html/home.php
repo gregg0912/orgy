@@ -49,7 +49,7 @@
         }
     }
     if(isset($_POST['submit_edit'])){
-        $date = date("Y-m-d h:i:sa");
+        $date = date("Y-m-d H:i:s");
         $topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
         $content = htmlspecialchars($_POST['edit_content'],ENT_QUOTES);
         $edit_query = "UPDATE announcement

@@ -21,7 +21,7 @@
 	$user = mysqli_fetch_assoc($user);
 	$name = $user['first_name']." ".$user['last_name'];
 	$content = $_SESSION['username'] ." wishes to join $orgName.";
-	$date = date("Y-m-d h:i:sa");
+	$date = date("Y-m-d H:i:s");
 	$add_query = "INSERT INTO announcement(`announcement_id`,`date_posted`,`topic`,`content`,`user_id`,`org_id`) VALUES(NULL,'$date','$topic','$content','$user_id','$org_id')";
 	$add_result = mysqli_query($dbconn, $add_query);
 	if($add_result){

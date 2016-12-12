@@ -31,7 +31,7 @@
 
 
        if($_POST){       
-       		$date = date("Y-m-d h:i:sa");
+       		$date = date("Y-m-d H:i:s");
 			$admin_id = $_SESSION["user_id"];
             for($x=0;$x<=$_SESSION['count'];$x++){
                 if(isset($_POST['Accept'.$x])){
