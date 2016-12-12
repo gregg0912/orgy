@@ -179,13 +179,13 @@
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
 								if($i > 0)
 								{
-									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 								}
 							}
 						}
@@ -194,7 +194,7 @@
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 							if($i >= $pagenum+4)
 							{
 								break;
@@ -204,7 +204,7 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
+							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
 						}
 					}
 
@@ -295,7 +295,7 @@
 							}
 							    //
 
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']."&pn=1");
 							
 						}
 						else
