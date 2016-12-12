@@ -237,21 +237,34 @@
 							</div>
 				<?php
 						}
-						else{ ?>							
-							<div class='newdiscussion' id='<?=$comment_id?>'>
-								<legend>
-									<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
-									<span class="date"><?=$datec?></span>
-								</legend>
-								<form method="post" action="">
+						else{ 
+							if($comment_id==$_GET['edit']) {?>							
+								<div class='newdiscussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
+									<form method="post" action="">
+										<dl>
+											<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+										</dl>
+										<input name='submit_edit' type='submit' value='Submit'/>
+										<input name='cancel_edit' type='submit' value='Cancel' />
+									</form>
+								</div>
+				<?php 		}
+							else{?>
+								<div class='discussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
 									<dl>
-										<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+										<dt><p><?=nl2br($body)?></p></dt>
 									</dl>
-									<input name='submit_edit' type='submit' value='Submit'/>
-									<input name='cancel_edit' type='submit' value='Cancel' />
-								</form>
-							</div>
-				<?php 	}
+								</div>
+						<?php }
+						}
 					}
 				}
 
@@ -263,7 +276,7 @@
 				?>
 				
 				<div>
-					<p><?php echo $textline2; ?></p>
+					<p class="pagination-text"><?php echo $textline2; ?></p>
 					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 				</div>
 
@@ -294,8 +307,9 @@
 								$result = mysqli_query($dbconn, $query);
 							}
 							    //
-
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+	         				echo "<meta http-equiv='refresh' content='0'>";
+							
+							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
 						else
