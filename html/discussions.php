@@ -108,7 +108,7 @@
 				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 
 				<form method="post" action="" class="sort">
-					<span>Sort by:</span> 
+					<span><span class="glyphicon glyphicon-sort"></span> Sort by </span> 
 					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
 	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
 	            </form>

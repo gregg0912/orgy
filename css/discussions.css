@@ -30,9 +30,13 @@
 
 }
 
-.discussion .app .up, .down, .votes, .comments{
+.discussion .app .up, .down, .comments{
 	padding: 10px 3px;
-	
+	color: #333;
+}
+.votes{
+	padding: 10px 3px;
+	color: #333;
 }
 
 .up:hover, .down:hover{
@@ -135,14 +139,14 @@ form.sort{
 	color: #ff8a80;;
 }
 
-a.user:hover{
+.user:hover{
 	text-decoration: underline;
 }
 
 .user, .up{
 	font-weight: normal;
     font-size: 1em;
-    color: #3498db;
+    color: #3498db !important;
     
 }
 
@@ -234,8 +238,8 @@ p{
 
 .comments{
 	float: right;
-	color: black;
 	text-decoration: none;
+	color: #333;
 }
 
 .comments:hover{
