@@ -222,7 +222,7 @@
 			<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
 			<span class="success"><?php echo $prompt;?></span>
 			<form class="edit" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-			    <label for="fileToUpload" class="buttoncustom change-picture">Change Profile Picture</label>
+			    <label for="fileToUpload" class="buttoncustom change-picture"><span class="glyphicon glyphicon-picture"></span> Change Profile Picture </label>
 				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
 
 		      	<label for="username">Username</label>
