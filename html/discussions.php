@@ -119,11 +119,11 @@
 				<?php
 				if(!empty($org_id)){				
 					$sql = "SELECT COUNT(disc_id) FROM discuss WHERE org_id = $org_id";
+					
 					$query = mysqli_query($dbconn, $sql);
 					$row = mysqli_fetch_row($query);
 
 					$rows = $row[0];
-
 					$page_rows = 10;
 					
 
@@ -325,8 +325,9 @@
 				?>
 
 				<div>
-					<p class="pagination-text">"<?php echo $textline2; ?>"</p>
-					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+					
+
+
 				</div>
 				
 				
