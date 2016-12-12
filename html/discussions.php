@@ -212,13 +212,13 @@
 						{
 							$previous = $pagenum - 1;
 							// $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'">Previous</a> &nbsp; &nbsp; ';
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-left"></span></a> &nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-left"></span></a>';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
 								if($i > 0)
 								{
-									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
+									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a>';
 								}
 							}
 						}	
@@ -230,7 +230,7 @@
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a>';
 							if($i >= $pagenum+4)
 							{
 								break;
@@ -241,7 +241,7 @@
 						{
 							$next = $pagenum + 1;
 							// $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'">Next</a> ';
-							$paginationCtrls .= ' &nbsp; &nbsp;<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-right"></span></a> ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-right"></span></a> ';
 						}
 					}
 
