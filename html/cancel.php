@@ -16,7 +16,7 @@
 		$content = $_SESSION['username']." cancelled their request to join $orgName.";
 		$user_id = $_SESSION['user_id'];
 		$topic = "Request";
-		$date = date("Y-m-d h:i:sa");
+		$date = date("Y-m-d H:i:s");
 		$add_query = "INSERT INTO announcement(`announcement_id`,`date_posted`,`topic`,`content`,`user_id`,`org_id`) VALUES(NULL,'$date','$topic','$content','$user_id','$org_id')";
 		$add_result = mysqli_query($connectdb, $add_query);
 		if($add_result){

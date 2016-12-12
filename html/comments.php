@@ -86,7 +86,7 @@
 		<div id="content">
 			<div class="header">
 				<center>
-					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$org_info['photo']?>"/>
 				</center>
 				<h1 class="title"><?=$org_info['org_name']?></h1>
 				<h2 class="currpage">Comments</h2>
@@ -98,7 +98,8 @@
 					$phpdate = strtotime( $disc['date_posted'] );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
-				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
+				
+				<a href="discussions.php?orgID=<?=$_GET['org_id']?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span>Back</a><br>
 				<div class='discussion'>
 					<legend>
 						<a class='title' href="discussions.php?orgID=<?=$_GET['org_id']?>"><?=$disc['title']?></a>
