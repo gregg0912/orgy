@@ -252,9 +252,6 @@
 							   
 							    $query = mysqli_query($dbconn, $sql);
 							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
-								// echo "<script type='text/javascript'>alert('Reply posted')</script>";
-							 
-	       //    				echo "<meta http-equiv='refresh' content='0'>";
 							
 						}
 						else
