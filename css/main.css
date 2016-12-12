@@ -91,8 +91,8 @@ textarea{
 	transition: 0.2s;
 }
 
-input[type=text]active,
-input[type=text]focus,
+input[type=text]:active,
+input[type=text]:focus,
 input[type=password]:active,
 input[type=password]:focus,
 input[type=search]:active,
@@ -181,3 +181,9 @@ ul.pagination span:hover{
 p{
 	word-wrap: break-word;
 }
+
+
+
+
+
+

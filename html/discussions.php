@@ -56,6 +56,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+
+
 <body>
 	<div id="wrapper">
 	<nav>
@@ -107,10 +110,42 @@
 
 				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 
-				<form method="post" action="" class="sort">
+				<form method="post" action="" class="activesort">
 					<span>Sort by:</span> 
-					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
-	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
+					<button type="submit" name="date" value="date" class="dateactive"> Date </button>
+	            	<button type="submit" name="votes" value="votes" class="voteactive"> Votes </button>
+	      			<br>
+	      			<br>
+	      			<input type='button' class='uiButton' id='testbutton' value='testValue'>
+	      		
+	      		<script type="text/javascript">
+	      			
+    // 			$('.dateactive').click(function(e) {
+   	// 			 $(this).toggleClass("active");
+				// }
+				// 	e.preventDefault();
+				// );
+
+
+				// $('.dateactive').click(function(e) {
+				//   var $this = $(this);
+				//   if (!$this.hasClass('active')) {
+				//     $this.addClass('active');
+				//   }
+				//   e.preventDefault();
+				// });
+
+				// $('.voteactive').click(function(e) {
+				//   var $this = $(this);
+				//   if (!$this.hasClass('active')) {
+				//     $this.addClass('active');
+				//   }
+				//   e.preventDefault();
+				// });
+
+	      		</script>
+
+
 	            </form>
 	            <?php
 	            if(!isset($_GET['edit'])){
@@ -169,7 +204,7 @@
 		            if(isset($_POST['votes'])){
 		            	$sort_id=2;
 		            	//AGENTPROXY[069]
-						header("Location: discussions.php?orgID=$org_id&sort_id=$sort_id&pn=1");
+						header("Location: discussions.php?orgID=$org_id&pn=1&sort_id=$sort_id");
 						// //
 		            }
 		            if(isset($_GET['sort_id'])){

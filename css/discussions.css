@@ -226,15 +226,27 @@ p{
 
 	background-color: #3070D3;
 }
-.sort p, #sortdate, #sortvote{
+.sort p, .activesort{
 	margin: auto;
 }
 
-.btnsort:active{
+.activesort:hover{
+	background-color: white;
+	color:black;
+}
+
+/*.activesort:active, .activesort:focus{
 	background-color: #c0392b!important;
+	background-color: red;
 	color: white!important;
+	 fill:#1a82b8;
 	cursor: default;
 }
+
+.dateactive:focus, .voteactive:focus{
+	background-color: yellow;
+}*/
+
 
 .comments{
 	float: right;
@@ -244,4 +256,17 @@ p{
 
 .comments:hover{
 	text-decoration: underline;
+}
+
+.activesort{
+    /*background-color: red;*/
+}
+
+
+.dateactive:focus, .voteactive:focus {
+    /*background-color: #c0392b!important;*/
+	background-color: red;
+	color: white!important;
+	 fill:#1a82b8;
+	cursor: default;
 }
