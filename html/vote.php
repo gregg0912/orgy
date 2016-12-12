@@ -20,9 +20,10 @@ if(mysqli_num_rows($result)>=1){
 	$query = "SELECT approval FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id = '".$disc_id."'";
 	$result = mysqli_query($dbconn, $query);
 	$retval = mysqli_fetch_assoc($result);
-	$username = $_SESSION['username'];
 	if($disc_user_id==$_SESSION['user_id']){
 		$username = "You";
+	}else{
+		$username = $_SESSION['username'];
 	}
 
 
@@ -65,6 +66,11 @@ if(mysqli_num_rows($result)>=1){
 }else{
 	$query = "INSERT INTO disc_upvote (dvID,disc_id,user_id,approval) VALUES(NULL, '$disc_id', '$user_id', '$upvote')";
 	$result = mysqli_query($dbconn, $query);
+	if($disc_user_id==$_SESSION['user_id']){
+		$username = "You";
+	}else{
+		$username = $_SESSION['username'];
+	}
 	if($result){
 		 $_SESSION['voted'] = "added";
 		//AGENT PROXY
