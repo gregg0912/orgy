@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2016 at 05:41 PM
+-- Generation Time: Dec 12, 2016 at 09:19 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -173,7 +173,33 @@ INSERT INTO `announcement` (`announcement_id`, `date_posted`, `topic`, `content`
 (139, '2016-12-12 23:48:03', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39),
 (140, '2016-12-12 23:52:34', 'Request', 'marbasaur wishes to join UPV KaLuzon.', 2, 39),
 (141, '2016-12-12 23:52:57', 'Accepted', 'Admin kladmin accepted the request of Hannah Chloie Marba to join the org.', 17, 39),
-(142, '2016-12-12 23:55:56', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39);
+(142, '2016-12-12 23:55:56', 'Kicked', 'Admin kladmin kicked Hannah Chloie Marba from the org.', 17, 39),
+(143, '2016-12-13 01:31:10', 'psoting', 'psooooting', 2, 1),
+(144, '2016-12-13 02:05:09', 'Upvote', 'root upvoted your post on December 13, 2016 02:04:11 am entitled sample topic', 2, 1),
+(146, '2016-12-13 02:05:27', 'Upvote', 'gregg0912 upvoted your post entitled sample topic', 2, 1),
+(147, '2016-12-13 02:05:47', 'Commented', 'gregg0912 commented on your post entitled sample topic', 2, 1),
+(148, '2016-12-13 02:06:00', 'Commented', 'gregg0912 commented on your post entitled sample topic', 2, 1),
+(149, '2016-12-13 02:06:09', 'Commented', 'gregg0912 commented on your post entitled sample topic', 2, 1),
+(150, '2016-12-13 02:07:50', 'Commented', 'gregg0912 commented on your post entitled sample topic', 2, 1),
+(152, '2016-12-13 02:17:24', 'Upvote', 'marbasaur upvoted your post entitled hello', 5, 1),
+(153, '2016-12-13 02:17:53', 'Upvote', 'root upvoted your post entitled why', 5, 1),
+(154, '2016-12-13 02:21:37', 'Upvote', 'root upvoted your post entitled topic', 2, 1),
+(157, '2016-12-13 02:31:02', 'Upvote', 'gregg0912 upvoted your post entitled topic', 2, 1),
+(158, '2016-12-13 02:45:35', 'Upvote', 'gregg0912 upvoted your post entitled topic', 2, 1),
+(160, '2016-12-13 02:46:03', 'Upvote', 'root upvoted your post entitled hello', 2, 1),
+(162, '2016-12-13 03:10:37', 'Upvote', 'gregg0912 upvoted your post entitled topic', 2, 1),
+(163, '2016-12-13 03:11:47', 'Commented', 'marbasaur commented on your post entitled marbasaur', 5, 1),
+(164, '2016-12-13 03:11:55', 'Upvote', 'root upvoted your post entitled marbasaur', 5, 1),
+(165, '2016-12-13 03:12:00', 'Upvote', 'root upvoted your post entitled marbasaur', 5, 1),
+(166, '2016-12-13 03:29:31', 'Upvote', 'root upvoted your post entitled hello', 5, 1),
+(167, '2016-12-13 03:31:03', 'Upvote', 'root upvoted your post entitled pampadamo', 5, 1),
+(169, '2016-12-13 03:31:13', 'Upvote', 'root upvoted your post entitled more', 5, 1),
+(172, '2016-12-13 03:31:26', 'Upvote', 'marbasaur upvoted your post entitled more', 5, 1),
+(173, '2016-12-13 03:43:12', 'Upvote', 'marbasaur upvoted your post entitled topic nanaman', 5, 1),
+(174, '2016-12-13 03:43:16', 'Upvote', 'marbasaur upvoted your post entitled topic', 5, 1),
+(177, '2016-12-13 03:48:07', 'Downvote', 'marbasaur downvoted your post entitled topic nanaman', 5, 1),
+(178, '2016-12-13 03:48:20', 'Upvote', 'marbasaur upvoted your post entitled topic', 5, 1),
+(179, '2016-12-13 03:48:26', 'Upvote', 'marbasaur upvoted your post entitled more', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -306,7 +332,10 @@ INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VA
 (15, 'dddqw', '2016-12-09 11:59:40', 34, 15),
 (16, 'comment\r\ncomment\r\ncomment', '2016-12-12 03:52:18', 39, 2),
 (17, 'comment lololol', '2016-12-12 18:17:57', 39, 2),
-(19, 'comment rin ako. labyu sempai', '2016-12-12 22:32:42', 39, 19);
+(19, 'comment rin ako. labyu sempai', '2016-12-12 22:32:42', 39, 19),
+(23, 'hi sa&#039;yo dyan', '2016-12-13 02:07:38', 45, 5),
+(24, 'hihihihihi should i start bashing?&#039;;', '2016-12-13 02:07:50', 45, 5),
+(25, 'noticed wag ambisyosa hahahahahah', '2016-12-13 03:11:47', 49, 2);
 
 -- --------------------------------------------------------
 
@@ -332,7 +361,7 @@ INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, 
 (1, 'yung amoy ng utot ni kulas', 'Dear kulas, di ko na talaga matiis yung utot mo. Konting air-freshener naman please.', '2016-11-14 00:00:00', 1, 1, 1),
 (2, 'hellosqwsqws', 'world123', '2016-11-24 00:00:00', 2, 1, 0),
 (3, 'Hello Winter', 'hahahah', '2016-11-24 00:00:00', 2, 1, 0),
-(4, 'hello', 'gusto ko magdiscuss oops wrong', '2016-11-24 00:00:00', 2, 1, 0),
+(4, 'hello', 'gusto ko magdiscuss oops wrong', '2016-11-24 00:00:00', 2, 1, 1),
 (5, 'discuss', 'discusss', '2016-11-24 00:00:00', 8, 1, 1),
 (6, 'hhh', 'kkkk', '2016-11-24 00:00:00', 5, 6, -1),
 (7, 'Choy topic happy', 'Choy topic commentssss yes happy\r\n', '2016-12-11 19:33:17', 2, 1, 1),
@@ -358,16 +387,28 @@ INSERT INTO `discuss` (`disc_id`, `title`, `content`, `date_posted`, `user_id`, 
 (27, 'hello', 'cyra from isran', '2016-11-30 19:23:05', 5, 6, -1),
 (31, 'hello', 'diyan', '2016-12-04 05:01:38', 2, 21, 0),
 (32, 'hello', 'kulas bebe loves', '2016-12-04 05:06:48', 5, 1, 0),
-(33, 'why', 'are you late?', '2016-12-04 05:07:34', 5, 1, -1),
+(33, 'why', 'are you late?', '2016-12-04 05:07:34', 5, 1, 0),
 (34, 'That&#039;s what you get', 'Paramore', '2016-12-04 05:12:47', 5, 1, 0),
 (35, 'si gregg0912', 'wag siya papapasukin sa group na&#039;to please', '2016-12-04 12:16:37', 11, 41, 1),
-(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, 1),
+(36, 'hello', 'nanamanaasdfagg', '2016-12-05 01:31:03', 5, 1, 2),
 (37, 'FOB', 'yehey yooo', '2016-12-11 16:48:57', 2, 22, 0),
-(38, 'post', 'postttt', '2016-12-11 19:33:26', 2, 1, 0),
-(39, 'topic', 'comment\r\ncomment\r\ncomment', '2016-12-12 03:52:03', 2, 1, 1),
+(38, 'post', 'postttt', '2016-12-11 19:33:26', 2, 1, -1),
+(39, 'topic', 'comment\r\ncomment\r\ncomment', '2016-12-12 03:52:03', 2, 1, 2),
 (40, 'discussion', 'discussion', '2016-12-12 18:23:13', 2, 41, 0),
 (41, 'pagination', 'lumabas ka', '2016-12-12 19:00:25', 2, 41, 0),
-(42, 'pagination', 'pagination where?\r\n\r\nwhere', '2016-12-12 19:00:45', 2, 41, 0);
+(42, 'pagination', 'pagination where?\r\n\r\nwhere', '2016-12-12 19:00:45', 2, 41, 0),
+(45, 'sample topic', 'sample comment\r\nsample comment\r\nsample comment', '2016-12-13 02:04:11', 2, 1, 1),
+(46, 'topic', 'topic\r\npero\r\ncomment\r\nlol', '2016-12-13 02:27:00', 2, 1, 2),
+(47, 'topic', 'topic pero comment', '2016-12-13 02:27:13', 2, 1, 0),
+(48, 'marbasaur', 'marbasaur simpai please notice this pleb', '2016-12-13 03:09:48', 5, 1, 1),
+(49, 'marbasaur', 'marbasaur simpai please notice this pleb', '2016-12-13 03:09:50', 5, 1, 1),
+(50, 'pampadamo', 'sang comments', '2016-12-13 03:16:44', 5, 1, 1),
+(51, 'pamadamo', 'sang comments', '2016-12-13 03:17:01', 5, 1, -1),
+(52, 'more', 'comments', '2016-12-13 03:17:16', 5, 1, -1),
+(53, 'more', 'comments', '2016-12-13 03:17:30', 5, 1, 1),
+(54, 'topic', 'content', '2016-12-13 03:42:25', 5, 1, 1),
+(55, 'topic', 'AND CONTENT', '2016-12-13 03:42:36', 5, 1, 1),
+(56, 'topic nanaman', 'at syempre may content', '2016-12-13 03:42:54', 5, 1, -1);
 
 -- --------------------------------------------------------
 
@@ -409,7 +450,26 @@ INSERT INTO `disc_upvote` (`dvID`, `disc_id`, `user_id`, `approval`) VALUES
 (31, 36, 2, 'upvote'),
 (32, 33, 15, 'downvote'),
 (33, 39, 2, 'upvote'),
-(34, 7, 2, 'upvote');
+(34, 7, 2, 'upvote'),
+(35, 45, 5, 'upvote'),
+(36, 33, 2, 'upvote'),
+(37, 39, 5, 'upvote'),
+(38, 38, 5, 'downvote'),
+(39, 47, 2, 'upvote'),
+(40, 46, 2, 'upvote'),
+(41, 47, 5, 'downvote'),
+(42, 46, 5, 'upvote'),
+(43, 4, 5, 'upvote'),
+(44, 49, 2, 'upvote'),
+(45, 48, 2, 'upvote'),
+(46, 36, 5, 'upvote'),
+(47, 50, 2, 'upvote'),
+(48, 51, 2, 'downvote'),
+(49, 52, 2, 'downvote'),
+(50, 53, 2, 'upvote'),
+(51, 56, 2, 'downvote'),
+(52, 55, 2, 'upvote'),
+(53, 54, 2, 'upvote');
 
 -- --------------------------------------------------------
 
@@ -750,7 +810,38 @@ INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`
 (139, 'seen', 2, 139),
 (140, 'seen', 17, 140),
 (141, 'seen', 2, 141),
-(142, 'seen', 2, 142);
+(142, 'seen', 2, 142),
+(143, 'not_seen', 1, 143),
+(144, 'not_seen', 3, 143),
+(145, 'seen', 5, 143),
+(146, 'not_seen', 8, 143),
+(147, 'not_seen', 15, 143),
+(148, 'not_seen', 17, 143),
+(149, 'not_seen', 19, 143),
+(150, 'seen', 2, 144),
+(151, 'seen', 2, 146),
+(152, 'seen', 2, 147),
+(153, 'seen', 2, 148),
+(154, 'seen', 2, 149),
+(155, 'seen', 2, 150),
+(156, 'seen', 5, 152),
+(157, 'seen', 5, 153),
+(158, 'seen', 2, 154),
+(159, 'seen', 2, 157),
+(160, 'seen', 2, 158),
+(161, 'seen', 2, 160),
+(162, 'seen', 2, 162),
+(163, 'seen', 5, 163),
+(164, 'seen', 5, 164),
+(165, 'seen', 5, 165),
+(166, 'seen', 5, 167),
+(167, 'seen', 5, 169),
+(168, 'seen', 5, 172),
+(169, 'seen', 5, 173),
+(170, 'seen', 5, 174),
+(171, 'seen', 5, 177),
+(172, 'seen', 5, 178),
+(173, 'seen', 5, 179);
 
 -- --------------------------------------------------------
 
@@ -779,7 +870,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `student_no`, `first_name`, `last_name`, `username`, `password`, `course`, `date_joined`, `year_level`, `prof_pic`, `birthday`, `email`) VALUES
 (1, '2014-64892', 'Buddy Lane', 'Shimuta', 'BuLShit', 'fc5e038d38a57032085441e7fe7010b0', '---', '1970-01-01', 1, '../images/98tGf8w.png', '1970-01-01', ''),
-(2, '2014-15823', 'Hannah Chloie', 'Marba', 'marbasaur', 'eb09d5e396183f4b71c3c798158f7c07', 'BS Computer Science', '2016-11-17', 4, '../images/image.jpg', '1970-01-01', 'hannahmarba@gmail.com'),
+(2, '2014-15823', 'Hannah Chloie', 'Marba', 'marbasaur', 'f29bfcf86e073e184d50a9eb9b285c60', 'BS Computer Science', '2016-11-17', 4, '../images/image.jpg', '1970-01-01', 'hannahmarba@gmail.com'),
 (3, '2014-35613', 'Lincy', 'Legada', 'lllegada', '00c798afd4bed3dac3d01ed75fce899d', 'Bachelor of Science in Computer Science', '2016-11-17', 3, '../images/mikoto.jpg', '1970-01-01', ''),
 (4, '2014-6969', 'Mocha', 'Uson', 'MarcosPaRin#', 'ce022f27c1f7517d002d6618117efd01', 'BS Walang Pinag-aralan', '2016-11-01', 1, '../images/janina.PNG', '0000-00-00', ''),
 (5, '2014-37755', 'Gregg Marionn', 'Icay', 'gregg0912', '1e47eac4cea67ca5a85cbd812a8c1a36', 'Bachelor of Science in Computer Science', '2016-11-23', 4, '../images/12346352_1149311071748300_3070081871993010060_n.png', '1970-01-01', 'gmicay123@gmail.com'),
@@ -883,7 +974,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 --
 -- AUTO_INCREMENT for table `classification`
 --
@@ -893,17 +984,17 @@ ALTER TABLE `classification`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `discuss`
 --
 ALTER TABLE `discuss`
-  MODIFY `disc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `disc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `disc_upvote`
 --
 ALTER TABLE `disc_upvote`
-  MODIFY `dvID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `dvID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `joined`
 --
@@ -923,7 +1014,7 @@ ALTER TABLE `org_type`
 -- AUTO_INCREMENT for table `seen_announcement`
 --
 ALTER TABLE `seen_announcement`
-  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `seen_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 --
 -- AUTO_INCREMENT for table `user`
 --
