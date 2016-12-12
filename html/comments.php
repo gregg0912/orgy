@@ -12,7 +12,7 @@
     	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
     }
     if(isset($_POST['submit_edit'])){
-    	$body=$_POST['content_edit'];
+    	$body=htmlspecialchars($_POST['content_edit'],ENT_QUOTES);
 		$today = date('Y-m-d H:i:s');
     	$edit_query="UPDATE comments 
     	    SET body='$body', date_c='$today'
@@ -290,8 +290,7 @@
 					{
 						if($_POST['discussion_text'] != "")
 						{
-							$body = $_POST['discussion_text'];
-
+							$body = htmlspecialchars($_POST['discussion_text'],ENT_QUOTES);
 							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
 
@@ -300,7 +299,7 @@
 
 							    //AGENT PROXY
 							if($disc['user_id']!=$_SESSION['user_id']){
-								$content = $_SESSION['username']." commented on your post on ".$disc['date_posted']." entitled ".$disc['title'];
+								$content = $_SESSION['username']." commented on your post entitled ".$disc['title'];
 								$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$today','Commented','$content','$disc[user_id]',$org_id)";
 								$result = mysqli_query($dbconn, $query);
 
