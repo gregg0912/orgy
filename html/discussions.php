@@ -254,7 +254,6 @@
 									$query_comments = mysqli_query($dbconn,$sql);
 									$query_comments = mysqli_fetch_assoc($query_comments);
 									?>
-									<p style="font-size: 12px"> <?= $query_comments['COUNT(comment_id)']." comments "?> </p>
 
 									<span class="date"><?=$dateposted?></span>
 								</legend>
@@ -285,6 +284,7 @@
 											<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
 											<label class="votes">Discussion Points:<?=$total_vote?></label>
 											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
+											<a href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><label class='comments'> <?= $query_comments['COUNT(comment_id)']." comments "?> </label></a>
 										</div>
 									</form>
 							</div>
