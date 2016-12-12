@@ -25,7 +25,6 @@ li form.posting .org-name{
 	margin: 2px;
 	font-family: Arial;
 	display: inline-block;
-	font-weight: normal;
 }
 li.announcement .topic,
 li form.posting input[type=text]{
@@ -38,8 +37,12 @@ li form.posting input[type=text]{
 a{
 	color: black;
 }
+.org-name{
+	font-weight: bold;
+	color: #740000;
+}
 .org-name:hover{
-	color: #5e5e5e;
+	color: #ff8a80;
 }
 
 .name:hover{
@@ -62,6 +65,9 @@ li form.posting textarea{
 	margin: 2px;
 	font-family: Arial;
 	display: block;
+}
+.notif-content{
+	margin: 25px 5px !important;
 }
 li form.posting textarea{
 	resize: none;

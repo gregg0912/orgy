@@ -1,4 +1,8 @@
 @font-face{
+	font-family: "Arca Majora 3 Bold";
+	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
+}
+@font-face{
 	font-family: Chaparral;
 	src: url("font/ChaparralPro-Regular.otf");
 }
@@ -43,6 +47,7 @@ body{
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 2em;
+	color: #333;
 }
 .img-absolute{
 	height: 300px;
@@ -180,4 +185,5 @@ ul.pagination span:hover{
 
 p{
 	word-wrap: break-word;
+	color: #333;
 }
