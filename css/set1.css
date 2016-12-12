@@ -1107,3 +1107,6 @@ span.input__label-content.input__label-content--isao{
 	color: #afb3b8;
 	font-size: 110%;
 }
+.input__field--isao, .input__field input__field--isao, #username{
+	color: #5F6062 !important;
+}

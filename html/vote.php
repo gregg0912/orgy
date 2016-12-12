@@ -86,6 +86,7 @@ if(mysqli_num_rows($result)>=1){
 		else{
 			
 		}
+<<<<<<< HEAD
 			if($result){
 				$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
 	        	$ann_id= mysqli_fetch_assoc($ann);
@@ -93,6 +94,15 @@ if(mysqli_num_rows($result)>=1){
 				$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
 				$result = mysqli_query($dbconn, $query);	
 			}
+=======
+		if($result && !($disc_user_id==$_SESSION['user_id'])){
+			$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$orgID order by announcement_id desc limit 1");
+        	$ann_id= mysqli_fetch_assoc($ann);
+        	$announcement_id=$ann_id['announcement_id'];
+			$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc_user_id','$announcement_id')";
+			$result = mysqli_query($dbconn, $query);	
+		}
+>>>>>>> b69204a13383820816a6182c8fdc8181f4e63075
 	}
 	else{
 		$_SESSION['voted'] = "error";

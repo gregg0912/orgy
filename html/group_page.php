@@ -164,15 +164,17 @@
 						<li class="posted-content">
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
+			                <div class="relative-box">
+				                <?php
+		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
+		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit absolute"><span class="glyphicon glyphicon-pencil"></span></a>
+		                        <form method="post" action="" class="delete">
+		                        	<button type="submit" name=" " value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
+		                        </form>
+		                        <?php } ?>
+	                        </div>
 		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
-		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
-	                    	<?php
-	                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
-	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
-	                        <form method="post" action="" class="delete">
-	                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
-	                        </form>
-	                        <?php } ?> 
+		                    <p class="caption">"<?=nl2br($GrpAnnouncement['content']) ?>"</p>
 			        	</li>
 			        <?php 
 		    		}
@@ -184,8 +186,8 @@
 				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' placeholder="Topic">
 				            	<textarea name='edit_content' placeholder="What's happening?"><?= $GrpAnnouncement['content'] ?></textarea>
 				            	<div class="group-btn">
-				            	<input type='submit' name='submit_edit' value='Done' class="done">
-				            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
+					            	<input type='submit' name='submit_edit' value='Done' class="done">
+					            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
 				            	</div>
 					        </form>
 						<?php }
@@ -194,7 +196,7 @@
 			            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
 				                <span class="date"><?= $datec ?></span>
 			                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
-			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
+			                    <p class="caption">"<?=nl2br($GrpAnnouncement['content']) ?>"</p>
 				        	</li>
 					   <?php  }	
 					}
