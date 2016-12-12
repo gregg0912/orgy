@@ -66,6 +66,9 @@ li form.posting textarea{
 	font-family: Arial;
 	display: block;
 }
+.notif-content{
+	margin: 25px 5px !important;
+}
 li form.posting textarea{
 	resize: none;
 	height: 40px;
