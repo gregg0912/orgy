@@ -24,9 +24,13 @@
 						(SELECT discuss.disc_id FROM discuss WHERE discuss.user_id='".$name['user_id']."' AND discuss.org_id = '".$orgid."')";
 		$result_delcomm=mysqli_query($connectdb,$query_delcomm);
 		if($result_delcomm){
-			$query_deldisc = "DELETE FROM discuss WHERE discuss.user_id='".$name['user_id']."' AND discuss.org_id = '".$orgid."'";
-			echo "$query_deldisc";
-			$result_deldisc=mysqli_query($connectdb,$query_deldisc);
+			$query_delup = "DELETE FROM disc_upvote WHERE disc_upvote.disc_id IN
+							(SELECT discuss.disc_id FROM discuss WHERE discuss.user_id='".$name['user_id']."' AND discuss.org_id = '".$orgid."')";
+			$result_delup = mysqli_query($connectdb,$query_delup);
+			if($result_delup){
+				$query_deldisc = "DELETE FROM discuss WHERE discuss.user_id='".$name['user_id']."' AND discuss.org_id = '".$orgid."'";
+				$result_deldisc=mysqli_query($connectdb,$query_deldisc);
+			}
 		}
 	}
 

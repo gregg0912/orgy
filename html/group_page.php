@@ -127,6 +127,9 @@
 			$member = $result['membership_type'];
 		?>
 	<div id="content">
+		<?php
+		if($check_result){
+		?>
 		<div class="header">
 			<center>
 				<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
@@ -211,7 +214,26 @@
 			if($rows!=0){
 				pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
 			} ?>	
-		</div>		
+		</div>
+		<?php
+		}else{
+			$date = date("Y-m-d H:i:s");
+			$phpdate = strtotime( $date );
+			$datec = date( 'F d, Y h:i:s a', $phpdate );
+		?>
+		<div id="announcement">
+			<ul class="posted">
+				<li class="posted-content">
+					<h2 class="type">Somethings Wrong</h2>
+					<span class="date"><?=$datec?></span>
+					<h3 class="name">System</h3>
+					<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
+				</li>
+			</ul>
+		</div>
+		<?php
+		}
+		?>		
 		<footer>CMSC 128 Section 1 | 2016</footer>
 	</div>
 </div>
