@@ -8,93 +8,13 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  	<meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/newstyle.css" />
-    <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="../css/set1.css" />
-    <link rel="stylesheet" type="text/css" href="../css/component.css" />
-	<!--[if IE]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/signup.css">
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
-		<style type="text/css">
-
-		body
-	      {
-	     /* background-image: url(../images/sample_background.jpg);
-	      background-attachment: fixed;*/
-	      background-image: url(../images/Oble.png);
-	      background-attachment: fixed;
-	      background-repeat: no-repeat;
-	      /*background-position: center;*/
-	      background-size: 65% 100%;
-	       background-color: #eaeaea;
-	       background-position: 20% 50%;
-	      }
-		.jumbotron, #content >.container{
-			/*background: rgba(44, 62, 80, 0.2);*/
-			background-color: #F9F4F4;
-			box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      		/*border: 1px solid #333;*/
-			/*height: auto;
-			margin-left: 60%;
-			width: 28%;
-			padding: 5%;*/
-			padding: 1%;
-			width: 28%;
-		    float: right;
-		    margin: 0%;
-		    margin-top: 3%;
-		    margin-right: 10%;
-		}
-
-		.page-header{
-			color: #740000;
-		    line-height: 100%;
-		    background-color: rgba(249, 243, 243, 0.5);
-		    font-size: 150%;
-		    margin: auto;
-		    margin-bottom: 7%;
-		    text-align: center;
-		    font-family: 'Arca Majora 3 Bold', sans-serif;
-		    padding: 1%;
-		}
-		.btn{
-			display: inline-block;
-			margin: 2%;
-		}
-
-		.form-group{
-			margin-top: 2%;
-			width: 80%;
-		}
-
-		#submit-btn{
-			margin-top: -4%;
-			margin-bottom: 6%;
-			margin-left: auto;
-		}
-		#login-btn{
-			margin-left: 90%;
-			margin-top: 10%;
-			margin-bottom: -6%;
-		}
-		#submit-btn
-			{
-			border-radius: 0%;
-			width: 91%;
-		}
-		</style>
 	</head>
 <?php
 	
@@ -173,7 +93,7 @@
 				$_SESSION['success']++;
 			}	
 			else{
-				$error_fname="First Letter should be capital(formality) and no space before";
+				$error_fname="First name: First letter should be capitalized (formality) and no space before";
 			}
 		}
 
@@ -182,7 +102,7 @@
 				$_SESSION['success']++;
 			}	
 			else{
-				$error_lname="First Letter should be capital(formality) and no space before";
+				$error_lname="Last name: First letter should be capitalized (formality) and no space before";
 			}
 		}
 
@@ -219,157 +139,72 @@
 	}
 ?>
 
-<body>
-	 <div class="jumbotron">
-		<div id="sign_up" class="container">
-		<!-- <div class="page-header"> -->
-		<h2 style="">Sign up</h2>
-		<!-- </div> -->
-<!-- 		<form method="post" id = "signup-form" style="position: relative;">
-			<h3 id="someting">With</h3>
-			<div id="sign-up_buttons">
-				<button style="padding: 1%; background-color: transparent; border: none;"><img id="signimg" src="../images/fb4.png"/></button>
-				<button  style="padding: 1%; background-color: transparent; border: none;"><img id="signimg" src="../images/twitter2.png"></button>
-				<button style="padding: 1%; background-color: transparent; border: none;"><img id="signimg" src="../images/gm2.png"></button>
-			</div>
-		</form>	
-		<h3>Or</h3>	 -->
-			<form id="signup-form" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-				
-			<div class="form-group">
-				<span style="width: 112%;" class="input input--isao">
-					<label><?php
-						if(isset($error_username)){
-							echo "$error_username";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input type="text" name="username" class="input__field input__field--isao" id="username" value="<?= isset($_POST['username'])? $_POST['username']:""?>" placeholder="Username" required/>
-					<label class="input__label input__label--isao" for="username">
-						<span class="input__label-content input__label-content--isao"><!-- Username --></span>
-					</label>
-				</span>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-						if(isset($error_password)){
-							echo "$error_password";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input type="password" class="input__field input__field--isao" name="password" id="password" value="" placeholder="Password" required/>
-					<label class="input__label input__label--isao" for="password">
-						<span class="input__label-content input__label-content--isao"><!-- Password --></span>
-					</label>
-				</span>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-						if(isset($error_newpassword)){
-						echo "$error_newpassword";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input type="password" class="input__field input__field--isao" name="newpassword" placeholder="Confirm Password" id="password" value="" required/>
-					<label class="input__label input__label--isao" for="newpassword">
-						<span class="input__label-content input__label-content--isao"><!-- Confirm Password --></span>
-					</label>
-				</span>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-						if(isset($error_email)){
-							echo "$error_email";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input class="input__field input__field--isao" type="email" name="email" placeholder="E-mail" value="<?= isset($_POST['email'])? $_POST['email']:null?>" required />
-					<label class="input__label input__label--isao" for="e-mail">
-						<span class="input__label-content input__label-content--isao"></span>
-					</label>
-				</span>
-			</div>
+	<body>
+		<div class="container flex">
+			<form id="signup-form" class="flex" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<h2>Sign up</h2>
+				<div>
+					<label>Username</label>
+					<input class="hundred" type="text" name="username" id="username" value="<?= isset($_POST['username'])? $_POST['username']:""?>" placeholder="Username" required/>
+					<?php if(isset($error_username)){ ?>
+						<p class="error"><?=$error_username?></p>	
+					<?php } ?>
+				</div>
+				<div>
+					<label>Password</label>
+					<input class="fifty" type="password" name="password" id="password" value="" placeholder="Password" required/>
+					<input class="fifty" type="password" name="newpassword" placeholder="Confirm Password" id="password" value="" required/>
+					<?php if(isset($error_password)){ ?>
+						<p class="error"><?=$error_password?></p>	
+					<?php } ?>
+					<?php if(isset($error_newpassword)){ ?>
+						<p class="error"><?=$error_newpassword?></p>	
+					<?php } ?>
+				</div>
+				<div>
+					<label>Email</label>
+					<input class="hundred" type="email" name="email" placeholder="E-mail" value="<?= isset($_POST['email'])? $_POST['email']:null?>" required />
+					<?php if(isset($error_email)){ ?>
+						<p class="error"><?=$error_email?></p>	
+					<?php } ?>
+				</div>
 
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-						if(isset($error_fname)){
-							echo "$error_fname";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input class="input__field input__field--isao" placeholder="First Name" type="text" name="fname" id="fname"  value="<?= isset($_POST['fname'])? $_POST['fname']:""?>" required />
-					<label class="input__label input__label--isao" for="fname">
-						<span class="input__label-content input__label-content--isao"></span>
-					</label>
-				</span><br>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-						if(isset($error_lname)){
-							echo "$error_lname";	
-						}
-						else{
-							echo nl2br("\n");
-						}?>
-					</label>
-					<input class="input__field input__field--isao" placeholder="Last Name" type="text" name="lname" id="lname" value="<?= isset($_POST['lname'])? $_POST['lname']:""?>" required/>
-					<label class="input__label input__label--isao" for="lname">
-						<span class="input__label-content input__label-content--isao"></span>
-						</label>
-				</span><br>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<label><?php
-							if(isset($error_message)){
-								echo "$error_message";	
-							}
-							else{
-								echo nl2br("\n");
-						}?>
-					</label>
-					<input class="input__field input__field--isao" type="text" name="student_no" id="student_no" value="<?= isset($_POST['student_no'])? $_POST['student_no']:null?>" placeholder="20XX-XXXXX" required />
-					<label class="input__label input__label--isao" for="student_no">
-						<span class="input__label-content input__label-content--isao"></span>
-					</label>
-				</span><br> 
-			</div>				
+				<div>
+					<label>Name</label>
+					<input class="fifty" placeholder="First Name" type="text" name="fname" id="fname"  value="<?= isset($_POST['fname'])? $_POST['fname']:""?>" required />
+					<input class="fifty" placeholder="Last Name" type="text" name="lname" id="lname" value="<?= isset($_POST['lname'])? $_POST['lname']:""?>" required/>
+					<?php if(isset($error_fname)){ ?>
+						<p class="error"><?=$error_fname?></p>	
+					<?php } ?>
+					<?php if(isset($error_lname)){ ?>
+						<p class="error"><?=$error_lname?></p>	
+					<?php } ?>
+				</div>
 
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<input class="input__field input__field--isao" type="date" name="bdate" id="bdate" placeholder="Date of Birth" value="<?= isset($_POST['bdate'])? $_POST['bdate']:null?>" required/><br>
-					<label class="input__label input__label--isao" for="bdate">
-						<span class="input__label-content input__label-content--isao"></span>
-					</label>
-				</span>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%;" class="input input--isao">
-					<input class="inputfile inputfile-6" type="file" name="fileToUpload" id="fileToUpload" value="<?= isset($_POST['fileToUpload'])? $_POST['fileToUpload']:null?>"/>
-					<label class="input__label input__label--isao" for="pic">
-						<span class="input__label-content input__label-content--isao">Profile Picture</span>
-					</label>
-				</span>
-			</div>	
+				<div>
+					<label for="student_no">Student Number</label>
+					<input type="text" class="hundred" name="student_no" id="student_no" value="<?= isset($_POST['student_no'])? $_POST['student_no']:null?>" placeholder="20XX-XXXXX" required />
+					<?php if(isset($error_message)){ ?>
+						<p class="error"><?=$error_message?></p>	
+					<?php } ?>
+				</div>				
 
-			<div class="form-group">
-				<span style="width: 140%" class="input input--isao">
-					<select name="degree" class="form-control" id="degree" value="<?= isset($_POST['degree'])? $_POST['degree']:null?>">
-						<option>---</option>
+				<!-- <div>
+					<input type="date" name="bdate" id="bdate" placeholder="Date of Birth" value="<?= isset($_POST['bdate'])? $_POST['bdate']:null?>" required/><br>
+					<label for="bdate">
+					<span></span>
+					</label>
+				</div> -->
+
+				<div>
+					<label>Profile Picture</label>
+					<label for="fileToUpload" class="profile-pic-btn"><span class="glyphicon glyphicon-picture"></span> Choose Profile Picture</label>
+					<input type="file" name="fileToUpload" id="fileToUpload" value="<?= isset($_POST['fileToUpload'])? $_POST['fileToUpload']:null?>"/>
+				</div>	
+				<div>
+					<label for="degree">Degree and Year</label>
+					<select class="eighty" name="degree" id="degree" value="<?= isset($_POST['degree'])? $_POST['degree']:null?>">
+							<option>---</option>
 						<optgroup label="College of Fisheries and Ocean Sciences">
 							<option>Bachelor of Science in Fisheries</option>
 						</optgroup>
@@ -394,38 +229,21 @@
 							<option>Bachelor of Science in Food Technology</option>
 						</optgroup>
 					</select>
-					<label class="input__label input__label--isao" for="degree">
-						<span class="input__label-content input__label-content--isao">Degree and Year</span>
-					</label>
-				</span>
-			</div>
-			<div class="form-group">
-				<span style="width: 140%" class="input input--isao">
-				<select name="year" class="form-control" id="year" value="<?= isset($_POST['year'])? $_POST['year']:null?>">
-					<optgroup label="Year Level">
-						<option>---</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5 and above</option>
-					</optgroup>
-				</select>
-				<label class="input__label input__label--isao" for="year">
-				<span class="input__label-content input__label-content--isao">Year Level</span>
-					</label>
-				</span>
-				<br><br>
-			</div>	
-
-				<span style="width: 113%" class="input input--isao">
-				<button type="submit" class="btn btn-primary btn-lg" id="submit-btn" value="submit" name="Submit"> Submit </button>
-				</span>
+					<select name="year" class="twenty" id="year" value="<?= isset($_POST['year'])? $_POST['year']:null?>" placeholder="Year">
+						<optgroup label="Year Level">
+							<option>---</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5 and above</option>
+						</optgroup>
+					</select>
+				</div>	
+				<button type="submit" value="submit" name="Submit"> Submit </button>
+				<p class="has-acc">You already have an account?</p>
+				<a href="login.php" id="login-btn" role="button">Login</a>
 			</form>
-			<a href="login.php" id="login-btn" role="button" class="btn btn-danger btn-md">Back </a>
 		</div>
-	</div>	
-	<script src="../bootstrap/js/jquery.min.js"></script>
-	<script src="../bootstrap/js/bootstrap.min.js"</script>	
-</body>
+	</body>
 </html>
