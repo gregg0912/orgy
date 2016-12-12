@@ -50,9 +50,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/members.css">
-
 	</head>
-
 	<body>
 		<nav>
 		<ul>
@@ -81,12 +79,11 @@
 					</ul>
 				</li>
 				<li><a href="edit.php">Edit Profile</a></li>
-				<li><a href="notif.php">Notifications   |
+				<li><a href="notif.php">Notifications
 				<?php
 					$notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-					$total2 = mysqli_num_rows($notifnum);
-					echo "$total2"
-					?>
+					$total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
 				</a></li>
 				<li><a href="logout.php">Log Out</a></li>
 			</ul>
@@ -114,15 +111,23 @@
 				$penders = mysqli_query($connectdb,$query_penders);
 				$count=0; ?>
 				<ul id="see_group">
-				<?php while($pendering=mysqli_fetch_assoc($penders)){ ?>
+				<?php while($pendering=mysqli_fetch_assoc($penders)){ 
+					//$ID=$pendering['join_id'];
+					
+					?>
 							<li class="joinGroup">
 								<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
-								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>
-								
+								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
 								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
-									<a class="orglink" href="delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>" onClick= "uSure(); return false;"> Kick </a> 
-								<?php } 
+								
+									<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
+
+								<?php 
+									if(isset($_POST['Kick_Button'])){
+										header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
+									}
+								} 
 									$_SESSION['count']=$count; ?>
 							</li>
 				<?php 	
@@ -140,6 +145,9 @@
 					?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
+<<<<<<< HEAD
+		
+=======
 		<script type="text/javascript">
 			function uSure() {
 			    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
@@ -148,7 +156,10 @@
 			        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
 			    } 
 			}
+			function addmsg(type, msg){
+				$('#notification_count').html(msg);
+			}
 		</script>
+>>>>>>> 1a84deb22513b13e660ae0da54af88530ccf827e
 	</body>
 </html>
-

@@ -81,12 +81,11 @@
                     </ul>
                 </li>
                 <li><a href="edit.php">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
+                <li><a href="notif.php">Notifications
                   <?php
                     $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                    $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
+                    $total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
                 </a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
@@ -237,6 +236,12 @@
 								<legend id="<?=$disc_id?>">
 
 									<a class='title' href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+									<?php
+									$sql = "SELECT COUNT(comment_id) FROM comments WHERE comments.disc_id = $disc_id";
+									$query_comments = mysqli_query($dbconn,$sql);
+									$query_comments = mysqli_fetch_assoc($query_comments);
+									?>
+									<p style="font-size: 12px"> <?= $query_comments['COUNT(comment_id)']." comments "?> </p>
 
 									<span class="date"><?=$dateposted?></span>
 								</legend>
