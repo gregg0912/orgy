@@ -196,6 +196,7 @@
 							</div>
 						</li>
 					<?php }
+
 					if(isset($_GET['searched'])){
 						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
 					}
@@ -209,6 +210,7 @@
 				}
 				?>
 			</ul>
+
 	        <footer>CMSC 128 Section 1 | 2016</footer>
 		</div> 
 	</div>
