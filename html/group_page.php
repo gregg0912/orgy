@@ -128,7 +128,7 @@
 		?>
 	<div id="content">
 		<?php
-		if($check_result){
+		if(mysqli_num_rows($check_result)>=1){
 		?>
 		<div class="header">
 			<center>
@@ -221,10 +221,17 @@
 			$phpdate = strtotime( $date );
 			$datec = date( 'F d, Y h:i:s a', $phpdate );
 		?>
+		<div class="header">
+			<center>
+				<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			</center>
+			<h1 class="title">ORG_Y</h1>
+			<h2 class="currpage">Error Message</h2>
+		</div>
 		<div id="announcement">
 			<ul class="posted">
 				<li class="posted-content">
-					<h2 class="type">Somethings Wrong</h2>
+					<h2 class="type">Something Wrong</h2>
 					<span class="date"><?=$datec?></span>
 					<h3 class="name">System</h3>
 					<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
