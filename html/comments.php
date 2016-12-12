@@ -9,7 +9,25 @@
     	header("Location:signup.php");
     }*/
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];    
+
+    if(isset($_POST['cancel_edit'])){
+    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
+    }
+    if(isset($_POST['submit_edit'])){
+    	$body=$_POST['content_edit'];
+		$today = date('Y-m-d H:i:s');
+    	$edit_query="UPDATE comments 
+    	    SET body='$body', date_c='$today'
+    	    	WHERE comment_id='$_POST[edit]'";
+    	// querySignUp($edit_query);
+    	if(querySignUp($edit_query)){
+	    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
+    	}
+    	else{
+    		echo $disc_id;
+    	}
+    }
 ?>
 
 <!DOCTYPE html>
@@ -201,18 +219,39 @@
 						// $commenter_id=$row["user_id"];
 						$date_c = $row["date_c"];
 						$phpdate = strtotime( $date_c );
-						$datec = date( 'F d, Y h:i:s a', $phpdate );?>
-						<div class='discussion'>
-							<legend>
-								<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
-								<span class="date"><?=$datec?></span>
-							</legend>
-							<dl>
-								<dt><label>Message:</label></dt>
-								<dt><p><?=nl2br($body)?></p></dt>
-							</dl>
-						</div>
+						$datec = date( 'F d, Y h:i:s a', $phpdate );
+						if(!isset($_GET['edit'])){?>
+							<div class='discussion' id='<?=$comment_id?>'>
+								<legend>
+									<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+									<span class="date"><?=$datec?></span>
+								</legend>
+								<?php 
+								if($_SESSION['user_id'] ==$row['user_id']){?>
+									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
+									<a href="comments.php?org_id=<?=$_GET['org_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+								<?php }?>
+								<dl>
+									<dt><p><?=nl2br($body)?></p></dt>
+								</dl>
+							</div>
 				<?php
+						}
+						else{ ?>							
+							<div class='newdiscussion' id='<?=$comment_id?>'>
+								<legend>
+									<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+									<span class="date"><?=$datec?></span>
+								</legend>
+								<form method="post" action="">
+									<dl>
+										<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+									</dl>
+									<input name='submit_edit' type='submit' value='Submit'/>
+									<input name='cancel_edit' type='submit' value='Cancel' />
+								</form>
+							</div>
+				<?php 	}
 					}
 				}
 
@@ -236,29 +275,17 @@
 						if($_POST['discussion_text'] != "")
 						{
 							$body = $_POST['discussion_text'];
-							
-
-
-
-							//HEY! GAGANA ANG PAG ADD SA PHPMYADMID NA SQL TA NAGA INSERT NA BUT HINDI KO ALAM KUNG PAANO SILA I OUTPUT LAHAT SO YE ATLEAST NAG AADD NA SA DATABASE -jp
-							
-
-
-								$today = date('Y-m-d H:i:s');
-							//$today=date("Y-m-d");
-
+							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
-
-							   
-							    $query = mysqli_query($dbconn, $sql);
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+						    $query = mysqli_query($dbconn, $sql);
+						    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
 						else
 						{
 							echo "<script type='text/javascript'>alert('Please input field')</script>";
 						}
-					}
+					} 
 				?>
 		
 			</div>
