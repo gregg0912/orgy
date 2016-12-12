@@ -13,7 +13,6 @@
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from joined where org_id = $orgid and (membership_type ='member' or membership_type='admin') ");
 	$total_items = mysqli_num_rows($query1);
-	// echo "$result";
     $rows = mysqli_num_rows($query1);
     $start=0;
     $lim=3; 
@@ -92,19 +91,23 @@
 				<li><a href="logout.php">Log Out</a></li>
 			</ul>
 		</nav>
-		<div id="content">
 			<!-- Agent Proxy -->	
 			<?php
 				$current_userid = $_SESSION['user_id'];
-				$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
+				$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id = $orgid";
 				$check_result = mysqli_query($connectdb, $checker_query);
-				
-					while($result = mysqli_fetch_assoc($check_result)){
-							$member = $result['membership_type'];
-					}
+				$result = mysqli_fetch_assoc($check_result);
+				$member = $result['membership_type'];
 			?>				
 		<!-- Agent Proxy -->
-			<h1 class="title">Current Members</h1>
+		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$result['org_name']?></h1>
+				<h2 class="currpage">Current Members</h2>
+			</div>
 			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>			
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
