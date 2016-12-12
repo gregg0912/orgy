@@ -251,6 +251,21 @@
 
 							   
 							    $query = mysqli_query($dbconn, $sql);
+
+							    //AGENT PROXY
+							if($disc['user_id']!=$_SESSION['user_id']){
+								$content = $_SESSION['username']." commented on your post on ".$disc['date_posted']." entitled ".$disc['title'];
+								$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$today','Commented','$content','$disc[user_id]',$org_id)";
+								$result = mysqli_query($dbconn, $query);
+
+								$ann=mysqli_query($connectdb,"SELECT * FROM announcement WHERE org_id=$org_id order by announcement_id desc limit 1");
+					        	$ann_id= mysqli_fetch_assoc($ann);
+					        	$announcement_id=$ann_id['announcement_id'];
+								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
+								$result = mysqli_query($dbconn, $query);
+							}
+							    //
+
 							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
