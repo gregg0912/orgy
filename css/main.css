@@ -32,16 +32,13 @@ body{
 	color: white;
 	background-color: #e74c3c;
 }
-/*
-#content > .header{
-	position:relative;
-}*/
-
+#content > .header > h1.title{
+	margin-top: 0px;
+}
 .img-absolute{
-	/*position: absolute;*/
-	/*border-radius: 50%;*/
-	height: 100px;
-	width: 100%;
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
 	top: 0px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 	border: 1px solid #DDD;
