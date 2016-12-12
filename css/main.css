@@ -141,3 +141,11 @@ ul.pagination span:hover{
 	color: #888;
 	text-align: center;
 }
+
+.return{
+	font-size: 1em;
+}
+
+.return:hover, .buttoncustom:hover{
+	opacity: 0.5;
+}

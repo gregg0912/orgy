@@ -95,6 +95,8 @@ form.sort{
 	width: 100%;
 	transition: 0.2s;
 	resize: none;
+	word-wrap: break-word;
+
 }
 
  textarea:focus{
@@ -110,7 +112,7 @@ form.sort{
 	text-decoration: none;
     font-size: 1em;
     /*color: #3498db;*/
-    margin: 5px 0;
+    /*margin: 5px 0;*/
 }
 
 .title{
@@ -212,3 +214,12 @@ p{
 	margin: auto;
 }
 
+#sortdate:active, #sortvote:active{
+	background-color: #c0392b!important;
+	color: white!important;
+	cursor: default;
+}
+
+.btnsort:active{
+	background-color: red;
+}

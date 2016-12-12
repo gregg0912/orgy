@@ -6,6 +6,7 @@
 	$dbconn = connection();
 	$connectdb = connection();
 	redirect();
+	$orgid = intval($_GET['orgID']);
     $user_id = $_SESSION['user_id'];
     $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
     if(isset($_SESSION['voted'])){
@@ -94,10 +95,11 @@
 		<div id="content">
 			<div id="discussions">
 				<h1 class="title">Discussions</h1>
+				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 				<form method="post" action="" class="sort">
 					<span>Sort by:</span> 
-					<button type="submit" name="date" value="date"> Date </button>
-	            	<button type="submit" name="votes" value="votes"> Votes </button>
+					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
+	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
 	            </form>
 	            <?php
 	            if(!isset($_GET['edit'])){
