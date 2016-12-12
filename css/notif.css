@@ -12,7 +12,7 @@ li.notification .org-name{
 	margin: 2px;
 	font-family: Arial;
 	display: inline-block;
-	font-weight: normal;
+	font-weight: bold;
 }
 li.notification .topic{
 	font-size: 1.0em;
@@ -24,8 +24,11 @@ li.notification .topic{
 a{
 	color: black;
 }
+.org-name{
+	color: #740000;
+}
 .org-name:hover{
-	color: #5e5e5e;
+	color: #e74c3c;
 }
 #allread{
 	margin-left: 7%;

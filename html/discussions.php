@@ -56,6 +56,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+
+
 <body>
 	<div id="wrapper">
 	<nav>
@@ -107,10 +110,15 @@
 
 				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 
+
 				<form method="post" action="" class="sort">
-					<span>Sort by:</span> 
-					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
-	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
+					<span><span class="glyphicon glyphicon-sort"></span> Sort by </span> 
+					 <!-- <button id="sortdate" type="submit" name="date" value="date" class="btnsort"> Date </button>
+	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button> -->
+	            	<?php if(!isset($_GET['sort_id'])){$_GET['sort_id'] = 1;} ?>
+	            	<button id="sortdate" type="submit" name="date" value="date" class="btnsort <?php if($_GET['sort_id'] == 1){echo "active";}?>"> Date </button>
+	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort <?php if($_GET['sort_id'] == 2){echo "active";}?>"> Votes </button>
+
 	            </form>
 	            <?php
 	            if(!isset($_GET['edit'])){
@@ -169,7 +177,7 @@
 		            if(isset($_POST['votes'])){
 		            	$sort_id=2;
 		            	//AGENTPROXY[069]
-						header("Location: discussions.php?orgID=$org_id&sort_id=$sort_id&pn=1");
+						header("Location: discussions.php?orgID=$org_id&pn=1&sort_id=$sort_id");
 						// //
 		            }
 		            if(isset($_GET['sort_id'])){
@@ -195,30 +203,34 @@
 					$query = mysqli_query($dbconn, $sql);
 
 					$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
-
-					$paginationCtrls = '';
 					
+					$paginationCtrls = '';
+
 					if($last != 1)
 					{
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'">Previous</a> &nbsp; &nbsp; ';
+							// $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'">Previous</a> &nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$previous.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-left"></span></a>';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
 								if($i > 0)
 								{
-									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
+									$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a>';
 								}
 							}
-						}
+						}	
 						
-						$paginationCtrls .= ''.$pagenum.' &nbsp; ';
+						// $paginationCtrls .= ''.$pagenum.' &nbsp; ';
+						$paginationCtrls .= '<a class="active"><b>'.$pagenum.'</b></a>';
+
+
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a> &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$i.'&sort_id='.$sort_id.'">'.$i.'</a>';
 							if($i >= $pagenum+4)
 							{
 								break;
@@ -228,9 +240,12 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'">Next</a> ';
+							// $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'">Next</a> ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?orgID='.$org_id.'&pn='.$next.'&sort_id='.$sort_id.'"><span class="glyphicon glyphicon-triangle-right"></span></a> ';
 						}
-					}	
+					}
+
+
 					while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
 						$disc_id = $row["disc_id"];
 						$content = $row["content"];
@@ -255,7 +270,7 @@
 									$query_comments = mysqli_fetch_assoc($query_comments);
 									?>
 
-									<span class="date"><?=$dateposted?></span>
+									<span class="date"><span class="glyphicon glyphicon-time"></span> <?=$dateposted?></span>
 								</legend>
 								<?php
 									if($user_id==$disc_user_id){
@@ -282,8 +297,8 @@
 									<form method='post'>
 										<div class="app">
 											<a class="up" href="vote.php?approval=upvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-up up"> </span></a>
-											<label class="votes">Discussion Points:<?=$total_vote?></label>
-											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
+											<label class="votes">Discussion Points: <?=$total_vote?></label>
+											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&disc_user_id=<?=$row['user_id']?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
 											<a href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><label class='comments'> <?= $query_comments['COUNT(comment_id)']." comments "?> </label></a>
 										</div>
 									</form>
@@ -341,7 +356,12 @@
 
 				<div>
 					<p class="pagination-text"><?php echo $textline2; ?></p>
-					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+					<!-- <div id="pagination_controls"><?php echo $paginationCtrls; ?></div> -->
+					<div id="pagination_controls">
+						<ul class="pagination">
+							<li><?php echo $paginationCtrls; ?></li>
+						</ul>
+					</div>
 				</div>
 				
 				

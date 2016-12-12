@@ -201,3 +201,34 @@ p{
 	margin: auto;
 }
 
+
+/*===========PAGINATION===========*/
+
+/*agination{
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	border: none;
+	font-family: Arial;
+	font-size: 1em;
+
+
+}	
+
+.pagination > a, .pagination > span{
+	color: #e74c3c;
+	text-decoration: none;
+	margin: auto;
+	float: left;
+}	
+.pagination > a:hover, 
+.pagination > span:hover
+{
+    color: #e74c3c;
+}
+
+.pagination > span{
+	cursor: default;
+	font-weight: bold;
+}
+*/

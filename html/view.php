@@ -69,10 +69,17 @@
 							<p><?=$des?></p>
 						<?php } 
 						?>
-						<!-- <a href="explore.php?org_type=<?php echo $org_type?>&id=<?=$pageid?>"><button  onclick="history.go(-1);">Go Back to Exploring</button></a> -->
 						<div class="group-btn">
+						<?php
+						$query = "SELECT * FROM joined WHERE user_id = '".$_SESSION['user_id']."' AND org_id = '".$id."'";
+						$result = mysqli_query($connectdb,$query);
+						if(mysqli_num_rows($result)==0){
+						?>
 							<a class="buttoncustom" href="add.php?org_id=<?=$id?>" style="margin-right: 10px;color: white;"><span class="glyphicon glyphicon-plus-sign"></span> Add Org</a>
-							<button onclick="history.go(-1);" style="color: white;"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to Exploring</button>
+						<?php
+						}
+						?>
+							<button onclick="history.go(-1);" style="color: white;"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back </button>
 						</div>
 				</ul>
 			</div>

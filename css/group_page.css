@@ -9,6 +9,7 @@
 	overflow: auto;
 	display: flex;
 	justify-content: center;
+	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
@@ -86,10 +87,14 @@ form.posting.true input[type=submit]{
 	margin: 5px 0;
 }
 
-.posted-content .type{
-	font-weight: normal;
-	font-size: 1.5em;
+.posted-content h2.type{
+/*	font-weight: bold;
+	font-size: 1.5em;*/
 	display: inline-block;
+	font-size: 1.2em;
+    text-transform: capitalize;
+    transition: 0.2s;
+    color: #740000;
 }
 
 .posted-content .date{
@@ -113,7 +118,7 @@ form.posting.true input[type=submit]{
 
 .posted-content .caption{
 	padding: 10px;
-	color: #555;
+	color: #333;
 }
 
 .absolute{

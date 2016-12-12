@@ -30,9 +30,13 @@
 
 }
 
-.discussion .app .up, .down, .votes, .comments{
+.discussion .app .up, .down, .comments{
 	padding: 10px 3px;
-	
+	color: #333;
+}
+.votes{
+	padding: 10px 3px;
+	color: #333;
 }
 
 .up:hover, .down:hover{
@@ -49,8 +53,8 @@
 form.sort{
 	text-align: center;
 	padding: 10px;
+	color: #333;
 }
-
 
 .newdiscussion{
 	
@@ -88,6 +92,7 @@ form.sort{
  input[type=text]{
 	width: 100%;
 	margin-left: auto;
+	color: #333;
 
 }
 
@@ -112,10 +117,6 @@ form.sort{
 
 .discussion a.user,
 .discussion a.title{
-	text-decoration: none;
-/*<<<<<<< HEAD
-    font-size: 1em;
-=======*/
     margin: 10px 0;
 }
 
@@ -127,7 +128,6 @@ form.sort{
 
 .discussion a.title:hover{
 	color: #e74c3c;
-/*>>>>>>> e3eb3e5d375787b938c27a154eb9b3c3bc51902e*/
 }
 
 .title{
@@ -136,7 +136,7 @@ form.sort{
 }
 
 .title:hover{
-	color: #ff8a80;;
+	color: #ff8a80;
 }
 
 .user:hover{
@@ -146,11 +146,11 @@ form.sort{
 .user, .up{
 	font-weight: normal;
     font-size: 1em;
-    color: #3498db;
-    
+    color: #3498db !important; 
 }
-
-
+.user, .title{
+	text-decoration: none;
+}
 .discussion .remove, .discussion .edit{
 	border-radius: 50%;
 	padding: 5px 5px 5px 5px;
@@ -226,22 +226,59 @@ p{
 
 	background-color: #3070D3;
 }
-.sort p, #sortdate, #sortvote{
+.sort p, .activesort{
 	margin: auto;
 }
 
-.btnsort:active{
+.activesort:hover{
+	background-color: white;
+	color:black;
+}
+
+/*.activesort:active, .activesort:focus{
+	background-color: #c0392b!important;
+	background-color: red;
+	color: white!important;
+	 fill:#1a82b8;
+	cursor: default;
+}
+
+<<<<<<< HEAD
+.dateactive:focus, .voteactive:focus{
+	background-color: yellow;
+}*/
+
+
+#sortdate.active, #sortvote.active{
 	background-color: #c0392b!important;
 	color: white!important;
 	cursor: default;
 }
 
+a.current
+	{
+	
+	}
+
+
 .comments{
 	float: right;
-	color: black;
 	text-decoration: none;
+	color: #333;
 }
 
 .comments:hover{
 	text-decoration: underline;
+}
+
+.activesort{
+    /*background-color: red;*/
+}
+
+
+.dateactive:focus, .voteactive:focus {
+    background-color: #c0392b!important;
+	color: white!important;
+	 fill:#1a82b8;
+	cursor: default;
 }

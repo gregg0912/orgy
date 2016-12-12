@@ -53,14 +53,14 @@
                 for($x=0;$x<=$_SESSION['count'];$x++){
                     if(isset($_POST['Button'.$x])){
                         $value = $_POST['Button'.$x];
-                        $query_seen= "update seen_announcement set seen='seen' where announcement_id='$value' and user_id='$_SESSION[user_id]'";
+                        $query_seen= "UPDATE seen_announcement SET seen='seen' WHERE announcement_id='$value' AND user_id='$_SESSION[user_id]'";
                         $result=mysqli_query($connectdb,$query_seen);
                         header("Location:notif.php");
                       }
                     }
                         
                     if(isset($_POST["allread"])){
-                        $read_update= "update seen_announcement set seen='seen'";
+                        $read_update= "UPDATE seen_announcement SET seen='seen' WHERE user_id='$_SESSION[user_id]'";
                         $result=mysqli_query($connectdb,$read_update);
                         header("Location:notif.php");
                     }
@@ -119,6 +119,8 @@
                   while($announcement = mysqli_fetch_array($query)){
                   $org_id = $announcement['org_id'];
                   $date = $announcement['date_posted'];
+                  $date = strtotime($date);
+                  $date = date('F d, Y h:i:s a', $date);
                   $message = $announcement['content'];
                   $user_id = $announcement['user_id'];
                   $orgsy = mysqli_query($connectdb, "select org_name from orgs where org_id = $org_id");
@@ -130,23 +132,27 @@
               ?>
                   <li class="notification">
                       <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
-                      <h3 class="topic">
+
+<!--                       <h3 class="topic">
                         <?php
-                          if($topic=="Request"){
-                            echo "<span class='glyphicon glyphicon-question-sign'></span>";
-                          }
-                          else if($topic=="Rejected"){
-                            echo "<span class='glyphicon glyphicon-remove-circle'></span>";
-                          }
-                          else if($topc=="Upvote"){
-                            echo "<span class='glyphicon glyphicon-thumbs-up'></span>";
-                          }
-                          else if($topc=="Downvote"){
-                            echo "<span class='glyphicon glyphicon-thumbs-down'></span>";
-                          }
+                          // if($topic=="Request"){
+                          //   echo "<span class='glyphicon glyphicon-question-sign'></span>";
+                          // }
+                          // else if($topic=="Rejected"){
+                          //   echo "<span class='glyphicon glyphicon-remove-circle'></span>";
+                          // }
+                          // else if($topc=="Upvote"){
+                          //   echo "<span class='glyphicon glyphicon-thumbs-up'></span>";
+                          // }
+                          // else if($topc=="Downvote"){
+                          //   echo "<span class='glyphicon glyphicon-thumbs-down'></span>";
+                          // }
                         ?>
                         <?php echo $topic;?>
-                      </h3>
+                      </h3> -->
+=======
+                      <span class="date"><span class="glyphicon glyphicon-time"></span><?=$date?></span>
+                      <h3 class="topic"><?php echo $topic;?></h3>
                       <p class="message">"<?php echo $message;?>"</p>
                       <?php
                       if($seenstatus == 'not_seen'){ ?>
@@ -158,7 +164,6 @@
                   </li>
                   <?php $count++;
                   }
-                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
                   ?>
                   <?php }
                   else{
@@ -167,6 +172,10 @@
                   <?php
                   }?>
         </ul>
+
+        <?php
+                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
+                  ?>
         <footer>CMSC 128 Section 1 | 2016</footer>
     </div>
 </div>

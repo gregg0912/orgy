@@ -39,12 +39,12 @@
 	<link rel="stylesheet" type="text/css" href="../css/comments.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 </head>
-<style type="text/css">
+<!-- <style type="text/css">
 	body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
 	div#pagination_controls{font-size:21px;}
 	div#pagination_controls > a{ color:#06F; }
 	div#pagination_controls > a:visited{ color:#06F; }
-</style>
+</style> -->
 <body>
 	<div id="wrapper">
         <nav>
@@ -177,7 +177,7 @@
 						if ($pagenum > 1) 
 						{
 							$previous = $pagenum - 1;
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$previous.'">Previous</a>&nbsp; &nbsp; ';
 						
 							for($i = $pagenum-4; $i < $pagenum; $i++)
 							{
@@ -188,11 +188,11 @@
 							}
 						}
 						
-						$paginationCtrls .= ''.$pagenum.' &nbsp; ';
+						$paginationCtrls .= '<span> '.$pagenum.'</span>&nbsp; ';
 						
 						for($i = $pagenum+1; $i <= $last; $i++)
 						{
-							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+							$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$i.'">'.$i.'</a>&nbsp; ';
 							if($i >= $pagenum+4)
 							{
 								break;
@@ -202,7 +202,7 @@
 						if ($pagenum != $last) 
 						{
 							$next = $pagenum + 1;
-							$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
+							$paginationCtrls .= ' &nbsp;&nbsp; <a href="'.$_SERVER['PHP_SELF'].'?org_id='.$org_id.'&sort_id='.$_GET['sort_id'].'&disc_id='.$disc_id.'&pn='.$next.'">Next</a> ';
 						}
 					}
 
@@ -280,7 +280,13 @@
 				
 				<div>
 					<p class="pagination-text"><?php echo $textline2; ?></p>
-					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+					<div id="pagination_controls">
+						
+					<ul class=	"pagination">
+						<li><?php echo $paginationCtrls; ?></li>
+						</ul>
+					</div>
+							
 				</div>
 
 
