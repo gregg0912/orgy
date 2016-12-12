@@ -6,6 +6,17 @@
     redirect();
      $count=0;
 
+     /*
+    Accepted
+    Rejected
+    Kicked
+    Rejected
+    Request
+    Upvote
+    Downvote
+
+     */
+
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +130,23 @@
               ?>
                   <li class="notification">
                       <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
-                      <h3 class="topic"><?php echo $topic;?></h3>
+                      <h3 class="topic">
+                        <?php
+                          if($topic=="Request"){
+                            echo "<span class='glyphicon glyphicon-question-sign'></span>";
+                          }
+                          else if($topic=="Rejected"){
+                            echo "<span class='glyphicon glyphicon-remove-circle'></span>";
+                          }
+                          else if($topc=="Upvote"){
+                            echo "<span class='glyphicon glyphicon-thumbs-up'></span>";
+                          }
+                          else if($topc=="Downvote"){
+                            echo "<span class='glyphicon glyphicon-thumbs-down'></span>";
+                          }
+                        ?>
+                        <?php echo $topic;?>
+                      </h3>
                       <p class="message">"<?php echo $message;?>"</p>
                       <?php
                       if($seenstatus == 'not_seen'){ ?>
