@@ -114,7 +114,7 @@ nav img:hover{
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	position: absolute;
-	font-size: 60%;
+	font-size: 67%;
 }
 li.dropbtn:hover > a.dropbtn{
 	background-color: white;
