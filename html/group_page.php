@@ -169,7 +169,7 @@
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
 		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit absolute"><span class="glyphicon glyphicon-pencil"></span></a>
 		                        <form method="post" action="">
-		                        	<button type="submit" name=" " value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
+		                        	<button type="submit" name="" value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
 		                        </form>
 		                        <?php } ?>
 	                        </div>
