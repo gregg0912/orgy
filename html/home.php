@@ -20,7 +20,7 @@
 <body>
 <?php
         $curnt_id = $_SESSION['user_id'];
-        $query1 = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') order by date_posted DESC ");
+        $query1 = mysqli_query($connectdb, "select * from announcement where org_id in (select org_id from joined where user_id = $curnt_id and membership_type!='pending') and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
         $rows = mysqli_num_rows($query1);
         $start=0;
         $lim=5;
@@ -33,7 +33,7 @@
                 $id=1;
             } 
     $total=ceil($rows/$lim);
-    $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') ORDER BY date_posted DESC LIMIT $start, $lim");
+    $query = mysqli_query($connectdb, "SELECT * FROM announcement WHERE org_id IN (SELECT org_id FROM joined WHERE user_id = $curnt_id AND membership_type!='pending') and topic !='Upvote' and topic!='Downvote' and topic!='Commented' ORDER BY date_posted DESC LIMIT $start, $lim");
     
     if($_POST){       
         for($x=0;$x<=$_SESSION['count'];$x++){
