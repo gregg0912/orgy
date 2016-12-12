@@ -70,11 +70,23 @@
 		<div id="content">
 			<div id="discussions">
 				<?php
-					$get_topic="SELECT * FROM discuss WHERE disc_id='$_GET[disc_id]'";
+					$get_topic="SELECT * FROM discuss, user WHERE discuss.disc_id='$_GET[disc_id]' AND discuss.user_id=user.user_id";
 					$disc=mysqli_fetch_assoc(querySignUp($get_topic));
+					$phpdate = strtotime( $disc['date_posted'] );
+					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
 				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<h1 class='title'><?=$disc['title']?></h1>
+				<div class='discussion'>
+					<legend>
+						<a class='user' href="viewprofile.php?user_id=<?=$disc['user_id']?>"><?=$disc['username']?></a>
+						<span class="date"><?=$datec?></span>
+					</legend>
+					<dl>
+						<dt><label>Message:</label></dt>
+						<dt><p><?=nl2br($disc['content'])?></p></dt>
+					</dl>
+				</div>
 				<form class='newtopic' method="post">
 					<div class='newdiscussion'>
 						<legend>Join the discussion!</legend>
