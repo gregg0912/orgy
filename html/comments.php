@@ -19,8 +19,7 @@
 		$today = date('Y-m-d H:i:s');
     	$edit_query="UPDATE comments 
     	    SET body='$body', date_c='$today'
-    	    	WHERE comment_id='$_POST[edit]'";
-    	// querySignUp($edit_query);
+    	    	WHERE comment_id='$_GET[edit]'";
     	if(querySignUp($edit_query)){
 	    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id'].'#'.$_GET['edit']);
     	}
@@ -28,6 +27,7 @@
     		echo $disc_id;
     	}
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -155,19 +155,11 @@
 
 					$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 					
-					/*$sql = "SELECT *
-							FROM comments, discuss, user
-							WHERE comments.disc_id = $disc_id
-							AND comments.user_id = user.user_id $limit";*/
-
 					$sql = "SELECT u.username, c.body, c.date_c, c.comment_id, u.user_id 
 								FROM comments c 
 								INNER JOIN user u on c.user_id = u.user_id 
 								INNER JOIN discuss d on c.disc_id = d.disc_id 
 									WHERE c.disc_id=$disc_id ORDER BY comment_id ASC $limit";
-									
-	//wait lang ha ga edit ako -jp 6:50pm
-							   
 							    $query = mysqli_query($dbconn, $sql);
 
 					$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -234,24 +226,45 @@
 								<dl>
 									<dt><p><?=nl2br($body)?></p></dt>
 								</dl>
+								<?php
+								    if(isset($_POST['delete'])){
+								    	$delete_query="DELETE FROM comments WHERE comment_id='$comment_id' ";
+								    	querySignUp($delete_query);
+								    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id']);
+
+								    }
+								?>
 							</div>
 				<?php
 						}
-						else{ ?>							
-							<div class='newdiscussion' id='<?=$comment_id?>'>
-								<legend>
-									<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
-									<span class="date"><?=$datec?></span>
-								</legend>
-								<form method="post" action="">
+						else{ 
+							if($comment_id==$_GET['edit']) {?>							
+								<div class='newdiscussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user' href='viewprofile.php?user_id=<?=$row['user_id']?>'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
+									<form method="post" action="">
+										<dl>
+											<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+										</dl>
+										<input name='submit_edit' type='submit' value='Submit'/>
+										<input name='cancel_edit' type='submit' value='Cancel' />
+									</form>
+								</div>
+				<?php 		}
+							else{?>
+								<div class='discussion' id='<?=$comment_id?>'>
+									<legend>
+										<a class='user'><?=$commenter?></a>
+										<span class="date"><?=$datec?></span>
+									</legend>
 									<dl>
-										<dt><textarea name='content_edit'><?=nl2br($body)?></textarea></dt>
+										<dt><p><?=nl2br($body)?></p></dt>
 									</dl>
-									<input name='submit_edit' type='submit' value='Submit'/>
-									<input name='cancel_edit' type='submit' value='Cancel' />
-								</form>
-							</div>
-				<?php 	}
+								</div>
+						<?php }
+						}
 					}
 				}
 
@@ -263,7 +276,7 @@
 				?>
 				
 				<div>
-					<p><?php echo $textline2; ?></p>
+					<p class="pagination-text"><?php echo $textline2; ?></p>
 					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 				</div>
 
@@ -294,8 +307,9 @@
 								$result = mysqli_query($dbconn, $query);
 							}
 							    //
-
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+	         				echo "<meta http-equiv='refresh' content='0'>";
+							
+							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
 							
 						}
 						else

@@ -21,7 +21,8 @@ body{
 	box-sizing: border-box;
 }
 
-#content > h1.title{
+#content > h1.title,
+#content > .header > h1.title{
 	font-family: Chaparral;
 	text-align: center;
 	font-size: 3em;
@@ -30,6 +31,20 @@ body{
 	text-transform: capitalize;
 	color: white;
 	background-color: #e74c3c;
+}
+/*
+#content > .header{
+	position:relative;
+}*/
+
+.img-absolute{
+	/*position: absolute;*/
+	/*border-radius: 50%;*/
+	height: 100px;
+	width: 100%;
+	top: 0px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.15);
+	border: 1px solid #DDD;
 }
 
 button,
@@ -51,13 +66,11 @@ input[type=button],
 button:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
-.buttoncustom.delete:hover{
-	background-color: #ff8a80;
+.buttoncustom.delete:hover,
+.buttoncustom.edit:hover{
+	filter: brightness(120%);
 }
 
-.buttoncustom.edit:hover{
-	background-color: #00B0FF;
-}
 
 input[type=text],
 input[type=password],
@@ -143,9 +156,18 @@ ul.pagination span:hover{
 }
 
 .return{
-	font-size: 1em;
+	font-size: 0.9em;
+	padding: 10px 30px;
+	display: block;
+	width: 5%;
 }
 
 .return:hover, .buttoncustom:hover{
-	opacity: 0.5;
+	opacity: 0.7;
+}	
+
+.pagination-text{
+	text-align: center;
+	color: #555;
+
 }

@@ -8,7 +8,7 @@
 	redirect();
 	$orgid = intval($_GET['orgID']);
     $user_id = $_SESSION['user_id'];
-    $set_timezone = mysqli_query($dbconn, "set time_zone = '+08:00'");
+    $set_timezone = mysqli_query(connection(), "set time_zone = '+08:00'");
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
     		echo "<script type='text/javascript'>alert('You already voted for that comment!')</script>";
@@ -95,7 +95,9 @@
 		<div id="content">
 			<div id="discussions">
 				<h1 class="title">Discussions</h1>
+
 				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
+
 				<form method="post" action="" class="sort">
 					<span>Sort by:</span> 
 					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
@@ -323,7 +325,7 @@
 				?>
 
 				<div>
-					<p>"<?php echo $textline2; ?>"</p>
+					<p class="pagination-text">"<?php echo $textline2; ?>"</p>
 					<div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
 				</div>
 				

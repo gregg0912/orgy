@@ -108,11 +108,24 @@ form.sort{
 	display: block;
 }
 
-.discussion a, a:hover{
+.discussion a.user,
+.discussion a.title{
 	text-decoration: none;
+/*<<<<<<< HEAD
     font-size: 1em;
-    /*color: #3498db;*/
-    /*margin: 5px 0;*/
+=======*/
+    margin: 10px 0;
+}
+
+.discussion a.title{
+    font-size: 1.2em;
+    text-transform: capitalize;
+    transition: 0.2s;
+}
+
+.discussion a.title:hover{
+	color: #e74c3c;
+/*>>>>>>> e3eb3e5d375787b938c27a154eb9b3c3bc51902e*/
 }
 
 .title{

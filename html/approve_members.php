@@ -232,7 +232,9 @@
 						$penders = mysqli_query($connectdb,$query_penders);
 						$count=0;
 						?> 
-					
+
+						<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>
+
 						<ul id='see_group'>
 						<?php
 						while($pendering=mysqli_fetch_assoc($penders)){ ?>

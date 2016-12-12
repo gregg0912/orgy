@@ -57,3 +57,21 @@ input{
 	font-size: 1.3em;
 	padding: 10px 30px;
 }
+
+.success,
+.error{
+	padding: 5px 20px;
+	display: block;
+	width: 54%;
+	margin: 10px auto 30px auto;
+	color: white;
+	border-radius: 3px;
+}
+
+.error{
+	background-color: #E91E63;
+}
+
+.success{
+	background-color: #8BC34A;
+}

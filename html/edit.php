@@ -52,7 +52,7 @@
 			$getfname = $_POST["fname"];
 			$getlname = $_POST["lname"];
 			$getemail = $_POST["email"];
-			$getbirthdate = $_POST["bdate"];
+			/*$getbirthdate = $_POST["bdate"];*/
 			$getdegree = $_POST["degree"];
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
@@ -82,7 +82,7 @@
 					        	}
 					        	else{
 
-					        		$getbirthdate = date('Y,m,d', strtotime($_POST["bdate"]));
+					        		/*$getbirthdate = date('Y,m,d', strtotime($_POST["bdate"]));*/
 
 									$file=$_FILES['fileToUpload'];
 									if(!isset($file)){
@@ -219,8 +219,11 @@
         </nav>
 		<div id="content">
 			<h1 class="title">edit your profile</h1>
-			<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
-			<span class="success"><?php echo $prompt;?></span>
+			<?php if($duplicateErr!="" || $passwordErr!="" || $oldpasswordErr!="" || $newpasswordErr!="" || $retypenewpasswordErr!="" || $submitErr!=""){ ?>
+				<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
+			<?php } elseif ($prompt!="") { ?>
+				<span class="success"><?php echo $prompt;?></span>
+			<?php } ?>
 			<form class="edit" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			    <label for="fileToUpload" class="buttoncustom change-picture"><span class="glyphicon glyphicon-picture"></span> Change Profile Picture </label>
 				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
