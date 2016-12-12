@@ -101,9 +101,9 @@
 		echo '<ul style="clear:both; bottom:0;" class="pagination" id="pagination">';
 		if ($showPrevNext) {
 			if ($currentPage == $firstPage) {
-				echo '<li><span>&lt;</span></li>';
+				echo '<li><span><span class="glyphicon glyphicon-triangle-left"></span></span></li>';
 			} else {
-				echo '<li><a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage - 1) : sprintf($pageLinkTemplate, $currentPage - 1)) . '">&lt;</a></li>';
+				echo '<li><a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage - 1) : sprintf($pageLinkTemplate, $currentPage - 1)) . '"><span class="glyphicon glyphicon-triangle-left"></span></a></li>';
 			}
 		}
 		if ($firstAdjacentPage > $firstPage) {
@@ -127,9 +127,9 @@
 		}
 		if ($showPrevNext) {
 			if ($currentPage == $lastPage) {
-				echo '<li><span>&gt;</span></li>';
+				echo '<li><span><span class="glyphicon glyphicon-triangle-right"></span></span></li>';
 			} else {
-				echo '<li><a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage + 1) : sprintf($pageLinkTemplate, $currentPage + 1)) . '">&gt;</a></li>';
+				echo '<li><a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage + 1) : sprintf($pageLinkTemplate, $currentPage + 1)) . '"><span class="glyphicon glyphicon-triangle-right"></span></a></li>';
 			}
 		}
 		echo '</ul>';
