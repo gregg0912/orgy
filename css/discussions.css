@@ -53,8 +53,8 @@
 form.sort{
 	text-align: center;
 	padding: 10px;
+	color: #333;
 }
-
 
 .newdiscussion{
 	
@@ -92,6 +92,7 @@ form.sort{
  input[type=text]{
 	width: 100%;
 	margin-left: auto;
+	color: #333;
 
 }
 
@@ -116,7 +117,6 @@ form.sort{
 
 .discussion a.user,
 .discussion a.title{
-	text-decoration: none;
     margin: 10px 0;
 }
 
@@ -136,7 +136,7 @@ form.sort{
 }
 
 .title:hover{
-	color: #ff8a80;;
+	color: #ff8a80;
 }
 
 .user:hover{
@@ -146,11 +146,11 @@ form.sort{
 .user, .up{
 	font-weight: normal;
     font-size: 1em;
-    color: #3498db !important;
-    
+    color: #3498db !important; 
 }
-
-
+.user, .title{
+	text-decoration: none;
+}
 .discussion .remove, .discussion .edit{
 	border-radius: 50%;
 	padding: 5px 5px 5px 5px;
