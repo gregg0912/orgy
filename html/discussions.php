@@ -242,8 +242,8 @@
 								<?php
 									if($user_id==$disc_user_id){
 									?>
-										<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
-										<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
+										<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span></button></form>
+										<a href="discussions.php?orgID=<?=$org_id?>&pn=<?=$pn?>&edit=<?=$row['disc_id']?>#<?=$row['disc_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span></button></a>
 										
 									<?php
 									}
