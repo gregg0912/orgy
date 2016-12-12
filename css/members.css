@@ -1,3 +1,8 @@
+
+@font-face{
+	font-family: "Arca Majora 3 Bold";
+	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
+}
 h2{
 	color: #333;
 	line-height: 100%;
