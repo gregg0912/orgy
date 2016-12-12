@@ -1,3 +1,7 @@
+@font-face{
+	font-family: "Arca Majora 3 Bold";
+	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
+}
 #see_group{
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	display: flex;

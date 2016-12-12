@@ -97,7 +97,7 @@
 		<div id="content">
 			<div class="header">
 				<center>
-					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$org_info['photo']?>"/>
 				</center>
 				<h1 class="title"><?=$org_info['org_name']?></h1>
 				<h2 class="currpage">Discussions</h2>
