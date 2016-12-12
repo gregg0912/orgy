@@ -4,11 +4,8 @@
 	include('functions.php');
 	$dbconn = connection();
 	$connectdb = connection();
-	/*if(!isset($_SESSION['username']))
-    {   
-    	header("Location:signup.php");
-    }*/
-
+	redirect();
+    date_default_timezone_set("Asia/Singapore");
     $user_id = $_SESSION['user_id'];    
 
     if(isset($_POST['cancel_edit'])){
@@ -284,6 +281,7 @@
 						if($_POST['discussion_text'] != "")
 						{
 							$body = $_POST['discussion_text'];
+
 							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
 

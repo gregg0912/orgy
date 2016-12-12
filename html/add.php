@@ -2,7 +2,7 @@
 	session_start();
 	include ("functions.php");
 	redirect();
-
+	date_default_timezone_set("Asia/Singapore");
 	$dbconn = connection();
 	mysqli_select_db($dbconn, $db) or die( "Unable to select database"); 
 	

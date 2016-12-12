@@ -2,6 +2,7 @@
 	session_start();
 	include ("functions.php");
 	redirect();
+	date_default_timezone_set("Asia/Singapore");
 ?>
 <!DOCTYPE html>
 <html>

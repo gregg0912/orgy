@@ -9,6 +9,7 @@
 	session_start();
 	include("functions.php");
 	redirect();
+	date_default_timezone_set("Asia/Singapore");
 	$connectdb = connection();
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from joined where org_id = $orgid and (membership_type ='member' or membership_type='admin') ");

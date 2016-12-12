@@ -2,6 +2,7 @@
     session_start();
     include ("functions.php");
     $connectdb = connection();
+    date_default_timezone_set("Asia/Singapore");
     redirect();
      $count=0;
 

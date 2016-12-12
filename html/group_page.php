@@ -3,7 +3,8 @@
 	include("functions.php");
 	redirect();
 	$connectdb = connection();
-	$set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
+	date_default_timezone_set("Asia/Singapore");
+	// $set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
     $rows = mysqli_affected_rows($connectdb);

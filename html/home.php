@@ -3,7 +3,8 @@
     include ("functions.php");
     $connectdb = connection();
     redirect();
-    $set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
+    // $set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
+    date_default_timezone_set("Asia/Singapore");
     $count=0; 
 ?>
 <!DOCTYPE html>

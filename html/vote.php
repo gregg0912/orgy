@@ -13,6 +13,7 @@ $query = "SELECT * FROM disc_upvote WHERE user_id = '".$user_id."' AND disc_id =
 //AgentProxy
 $title = $_GET['title'];
 $dateposted = $_GET['dateposted'];
+date_default_timezone_set("Asia/Singapore");
 //
 $result = mysqli_query($dbconn, $query);
 if(mysqli_num_rows($result)>=1){

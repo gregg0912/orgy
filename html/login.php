@@ -3,6 +3,7 @@
   connection();
   session_start();
   redirect2();
+  date_default_timezone_set("Asia/Singapore");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">

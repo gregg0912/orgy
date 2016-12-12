@@ -12,7 +12,7 @@
 	include("functions.php");
 	redirect();
 	$connectdb = connection();
-
+	date_default_timezone_set("Asia/Singapore");
 	$value = $_GET['ID'];
 	$orgid = $_GET['ORGID'];
     $user=mysqli_query($connectdb,"select * from user,joined where user.user_id=joined.user_id and joined.join_id='$value' ");
