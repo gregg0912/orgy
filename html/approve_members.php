@@ -252,14 +252,10 @@
 					        if($rows <= 0){ ?>
 					            <p class="no-pending"> No pending members. </p> <?php
 					        }
-					        else { ?>
-
-					        	<?php
+					        else {
+					        	pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d");
 							}  ?>
 						</ul>
-							<?php		pagination($id,$total_items,$lim,1,"approve_members.php?orgID=$orgid&id=%d"); ?>
-
-
 				</div>
 				<footer>CMSC 128 Section 1 | 2016</footer>
 			</div>
