@@ -116,6 +116,7 @@ nav img:hover{
 	position: absolute;
 	font-size: 67%;
 }
+
 li.dropbtn:hover > a.dropbtn{
 	background-color: white;
 	color: #e74c3c;
@@ -144,8 +145,8 @@ a.dropbtn + ul.dropdown-list li{
 	margin: 0;
 }
 
+
 a.dropbtn + ul.dropdown-list a:hover,{
-	/*background-color: #EEE;*/
 	background-color: #DDDEE1;
 	color: #555;
 }
@@ -157,8 +158,10 @@ ul.dropdown-list:hover ~ a.dropbtn{
 
 a.dropbtn + ul.dropdown-list:hover,
 a.dropbtn:hover + ul.dropdown-list{
+
 	display: block;
 }
 .dropdown-list li a:hover{
 	background-color: #DDDEE1 !important;
+
 }
