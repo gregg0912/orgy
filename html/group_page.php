@@ -165,7 +165,7 @@
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
 		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
-		                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
+		                    <p class="caption">"<?=nl2br($GrpAnnouncement['content']) ?>"</p>
 	                    	<?php
 	                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
 	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
@@ -194,7 +194,7 @@
 			            		<h2 class="type"><?php echo $GrpAnnouncement['topic'] ?></h2>
 				                <span class="date"><?= $datec ?></span>
 			                    <h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3>
-			                    <p class="caption">"<?php echo $GrpAnnouncement['content'] ?>"</p>
+			                    <p class="caption">"<?=nl2br($GrpAnnouncement['content']) ?>"</p>
 				        	</li>
 					   <?php  }	
 					}
