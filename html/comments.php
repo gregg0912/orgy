@@ -159,7 +159,7 @@
 								FROM comments c 
 								INNER JOIN user u on c.user_id = u.user_id 
 								INNER JOIN discuss d on c.disc_id = d.disc_id 
-									WHERE c.disc_id=$disc_id ORDER BY comment_id ASC $limit";
+									WHERE c.disc_id=$disc_id ORDER BY comment_id DESC $limit";
 							    $query = mysqli_query($dbconn, $sql);
 
 					$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -307,14 +307,10 @@
 								$result = mysqli_query($dbconn, $query);
 							}
 							    //
-<<<<<<< HEAD
 
-							    header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']."&pn=1");
-=======
 	         				echo "<meta http-equiv='refresh' content='0'>";
 							
 							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
->>>>>>> d13ac41619df57180c922c3d4dedb69df9a90581
 							
 						}
 						else

@@ -111,15 +111,24 @@
 				$penders = mysqli_query($connectdb,$query_penders);
 				$count=0; ?>
 				<ul id="see_group">
-				<?php while($pendering=mysqli_fetch_assoc($penders)){ ?>
+				<?php while($pendering=mysqli_fetch_assoc($penders)){ 
+					//$ID=$pendering['join_id'];
+					
+					?>
 							<li class="joinGroup">
 								<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
 								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
 								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>
 								
 								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
-									<a class="orglink" href="delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>" onClick= "uSure(); return false;"> Kick </a> 
-								<?php } 
+								
+									<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
+
+								<?php 
+									if(isset($_POST['Kick_Button'])){
+										header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
+									}
+								} 
 									$_SESSION['count']=$count; ?>
 							</li>
 				<?php 	
@@ -137,15 +146,7 @@
 					?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
-		<script type="text/javascript">
-			function uSure() {
-			    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
-			    if (x == true){
-			    	
-			        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
-			    } 
-			}
-		</script>
+		
 	</body>
 </html>
 
