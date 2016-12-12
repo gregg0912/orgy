@@ -3,6 +3,7 @@ w<?php
     include ("functions.php");
     $connectdb = connection();
     redirect();
+    date_default_timezone_set("Asia/Singapore");
 ?>
 <!DOCTYPE html>
 <html lang="en">

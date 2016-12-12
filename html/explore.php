@@ -2,6 +2,7 @@
 	session_start();
 	include ("functions.php");
 	redirect();
+	date_default_timezone_set("Asia/Singapore");
     $dbconn = connection();
 	$filterQuery = "SELECT * from org_type";
 	/*$dbconn = mysqli_connect($host, $username, $password) or die ("Cannot connect to Database");*/
@@ -196,19 +197,26 @@
 							</div>
 						</li>
 					<?php }
+
+
+				}else{
+				?>
+					<p class="no-match">No match found!</p>
+				<?php
+				}
+
+				?>
+			</ul>
+
+			<?php 
 					if(isset($_GET['searched'])){
 						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
 					}
 					else{
 						pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d");
 					}
-				}else{
-				?>
-					<p class="no-match">No match found!</p>
-				<?php
-				}
-				?>
-			</ul>
+			 ?>
+
 	        <footer>CMSC 128 Section 1 | 2016</footer>
 		</div> 
 	</div>

@@ -9,6 +9,7 @@
 	session_start();
 	include("functions.php");
 	redirect();
+	date_default_timezone_set("Asia/Singapore");
 	$connectdb = connection();
 	$orgid = intval($_GET['orgID']);
 	 $query1 = mysqli_query($connectdb, "select * from joined where org_id = $orgid and membership_type ='pending' ");
@@ -215,6 +216,7 @@
 				<div id="group_list">
 					<h1 class="title">PENDING MEMBERS</h1>	
 					<!-- Agent Proxy -->	
+					<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 					<?php
 						$current_userid = $_SESSION['user_id'];
 						$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
@@ -230,7 +232,6 @@
 						$penders = mysqli_query($connectdb,$query_penders);
 						$count=0;
 						?> 
-						<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>
 						<ul id='see_group'>
 						<?php
 						while($pendering=mysqli_fetch_assoc($penders)){ ?>

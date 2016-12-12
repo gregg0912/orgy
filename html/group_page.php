@@ -3,7 +3,8 @@
 	include("functions.php");
 	redirect();
 	$connectdb = connection();
-	$set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
+	date_default_timezone_set("Asia/Singapore");
+	// $set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
 	$orgid = intval($_GET['orgID']);
 	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
     $rows = mysqli_affected_rows($connectdb);
@@ -126,7 +127,6 @@
 			$result = mysqli_fetch_assoc($check_result);
 			$member = $result['membership_type'];
 		?>
-		<!-- Agent Proxy -->
 	<div id="content">
 		<div class="header">
 			<center>
@@ -166,7 +166,7 @@
 		            if(!isset($_GET['edit'])){?>
 						<li class="posted-content">
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
-			                <span class="date"><?= $datec ?></span>
+			                <span class="date"><span class="glyphicon glyphicon-time"></span> <?= $datec ?></span>
 			                <div class="relative-box">
 				                <?php
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>

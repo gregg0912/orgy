@@ -1,4 +1,9 @@
-
+h2{
+	color: #333;
+	line-height: 100%;
+	padding: 1%;
+	display: block;
+}
 #see_group{
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	display: flex;
