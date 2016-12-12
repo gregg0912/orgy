@@ -4,11 +4,8 @@
 	include('functions.php');
 	$dbconn = connection();
 	$connectdb = connection();
-	/*if(!isset($_SESSION['username']))
-    {   
-    	header("Location:signup.php");
-    }*/
-
+	redirect();
+    date_default_timezone_set("Asia/Singapore");
     $user_id = $_SESSION['user_id'];    
 
     if(isset($_POST['cancel_edit'])){
@@ -26,8 +23,10 @@
     	else{
     		echo $disc_id;
     	}
-    }
-
+    }    
+    $org_id=$_GET['org_id'];
+    $org_query="SELECT * FROM orgs WHERE org_id='$org_id'";
+    $org_info=mysqli_fetch_assoc(querySignUp($org_query));
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +84,13 @@
             </ul>
    		</nav>
 		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$org_info['org_name']?></h1>
+				<h2 class="currpage">Comments</h2>
+			</div>
 			<div id="discussions">
 				<?php
 					$get_topic="SELECT * FROM discuss, user WHERE discuss.disc_id='$_GET[disc_id]' AND discuss.user_id=user.user_id";
@@ -284,6 +290,7 @@
 						if($_POST['discussion_text'] != "")
 						{
 							$body = $_POST['discussion_text'];
+
 							$today = date('Y-m-d H:i:s');
 							$sql = "INSERT INTO `comments` (`comment_id`, `body`, `date_c`, `disc_id`, `user_id`) VALUES (NULL, '$body', '$today', '$disc_id', '$user_id')";
 
@@ -302,15 +309,8 @@
 								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
 								$result = mysqli_query($dbconn, $query);
 							}
-// <<<<<<< HEAD
-							    //
 
-// 	         				echo "<meta http-equiv='refresh' content='0'>";
-							
-// 							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
-// =======
 	         				echo "<meta http-equiv='refresh' content='0'>";							
-//>>>>>>> b9d8145396af4ecea4eaf069b46fa507549a4fda
 							
 						}
 						else

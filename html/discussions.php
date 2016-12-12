@@ -8,7 +8,8 @@
 	redirect();
 	$orgid = intval($_GET['orgID']);
     $user_id = $_SESSION['user_id'];
-    $set_timezone = mysqli_query(connection(), "set time_zone = '+08:00'");
+    // $set_timezone = mysqli_query(connection(), "set time_zone = '+08:00'");
+    date_default_timezone_set("Asia/Singapore");
     if(isset($_SESSION['voted'])){
     	if($_SESSION['voted']=="voted"){
     		echo "<script type='text/javascript'>alert('You already voted for that comment!')</script>";
@@ -40,6 +41,8 @@
     	}
     }
     $org_id=$_GET['orgID'];
+    $org_query="SELECT * FROM orgs WHERE org_id='$org_id'";
+    $org_info=mysqli_fetch_assoc(querySignUp($org_query));
 ?>
 
 <!DOCTYPE html>
@@ -92,8 +95,15 @@
             </ul>
         </nav>
 		<div id="content">
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title"><?=$org_info['org_name']?></h1>
+				<h2 class="currpage">Discussions</h2>
+			</div>
 			<div id="discussions">
-				<h1 class="title">Discussions</h1>
+
 
 				<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
 

@@ -2,6 +2,7 @@
 	session_start();
 	include ("functions.php");
 	redirect();
+	date_default_timezone_set("Asia/Singapore");
     $dbconn = connection();
 	$filterQuery = "SELECT * from org_type";
 	/*$dbconn = mysqli_connect($host, $username, $password) or die ("Cannot connect to Database");*/

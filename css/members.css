@@ -1,59 +1,8 @@
+
 @font-face{
 	font-family: "Arca Majora 3 Bold";
 	src: url("../fonts/ArcaMajora3-Bold.otf") format("opentype");
 }
-/*.return{
-	font-size: 1.2em;
-	display: block;
-	width: 15%;
-}
-
-.members{
-	box-shadow: 0 0 10px rgba(0,0,0,0.15);
-	list-style: none;
-	padding: 30px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-}
-
-.member{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-.member > *{
-	margin: 5px 0;
-}
-
-.member .orgname{
-	text-decoration: none;
-	font-size: 1.2em;
-	text-align: center;
-	background-color: #e74c3c;
-	color: white;
-	padding: 5px 0;
-	width: 100%;
-	margin-top: 10px;
-}
-
-.member .mem-type{
-	display: block;
-	text-align: center;
-	font-family: Arial;
-	color: #555;
-}
-
-.member img{
-	height: 200px;
-	width: 200px;
-	border-radius: 50%;
-	object-position: center;
-	object-fit: cover;
-	margin: 15px 10px;
-}*/
 h2{
 	color: #333;
 	line-height: 100%;
