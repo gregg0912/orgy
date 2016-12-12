@@ -9,6 +9,7 @@
 	overflow: auto;
 	display: flex;
 	justify-content: center;
+	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
@@ -117,7 +118,7 @@ form.posting.true input[type=submit]{
 
 .posted-content .caption{
 	padding: 10px;
-	color: #555;
+	color: #333;
 }
 
 .absolute{
