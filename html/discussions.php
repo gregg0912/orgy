@@ -236,6 +236,12 @@
 								<legend id="<?=$disc_id?>">
 
 									<a class='title' href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+									<?php
+									$sql = "SELECT COUNT(comment_id) FROM comments WHERE comments.disc_id = $disc_id";
+									$query_comments = mysqli_query($dbconn,$sql);
+									$query_comments = mysqli_fetch_assoc($query_comments);
+									?>
+									<p style="font-size: 12px"> <?= $query_comments['COUNT(comment_id)']." comments "?> </p>
 
 									<span class="date"><?=$dateposted?></span>
 								</legend>
