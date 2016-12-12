@@ -120,8 +120,8 @@
                     if(!isset($_GET['edit'])){
                     ?>
                         <li class="announcement">          
-                            <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name" id="<?=$announcement['announcement_id']?>"><?php echo $org_name["org_name"];?></h2></a>
-                            <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
+                            <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name" id="<?=$announcement['announcement_id']?>"><?php echo $org_name["org_name"];?></h2></a>  <span class="date"><span class="glyphicon glyphicon-time"></span> <?=$date?></span>
+                            
                             <?php
                                 $current_userid = $_SESSION['user_id'];
                                 $checker_query = "SELECT * FROM joined WHERE user_id = $current_userid AND org_id = $org_id";
@@ -143,8 +143,8 @@
                                 } 
                             ?>
                             <h3 class="topic"><?=$announcement['topic']?></h3>
+                            <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
                             <p class="notif-content">"<?=nl2br($message)?>"</p>
-                            <span class="date"><?= $date ?></span>
                         </li>
                     <?php
                     }else{
@@ -170,7 +170,6 @@
                                 <h3 class="name"><?php echo $name['first_name']." ".$name['last_name']?></h3>
                                 <h3 class="topic"><?=$announcement['topic']?></h3>
                                 <p class="notif-content"><?=nl2br($message)?></p>
-                                <span class="date"><?=$date?></span>
                             </li>
                         <?php
                         }

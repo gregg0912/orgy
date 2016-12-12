@@ -109,7 +109,7 @@
 
 				<form method="post" action="" class="sort">
 					<span><span class="glyphicon glyphicon-sort"></span> Sort by </span> 
-					<button type="submit" name="date" value="date" class="btnsort"> Date </button>
+					 <button type="submit" name="date" value="date" class="btnsort"> Date </button>
 	            	<button id="sortvote" type="submit" name="votes" value="votes" class="btnsort"> Votes </button>
 	            </form>
 	            <?php
