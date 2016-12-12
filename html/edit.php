@@ -86,12 +86,14 @@
 					        		/*$getbirthdate = date('Y,m,d', strtotime($_POST["bdate"]));*/
 
 									$file=$_FILES['fileToUpload'];
-									if(!isset($file)){
-										$file=$info['prof_pic'];
-									}
+									
 									
 									$target_dir = "../images/";
 									$target_file = $target_dir . basename($file["name"]);
+									//$target_file=$info['prof_pic'];
+									if($_FILES["fileToUpload"]["error"] != 0){
+										$target_file=$info['prof_pic'];
+									}
 									move_uploaded_file($file["tmp_name"], $target_file);
 									$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 									$sql="UPDATE user 
