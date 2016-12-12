@@ -58,9 +58,17 @@
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
 
-			if(empty($_POST['currentpwd'])){
+			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
+										$prompt="No changes were made";
+									}
+
+			else if(empty($_POST['currentpwd'])){
 				$passwordErr="You must input your current password to make changes to your account!";
-			}else{
+			}
+
+
+
+			else{
 				$checkoldpassword = false; 
 				$getoldpassword = $_POST["currentpwd"]; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
@@ -105,7 +113,7 @@
 									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
 
 									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
-										$prompt="";
+										$prompt="No changes were made";
 									}
 
 					        		$sql_1 = "UPDATE user SET username = '$getnewusername' WHERE username = '$getusername' ";
