@@ -93,13 +93,13 @@
 					$phpdate = strtotime( $disc['date_posted'] );
 					$datec = date( 'F d, Y h:i:s a', $phpdate );
 				?>
-				<h1 class='title'><?=$disc['title']?></h1>
 				<a href="discussions.php?orgID=<?=$_GET['org_id']?>"><button>Back </button></a>
 				<div class='discussion'>
 					<legend>
-						<a class='user' href="viewprofile.php?user_id=<?=$disc['user_id']?>"><?=$disc['username']?></a>
+						<a class='title' href="discussions.php?orgID=<?=$_GET['org_id']?>"><?=$disc['title']?></a>
 						<span class="date"><?=$datec?></span>
 					</legend>
+						<a class='user' href="viewprofile.php?user_id=<?=$disc['user_id']?>"><?=$disc['username']?></a>
 					<dl>
 						<dt><label>Message:</label></dt>
 						<dt><p><?=nl2br($disc['content'])?></p></dt>
@@ -205,10 +205,7 @@
 					{
 						$commenter = $row["username"];
 						$body = $row["body"];
-						//$date_c = $row["date_c"];
-						//$date_c = strftime("%b %d, %Y", strtotime($date_c));
 						$comment_id = $row["comment_id"];
-						// $commenter_id=$row["user_id"];
 						$date_c = $row["date_c"];
 						$phpdate = strtotime( $date_c );
 						$datec = date( 'F d, Y h:i:s a', $phpdate );
@@ -306,11 +303,15 @@
 								$query = "INSERT INTO seen_announcement(seen_id,seen,user_id,announcement_id) VALUES (null,'not_seen','$disc[user_id]','$announcement_id')";
 								$result = mysqli_query($dbconn, $query);
 							}
+// <<<<<<< HEAD
 							    //
 
-	         				echo "<meta http-equiv='refresh' content='0'>";
+// 	         				echo "<meta http-equiv='refresh' content='0'>";
 							
-							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+// 							    // header("Location: comments.php?org_id=".$_GET['org_id']."&sort_id=".$_GET['sort_id']."&disc_id=".$_GET['disc_id']);
+// =======
+	         				echo "<meta http-equiv='refresh' content='0'>";							
+//>>>>>>> b9d8145396af4ecea4eaf069b46fa507549a4fda
 							
 						}
 						else

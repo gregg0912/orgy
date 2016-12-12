@@ -201,6 +201,7 @@
 						pagination($id,$total_items,$lim,1,"explore.php?searched=".$_GET['searched']."&id=%d");
 					}
 					else{
+						pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d");
 					}
 				}else{
 				?>
@@ -209,7 +210,6 @@
 				}
 				?>
 			</ul>
-			<?php pagination($id,$total_items,$lim,1,"explore.php?org_type=$org_type&id=%d"); ?>
 	        <footer>CMSC 128 Section 1 | 2016</footer>
 		</div> 
 	</div>
