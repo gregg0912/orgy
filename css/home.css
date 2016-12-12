@@ -33,6 +33,7 @@ li form.posting input[type=text]{
 	font-family: Arial;
 	clear: both;
 	font-weight:  normal;
+	color: #333;
 }
 a{
 	color: black;

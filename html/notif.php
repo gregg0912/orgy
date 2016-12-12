@@ -108,6 +108,8 @@
                   while($announcement = mysqli_fetch_array($query)){
                   $org_id = $announcement['org_id'];
                   $date = $announcement['date_posted'];
+                  $date = strtotime($date);
+                  $date = date('F d, Y h:i:s a', $date);
                   $message = $announcement['content'];
                   $user_id = $announcement['user_id'];
                   $orgsy = mysqli_query($connectdb, "select org_name from orgs where org_id = $org_id");
@@ -119,6 +121,7 @@
               ?>
                   <li class="notification">
                       <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
+                      <span class="date"><span class="glyphicon glyphicon-time"></span><?=$date?></span>
                       <h3 class="topic"><?php echo $topic;?></h3>
                       <p class="message">"<?php echo $message;?>"</p>
                       <?php

@@ -48,7 +48,8 @@
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			$getuserid = $_SESSION['user_id'];
-			$getusername = $info['username'];
+			//$getusername = $info['username'];
+			$getusername = $_POST["username"];
 			$getnewusername = $_POST["username"];
 			$getfname = $_POST["fname"];
 			$getlname = $_POST["lname"];
@@ -57,9 +58,17 @@
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
 
-			if(empty($_POST['currentpwd'])){
+			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
+										$prompt="No changes were made";
+									}
+
+			else if(empty($_POST['currentpwd'])){
 				$passwordErr="You must input your current password to make changes to your account!";
-			}else{
+			}
+
+
+
+			else{
 				$checkoldpassword = false; 
 				$getoldpassword = $_POST["currentpwd"]; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
@@ -73,10 +82,11 @@
 
 		        		if(!empty($_POST['username'])){
 
-						$sql = "SELECT username FROM user WHERE username = '$getnewusername'";
-
-				        if(mysqli_query($dbconn, $sql)){
-					        	if(mysqli_affected_rows($dbconn)>0 && !($getusername == $getnewusername) ){
+						$sql = "SELECT count(username) FROM user WHERE username = '$_POST[username]'";
+							$username_query=mysqli_query($dbconn, $sql);
+							$username_query=mysqli_fetch_assoc($username_query);
+				        if($username_query){
+					        	if($username_query['count(username)']>0 && !($info['username'] == $_POST['username']) ){
 									$duplicateErr = "Sorry Username " . $getnewusername  ." has already been taken!";
 									// $getusername = $getnewusername;
 					        	}
@@ -100,8 +110,10 @@
 
 									$prompt="You have successfully updated your account!";
 
-									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd'])){
-										$prompt="";
+									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
+
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
+										$prompt="No changes were made";
 									}
 
 					        		$sql_1 = "UPDATE user SET username = '$getnewusername' WHERE username = '$getusername' ";
@@ -151,6 +163,7 @@
 	        		querySignUp($sql);
 				 	$prompt = "You have successfully updated your password!";
 					header('Location: edit.php'); 
+					//echo "<meta http-equiv='refresh' content='0'>";
 		        }
 			}
 			else if((empty($_POST["newpwd"]) && !empty($_POST["renewpwd"])) || (!empty($_POST["newpwd"]) && empty($_POST["renewpwd"]))) {
@@ -168,6 +181,7 @@
 			return $data;
 		}
 	?>
+
 	<div id="wrapper">
 		<nav>
 	    	<ul>
@@ -213,7 +227,7 @@
 			<?php } elseif ($prompt!="") { ?>
 				<span class="success"><?php echo $prompt;?></span>
 			<?php } ?>
-			<form class="edit" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			<form class="edit" name="signup_form" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			    <label for="fileToUpload" class="buttoncustom change-picture"><span class="glyphicon glyphicon-picture"></span> Change Profile Picture </label>
 				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
 

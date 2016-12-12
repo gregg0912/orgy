@@ -132,7 +132,6 @@ a.dropbtn + ul.dropdown-list{
 	z-index: 5;
 }
 
-
 a.dropbtn + ul.dropdown-list a{
 	color: #888;
 	padding: 10px 20px;
@@ -146,7 +145,8 @@ a.dropbtn + ul.dropdown-list li{
 }
 
 a.dropbtn + ul.dropdown-list a:hover,{
-	background-color: #EEE;
+	/*background-color: #EEE;*/
+	background-color: #DDDEE1;
 	color: #555;
 }
 
@@ -158,4 +158,7 @@ ul.dropdown-list:hover ~ a.dropbtn{
 a.dropbtn + ul.dropdown-list:hover,
 a.dropbtn:hover + ul.dropdown-list{
 	display: block;
+}
+.dropdown-list li a:hover{
+	background-color: #DDDEE1 !important;
 }

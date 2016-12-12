@@ -38,13 +38,13 @@ if(mysqli_num_rows($result)>=1){
 			$_SESSION['voted'] = "updated";
 			$date = date('Y-m-d H:i:s');
 			if($upvote=="upvote"){
-				$content = "$username"." upvoted your post on "."$dateposted"." entitled "."$title";
+				$content = "$username"." upvoted your post entitled "."$title";
 				$topic = "Upvote";
 				$query = "INSERT INTO announcement(date_posted,topic,content,user_id,org_id) VALUES ('$date','$topic','$content','$disc_user_id','$orgID')";
 				$result = mysqli_query($dbconn, $query);
 			}
 			else if($upvote=="downvote"){
-				$content = $username." downvoted your post on ".$dateposted." entitled ".$title;
+				$content = $username." downvoted your post entitled ".$title;
 				$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$date','Downvote','$content','$disc_user_id','$orgID')";
 				$result = mysqli_query($dbconn, $query);
 			}
