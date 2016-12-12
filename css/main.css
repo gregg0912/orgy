@@ -35,13 +35,23 @@ body{
 #content > .header > h1.title{
 	margin-top: 0px;
 }
+
+#content > .header > h2.currpage{
+	margin: auto;
+	text-align: center;
+	font-family: 'Arca Majora 3 Bold', sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 2em;
+}
 .img-absolute{
 	height: 300px;
 	width: 300px;
-	border-radius: 50%;
 	top: 0px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
-	border: 1px solid #DDD;
+	border-radius: 50%;
+	margin: auto;
+	border: 0px solid #000000;
 }
 
 button,

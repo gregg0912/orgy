@@ -23,10 +23,6 @@
 	box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-.down{
-	margin-bottom: -2px;
-}
-
 .app{
 	display: inline-block;
 	float: left;
@@ -42,6 +38,11 @@
 	transform: scale(0.9, 0.9);
 	border-radius: 50%;
 
+}
+
+.down{
+	margin-bottom: -2px;
+	color: #c10000;
 }
 
 form.sort{
@@ -141,7 +142,7 @@ form.sort{
 	text-decoration: underline;
 }
 
-.user, .up, .down{
+.user, .up{
 	font-weight: normal;
     font-size: 1em;
     color: #3498db;

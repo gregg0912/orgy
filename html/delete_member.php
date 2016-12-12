@@ -21,6 +21,8 @@
 	$result=mysqli_query($connectdb,$query_rejected);
 	$date = date("Y-m-d h:i:sa");
 	$admin_id = $_SESSION["user_id"];
+
+	echo "$value";
 	   
 	if($result){
 		$topic="Kicked";
@@ -36,7 +38,7 @@
 		$announcement_id=$ann_id['announcement_id'];
 		$query = "INSERT INTO `seen_announcement` (`seen_id`, `seen`, `user_id`, `announcement_id`) VALUES (NULL, 'not_seen', '$userid', '$announcement_id')";
 		mysqli_query($connectdb,$query);
-		header("Location:org_members.php?orgID=$orgid");
+		 header("Location:org_members.php?orgID=$orgid");
 		}
 	}
 

@@ -104,12 +104,11 @@
                 </ul>
             </li>
             <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="notif.php">Notifications   |  
+            <li><a href="notif.php">Notifications
               <?php
                 $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                $total2 = mysqli_num_rows($notifnum);
-                echo "$total2"
-                ?>
+                $total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
             </a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
@@ -130,8 +129,11 @@
 		<!-- Agent Proxy -->
 	<div id="content">
 		<div class="header">
-			<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			<center>
+				<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+			</center>
 			<h1 class="title"><?=$result['org_name']?></h1>
+			<h2 class="currpage">Announcements</h2>
 		</div>
 		<div id="announcements">
 			<div class="page-navigation">

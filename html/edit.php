@@ -186,8 +186,9 @@
 	    		$current_id = $_SESSION['user_id'];
 	            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
-                <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"></a></li><?php } ?>
+                	<li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
+                	<li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"></a></li>
+                <?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -207,12 +208,11 @@
                     </ul>
                 </li>
                 <li><a href="edit.php" class="active">Edit Profile</a></li>
-                <li><a href="notif.php">Notifications   |  
+                <li><a href="notif.php">Notifications
                   <?php
                     $notifnum = mysqli_query($connectdb,"select * from announcement, seen_announcement where announcement.announcement_id = seen_announcement.announcement_id and seen_announcement.seen = 'not_seen'and seen_announcement.user_id='".$current_id."'");
-                    $total2 = mysqli_num_rows($notifnum);
-                    echo "$total2"
-                    ?>
+                    $total2 = mysqli_num_rows($notifnum); ?>
+					<span class="notif-count"><?php echo $total2 ?></span>
                 </a></li>
                 <li><a href="logout.php">Log Out</a></li>
 	        </ul>
