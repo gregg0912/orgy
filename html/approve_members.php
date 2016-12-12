@@ -102,75 +102,6 @@
 	    <link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<link rel="stylesheet" type="text/css" href="../css/approve_members.css">
-			<style type="text/css">
-/*				#pagination{
-		        	margin-left: 0;
-		            padding: 5px;
-		            clear: both;
-		            top: 55%;
-		            left: 50%;
-		        }
-		        #pagination > li{
-		        	display: inline-block;
-		       	}
-		        #pagination > li > a{ }
-		        #pagination > li a.current{
-		            background-color: red;
-		            color: white;
-		        }
-		        #pagination > li a:hover:not(.current){
-		            background-color: red;
-		        }
-				/*ul{
-					list-style: none;
-					float: left;
-					margin-left: 2%;
-				}*/
-				/*#content
-				{
-					border: 1px transparent;
-					border-radius: 0%;
-					/*float: right;
-					margin-top: -50%;	
-					margin-right: 7%;*/
-					/*padding: 3%;
-					background: linear-gradient(-55deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.0));
-				*//*}
-
-				#see_group{
-					width: 25%;
-					height: 50%;
-					
-				}
-				#see_group > ul > li {
-					text-decoration: none;
-					color: #a10115;
-					padding: 2%;
-					transition: 0.2s ease-in-out;
-					margin-left: -20%;
-					margin-right: 1%;
-				}
-
-				#see_group > li > label {
-					text-align:center;
-					text-shadow: none;
-					color: #a10115;
-					font-size: 25px;
-				}
-
-
-				#see_group > li > #image{
-					padding: 3% 3% 3% 3%;
-					height: 171.91px;
-					width: 171.91px;
-				}
-
-				#grppage{
-					float: left;
-				}*/
-
-		</style>
-
 	</head>
 
 	<body>
@@ -211,22 +142,24 @@
 					<li><a href="logout.php">Log Out</a></li>
 				</ul>
 			</nav>
-
+			<?php
+				$current_userid = $_SESSION['user_id'];
+				$checker_query = "SELECT * FROM joined, orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id=joined.org_id";
+				$check_result = mysqli_query($connectdb, $checker_query);
+				$result = mysqli_fetch_assoc($check_result);
+				$member = $result['membership_type'];
+			?>
 			<div id="content">
+				<div class="header">
+					<center>
+						<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+					</center>
+					<h1 class="title"><?=$result['org_name']?></h1>
+					<h2 class="currpage">Pending Members</h2>
+				</div>
 				<div id="group_list">
-					<h1 class="title">PENDING MEMBERS</h1>	
 					<!-- Agent Proxy -->	
 					<a href="group_page.php?orgID=<?=$orgid?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back </a><br>
-					<?php
-						$current_userid = $_SESSION['user_id'];
-						$checker_query = "select * from joined where org_id = $orgid and user_id = $current_userid";
-						$check_result = mysqli_query($connectdb, $checker_query);
-						
-						while($result = mysqli_fetch_assoc($check_result)){
-								$member = $result['membership_type'];
-						}
-					?>
-						
 					<?php
 						$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and joined.membership_type='pending' limit $start,$lim";
 						$penders = mysqli_query($connectdb,$query_penders);
