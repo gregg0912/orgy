@@ -142,21 +142,5 @@
 					?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
-<<<<<<< HEAD
-		
-=======
-		<script type="text/javascript">
-			function uSure() {
-			    var x = confirm("<?= "Do you really want to kick " . $pendering['username'] . "? "?>");
-			    if (x == true){
-			    	
-			        window.location.href = 'delete_member.php?ID=<?= $pendering['join_id'] ?>&ORGID=<?=$orgid?>';
-			    } 
-			}
-			function addmsg(type, msg){
-				$('#notification_count').html(msg);
-			}
-		</script>
->>>>>>> 1a84deb22513b13e660ae0da54af88530ccf827e
 	</body>
 </html>
