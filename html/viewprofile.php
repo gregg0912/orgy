@@ -10,6 +10,7 @@ w<?php
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ORG SYSTEM A.Y. 2016-2017</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../css/navigation.css">
         <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -81,24 +82,28 @@ w<?php
                     <img onerror="this.src = '../images/janina.PNG'" id="profile" alt="User Profile Picture" src="../images/<?php echo $view_info['prof_pic'] ?>"/><br>
                 </div>
                 <div class="orgsjoined">
-                    <p style="font-weight: bold; font-size: 150%;"><?=$view_info['first_name'] ." ". $view_info['last_name']?></p>
-                    <p style="font-weight: bold; font-size: 120%;"><?=$view_info['student_no']?></p>
+                    <p style="font-weight: bold; font-size: 150%; color: #740000;"><?=$view_info['first_name'] ." ". $view_info['last_name']?></p>
+                    <p style="font-weight: bold; font-size: 120%; color: #740000;"><?=$view_info['student_no']?></p>
                     <p><label>Degree Program</label>: <?=$view_info['course']?></p>
                     <p><label>Year Level</label>: <?=$view_info['year_level']?></p>
                     <p><label>Date Joined</label>: <?=$view_info['date_joined']?></p>
-                        <h3>Orgs Joined</h3>
-                        <?php
-                            while($org =mysqli_fetch_assoc($view_orgs)){
-                        ?>
-                            <?php 
-                                $select_type="SELECT * FROM classification WHERE org_id='$org[org_id]'";
-                                $type=mysqli_fetch_assoc(querySignUp($select_type));
-                                $_SESSION['back']=true;
-                            ?>
-                            <li><a class="namev" href="view.php?org_id=<?=$org['org_id']?>&org_type=<?= $type['type_id']?>&id=1&user_id=<?=$_GET['user_id']?>"><?=$org['org_name']?></a></li>
-                        <?php
-                            }
-                        ?>
+                    <div class="dropdown">
+                        <button class="dropbtn"><i class="fa fa-users"></i> Orgs Joined</span></button>
+                        <div class="dropdown-list">
+                            <ul>
+                                <?php
+                                    while($org =mysqli_fetch_assoc($view_orgs)){
+                                ?>
+                                    <?php 
+                                        $select_type="SELECT * FROM classification WHERE org_id='$org[org_id]'";
+                                        $type=mysqli_fetch_assoc(querySignUp($select_type));
+                                        $_SESSION['back']=true;
+                                    ?>
+                                    <li><a class="namev" href="view.php?org_id=<?=$org['org_id']?>&org_type=<?= $type['type_id']?>&id=1&user_id=<?=$_GET['user_id']?>"><?=$org['org_name']?></a></li>
+                             <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         <footer>CMSC 128 Section 1 | 2016</footer>

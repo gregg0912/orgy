@@ -48,19 +48,27 @@
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			$getuserid = $_SESSION['user_id'];
-			$getusername = $info['username'];
+			//$getusername = $info['username'];
+			$getusername = $_POST["username"];
 			$getnewusername = $_POST["username"];
 			$getfname = $_POST["fname"];
 			$getlname = $_POST["lname"];
 			$getemail = $_POST["email"];
-			/*$getbirthdate = $_POST["bdate"];*/
 			$getdegree = $_POST["degree"];
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
 
-			if(empty($_POST['currentpwd'])){
+			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
+										$prompt="No changes were made";
+									}
+
+			else if(empty($_POST['currentpwd'])){
 				$passwordErr="You must input your current password to make changes to your account!";
-			}else{
+			}
+
+
+
+			else{
 				$checkoldpassword = false; 
 				$getoldpassword = $_POST["currentpwd"]; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
@@ -74,24 +82,24 @@
 
 		        		if(!empty($_POST['username'])){
 
-						$sql = "SELECT username FROM user WHERE username = '$getnewusername'";
-
-				        if(mysqli_query($dbconn, $sql)){
-					        	if(mysqli_affected_rows($dbconn)>0 && !($getusername == $getnewusername) ){
+						$sql = "SELECT count(username) FROM user WHERE username = '$_POST[username]'";
+							$username_query=mysqli_query($dbconn, $sql);
+							$username_query=mysqli_fetch_assoc($username_query);
+				        if($username_query){
+					        	if($username_query['count(username)']>0 && !($info['username'] == $_POST['username']) ){
 									$duplicateErr = "Sorry Username " . $getnewusername  ." has already been taken!";
-									/*$getusername = $getnewusername;  */      		
+									// $getusername = $getnewusername;
 					        	}
 					        	else{
 
-					        		/*$getbirthdate = date('Y,m,d', strtotime($_POST["bdate"]));*/
-
 									$file=$_FILES['fileToUpload'];
-									if(!isset($file)){
-										$file=$info['prof_pic'];
-									}
+									
 									
 									$target_dir = "../images/";
 									$target_file = $target_dir . basename($file["name"]);
+									if($_FILES["fileToUpload"]["error"] != 0){
+										$target_file=$info['prof_pic'];
+									}
 									move_uploaded_file($file["tmp_name"], $target_file);
 									$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 									$sql="UPDATE user 
@@ -101,10 +109,12 @@
 
 
 									$prompt="You have successfully updated your account!";
-									/*header('Location: edit.php');
-						*/
 
-					        		
+									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
+
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
+										$prompt="No changes were made";
+									}
 
 					        		$sql_1 = "UPDATE user SET username = '$getnewusername' WHERE username = '$getusername' ";
 
@@ -114,10 +124,6 @@
 					        	}
 					        }    
 						}
-
-		        		
-						
-						
 		        	}
 				}
 			}
@@ -127,7 +133,6 @@
 				$getoldpassword = $_POST["currentpwd"]; 
 				$getnewpassword = $_POST["newpwd"]; 
 				$getretypenewpassword = $_POST["renewpwd"];
-
 				$checkoldpassword = $checknewpassword = $checkretypenewpassword = false; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
 		        if(mysqli_query($dbconn, $sql_password)){
@@ -138,21 +143,18 @@
 		        		$checkoldpassword = true;
 		        	}
 				}
-
 		        if($getnewpassword != $getretypenewpassword){
         			$newpasswordErr = " Oops, new password and confirmation don’t match!";
         		}
         		else{
         			$checknewpassword = true;
         		}
-
 	        	if(!preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getnewpassword) && !preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getretypenewpassword)){
 	        		$retypenewpasswordErr = " New password must at least be 8 characters long and should contain at least 1 integer";		        	
 	        	}
 	        	else{
 	        		$checkretypenewpassword = true;
 	        	}
-
 				if($checkoldpassword && $checknewpassword && $checkretypenewpassword){
 					$sql = "UPDATE user 
 								SET password='".md5($getnewpassword)."'
@@ -161,13 +163,12 @@
 	        		querySignUp($sql);
 				 	$prompt = "You have successfully updated your password!";
 					header('Location: edit.php'); 
+					//echo "<meta http-equiv='refresh' content='0'>";
 		        }
 			}
 			else if((empty($_POST["newpwd"]) && !empty($_POST["renewpwd"])) || (!empty($_POST["newpwd"]) && empty($_POST["renewpwd"]))) {
 				$passwordErr = "Current password, new password, and password retype confirmation must be filled out to make changes to your current password";
-			}
-
-			 
+			}			 
 		}
 		else{
 			echo $line;
@@ -180,6 +181,7 @@
 			return $data;
 		}
 	?>
+
 	<div id="wrapper">
 		<nav>
 	    	<ul>
@@ -225,7 +227,7 @@
 			<?php } elseif ($prompt!="") { ?>
 				<span class="success"><?php echo $prompt;?></span>
 			<?php } ?>
-			<form class="edit" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			<form class="edit" name="signup_form" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			    <label for="fileToUpload" class="buttoncustom change-picture"><span class="glyphicon glyphicon-picture"></span> Change Profile Picture </label>
 				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
 
@@ -236,14 +238,6 @@
 		    	<label for="fname">Name</label>
 				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
 				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
-			
-
-		    	<!-- <label for="student_no">Student No:</label>
-				<input type="text" name="student_no" placeholder="20xx-xxxxx" value="<?= $getstudentno ?>" disabled> -->
-			
-			
-		    	<!-- <label for="bdate">Date of Birth:</label>
-				<input type="date" name="bdate" value="<?= $getbirthdate ?>" > -->
 		    
 		    	<label for="degree">Degree Program</label>
 			

@@ -107,8 +107,7 @@
 								
 						<?php
 							}
-						?>
-				<?php	}
+						}
 						else{
 							echo "<p>You still haven't joined an org yet! Try <a href='explore.php'>Exploring</a> a bit.</p>";
 						}
@@ -117,7 +116,7 @@
 
 				
 				<?php
-					pagination($id,$rows,$lim,1,"groups.php?id=%d");
+							pagination($id,$rows,$lim,1,"groups.php?id=%d");
 					if(isset($_SESSION['deleted'])&&isset($_SESSION['orgName'])){
 						if($_SESSION['deleted']){
 						?>

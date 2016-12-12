@@ -133,7 +133,6 @@ a.dropbtn + ul.dropdown-list{
 	z-index: 5;
 }
 
-
 a.dropbtn + ul.dropdown-list a{
 	color: #888;
 	padding: 10px 20px;
@@ -146,8 +145,14 @@ a.dropbtn + ul.dropdown-list li{
 	margin: 0;
 }
 
+<<<<<<< HEAD
 a.dropbtn + ul.dropdown-list a:hover{
 	background-color: #EEE;
+=======
+a.dropbtn + ul.dropdown-list a:hover,{
+	/*background-color: #EEE;*/
+	background-color: #DDDEE1;
+>>>>>>> 73f6276598d7253584b842a530a621f2f48e2819
 	color: #555;
 }
 
@@ -158,5 +163,10 @@ ul.dropdown-list:hover ~ a.dropbtn{
 
 a.dropbtn + ul.dropdown-list:hover,
 a.dropbtn:hover + ul.dropdown-list{
-	display: block; 
+
+	display: block;
+}
+.dropdown-list li a:hover{
+	background-color: #DDDEE1 !important;
+
 }
