@@ -310,7 +310,7 @@
 										<dt class="user">
 											<?=$username?>
 										</dt>
-										<dt><p>"<?=$content?>"</p></dt>
+										<dt><p>"<?=nl2br($content)?>"</p></dt>
 									</dl>
 								</div><br>
 						<?php 

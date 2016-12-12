@@ -112,6 +112,7 @@
                 while($announcement = mysqli_fetch_array($query)){
                     $org_id = $announcement['org_id'];
                     $date = $announcement['date_posted'];
+                    $date = date('F d, Y h:i:s a',strtotime($date));
                     $message = $announcement['content'];
                     $user_id = $announcement['user_id'];
                     $orgsy = mysqli_query($connectdb, "SELECT org_name FROM orgs WHERE org_id = $org_id");
@@ -144,7 +145,7 @@
                                 } 
                             ?>
                             <h3 class="topic"><?=$announcement['topic']?></h3>
-                            <p class="notif-content">"<?=$message;?>"</p>
+                            <p class="notif-content">"<?=nl2br($message)?>"</p>
                             <span class="date"><?= $date ?></span>
                         </li>
                     <?php
@@ -170,7 +171,7 @@
                                 <h2 class="org-name"><?php echo $org_name['org_name']?></h2>
                                 <h3 class="name"><?php echo $name['first_name']." ".$name['last_name']?></h3>
                                 <h3 class="topic"><?=$announcement['topic']?></h3>
-                                <p class="notif-content"><?=$message;?></p>
+                                <p class="notif-content"><?=nl2br($message)?></p>
                                 <span class="date"><?=$date?></span>
                             </li>
                         <?php
