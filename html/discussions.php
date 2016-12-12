@@ -235,7 +235,7 @@
 							<div class="discussion">
 								<legend id="<?=$disc_id?>">
 
-									<a class='title' href = "comments.php?user_id=<?=$user_id?>&org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
+									<a class='title' href = "comments.php?org_id=<?=$org_id?>&sort_id=<?=$sort_id?>&disc_id=<?=$disc_id?>"><?=$title?></a>
 
 									<span class="date"><?=$dateposted?></span>
 								</legend>
@@ -289,7 +289,7 @@
 											<input type='submit' name='submit_edit' value='Submit'/>
 											<input type='submit' name='cancel_edit' value='Cancel'/>
 										</dl>
-									</div><br>
+									</div>
 								</form>
 				<?php
 							}
