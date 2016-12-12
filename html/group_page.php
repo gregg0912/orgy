@@ -5,7 +5,7 @@
 	$connectdb = connection();
 	$set_timezone = mysqli_query($connectdb, "set time_zone = '+08:00'");
 	$orgid = intval($_GET['orgID']);
-	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' order by date_posted DESC ");
+	$query1 = mysqli_query($connectdb, "select * from announcement where org_id = $orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC ");
     $rows = mysqli_affected_rows($connectdb);
     $start=0;
     $lim=5;
@@ -31,7 +31,7 @@
       		header('Location: group_page.php?id='.$_GET['id'].'&orgID='.$_GET['orgID'].'#'.$_GET['edit']);
       	}
         $total=ceil($rows/$lim);
-        $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid and topic !='Upvote' and topic!='Downvote' ORDER BY date_posted DESC LIMIT $start, $lim");
+        $query = mysqli_query($connectdb, "select * from announcement where org_id =$orgid and topic !='Upvote' and topic!='Downvote' and topic!='Commented' ORDER BY date_posted DESC LIMIT $start, $lim");
         if(isset($_GET['add_announcement'])){
         	$date = date("Y-m-d h:i:sa");
         	$admin_id = $_SESSION["user_id"];
@@ -44,7 +44,7 @@
   			
   			
 			//adding to seen_announcements
-			$announcement_query = " select announcement_id from announcement where org_id = $orgid and user_id = $admin_id and topic !='Upvote' and topic!='Downvote' order by date_posted DESC limit 1";
+			$announcement_query = " select announcement_id from announcement where org_id = $orgid and user_id = $admin_id and topic !='Upvote' and topic!='Downvote' and topic!='Commented' order by date_posted DESC limit 1";
 			$A_result = mysqli_query($connectdb, $announcement_query);
 
 			while($announcement_result = mysqli_fetch_assoc($A_result)){
@@ -164,15 +164,17 @@
 						<li class="posted-content">
 		            		<h2 class="type" id="<?=$GrpAnnouncement['announcement_id']?>"><?php echo $GrpAnnouncement['topic'] ?></h2>
 			                <span class="date"><?= $datec ?></span>
+			                <div class="relative-box">
+				                <?php
+		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
+		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit absolute"><span class="glyphicon glyphicon-pencil"></span></a>
+		                        <form method="post" action="">
+		                        	<button type="submit" name="" value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
+		                        </form>
+		                        <?php } ?>
+	                        </div>
 		                    <a href = "viewprofile.php?user_id=<?=$GrpAnnouncement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
 		                    <p class="caption">"<?=nl2br($GrpAnnouncement['content']) ?>"</p>
-	                    	<?php
-	                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
-	                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit">Edit</a>
-	                        <form method="post" action="" class="delete">
-	                        	<button type="submit" name=" " value="" class="delete"> Delete </button> 
-	                        </form>
-	                        <?php } ?> 
 			        	</li>
 			        <?php 
 		    		}
@@ -184,8 +186,8 @@
 				            	<input type='text' name='edit_topic' value='<?= $GrpAnnouncement['topic'] ?>' placeholder="Topic">
 				            	<textarea name='edit_content' placeholder="What's happening?"><?= $GrpAnnouncement['content'] ?></textarea>
 				            	<div class="group-btn">
-				            	<input type='submit' name='submit_edit' value='Done' class="done">
-				            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
+					            	<input type='submit' name='submit_edit' value='Done' class="done">
+					            	<input type='submit' name='cancel_edit' value='Cancel' class="cancel">
 				            	</div>
 					        </form>
 						<?php }

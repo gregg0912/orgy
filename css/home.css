@@ -8,6 +8,10 @@ ul.announcements-container{
 	list-style: none;
 }
 
+li.announcement{
+	position: relative;
+}
+
 li.announcement,
 li form.posting{
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -71,10 +75,13 @@ li form.posting textarea,
 li form.posting input[type=text]{
 	width: 100%;
 }
-li.announcement form:not(.posting){
-	display: inline-block;
-	float: right;
+
+li.announcement form{
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
+
 li.announcement .remove,
 li.announcement .edit{
 	border-radius: 50%;
@@ -84,7 +91,6 @@ li.announcement .edit{
 	right: 5px;
 	transition: 0.2s;
 	transform: scale(0.7, 0.7);
-	margin-right: -10px;
 }
 
 li.announcement .remove span, 
