@@ -105,7 +105,7 @@
 				<h1 class="title"><?=$result['org_name']?></h1>
 				<h2 class="currpage">Current Members</h2>
 			</div>
-			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back Group Page</a><br>	
+			<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back</a><br>	
 			<?php
 				$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
 				$penders = mysqli_query($connectdb,$query_penders);
