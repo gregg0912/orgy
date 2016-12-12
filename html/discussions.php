@@ -363,7 +363,7 @@
 							$result1 = mysqli_query($dbconn, "DELETE FROM disc_upvote WHERE disc_id=$delete_id");
 							$result2 = mysqli_query($dbconn, "DELETE FROM comments WHERE disc_id=$delete_id");
 							$result3 = mysqli_query($dbconn, "DELETE FROM discuss WHERE disc_id=$delete_id");
-							echo "<script type='text/javascript'>alert('Thread deleted')</script>";
+							// echo "<script type='text/javascript'>alert('Thread deleted')</script>";
 	         				echo "<meta http-equiv='refresh' content='0'>";
 						
 					}
