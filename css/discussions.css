@@ -236,6 +236,17 @@ p{
 	cursor: default;
 }
 
+#sortdate.active, #sortvote.active{
+	background-color: #c0392b!important;
+	color: white!important;
+	cursor: default;
+}
+
+a.current
+	{
+	
+	}
+
 .comments{
 	float: right;
 	text-decoration: none;
