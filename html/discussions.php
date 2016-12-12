@@ -248,11 +248,8 @@
 									<?php
 									}
 									?>
-								<dl>
-									<dt>
-										<a class='user' href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
-									</dt>
-									<dt><p>"<?=nl2br($content)?>"</p></dt>
+									<a class='user' href = "viewprofile.php?user_id=<?=$row['user_id']?>"><?=$username?></a>
+									<p>"<?=nl2br($content)?>"</p></dt>
 									<?php
 										$up_query = "SELECT * FROM disc_upvote WHERE disc_id = '".$disc_id."' AND approval = 'upvote'";
 										$up_result = querySignUp($up_query);
@@ -271,7 +268,6 @@
 											<a class="down" href="vote.php?approval=downvote&orgID=<?=$_GET['orgID']?>&pn=<?=$pn?>&user_id=<?=$disc_user_id?>&disc_id=<?=$disc_id?>&sort_id=<?=$sort_id?>&title=<?=$title?>&dateposted=<?=$dateposted?>"><span class="glyphicon glyphicon-thumbs-down down"></span></a>
 										</div>
 									</form>
-								</dl>
 							</div>
 					<?php				
 						}
