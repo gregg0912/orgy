@@ -40,6 +40,7 @@
 <head>
 	<title>ORG SYSTEM A.Y. 2016-2017</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/group_page.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/comments.css">
@@ -84,6 +85,12 @@
             </ul>
    		</nav>
 		<div id="content">
+			<?php
+			$current_userid = $_SESSION['user_id'];
+			$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $org_id AND joined.user_id = $current_userid AND orgs.org_id = $org_id";
+			$check_result = mysqli_query($connectdb, $checker_query);
+			if(mysqli_num_rows($check_result)>=1){
+			?>
 			<div class="header">
 				<center>
 					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$org_info['photo']?>"/>
@@ -319,8 +326,33 @@
 						}
 					} 
 				?>
-		
 			</div>
+			<?php
+			}else{
+				$date = date("Y-m-d H:i:s");
+				$phpdate = strtotime( $date );
+				$datec = date( 'F d, Y h:i:s a', $phpdate );
+			?>
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title">ORG_Y</h1>
+				<h2 class="currpage">Error Message</h2>
+			</div>
+			<div id="announcement">
+				<ul class="posted">
+					<li class="posted-content">
+						<h2 class="type">Something Wrong</h2>
+						<span class="date"><span class="glyphicon glyphicon-time"></span> <?=$datec?></span>
+						<h3 class="name">System</h3>
+						<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
+					</li>
+				</ul>
+			</div>
+			<?php
+			}
+			?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 	</div>
