@@ -42,6 +42,9 @@
 		$getprofpic = $info['prof_pic'];
 		$getdegree = $info['course'];
 		$getyear= $info['year_level'];
+		if($getyear==0){
+			$getyear='---';
+		}
 		$getemail = $info['email'];
 		
 
