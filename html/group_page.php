@@ -18,6 +18,26 @@
         else{
             $id=1;
         }
+
+        if(isset($_POST['Delete'])){
+		$announcement_id=$_POST['Delete'];
+    	$delete_query="DELETE FROM announcement WHERE announcement_id='$announcement_id' ";
+    	querySignUp($delete_query);
+    	header('Location: group_page.php?orgID='.$_GET['orgID']);
+    	}
+	    // if($_POST){       
+	    // 	for($x=0;$x<=$_SESSION['count'];$x++){
+	    //         if(isset($_POST['Button'.$x])){
+	    //             $value = $_POST['Button'.$x];
+	    //             $query_delete= "delete from seen_announcement where announcement_id='$value'";
+	    //             $query_delete2= "delete from announcement where announcement_id='$value'";
+	    //             $result=mysqli_query($connectdb,$query_delete);
+	    //             $result=mysqli_query($connectdb,$query_delete2);
+	    //             header("Location:home.php?id=".$_GET['id']);
+	    //         }         
+	    //     }
+	    // }
+
       	if(isset($_POST['submit_edit'])){
         	$date = date("Y-m-d H:i:s");
         	$topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);
@@ -174,7 +194,7 @@
 		                    	if($user_id==$_SESSION['user_id'] && !(($GrpAnnouncement['topic']=="Rejected")||($GrpAnnouncement['topic']=="Accepted")||($GrpAnnouncement['topic']=="Kicked"))){ ?>
 		                    		<a href='group_page.php?orgID=<?=$_GET['orgID']?>&id=<?=$id?>&edit=<?=$GrpAnnouncement['announcement_id']?>#<?=$GrpAnnouncement['announcement_id']?>' class="buttoncustom edit absolute"><span class="glyphicon glyphicon-pencil"></span></a>
 		                        <form method="post" action="">
-		                        	<button type="submit" name="" value="" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
+		                        	<button type="submit" name="Delete" onClick="return confirm('Are you sure you want to delete this post?')" value="<?= $GrpAnnouncement['announcement_id']?>" class="delete absolute"><span class="glyphicon glyphicon-remove"></span></button>
 		                        </form>
 		                        <?php } ?>
 	                        </div>
