@@ -171,7 +171,7 @@
 					<?php 
 					 	while($rows = mysqli_fetch_array($filterlist)){ ?>
 							<li><a href="explore.php?org_type=<?php echo $rows['type_id']?>"
-							<?php if($rows['type_id'] === $org_type){ ?>
+							<?php if($rows['type_id'] == $org_type){ ?>
 								class="active"
 							<?php } ?>
 							><?=$rows['type_name']?></a></li>

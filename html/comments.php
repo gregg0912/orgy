@@ -306,7 +306,7 @@
 
 							    //AGENT PROXY
 							if($disc['user_id']!=$_SESSION['user_id']){
-								$content = $_SESSION['username']." commented on your post on ".$disc['date_posted']." entitled ".$disc['title'];
+								$content = $_SESSION['username']." commented on your post entitled ".$disc['title'];
 								$query = "INSERT INTO announcement(announcement_id,date_posted,topic,content,user_id,org_id) VALUES (null,'$today','Commented','$content','$disc[user_id]',$org_id)";
 								$result = mysqli_query($dbconn, $query);
 
