@@ -235,20 +235,6 @@ p{
 	color:black;
 }
 
-/*.activesort:active, .activesort:focus{
-	background-color: #c0392b!important;
-	background-color: red;
-	color: white!important;
-	 fill:#1a82b8;
-	cursor: default;
-}
-
-<<<<<<< HEAD
-.dateactive:focus, .voteactive:focus{
-	background-color: yellow;
-}*/
-
-
 #sortdate.active, #sortvote.active{
 	background-color: #c0392b!important;
 	color: white!important;

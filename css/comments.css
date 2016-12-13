@@ -204,31 +204,33 @@ p{
 
 /*===========PAGINATION===========*/
 
-/*agination{
-	align-items: center;
-	text-align: center;
+.pagination{
+	display: flex;
 	justify-content: center;
+	margin: auto; 0;
 	border: none;
 	font-family: Arial;
-	font-size: 1em;
-
-
-}	
-
-.pagination > a, .pagination > span{
-	color: #e74c3c;
-	text-decoration: none;
-	margin: auto;
-	float: left;
-}	
-.pagination > a:hover, 
-.pagination > span:hover
-{
-    color: #e74c3c;
 }
 
-.pagination > span{
-	cursor: default;
-	font-weight: bold;
+.pagination li {
+  display: inline;
 }
-*/
+
+.pagination  li  a{
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #e74c3c;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
+}
+
+.pagination  li  a:hover,
+.pagination  li a:focus{
+  z-index: 2;
+  color: #e74c3c;
+  background-color: #dddddd;
+}
+
