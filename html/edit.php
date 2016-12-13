@@ -57,7 +57,7 @@
 			$getdegree = $_POST["degree"];
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
-			$getbirthdate = $_POST['bday'];
+			// $getbirthdate = $_POST['bday'];
 
 			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0&&$_POST['bday']==$info['birthday']){
 										$prompt="No changes were made";
