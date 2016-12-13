@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../css/notif.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -132,26 +133,41 @@
               ?>
                   <li class="notification">
                       <a href="group_page.php?orgID=<?=$org_id?>"><h2 class="org-name"><?php echo $org_name["org_name"];?></h2></a>
-
-<!--                       <h3 class="topic">
+                      <span class="date"><span class="glyphicon glyphicon-time"></span><?= $date ?></span>
+                      <h3 class="topic">
                         <?php
-                          // if($topic=="Request"){
-                          //   echo "<span class='glyphicon glyphicon-question-sign'></span>";
-                          // }
-                          // else if($topic=="Rejected"){
-                          //   echo "<span class='glyphicon glyphicon-remove-circle'></span>";
-                          // }
-                          // else if($topc=="Upvote"){
-                          //   echo "<span class='glyphicon glyphicon-thumbs-up'></span>";
-                          // }
-                          // else if($topc=="Downvote"){
-                          //   echo "<span class='glyphicon glyphicon-thumbs-down'></span>";
-                          // }
+                          if($topic=="Request"){
+                            echo "<span style='color: #3dd83c' class='glyphicon glyphicon-question-sign'></span>";
+                          }
+                          else if($topic=="Rejected"){
+                            echo "<span style='color: #c10000' class='glyphicon glyphicon-remove-circle'></span>";
+                          }
+                          else if($topic=="Upvote"){
+                            echo "<span style='color: #3498db' class='glyphicon glyphicon-thumbs-up'></span>";
+                          }
+                          else if($topic=="Downvote"){
+                            echo "<span style='color: #c10000' class='glyphicon glyphicon-thumbs-down'></span>";
+                          }
+                          else if($topic=="Commented"){
+                            // <span class="glyphicon glyphicon-edit"></span>
+                            // <i class="fa fa-comment-o"></i>
+                            echo '<span style="color: #6d69a5" class="fa fa-comment-o"></span>';
+                          }
+                          else if($topic=="Rejected"){
+                            echo "<span class='glyphicon glyphicon-remove-sign'></span>";
+                          }
+                          else if($topic=="Accepted"){
+                            echo '<span style="color: #73ff1e" class="glyphicon glyphicon-ok-sign"></span>';
+                          }
+                          else if($topic=='Kicked'){
+                            echo '<span style="color: #a00404" class="glyphicon glyphicon-ban-circle"></span>';
+                          }
+                          else{
+                            echo "<span style='color: #6d69a5' class='fa fa-comment-o'></span>";
+                          }
                         ?>
                         <?php echo $topic;?>
-                      </h3> -->
-                      <span class="date"><span class="glyphicon glyphicon-time"></span><?=$date?></span>
-                      <h3 class="topic"><?php echo $topic;?></h3>
+                      </h3> 
                       <p class="message">"<?php echo $message;?>"</p>
                       <?php
                       if($seenstatus == 'not_seen'){ ?>

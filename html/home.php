@@ -142,7 +142,40 @@
                                 <?php $_SESSION['count']=$count;
                                 } 
                             ?>
-                            <h3 class="topic"><?=$announcement['topic']?></h3>
+                            <h3 class="topic">
+                                <?php
+                                  if($announcement['topic'] =="Request"){
+                                    echo "<span style='color: #3dd83c' class='glyphicon glyphicon-question-sign'></span>";
+                                  }
+                                  else if($announcement['topic']=="Rejected"){
+                                    echo "<span style='color: #c10000' class='glyphicon glyphicon-remove-circle'></span>";
+                                  }
+                                  else if($announcement['topic']=="Upvote"){
+                                    echo "<span style='color: #3498db' class='glyphicon glyphicon-thumbs-up'></span>";
+                                  }
+                                  else if($announcement['topic']=="Downvote"){
+                                    echo "<span style='color: #c10000' class='glyphicon glyphicon-thumbs-down'></span>";
+                                  }
+                                  else if($announcement['topic']=="Commented"){
+                                    // <span class="glyphicon glyphicon-edit"></span>
+                                    // <i class="fa fa-comment-o"></i>
+                                    echo '<span style="color: #6d69a5" class="fa fa-comment-o"></span>';
+                                  }
+                                  else if($announcement['topic']=="Rejected"){
+                                    echo "<span class='glyphicon glyphicon-remove-sign'></span>";
+                                  }
+                                  else if($announcement['topic']=="Accepted"){
+                                    echo '<span style="color: #73ff1e" class="glyphicon glyphicon-ok-sign"></span>';
+                                  }
+                                  else if($announcement['topic']=='Kicked'){
+                                    echo '<span style="color: #a00404" class="glyphicon glyphicon-ban-circle"></span>';
+                                  }
+                                  else{
+                                    echo "<span style='color: #6d69a5' class='fa fa-comment-o'></span>";
+                                  }
+                                ?>
+                                <?=$announcement['topic']?>
+                            </h3>
                             <a href = "viewprofile.php?user_id=<?=$announcement['user_id']?>"><h3 class="name"><?php echo $name["first_name"]." ".$name["last_name"];?></h3></a>
                             <p class="notif-content">"<?=nl2br($message)?>"</p>
                         </li>
