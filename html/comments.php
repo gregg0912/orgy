@@ -225,7 +225,7 @@
 								if($_SESSION['user_id'] ==$row['user_id']){?>
 
 									<form method="post" action="">
-										<button name='delete' class="remove" type="submit" value="">
+										<button name='delete' class="remove" type="submit" value="<?=$comment_id?>">
 											<span class="glyphicon glyphicon-remove"></span>
 										</button>
 									</form>
@@ -277,7 +277,7 @@
 				
 
 				<div>
-					<p><?php echo $textline2; ?></p>
+					<!-- <p><?php echo $textline2; ?></p> -->
 					<div class="pagination">
 					<ul>
 						<li><?php echo $paginationCtrls; ?></li>
