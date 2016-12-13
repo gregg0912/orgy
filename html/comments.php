@@ -223,7 +223,11 @@
 								</legend>
 								<?php 
 								if($_SESSION['user_id'] ==$row['user_id']){?>
-									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
+									<form method="post" action="">
+										<button name='delete' class="remove" type="submit" value="">
+											<span class="glyphicon glyphicon-remove"></span>
+										</button>
+									</form>
 									<a href="comments.php?org_id=<?=$_GET['org_id']?>&sort_id=<?=$_GET['sort_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 								<?php }?>
 								<dl>

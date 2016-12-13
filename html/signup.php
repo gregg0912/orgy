@@ -242,7 +242,7 @@
 					</select>
 				</div>	
 				<button type="submit" value="submit" name="Submit"> Submit </button>
-				<p class="has-acc">You already have an account?</p>
+				<p class="has-acc">Already have an account?</p>
 				<a href="login.php" id="login-btn" role="button">Login</a>
 			</form>
 		</div>
