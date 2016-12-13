@@ -42,6 +42,9 @@
 		$getprofpic = $info['prof_pic'];
 		$getdegree = $info['course'];
 		$getyear= $info['year_level'];
+		if($getyear==0){
+			$getyear='---';
+		}
 		$getemail = $info['email'];
 		
 
@@ -57,7 +60,7 @@
 			$getdegree = $_POST["degree"];
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
-			$getbirthdate = $_POST['birthday'];
+			// $getbirthdate = $_POST['birthday'];
 
 			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0&&$_POST['bday']==$info['birthday']){
 										$prompt="No changes were made";
@@ -93,7 +96,7 @@
 
 		        		if(!empty($_POST['username'])){
 
-						$sql = "SELECT count(username) FROM user WHERE username = '$_POST[username]'";
+						$sql = "SELECT count(username) FROM user WHERE username = '$_SESSION[username]'";
 							$username_query=mysqli_query($dbconn, $sql);
 							$username_query=mysqli_fetch_assoc($username_query);
 				        if($username_query){

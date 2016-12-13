@@ -23,7 +23,13 @@
     	else{
     		echo $disc_id;
     	}
-    }    
+    }
+	if(isset($_POST['delete'])){
+		$comment_id=$_POST['delete'];
+    	$delete_query="DELETE FROM comments WHERE comment_id='$comment_id' ";
+    	querySignUp($delete_query);
+    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id']);
+    }
     $org_id=$_GET['org_id'];
     $org_query="SELECT * FROM orgs WHERE org_id='$org_id'";
     $org_info=mysqli_fetch_assoc(querySignUp($org_query));
@@ -39,12 +45,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/comments.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 </head>
-<!-- <style type="text/css">
-	body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
-	div#pagination_controls{font-size:21px;}
-	div#pagination_controls > a{ color:#06F; }
-	div#pagination_controls > a:visited{ color:#06F; }
-</style> -->
 <body>
 	<div id="wrapper">
         <nav>
@@ -223,20 +223,14 @@
 								</legend>
 								<?php 
 								if($_SESSION['user_id'] ==$row['user_id']){?>
-									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$disc_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
+									<form method="post" action=""><button name='delete' class="remove" type="submit" value="<?=$comment_id?>"><span class="glyphicon glyphicon-remove"></span> </button></form>
+
+
 									<a href="comments.php?org_id=<?=$_GET['org_id']?>&sort_id=<?=$_GET['sort_id']?>&disc_id=<?=$_GET['disc_id']?>&edit=<?=$row['comment_id']?>#<?=$row['comment_id']?>"><button class="edit"><span class="glyphicon glyphicon-pencil"></span> </button></a>
 								<?php }?>
 								<dl>
 									<dt><p><?=nl2br($body)?></p></dt>
 								</dl>
-								<?php
-								    if(isset($_POST['delete'])){
-								    	$delete_query="DELETE FROM comments WHERE comment_id='$comment_id' ";
-								    	querySignUp($delete_query);
-								    	header('Location: comments.php?org_id='.$_GET['org_id'].'&sort_id='.$_GET['sort_id'].'&disc_id='.$_GET['disc_id']);
-
-								    }
-								?>
 							</div>
 				<?php
 						}
@@ -278,8 +272,9 @@
 
 				?>
 				
+
 				<div>
-					<p><?php echo $textline2; ?></p>
+					<!-- <p><?php echo $textline2; ?></p> -->
 					<div class="pagination">
 					<ul>
 						<li><?php echo $paginationCtrls; ?></li>

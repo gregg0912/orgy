@@ -150,7 +150,6 @@
                         ?>
                         <?php echo $topic;?>
                       </h3> -->
-=======
                       <span class="date"><span class="glyphicon glyphicon-time"></span><?=$date?></span>
                       <h3 class="topic"><?php echo $topic;?></h3>
                       <p class="message">"<?php echo $message;?>"</p>
