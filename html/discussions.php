@@ -53,6 +53,7 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="../css/discussions.css">
+	<link rel="stylesheet" type="text/css" href="../css/group_page.css">
 	<link rel="stylesheet" type="text/css" href="../css/newstyle.css">
 </head>
 
@@ -98,7 +99,13 @@
             </ul>
         </nav>
 		<div id="content">
-			<div class="header">
+			<?php
+			$current_userid = $_SESSION['user_id'];
+			$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id = $orgid";
+			$check_result = mysqli_query($connectdb, $checker_query);
+			if(mysqli_num_rows($check_result)>=1){
+			?>
+				<div class="header">
 				<center>
 					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$org_info['photo']?>"/>
 				</center>
@@ -359,7 +366,6 @@
 					<!-- <div id="pagination_controls"><?php echo $paginationCtrls; ?></div> -->
 					<div id="pagination_controls">
 						<ul class="pagination">
-				
 							<li><?php echo $paginationCtrls; ?></li>
 						</ul>
 					</div>
@@ -400,6 +406,32 @@
 					}
 				?>
 			</div>
+			<?php
+			}else{
+				$date = date("Y-m-d H:i:s");
+				$phpdate = strtotime( $date );
+				$datec = date( 'F d, Y h:i:s a', $phpdate );
+			?>
+			<div class="header">
+				<center>
+					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+				</center>
+				<h1 class="title">ORG_Y</h1>
+				<h2 class="currpage">Error Message</h2>
+			</div>
+			<div id="announcement">
+				<ul class="posted">
+					<li class="posted-content">
+						<h2 class="type">Something Wrong</h2>
+						<span class="date"><?=$datec?></span>
+						<h3 class="name">System</h3>
+						<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
+					</li>
+				</ul>
+			</div>
+			<?php
+			}
+			?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 </body>

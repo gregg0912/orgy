@@ -50,6 +50,7 @@
     	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="../css/navigation.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/group_page.css">
 		<link rel="stylesheet" type="text/css" href="../css/members.css">
 	</head>
 	<body>
@@ -99,53 +100,82 @@
 			?>				
 		<!-- Agent Proxy -->
 		<div id="content">
+			<?php
+			if(mysqli_num_rows($check_result)>=1){
+			?>
+				<div class="header">
+					<center>
+						<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
+					</center>
+					<h1 class="title"><?=$result['org_name']?></h1>
+					<h2 class="currpage">Current Members</h2>
+				</div>
+				<div id="group_list">
+					<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back</a><br>
+					<?php
+						$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
+						$penders = mysqli_query($connectdb,$query_penders);
+						$count=0; ?>
+						<ul id="see_group">
+						<?php while($pendering=mysqli_fetch_assoc($penders)){ 
+							//$ID=$pendering['join_id'];
+							
+							?>
+							<li class="joinGroup">
+								<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
+								<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
+								<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
+								<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
+								
+									<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
+
+								<?php 
+									if(isset($_POST['Kick_Button'])){
+										header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
+									}
+								} 
+									$_SESSION['count']=$count; ?>
+							</li>
+						<?php 	
+							$count++; 
+						} ?>
+						</ul>
+						<?php 
+				        if($rows <= 0){ ?>
+				            <p> No pending members. </p> <?php
+				        }
+				        else { ?>
+					        <?php
+								pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
+							}  
+							?>
+				</div>
+			<?php
+			}else{
+				$date = date("Y-m-d H:i:s");
+				$phpdate = strtotime( $date );
+				$datec = date( 'F d, Y h:i:s a', $phpdate );
+			?>
 			<div class="header">
 				<center>
 					<img class="img-absolute" onerror="this.src = '../images/janina.PNG'" src="<?=$result['photo']?>"/>
 				</center>
-				<h1 class="title"><?=$result['org_name']?></h1>
-				<h2 class="currpage">Current Members</h2>
+				<h1 class="title">ORG_Y</h1>
+				<h2 class="currpage">Error Message</h2>
 			</div>
-			<div id="group_list">
-				<a href="group_page.php?orgID=<?= $orgid ?>" class="buttoncustom return"><span class="glyphicon glyphicon-chevron-left"></span> Back</a><br>
-				<?php
-					$query_penders = "select * from user,joined where user.user_id=joined.user_id and joined.org_id=$orgid and (joined.membership_type='member' or joined.membership_type='admin') order by membership_type desc limit $start,$lim";
-					$penders = mysqli_query($connectdb,$query_penders);
-					$count=0; ?>
-					<ul id="see_group">
-					<?php while($pendering=mysqli_fetch_assoc($penders)){ 
-						//$ID=$pendering['join_id'];
-						
-						?>
-						<li class="joinGroup">
-							<a class="orgname" href="viewprofile.php?user_id=<?=$pendering['user_id']?>"><?=elipse($pendering['username'])?></a>
-							<img onerror="this.src = '../images/janina.PNG'" id="image" src="<?=$pendering['prof_pic']?>">
-							<span class="mem-type"><?=elipse($pendering['membership_type'])?></span>					
-							<?php if($member=='admin' && $_SESSION['user_id']!=$pendering['user_id']){?>
-							
-								<a class="orglink" href="delete_member.php?ID=<?=$pendering['join_id']?>&ORGID=<?=$orgid?>" onClick="return confirm('Are you sure you want to delete <?= $pendering['username']?>?')" > Kick </a> 
-
-							<?php 
-								if(isset($_POST['Kick_Button'])){
-									header("Location: delete_member.php?ID=$pendering[join_id]&ORGID=$orgid");
-								}
-							} 
-								$_SESSION['count']=$count; ?>
-						</li>
-					<?php 	
-						$count++; 
-					} ?>
-					</ul>
-					<?php 
-			        if($rows <= 0){ ?>
-			            <p> No pending members. </p> <?php
-			        }
-			        else { ?>
-				        <?php
-							pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
-						}  
-						?>
+			<div id="announcement">
+				<ul class="posted">
+					<li class="posted-content">
+						<h2 class="type">Something Wrong</h2>
+						<span class="date"><?=$datec?></span>
+						<h3 class="name">System</h3>
+						<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
+					</li>
+				</ul>
 			</div>
+			<?php
+			}
+			?>
 			<footer>CMSC 128 Section 1 | 2016</footer>
 		</div>
 	</body>
