@@ -59,7 +59,7 @@
 			$getemail = $_POST["email"];
 			// $getbirthdate = $_POST['bday'];
 
-			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0&&$_POST['bday']==$info['birthday']){
+			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
 										$prompt="No changes were made";
 									}
 
@@ -123,7 +123,7 @@
 
 									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
 
-									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0&&$_POST['bday']==$info['birthday']){
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
 										$prompt="No changes were made";
 									}
 
@@ -250,8 +250,8 @@
 				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
 				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
 
-				<label for="bday">Birthday</label>
-				<input type="date" name="bday" value="<?= $getbirthdate ?>" class="fifty">
+				<!-- <label for="bday">Birthday</label>
+				<input type="date" name="bday" value="<?= $getbirthdate ?>" class="fifty"> -->
 		    
 		    	<label for="degree">Degree Program</label>
 			
