@@ -25,19 +25,6 @@
     	querySignUp($delete_query);
     	header('Location: group_page.php?orgID='.$_GET['orgID']);
     	}
-	    // if($_POST){       
-	    // 	for($x=0;$x<=$_SESSION['count'];$x++){
-	    //         if(isset($_POST['Button'.$x])){
-	    //             $value = $_POST['Button'.$x];
-	    //             $query_delete= "delete from seen_announcement where announcement_id='$value'";
-	    //             $query_delete2= "delete from announcement where announcement_id='$value'";
-	    //             $result=mysqli_query($connectdb,$query_delete);
-	    //             $result=mysqli_query($connectdb,$query_delete2);
-	    //             header("Location:home.php?id=".$_GET['id']);
-	    //         }         
-	    //     }
-	    // }
-
       	if(isset($_POST['submit_edit'])){
         	$date = date("Y-m-d H:i:s");
         	$topic = htmlspecialchars($_POST['edit_topic'],ENT_QUOTES);

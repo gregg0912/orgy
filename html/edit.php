@@ -247,8 +247,8 @@
 		    
 		    
 		    	<label for="fname">Name</label>
-				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
-				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
+				<input pattern="/^[A-Z]([a-zA-Z-.]*[\ ]*)+$/" type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
+				<input pattern="/^[A-Z]([a-zA-Z-.]*[\ ]*)+$/" type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
 
 				<!-- <label for="bday">Birthday</label>
 				<input type="date" name="bday" value="<?= $getbirthdate ?>" class="fifty"> -->
