@@ -150,7 +150,7 @@
 				        else { ?>
 					        <?php
 								pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
-							}  
+							}
 							?>
 				</div>
 			<?php
