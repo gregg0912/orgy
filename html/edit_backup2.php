@@ -23,16 +23,14 @@
 		$dbconn = mysqli_connect($host,$uname,$password,$db) or die("Could not connect to database!");
 
 		$line = "";
-		$usernameErr = $passwordErr = $oldpasswordErr = $newpasswordErr = $retypenewpasswordErr = $submitErr = $duplicateErr = "";
+		$error_username = $error_fname = $error_lname = $error_newpassword = $error_renewpassword  = $error_currentpassword= "";
+		$success_username = $success_fname = $success_lname = $success_email = $success_newpassword  = $success_degree= $success_yearlevel= "";
 			
 		$prompt = "";
 		$currentpwd = "";
 
 		$query_info="SELECT * FROM user WHERE user_id=$_SESSION[user_id]";
 		$info=mysqli_fetch_assoc(querySignUp($query_info));
-
-
-
 	
 		$getusername = $info['username'];
 		$getfname = $info['first_name'];
@@ -43,155 +41,156 @@
 		$getdegree = $info['course'];
 		$getyear= $info['year_level'];
 		$getemail = $info['email'];
+		$getpassword = $info['password'];
+
+
+
+		
+		// if ($_SERVER["REQUEST_METHOD"] == "POST" &&$_POST['currentpwd']!=""){
+		// 		if(md5($_POST['currentpwd'])!=$info['password']){
+		// 		$prompt="Current password not correct";
+		// 	}
+		// }
+
+		
+		if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
+				$prompt="No changes were made";
+		}
+
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
+				$prompt="No changes were made";
+		}
+
+		
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&isset($_POST['currentpwd'])&&md5($_POST['currentpwd'])==$info['password']) {
+			$file=$_FILES['fileToUpload'];
+			$target_dir = "../images/";
+			$target_file = $target_dir . basename($file["name"]);
+			
+			if($_FILES["fileToUpload"]["error"] != 0){
+				$target_file=$info['prof_pic'];
+			}
+			move_uploaded_file($file["tmp_name"], $target_file);
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			$sql= "UPDATE user set prof_pic='$target_file' where user_id='$_SESSION[user_id]'";
+			querySignUp($sql);
+
+			if(isset($_POST['username'])&&$_POST['username']!=$info['username']){
+				$length=strlen($_POST['username']);
+				$pattern=preg_match("/^[\w]+$/",$_POST['username']);
+				
+				if($pattern==true&&$length>5||$length<16) {
+					$query="SELECT * FROM user WHERE username='$_POST[username]'";
+					$result = querySignUp($query);
+					if($result->num_rows>0&&!($_POST['username']==$info['username'])){
+						$error_username="Username $_POST[username] is already taken! ";		  
+					}
+					else{
+						$query="UPDATE user set username='$_POST[username]' where user_id='$_SESSION[user_id]' ";
+						$result = querySignUp($query);
+						if($result){
+							$success_username="Username changed successfully ";	
+						}
+					}
+				}
+				else{
+					$error_username="Username should use letters,numbers,periods,or underscores. Min. length 6 and Max is 15.";
+				}
+			}
+
+			if(isset($_POST['fname'])&&$_POST['fname']!=$info['first_name']){
+				if(preg_match("/^[A-Z]([a-zA-Z-.]*[\ ]*)+$/",$_POST['fname'])) {
+					$query="UPDATE user set first_name='$_POST[fname]' where user_id='$_SESSION[user_id]' ";
+					$result = querySignUp($query);
+						if($result){
+							$success_fname="First name changed successfully ";	
+						}
+				}	
+				else{
+					$error_fname="First name: First letter should be capitalized (formality) and no space before";
+				}
+			}
+
+			if(isset($_POST['lname'])&&$_POST['lname']!=$info['last_name']){
+				if(preg_match("/^[A-Z]([a-zA-Z-.]*[\ ]*)+$/",$_POST['lname'])) {
+					$query="UPDATE user set last_name='$_POST[lname]' where user_id='$_SESSION[user_id]' ";
+					$result = querySignUp($query);
+						if($result){
+							$success_lname="Last name changed successfully ";	
+						}
+				}	
+				else{
+					$error_lname="Last name: First letter should be capitalized (formality) and no space before";
+				}
+			}
+
+			if($_POST['newpwd']!=""){
+				$length=strlen($_POST['newpwd']);
+				$pattern=preg_match("/^([\d]*[a-zA-Z]*)+$/",$_POST['newpwd']);
+
+				if($pattern==true&&$length>=6&&$length<=15) {
+					// $success_newpassword="Password changed successfully";
+					if($_POST['renewpwd']!=""){
+						if($_POST['renewpwd']==$_POST['newpwd']) {
+							$query="UPDATE user set password='$_POST[newpwd]' where user_id='$_SESSION[user_id]' ";
+							$result = querySignUp($query);
+							if($result){
+								$success_newpassword="Password changed successfully";
+							}
+						}	
+						else{
+							$error_renewpassword="Passwords do not match! ";
+						}
+					}
+					else{
+						$error_renewpassword="Retype password";
+					}
+				}	
+				else{
+					$error_newpassword="Password should use letters or numbers only. Min. length 6 and Max is 15.";
+				}
+			}
+
+			if(isset($_POST['email'])&&$_POST['email']!=$info['email']){
+					$query="UPDATE user set email='$_POST[email]' where user_id='$_SESSION[user_id]' ";
+					$result = querySignUp($query);
+					if($result){
+						$success_lname="Email changed successfully ";	
+					}		
+					else{
+						//$error_lname="Last name: First letter should be capitalized (formality) and no space before";
+					}
+			}
+
+			if(isset($_POST['degree'])&&$_POST['degree']!=$info['course']){
+				
+				$query="UPDATE user set course='$_POST[degree]' where user_id='$_SESSION[user_id]' ";
+				$result = querySignUp($query);
+					if($result){
+						$success_lname="Course changed successfully ";	
+					}
+				else{
+				}
+			}
+
+			if(isset($_POST['year'])&&$_POST['year']!=$info['year_level']){
+				
+				$query="UPDATE user set year_level='$_POST[year]' where user_id='$_SESSION[user_id]' ";
+				$result = querySignUp($query);
+					if($result){
+						$success_lname="Year Level changed successfully ";	
+					}
+				else{
+				}
+			}
+		
+		}
+
 		
 
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
 
-			$getuserid = $_SESSION['user_id'];
-			//$getusername = $info['username'];
-			$getusername = $_POST["username"];
-			$getnewusername = $_POST["username"];
-			$getfname = $_POST["fname"];
-			$getlname = $_POST["lname"];
-			$getemail = $_POST["email"];
-			$getdegree = $_POST["degree"];
-			$getyear = $_POST["year"];
-			$getemail = $_POST["email"];
-
-			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
-										$prompt="No changes were made";
-									}
-
-			else if(empty($_POST['currentpwd'])){
-				$passwordErr="You must input your current password to make changes to your account!";
-			}
-
-
-
-			else{
-				$checkoldpassword = false; 
-				$getoldpassword = $_POST["currentpwd"]; 
-		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
-
-		        $file=$_FILES['fileToUpload'];
-														
-				$target_dir = "../images/";
-				$target_file = $target_dir . basename($file["name"]);
-				if($_FILES["fileToUpload"]["error"] != 0){
-					$target_file=$info['prof_pic'];
-				}
-				move_uploaded_file($file["tmp_name"], $target_file);
-				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
-		        if(mysqli_query($dbconn, $sql_password)){
-		        	if(mysqli_affected_rows($dbconn)==0){
-		        		$oldpasswordErr = " Sorry, that’s not your current password";  	
-		        		$getusername = $getnewusername;		
-		        	}
-		        	else{
-
-		        		if(!empty($_POST['username'])){
-
-						$sql = "SELECT count(username) FROM user WHERE username = '$_POST[username]'";
-							$username_query=mysqli_query($dbconn, $sql);
-							$username_query=mysqli_fetch_assoc($username_query);
-				        if($username_query){
-					        	if($username_query['count(username)']>0 && !($info['username'] == $_POST['username']) ){
-									$duplicateErr = "Sorry Username " . $getnewusername  ." has already been taken!";
-									// $getusername = $getnewusername;
-					        	}
-					        	else{
-
-									// $file=$_FILES['fileToUpload'];
-									
-									
-									// $target_dir = "../images/";
-									// $target_file = $target_dir . basename($file["name"]);
-									// if($_FILES["fileToUpload"]["error"] != 0){
-									// 	$target_file=$info['prof_pic'];
-									// }
-									// move_uploaded_file($file["tmp_name"], $target_file);
-									// $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-									$sql="UPDATE user 
-											SET username='$getnewusername', first_name='$getfname', last_name='$getlname', course='$getdegree', birthday='$getbirthdate', year_level='$getyear', email = '$getemail', prof_pic = '$target_file'
-												WHERE user_id='$getuserid'";
-									querySignUp($sql);
-
-
-									$prompt="You have successfully updated your account!";
-
-									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
-
-									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
-										$prompt="No changes were made";
-									}
-
-					        		$sql_1 = "UPDATE user SET username = '$getnewusername' WHERE username = '$getusername' ";
-
-					        		if (mysqli_query($dbconn, $sql_1)) {
-									    $newusernameScs = "You have successfully updated your username!";
-									} 
-					        	}
-					        }    
-						}
-		        	}
-				}
-			}
-
-
-			if(!empty($_POST['currentpwd']) && !empty($_POST['newpwd']) && !empty($_POST['renewpwd'])){
-				$getoldpassword = $_POST["currentpwd"]; 
-				$getnewpassword = $_POST["newpwd"]; 
-				$getretypenewpassword = $_POST["renewpwd"];
-				$checkoldpassword = $checknewpassword = $checkretypenewpassword = false; 
-		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
-		        if(mysqli_query($dbconn, $sql_password)){
-		        	if(mysqli_affected_rows($dbconn)==0){
-		        		$oldpasswordErr = " Sorry, that’s not your current password";  			
-		        	}
-		        	else{
-		        		$checkoldpassword = true;
-		        	}
-				}
-		        if($getnewpassword != $getretypenewpassword){
-        			$newpasswordErr = " Oops, new password and confirmation don’t match!";
-        		}
-        		else{
-        			$checknewpassword = true;
-        		}
-	        	if(!preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getnewpassword) && !preg_match('/(?=.*\d)[A-Za-z\d]{6,}/', $getretypenewpassword)){
-	        		$retypenewpasswordErr = " New password must at least be 8 characters long and should contain at least 1 integer";		        	
-	        	}
-	        	else{
-	        		$checkretypenewpassword = true;
-	        	}
-				if($checkoldpassword && $checknewpassword && $checkretypenewpassword){
-					$sql = "UPDATE user 
-								SET password='".md5($getnewpassword)."'
-									WHERE user_id='$getuserid'";
-
-	        		querySignUp($sql);
-				 	$prompt = "You have successfully updated your password!";
-					header('Location: edit.php'); 
-					//echo "<meta http-equiv='refresh' content='0'>";
-		        }
-			}
-			else if((empty($_POST["newpwd"]) && !empty($_POST["renewpwd"])) || (!empty($_POST["newpwd"]) && empty($_POST["renewpwd"]))) {
-				$passwordErr = "Current password, new password, and password retype confirmation must be filled out to make changes to your current password";
-			}			 
-		}
-		else{
-			echo $line;
-		}
-
-		function test_input($data) {
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data);
-			return $data;
-		}
-	?>
-
+		?>
 	<div id="wrapper">
 		<nav>
 	    	<ul>
@@ -229,25 +228,27 @@
                 </a></li>
                 <li><a href="logout.php">Log Out</a></li>
 	        </ul>
-        </nav>
+        </nav>   
 		<div id="content">
 			<h1 class="title">edit your profile</h1>
-			<?php if($duplicateErr!="" || $passwordErr!="" || $oldpasswordErr!="" || $newpasswordErr!="" || $retypenewpasswordErr!="" || $submitErr!=""){ ?>
-				<span class="error"><?php echo $duplicateErr . $passwordErr . $oldpasswordErr . $newpasswordErr . $retypenewpasswordErr . $submitErr;?></span>
-			<?php } elseif ($prompt!="") { ?>
 				<span class="success"><?php echo $prompt;?></span>
-			<?php } ?>
 			<form class="edit" name="signup_form" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			    <label for="fileToUpload" class="buttoncustom change-picture"><span class="glyphicon glyphicon-picture"></span> Change Profile Picture </label>
 				<input id="fileToUpload" type="file" name="fileToUpload"  value="<?= $getprofpic ?>"> 			
 
 		      	<label for="username">Username</label>
   	  			<input type="text" name="username" value="<?= $getusername ?>" class="block">
+  	  			<p> <?=$error_username?> </p>
+  	  			<p> <?=$success_username?> </p>
 		    
 		    
 		    	<label for="fname">Name</label>
 				<input type="text" name="fname" value="<?= $getfname ?>" placeholder="First Name" class="fifty">
+				<p> <?=$error_fname?> </p>
+				<p> <?=$success_fname?> </p>
 				<input type="text" name="lname" value="<?= $getlname ?>" placeholder="Last Name" class="fifty">
+				<p> <?=$error_lname?> </p>
+				<p> <?=$success_lname?> </p>
 		    
 		    	<label for="degree">Degree Program</label>
 			
@@ -288,16 +289,20 @@
 						<option <?=($getyear == '5 and above')? "selected = 'selected'":"" ;?>>5 and above</option>
 					</optgroup>
 				</select>
-		    
+		    	<p> <?=$success_yearlevel?> </p>
+		    	<p> <?=$success_degree?> </p>
 		    	<label for="email">E-mail Address</label>
 				<input type="email" name="email" value="<?= $getemail ?>" class="block">
-		    
+		    	<p> <?=$success_email?> </p>
 		      	<label for="newpwd">Password</label>
   	  			<input type="password" name="newpwd" placeholder="New Password" class="fifty">
+  	  			<p> <?= $error_newpassword ?> </p>
   	 			<input type="password" name="renewpwd"  placeholder="Retype Password" class="fifty">
-
+  	 			<p> <?= $error_renewpassword ?> </p>
+  	 			<p> <?=$success_newpassword?> </p>
   	 			<span class="validation">To apply changes, please enter current password</span>
   	  			<input type="password" name="currentpwd" placeholder="Current Password" class="block">
+  	  			<p> <?= $error_currentpassword ?> </p>
 		    
 		    
 		 		<input type="submit" name="changepwd" value="Save Changes" class="change-btn">

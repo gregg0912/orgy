@@ -58,7 +58,7 @@
 			$getyear = $_POST["year"];
 			$getemail = $_POST["email"];
 
-			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
+			if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
 										$prompt="No changes were made";
 									}
 
@@ -72,16 +72,6 @@
 				$checkoldpassword = false; 
 				$getoldpassword = $_POST["currentpwd"]; 
 		        $sql_password = "SELECT password FROM user WHERE password = '".md5($getoldpassword)."'";
-
-		        $file=$_FILES['fileToUpload'];
-														
-				$target_dir = "../images/";
-				$target_file = $target_dir . basename($file["name"]);
-				if($_FILES["fileToUpload"]["error"] != 0){
-					$target_file=$info['prof_pic'];
-				}
-				move_uploaded_file($file["tmp_name"], $target_file);
-				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
 		        if(mysqli_query($dbconn, $sql_password)){
 		        	if(mysqli_affected_rows($dbconn)==0){
@@ -102,16 +92,16 @@
 					        	}
 					        	else{
 
-									// $file=$_FILES['fileToUpload'];
+									$file=$_FILES['fileToUpload'];
 									
 									
-									// $target_dir = "../images/";
-									// $target_file = $target_dir . basename($file["name"]);
-									// if($_FILES["fileToUpload"]["error"] != 0){
-									// 	$target_file=$info['prof_pic'];
-									// }
-									// move_uploaded_file($file["tmp_name"], $target_file);
-									// $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+									$target_dir = "../images/";
+									$target_file = $target_dir . basename($file["name"]);
+									if($_FILES["fileToUpload"]["error"] != 0){
+										$target_file=$info['prof_pic'];
+									}
+									move_uploaded_file($file["tmp_name"], $target_file);
+									$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 									$sql="UPDATE user 
 											SET username='$getnewusername', first_name='$getfname', last_name='$getlname', course='$getdegree', birthday='$getbirthdate', year_level='$getyear', email = '$getemail', prof_pic = '$target_file'
 												WHERE user_id='$getuserid'";
@@ -122,7 +112,7 @@
 
 									// &&!isset($_POST['newpwd'])&&!isset($_POST['renewpwd']))
 
-									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])&&$_FILES['fileToUpload']['size'] == 0){
+									if(isset($_POST['currentpwd'])&&$_POST['username']==$info['username']&&$_POST['fname']==$info['first_name']&&$_POST['lname']==$info['last_name']&&$_POST['degree']==$info['course']&&$_POST['year']==$info['year_level']&&$_POST['email']==$info['email']&&empty($_POST['newpwd'])&&empty($_POST['renewpwd'])){
 										$prompt="No changes were made";
 									}
 
