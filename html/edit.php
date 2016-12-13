@@ -82,7 +82,7 @@
 
 		        		if(!empty($_POST['username'])){
 
-						$sql = "SELECT count(username) FROM user WHERE username = '$_POST[username]'";
+						$sql = "SELECT count(username) FROM user WHERE username = '$_SESSION[username]'";
 							$username_query=mysqli_query($dbconn, $sql);
 							$username_query=mysqli_fetch_assoc($username_query);
 				        if($username_query){
