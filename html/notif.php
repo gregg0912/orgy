@@ -180,17 +180,15 @@
                   <?php $count++;
                   }
                   ?>
-                  <?php }
+                  <?php
+                  pagination($id,$rows,$lim,1,"notif.php?id=%d"); 
+                }
                   else{
                   ?>
                   <p class="no-notif">No new notifications yet.</p>
                   <?php
                   }?>
         </ul>
-
-        <?php
-                  pagination($id,$rows,$lim,1,"notif.php?id=%d");
-                  ?>
         <footer>CMSC 128 Section 1 | 2016</footer>
     </div>
 </div>
