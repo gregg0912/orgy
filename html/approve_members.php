@@ -145,7 +145,10 @@
 			</nav>
 			<?php
 				$current_userid = $_SESSION['user_id'];
-				$checker_query = "SELECT * FROM joined, orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id=joined.org_id";
+				$checker_query = "SELECT *
+								FROM joined,orgs
+								WHERE joined.org_id = $orgid AND joined.user_id = $current_userid
+								AND orgs.org_id = $orgid AND joined.org_id = orgs.org_id AND joined.membership_type IN ('admin','member')";
 				$check_result = mysqli_query($connectdb, $checker_query);
 				$result = mysqli_fetch_assoc($check_result);
 				$member = $result['membership_type'];

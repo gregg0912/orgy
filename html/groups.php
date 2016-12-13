@@ -107,14 +107,16 @@
 								
 						<?php
 							}
-							pagination($id,$rows,$lim,1,"groups.php?id=%d");
 						}
 						else{
 							echo "<p>You still haven't joined an org yet! Try <a href='explore.php'>Exploring</a> a bit.</p>";
 						}
 					?>							
 				</ul>
-
+				<?php 
+				if($rows!=0){
+					pagination($id,$rows,$lim,1,"group_page.php?orgID=$orgid&id=%d");
+				} ?>
 				
 				<?php
 					if(isset($_SESSION['deleted'])&&isset($_SESSION['orgName'])){
