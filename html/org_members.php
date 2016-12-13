@@ -93,7 +93,10 @@
 			<!-- Agent Proxy -->	
 			<?php
 				$current_userid = $_SESSION['user_id'];
-				$checker_query = "SELECT * FROM joined,orgs WHERE joined.org_id = $orgid AND joined.user_id = $current_userid AND orgs.org_id = $orgid";
+				$checker_query = "SELECT *
+								FROM joined,orgs
+								WHERE joined.org_id = $orgid AND joined.user_id = $current_userid
+								AND orgs.org_id = $orgid AND joined.org_id = orgs.org_id AND joined.membership_type IN ('admin','member')";
 				$check_result = mysqli_query($connectdb, $checker_query);
 				$result = mysqli_fetch_assoc($check_result);
 				$member = $result['membership_type'];
@@ -147,7 +150,7 @@
 				        else { ?>
 					        <?php
 								pagination($id,$total_items,$lim,1,"org_members.php?orgID=$orgid&id=%d");
-							}  
+							}
 							?>
 				</div>
 			<?php
@@ -167,7 +170,7 @@
 				<ul class="posted">
 					<li class="posted-content">
 						<h2 class="type">Something Wrong</h2>
-						<span class="date"><?=$datec?></span>
+						<span class="date"><span class="glyphicon glyphicon-time"></span> <?=$datec?></span>
 						<h3 class="name">System</h3>
 						<p class="caption">"You are not a member of this group! If you are interested in joining, you can try looking for it using the Explore button."</p>
 					</li>
