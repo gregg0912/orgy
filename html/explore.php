@@ -125,7 +125,7 @@
 	            $query2 = mysqli_query($connectdb, "select * from user where user_id = $current_id"); 
                 while($current_user= mysqli_fetch_array($query2)){ ?>
                 <li><a href = 'viewprofile.php?user_id=<?=$current_id?>' class="username"><?php echo $current_user['username'] ?></a></li>
-                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/ellipsis_icon.png'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
+                <li class="image"><a href = 'viewprofile.php?user_id=<?=$current_id?>'><img onerror="this.src = '../images/janina.PNG'" src="../images/<?php echo $current_user['prof_pic'] ?>"/></a></li><?php } ?>
                 <li><a href="home.php">Home</a></li>
                 <li><a class="active" href="explore.php">Explore</a></li>
                 <li class="dropbtn"><a class="dropbtn" href="groups.php">Groups</a>
@@ -171,7 +171,7 @@
 					<?php 
 					 	while($rows = mysqli_fetch_array($filterlist)){ ?>
 							<li><a href="explore.php?org_type=<?php echo $rows['type_id']?>"
-							<?php if($rows['type_id'] == $org_type){ ?>
+							<?php if($rows['type_id'] === $org_type){ ?>
 								class="active"
 							<?php } ?>
 							><?=$rows['type_name']?></a></li>
